@@ -1,0 +1,3820 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CL21F57N33"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CL21F57N33');
+    </script>  
+    <title>filebeat 補充說明</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" integrity="sha512-hpZ5pDCF2bRCweL5WoA0/N1elet1KYL5mx3LP555Eg/0ZguaHawxNvEjF6O3rufAChs16HVNhEc6blF/rZoowQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-sv0slik/5O0JIPdLBCR2A3XDg/1U3WuDEheZfI/DI5n8Yqc3h5kjrnr46FGBNiUAJF7rE4LHKwQ/SoSLRKAxEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.115.0/dist/umd/lucide.min.js"></script>
+<script>
+    // Create callout icons
+    window.addEventListener("load", () => {
+        document.querySelectorAll(".callout").forEach((elem) => {
+            const icon = getComputedStyle(elem).getPropertyValue('--callout-icon');
+            const iconName = icon && icon.trim().replace(/^lucide-/, "");
+
+            if (iconName) {
+                const calloutTitle = elem.querySelector(".callout-title");
+
+                if (calloutTitle) {
+                    const calloutIconContainer = document.createElement("div");
+                    const calloutIcon = document.createElement("i");
+
+                    calloutIconContainer.appendChild(calloutIcon);
+                    calloutIcon.setAttribute("icon-name", iconName);
+                    calloutIconContainer.setAttribute("class", "callout-icon");
+                    calloutTitle.insertBefore(calloutIconContainer, calloutTitle.firstChild);
+                }
+            }
+        });
+
+        lucide.createIcons();
+
+        // Collapse callouts
+        Array.from(document.querySelectorAll(".callout.is-collapsible")).forEach((elem) => {
+            elem.querySelector('.callout-title').addEventListener("click", (event) => {
+                if (elem.classList.contains("is-collapsed")) {
+                    elem.classList.remove("is-collapsed");
+                } else {
+                    elem.classList.add("is-collapsed");
+                }
+            });
+        });
+    });
+</script>
+
+
+<script src="https://fastly.jsdelivr.net/npm/force-graph@1.43.0/dist/force-graph.min.js"></script>
+
+<script defer src="https://fastly.jsdelivr.net/npm/@alpinejs/persist@3.11.1/dist/cdn.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script src="https://fastly.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<link href="/styles/digital-garden-base.css" rel="stylesheet">
+    <link href="/styles/obsidian-base.css" rel="stylesheet">
+    <link href="/styles/_theme.8373b199.css" rel="stylesheet">
+
+
+<link href="/styles/custom-style.css" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+
+
+
+
+
+<style></style>
+    
+    
+  </head>
+  <body class="theme-dark markdown-preview-view markdown-rendered markdown-preview-section ">
+    
+    
+    
+      
+    
+    <div x-init="isDesktop = (window.innerWidth>=1400) ? true: false;" 
+            x-on:resize.window="isDesktop = (window.innerWidth>=1400) ? true : false;" 
+            x-data="{isDesktop: true, showFilesMobile: false}">
+
+        <div x-show.important="!isDesktop" style="display: none;">
+            <nav class="navbar">
+    <div class="navbar-inner">
+        <span style="font-size: 1.5rem; margin-right: 10px;" @click="showFilesMobile=!showFilesMobile"><i  icon-name="menu"></i></span>
+        
+        <a href="/" style="text-decoration: none;">
+            <h1 style="margin: 15px !important;">度估筆記本</h1>
+        </a>
+        
+    </div>
+    
+    
+        <div class="search-button align-icon" onclick="toggleSearch()">
+    <span class="search-icon">
+        <i icon-name="search" ></i>
+    </span>
+    <span class="search-text">
+        <span>Search</span>
+        <span style="font-size: 0.6rem; padding: 2px 2px 0 6px; text-align:center; transform: translateY(4px);" class="search-keys">
+            CTRL + K
+        </span>
+    </span>
+</div>
+    
+</nav>
+        </div>
+        
+        <div x-show="showFilesMobile && !isDesktop" @click="showFilesMobile = false" style="display:none;" class="fullpage-overlay"></div>
+
+      <nav class="filetree-sidebar"  x-show.important="isDesktop || showFilesMobile" style="display: none;">
+        
+         <a href="/" style="text-decoration: none;">
+               <h1 style="text-align:center;">度估筆記本</h1>
+         </a>
+        <div class="badge-base LI-profile-badge" align="center" data-locale="zh_TW" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="yuke-liu-2a9426ab" data-version="v1"></div> 
+        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+         
+        
+            <div style="display: flex; justify-content: center;">
+                <div class="search-button align-icon" onclick="toggleSearch()">
+    <span class="search-icon">
+        <i icon-name="search" ></i>
+    </span>
+    <span class="search-text">
+        <span>Search</span>
+        <span style="font-size: 0.6rem; padding: 2px 2px 0 6px; text-align:center; transform: translateY(4px);" class="search-keys">
+            CTRL + K
+        </span>
+    </span>
+</div>
+            </div>
+        
+         <div class="folder" x-data="{isOpen: true}">
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('Code')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Code</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/0.Code MOC/"> 💻 Code MOC  </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('Code/Golang')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Golang</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/Golang/155. scrapy爬暗黑編年史的世界王時間/">爬蟲暗黑編年史的世界王時間 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/Golang/40. golang 重新讀取設定檔的方法/">Golang 重新讀取設定檔 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/Golang/47. GO get 參數/">GO get 參數 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/107. vscode 忽略設定同步/">vscode 忽略設定同步 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/110.github action pipeline筆記/">github action pipeline筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/145. git submodule 下載失敗/">git submodule 下載失敗 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/22.telegram api使用/">telegram api使用方法 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/38.正則取代，留下特定字串/">正則取代，留下特定字串 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Code/59. git refs，branch 跟 tag是一樣的。/">git refs，branch 跟 tag是一樣的 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('Container')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Container</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/0.Container MOC/"> 🐳 Container MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/112. pyenchant &amp; opencc error fix/">python打包dockerfile除錯日記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/115. .net core 打包dockerfile/">.Net Core打包Dockerfile </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/138. gerapy+scrapyd+mongo爬蟲整套流程/">gerapy+scrapyd+mongo爬蟲整套流程 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/152. 硬碟空間不足，無法進入容器/">硬碟空間不足，無法進入容器，清除資料大作戰 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/154. PaddlePaddle 打包image/">python PaddlePaddle 打包image </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/157. Docker NGINX-Certbot 自動跟Let&#39;sEncrytp取得憑證/">NGINX-Certbot 自動跟Let&#39;sEncrytp取得憑證 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/168. Docker build失敗跳出killed/">Docker build失敗跳出killed </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/170. Docker啓用GPU/">Docker啓用GPU </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/29.Dockerfile echo something/">Dockerfile除錯模式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Container/32. nuxtJS 的 Dockerfile/">nuxtJS的Dockerfile </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('Drone')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Drone</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Drone/0.Drone MOC/"> ⏱ Drone MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Drone/10.drone 使用 騰訊雲 K8S及 容器鏡像服務/">drone 使用 騰訊雲 K8S及 容器鏡像服務 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Drone/109. drone jsonnet 各種怪招/">drone jsonnet 各種怪招 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Drone/119. Drone  plugin-Drone-docker 修改原始檔/">Drone  plugin-Drone-docker 修改原始檔 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Drone/3. 撰寫drone.yml 筆記篇(未)/">撰寫drone.yml 筆記篇 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Drone/72. drone on GKE 建立/">drone on GKE 建立 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Drone/77. drone build Open Source Edition/">drone build Open Source Edition </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Drone/78. drone k8s-runner 進階設定/">drone k8s-runner 進階設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('EFK')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">EFK</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/0.EFK MOC/"> 🗒 Drone MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/111. filebeat error/">filebeat error </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/43.自建ECK on GKE/">自建ECK on GKE </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/52. ILM 設定/">ILM 設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/53. apm error/">apm error </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/55. es基本概念篇/">es基本概念篇 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink active-note">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/57.filebeat 補充說明/">filebeat 補充說明 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/60. ECK的 kibana 警告， server.publicBaseUrl is missing/">ECK的 kibana 警告， server.publicBaseUrl is missing </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/61. kibana 查詢語法/">kibana 查詢語法 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/67. ECK，filebeat LOG蒐集遺失/">ECK，filebeat LOG蒐集遺失 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/68.ECK , api筆記/">ECK , api筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/69. kibana錯誤解法 , parent Data too large.../">kibana錯誤解法 , parent Data too large... </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/80. ECK 8.1 ,APM intergration安裝方式/">ECK 8.1 ,APM intergration安裝方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/84.Elasticsearch筆記/">Elasticsearch筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/90. elasticsearch ingest pipeline/">elasticsearch ingest pipeline </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/EFK/91. elasticsearch ingest processor補充/">elasticsearch ingest processor補充 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('GCP')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">GCP</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/0.GCP MOC/">GCP MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('GCP/Price')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Price</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/Price/126. GCP 硬碟費用比較/">GCP 硬碟費用比較 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/Price/180. GCP 監控費用/">GCP 監控費用 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/Price/GCP CPU用途/">GCP CPU用途 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/Price/GCP費用/">GCP費用 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/109.GCS臨時下載權限/">GCS臨時下載權限 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/120. 指令備份cloudSQL及下載/">指令備份cloudSQL及下載 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/121.cloudCDN設定/">cloudCDN設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/127. fuse device not found, try &#39;modprobe fuse&#39; first/">fuse device not found, try &#39;modprobe fuse&#39; first </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/128. 解決 the gcp auth plugin is deprecated in v1.22+/">解決 the gcp auth plugin is deprecated in v1.22+ </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/129. nginx 掛載gcs/">nginx 掛載gcs </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/13.騰訊雲連接GOOGLE雲/">騰訊雲連接GOOGLE雲 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/130. Google IAP ssh失敗/">Google IAP ssh失敗 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/135. gsutil整批複製/">gsutil整批複製 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/140. gcs 掛載domain/">gcs 掛載domain </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/141. gcs自動刪除檔案/">gcs自動刪除檔案 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/142.gcs cors設定/">gcs cors設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/161. GKE利用pubsub通知訊息到discord/">GKE Pub/Sub通知訊息到DC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/164.gcloud install by bash/">使用bash安裝gcloud cli </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/17. Gcloud AttributeError module importlib has no attribute util/">Gcloud AttributeError module importlib has no attribute util </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/181. cloudstorage無法使用cloudflare轉址/">Debian install </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/19. GCE硬碟增加容量大小/">GCE硬碟增加容量大小 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/46.GCE機器列表內的CPU個數/">GCE機器列表內的CPU個數 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/46.列出GCE的所有VM/">列出GCE的所有VM </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/5. Google Cloud Function限制/">Google Cloud Function限制 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/79. gcloud compute instance 筆記/">gcloud compute instance 筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/8.GCS使用方式/">GCS使用方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/88.批次修改GCP的label/">批次修改GCP的label </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/9.GCP網路對外的方式/">GCP網路對外的方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/95.cloud build的問題/">cloud build的問題 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/GCP/97. Anthos 初體驗/">Anthos 初體驗 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('istio')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">istio</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/7. Istio安裝及使用/">Istio安裝及使用 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('k8s')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">k8s</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/0.K8s MOC/"> ⎈ K8s MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('k8s/GKE')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">GKE</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/37.SolrCloud on GKE/">GKE上架設SolrCloud </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/39.solrCloud的初體驗/">solrCloud的初體驗 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/4. GKE使用GPU/">GKE使用GPU </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/41.GKE節點無法自動縮小/">GKE節點無法自動縮小，查錯之旅 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/44.srs 影音串流 on GKE/">srs 影音串流 on GKE </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/50.GKE workload Identity 實地演練/">GKE workload Identity 實地演練 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/56. GKE記錄 nginx log/">GKE記錄 nginx log </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/70. GKE pvc還原/">GKE pvc還原 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/71.gitlab on GKE 災害還原筆記/">gitlab on GKE 災害還原筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('k8s/Terraform')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Terraform</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Terraform/147. 用chatGPT學Terraform/">用chatGPT學Terraform </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Terraform/148. Terraform的基本概念/">Terraform的基本概念 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Terraform/149. terraform 部署VM，啓動docker安裝metadata_startup_script/">terraform 部署VM，啓動docker安裝metadata_startup_script </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Terraform/183. Terrafrom 建立private cluster/">Terrafrom 建立private cluster </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Terraform/82. Terraform vs Ansible/">Terraform vs Ansible </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('k8s/Yaml')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Yaml</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Yaml/12. k8s YAML 小細節/">k8s YAML 小細節 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Yaml/136. 一步步篩選k8s的deploy內容/">一步步篩選k8s的deploy內容 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Yaml/2. k8s yaml撰寫 volume 踩坑篇/">k8s yaml撰寫 volume 踩坑篇 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Yaml/74. kubernetes 批次檢查yaml特定字元/">kubernetes 批次檢查yaml特定字元 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Yaml/85. gke-cronjob筆記/">gke-cronjob筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Yaml/87.kustomize 共用label(optional）/">kustomize 共用label(optional） </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Yaml/94. k8s 細節補充/">k8s 細節補充 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/Yaml/98. k8s中的command與dockerfile的 CMD/">k8s中的command與dockerfile的 CMD </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/101. 批次修改hpa/">批次修改hpa </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/104. rabbitmq operator安裝/">rabbitmq operator安裝 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/105. linux系統時間與k8s/">linux系統時間與k8s </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/118. kubernetes Dashboard/">kubenetes簡易介面 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/123.Helm 使用方式/">Helm 使用方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/137. kubecolor 直觀的kubectl/">kubecolor 直觀的kubectl </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/139. openlens add pod shell or logs button/">openlens增加shell和logs 按鈕 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/143. k8s取得登入憑證/">k8s取得登入憑證 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/144. k8s 的sercret複製/">k8s 的sercret複製 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/151. kubeadm重新產生驗證/">kubeadm重新產生驗證 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/162.查詢已棄用的API/">查詢GKE已棄用的API </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/172. 自建k8s版本升級/">自建k8s版本升級 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/192. 自建的k8s拉取private registry/">192. 自建的k8s拉取private registry </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/193. pod debug方式/">pod debug方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/27.K8s的節點選擇與污染/">k8s的節點選擇與污染 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/42.k8s PDB（pod中斷預算）/">k8s PDB（pod中斷預算） </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/76. k8s error,The node was low on resource../">k8s error,The node was low on resource.. </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('Linux')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Linux</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/0.Linux MOC/"> 🐧 Linux MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/108. linux shell 進階指令/">linux shell 進階指令 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/114. alpine linux 宣告變數,error bad variable name/">alpine linux 宣告變數,error bad variable name </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/116. 安裝linux server 基本設定/">安裝linux server 基本設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/132. shell script 雙引號與單引號/">shell script 雙引號與單引號 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/133. shell script字串處理/">shell script字串處理 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/134. 關閉ssh連線後，仍可執行程式/">關閉ssh連線後，仍可執行程式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/16.dustise sleep 測試工具簡介/">blog-16.dustise sleep 測試工具簡介 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/163.Shell的區別及查詢/">Shell的區別及查詢 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/165. Linux網路追蹤工具- MTR/">Linux路由追蹤工具 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/171. linux top指令詳解/">linux top指令詳解 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/173. Linux殭屍程式/">殭屍程式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/33. centos 7安裝redis 改port/">centos 7安裝redis 改port </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/48.SSH無法連線，REMOTE HOST IDENTIFICATION HAS CHANGED/">SSH無法連線，REMOTE HOST IDENTIFICATION HAS CHANGED </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/49.npm 與 yarn 比較/">npm 與 yarn 比較 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/51.curl 筆記/">curl 筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/6. 編譯ffmpeg 硬體加速的坑/">編譯ffmpeg 硬體加速的坑 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/63.alpine linux apk ERROR unable to select packages/">alpine linux apk ERROR unable to select packages </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/65. Linux command - grep/">Linux command - grep </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/93. shellscript解析/">shellscript解析 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Linux/php exec ssh 發生 Host key verification failed 錯誤/">1.php exec ssh 發生 Host key verification failed 錯誤 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('Network')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Network</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Network/0.Network MOC/"> 🌐 Network MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Network/102. OSI七層/">OSI七層 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Network/106. zyxel 與 fortigate 建立VPN 點對點通道/">zyxel 與 fortigate 建立VPN 點對點通道 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Network/169. Nginx的負載平衡/">Nginx的負載平衡 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Network/176. Nginx cheat sheet/">Nginx cheat sheet </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Network/182. Fortigate 設定 內部服務負載平衡/">Fortigate 設定 內部服務負載平衡 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Network/92. proxy 代理/">proxy 代理 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Network/99. nginx的除錯筆記/">nginx的除錯筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('Observability')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Observability</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Observability/178. Install Prometheus Operator/">Install Prometheus Operator </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Observability/179.  install Bindplane/">179.  install Bindplane </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Observability/184. grafana error  reverse proxy settings on istio/">grafana error reverse proxy settings on istio </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('Window')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Window</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Window/153.MSSQL減少資料庫大小/">MSSQL減少資料庫大小 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Window/166. MSSQL版本差異/">MSSQL版本差異 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Window/174. win10 下載Microsoft Store的檔案/">win10 下載Microsoft Store的檔案 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Window/blog.113. 微軟官方office 大量授權/">微軟官方office 大量授權 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/160.Obsidian發佈網站/">Obsidian發佈網站 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/186. istio的Authorization policy(白名單)/">186. istio的Authorization policy(白名單) </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/187. ECK的filebeat/">187. ECK的filebeat </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/188. CloudSQL server 查詢記憶體/">188. SQL server 查詢記憶體 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/189. 導入Terraform/">導入Terraform </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/190. cert-manager安裝/">cert-manager安裝 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/191. Steam deck安裝除錯記/">Steam deck安裝筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/">README </a>
+                </div>
+            
+        </div>
+        
+    </div>
+      </nav>
+
+    </div>
+
+    
+
+    
+      <div class="search-container" id="globalsearch" onclick="toggleSearch()">
+    <div class="search-box">
+        <input type="search" id="term" placeholder="Start typing...">
+        <div id="search-results"></div>
+        <footer class="search-box-footer">
+            <div class="navigation-hint">
+                <span>Enter to select</span>
+            </div>
+
+            <div class="navigation-hint align-icon">
+                <i  icon-name="arrow-up" aria-hidden="true"></i>
+                <i  icon-name="arrow-down" aria-hidden="true"></i>
+                <span>to navigate</span>
+            </div>
+
+            <div class="navigation-hint">
+                <span>ESC to close</span>
+            </div>
+
+        </footer>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', init, false);
+    document.addEventListener('DOMContentLoaded', setCorrectShortcut, false);
+
+    window.toggleSearch = function () {
+        if (document.getElementById('globalsearch').classList.contains('active')) {
+            document
+                .getElementById('globalsearch')
+                .classList
+                .remove('active');
+        } else {
+            document
+                .getElementById('globalsearch')
+                .classList
+                .add('active');
+            document
+                .getElementById('term')
+                .focus();
+        }
+    }
+
+    window.toggleTagSearch = function (evt) {
+        console.log(evt.textContent);
+        const term = evt.textContent;
+        if (term) {
+            window
+                .document
+                .getElementById('term')
+                .value = term.trim();
+            window.toggleSearch();
+            window.search();
+        }
+    }
+
+    const loadingSvg = `
+    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">
+          <circle cx="22" cy="22" r="6" stroke-opacity="0">
+              <animate attributeName="r"
+                   begin="1.5s" dur="3s"
+                   values="6;22"
+                   calcMode="linear"
+                   repeatCount="indefinite" />
+              <animate attributeName="stroke-opacity"
+                   begin="1.5s" dur="3s"
+                   values="1;0" calcMode="linear"
+                   repeatCount="indefinite" />
+              <animate attributeName="stroke-width"
+                   begin="1.5s" dur="3s"
+                   values="2;0" calcMode="linear"
+                   repeatCount="indefinite" />
+          </circle>
+          <circle cx="22" cy="22" r="6" stroke-opacity="0">
+              <animate attributeName="r"
+                   begin="3s" dur="3s"
+                   values="6;22"
+                   calcMode="linear"
+                   repeatCount="indefinite" />
+              <animate attributeName="stroke-opacity"
+                   begin="3s" dur="3s"
+                   values="1;0" calcMode="linear"
+                   repeatCount="indefinite" />
+              <animate attributeName="stroke-width"
+                   begin="3s" dur="3s"
+                   values="2;0" calcMode="linear"
+                   repeatCount="indefinite" />
+          </circle>
+          <circle cx="22" cy="22" r="8">
+              <animate attributeName="r"
+                   begin="0s" dur="1.5s"
+                   values="6;1;2;3;4;5;6"
+                   calcMode="linear"
+                   repeatCount="indefinite" />
+          </circle>
+      </g>
+  </svg>`;
+
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function () {
+            var context = this,
+                args = arguments;
+            var later = function () {
+                timeout = null;
+                if (!immediate) 
+                    func.apply(context, args);
+                };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) 
+                func.apply(context, args);
+            };
+    };
+
+    function setCorrectShortcut() {
+        if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+            document
+                .querySelectorAll(".search-keys")
+                .forEach(x => x.innerHTML = "⌘ + K");
+        }
+    }
+
+    function createIndex(posts) {
+        const encoder = (str) => str
+            .toLowerCase()
+            .split(/([^a-z]|[^\x00-\x7F])/)
+        const contentIndex = new FlexSearch.Document({
+            cache: true,
+            charset: "latin:extra",
+            optimize: true,
+            index: [
+                {
+                    field: "content",
+                    tokenize: "reverse",
+                    encode: encoder
+                }, {
+                    field: "title",
+                    tokenize: "forward",
+                    encode: encoder
+                }, {
+                    field: "tags",
+                    tokenize: "forward",
+                    encode: encoder
+                }
+            ]
+        })
+        posts.forEach((p, idx) => {
+            contentIndex.add({
+                id: idx, title: p.title, content: p.content, tags: p.tags //Change to removeHTML
+            })
+        });
+        return contentIndex;
+    }
+
+    async function init() {
+        //init offline search index
+
+        const searchIndexDate = '2024-01-29T09:40:50.817Z';
+        let shouldFetch = true;
+        if(localStorage.getItem("searchIndex")) {
+            let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
+            if(date === searchIndexDate){
+                shouldFetch = false;
+                let index = createIndex(docs);
+                window.docs = docs
+                window.index = index;
+            }        
+        }
+        if(shouldFetch){
+            let docs = await(await fetch('/searchIndex.json?v=2024-01-29T09:40:50.817Z')).json();
+            let index = createIndex(docs);
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-01-29T09:40:50.817Z', docs}));
+            window.docs = docs
+            window.index = index;
+        }
+
+        //open searchmodal when ctrl + k is pressed, cmd + k on mac
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                toggleSearch();
+            }
+            if (e.key === 'Escape') {
+                document
+                    .getElementById('globalsearch')
+                    .classList
+                    .remove('active');
+            }
+
+            //navigate search results with arrow keys
+            if (document.getElementById('globalsearch').classList.contains('active')) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    let active = document.querySelector('.searchresult.active');
+                    if (active) {
+                        active
+                            .classList
+                            .remove('active');
+                        if (active.nextElementSibling) {
+                            active
+                                .nextElementSibling
+                                .classList
+                                .add('active');
+                        } else {
+                            document
+                                .querySelector('.searchresult')
+                                .classList
+                                .add('active');
+                        }
+                    } else {
+                        document
+                            .querySelector('.searchresult')
+                            .classList
+                            .add('active');
+                    }
+
+                    let currentActive = document.querySelector('.searchresult.active');
+                    if (currentActive) {
+                        currentActive.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
+                    }
+                }
+                if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    let active = document.querySelector('.searchresult.active');
+                    if (active) {
+                        active
+                            .classList
+                            .remove('active');
+                        if (active.previousElementSibling) {
+                            active
+                                .previousElementSibling
+                                .classList
+                                .add('active');
+                        } else {
+                            document
+                                .querySelectorAll('.searchresult')
+                                .forEach((el) => {
+                                    if (!el.nextElementSibling) {
+                                        el
+                                            .classList
+                                            .add('active');
+                                    }
+                                });
+                        }
+                    } else {
+                        document
+                            .querySelectorAll('.searchresult')
+                            .forEach((el) => {
+                                if (el.nextElementSibling) {
+                                    el
+                                        .classList
+                                        .add('active');
+                                }
+                            });
+                    }
+
+                    let currentActive = document.querySelector('.searchresult.active');
+                    if (currentActive) {
+                        currentActive.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
+                    }
+
+                }
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    let active = document.querySelector('.searchresult.active');
+                    if (active) {
+                        window.location.href = active
+                            .querySelector("a")
+                            .href;
+                    }
+                }
+            }
+        });
+
+        const debouncedSearch = debounce(search, 200, false);
+        field = document.querySelector('#term');
+        field.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') {
+                debouncedSearch();
+            }
+        });
+        resultsDiv = document.querySelector('#search-results');
+
+        const params = new URL(location.href).searchParams;
+        if (params.get('q')) {
+            field.setAttribute('value', params.get('q'));
+            toggleSearch();
+            search();
+        }
+    }
+    window.lastSearch = '';
+    async function search() {
+        let search = field
+            .value
+            .trim();
+        if (!search) 
+            return;
+        if (search == lastSearch) 
+            return;
+        console.log(`search for ${search}`);
+        window.lastSearch = search;
+
+        resultsDiv.innerHTML = loadingSvg;
+        //let searchRequest = await fetch(`/api/search?term=${encodeURIComponent(search)}`);
+        //let results = await searchRequest.json();
+        let results = offlineSearch(search);
+        let resultsHTML = '';
+        if (!results.length) {
+            let resultParagraph = document.createElement("p");
+            resultParagraph.innerText = `No results for "${search}"`;
+            resultsDiv.innerHTML = '';
+            resultsDiv.appendChild(resultParagraph);
+            return;
+        }
+        resultsHTML += '<div style="max-width:100%;">';
+        // we need to add title, url from ref
+        results.forEach(r => {
+            if(r.tags && r.tags.length > 0){
+                resultsHTML += `<div class="searchresult">
+                    <a class="search-link" href="${r.url}">${r.title}</a>
+                    <div onclick="window.location='${r.url}'">
+                        <div class="header-meta">
+                            <div class="header-tags">
+                                ${r.tags.map(tag=>'<a class="tag" href="JavaScript:Void(0);">#'+tag+'</a>').join("")}
+                            </div>
+                        </div>
+                        ${r.content}
+                    </div>
+                </div>`;
+            } else {
+                resultsHTML += `<div class="searchresult">
+                    <a class="search-link" href="${r.url}">${r.title}</a>
+                    <div onclick="window.location='${r.url}'">
+                        ${r.content}
+                    </div>
+                </div>`;
+            }
+        });
+        resultsHTML += '</div>';
+        resultsDiv.innerHTML = resultsHTML;
+    }
+
+    function truncate(str, size) {
+        //first, remove HTML
+        str = str.replaceAll(/<[^>]*>/g, '');
+        if (str.length < size) 
+            return str;
+        return str.substring(0, size - 3) + '...';
+    }
+
+    function offlineSearch(searchQuery) {
+        let data = window.docs;
+
+        let isTagSearch = searchQuery[0] === "#" && searchQuery.length > 1;
+
+        let searchResults = isTagSearch
+            ? index.search(searchQuery.substring(1), [
+                {
+                    field: "tags"
+                }
+            ])
+            : index.search(searchQuery, [
+                {
+                    field: "title",
+                    limit: 5
+                }, {
+                    field: "content",
+                    weight: 10
+                }
+            ]);
+
+        const getByField = (field) => {
+            const results = searchResults.filter((x) => x.field === field)
+            if (results.length === 0) {
+                return []
+            } else {
+                return [...results[0].result]
+            }
+        }
+        const allIds = new Set([
+            ...getByField("title"),
+            ...getByField("content"),
+            ...getByField("tags")
+        ])
+        const dataIds = [...allIds];
+        const finalResults = dataIds.map((id) => {
+            let result = data[id];
+            result.content = truncate(result.content, 400);
+            result.tags = result
+                .tags
+                .filter((x) => x != "gardenEntry" && x != "note"); //Note is automatically added by 11ty. GardenEntry is used internally to mark the home page
+
+            return result;
+        })
+        return finalResults;
+
+    }
+</script>
+    
+
+    <main class="content cm-s-obsidian ">
+      <header>
+        
+          <h1 data-note-icon="">filebeat 補充說明</h1>
+        
+        <div class="header-meta">
+          
+            <div class="header-tags">
+              
+                
+              
+                
+                  <a class="tag" onclick="toggleTagSearch(this)">
+                    #🗒
+                  </a>
+                
+              
+            </div>
+          <div class="timestamps"></div></div>
+      
+      
+      </header>
+      
+      
+      <h1 id="前言" tabindex="-1">前言</h1>
+<h1 id="正文" tabindex="-1">正文</h1>
+<h2 id="filebeat" tabindex="-1">filebeat抓資料的方式</h2>
+<ol>
+<li>autodiscover</li>
+<li>without autodiscover</li>
+</ol>
+<p>要注意的是，如果用(2) 的方式，在GKE上面，你要使用 add_kubernetes_metadata，去取得pod name,namespace..等，<br>
+通通抓不到。</p>
+<p>因為(2)是直接去node的log裡面抓資料，並沒有透過api的方式，<br>
+所以如果要取得 pod name的話，可能要從log path着手。<br>
+應該是可以從ingest 去處理。</p>
+<p>但用(1)，資料就通通進來了。<br>
+<picture src="/img/user/EFK/57.fig-1.jpg" alt="57.fig-1.jpg"><source       media="(max-width:480px)"
+      srcset="/img/optimized/yuXgPLjrxX-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/yuXgPLjrxX-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/yuXgPLjrxX-543.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/yuXgPLjrxX-543.jpeg"
+        ><img       class=""
+      src="/img/user/EFK/57.fig-1.jpg"
+      alt="57.fig-1.jpg"
+      width=""
+      ></picture></p>
+<p>所以還是用(1)吧。</p>
+<p>ref.</p>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration-examples.html" target="_blank" class="external-link">Configuration Examples</a></li>
+<li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/add-kubernetes-metadata.html" target="_blank" class="external-link">Add Kubernetes metadata</a></li>
+</ul>
+<hr>
+<h2 id="排除資料的方式" tabindex="-1">排除資料的方式</h2>
+<p>沒有記錄log不知道，一記錄了才知道。<br>
+資料有夠肥。</p>
+<p>開始跟同仁說，沒有必要的不要留。<br>
+但有些是先天限制，就是會拼命印，那該怎麼解決。</p>
+<ol>
+<li>排除訊息內的特定文字，通通不收<br>
+在autodiscover 底下使用 exclude_lines</li>
+</ol>
+<pre><code>autodiscover:
+  providers:
+  - type: kubernetes
+    node: ${NODE_NAME}                                              
+    hints:
+      enabled: true
+      default_config:
+        type: container
+        paths:
+        - /var/log/containers/*${data.kubernetes.container.id}.log
+        exclude_lines: 
+        - &quot;.*(NAT rule custom-iptables|unknown operand).*&quot;  # 排除 k8s-custom-iptables
+</code></pre>
+<p>ref. <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-log.html#filebeat-input-log-exclude-lines" target="_blank" class="external-link">Log input</a></p>
+<ol start="2">
+<li>排除特定namespace<br>
+在  processors 底下加 drop_event，這邊有用到condition的條件，建議看一下文件比較清楚。</li>
+</ol>
+<pre><code>processors:
+- add_cloud_metadata: {}
+- drop_event.when:
+    or:
+    - equals:
+        kubernetes.namespace: &quot;kube-system&quot;
+    - equals:
+        kubernetes.namespace: &quot;elastic-system&quot;
+</code></pre>
+<p>ref.</p>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/drop-event.html" target="_blank" class="external-link">Drop events</a></li>
+<li><a href="https://stackoverflow.com/questions/60566173/how-we-can-filter-namespace-in-filebeat-kubernetes" target="_blank" class="external-link">how-we-can-filter-namespace-in-filebeat-kubernetes</a></li>
+<li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/defining-processors.html#conditions" target="_blank" class="external-link">conditions</a></li>
+</ul>
+<hr>
+<h2 id="移除特定欄位" tabindex="-1">移除特定欄位</h2>
+<p>有些欄位得到的值是重複的，<br>
+所以這些也都可以砍掉。<br>
+processors 底下加  drop_fields</p>
+<pre><code>processors:
+- drop_fields:
+      fields: 
+        - 'kubernetes.node'
+        - 'kubernetes.namespace_uid'
+        - 'agent.hostname'
+        - 'cloud.account'
+        - 'cloud.provider'
+        - 'cloud.instance.name'
+        - 'container.id'
+</code></pre>
+<p>ref. <a href="https://www.elastic.co/guide/en/beats/filebeat/current/drop-fields.html" target="_blank" class="external-link">Drop fields from events</a></p>
+<hr>
+<h2 id="詳細參數說明" tabindex="-1">詳細參數說明</h2>
+<pre><code>type: log <a class="tag" onclick="toggleTagSearch(this)" data-content="#input類型為log">#input類型為log</a>
+enable: true <a class="tag" onclick="toggleTagSearch(this)" data-content="#表示是該log類型配置生效">#表示是該log類型配置生效</a>
+paths：     <a class="tag" onclick="toggleTagSearch(this)" data-content="#指定要監控的日誌，目前按照Go語言的glob函數處理。沒有對配置目錄做遞歸處理，比如配置的如果是：">#指定要監控的日誌，目前按照Go語言的glob函數處理。沒有對配置目錄做遞歸處理，比如配置的如果是：</a>
+- /var/log/* /*.log  <a class="tag" onclick="toggleTagSearch(this)" data-content="#則只會去/var/log目錄的所有子目錄中尋找以">#則只會去/var/log目錄的所有子目錄中尋找以</a>&quot;.log&quot;結尾的文件，而不會尋找/var/log目錄下以&quot;.log&quot;結尾的文件。
+recursive_glob.enabled: <a class="tag" onclick="toggleTagSearch(this)" data-content="#啟用全局遞歸模式，例如/foo/">#啟用全局遞歸模式，例如/foo/</a>**包括/foo, /foo/*, /foo/*/*
+encoding：#指定被監控的文件的編碼類型，使用plain和utf-8都是可以處理中文日誌的
+exclude_lines: ['^DBG'] <a class="tag" onclick="toggleTagSearch(this)" data-content="#不包含匹配正則的行">#不包含匹配正則的行</a>
+include_lines: ['^ERR', '^WARN']  <a class="tag" onclick="toggleTagSearch(this)" data-content="#包含匹配正則的行">#包含匹配正則的行</a>
+harvester_buffer_size: 16384 <a class="tag" onclick="toggleTagSearch(this)" data-content="#每個harvester在獲取文件時使用的緩沖區的字節大小">#每個harvester在獲取文件時使用的緩沖區的字節大小</a>
+max_bytes: 10485760 <a class="tag" onclick="toggleTagSearch(this)" data-content="#單個日誌消息可以擁有的最大字節數。max_bytes之後的所有字節都被丟棄而不發送。默認值為10MB">#單個日誌消息可以擁有的最大字節數。max_bytes之後的所有字節都被丟棄而不發送。默認值為10MB</a> (10485760)
+exclude_files: ['\.gz$']  <a class="tag" onclick="toggleTagSearch(this)" data-content="#用於匹配希望Filebeat忽略的文件的正則表達式列表">#用於匹配希望Filebeat忽略的文件的正則表達式列表</a>
+ingore_older: 0 <a class="tag" onclick="toggleTagSearch(this)" data-content="#默認為0，表示禁用，可以配置2h，2m等，注意ignore_older必須大於close_inactive的值">#默認為0，表示禁用，可以配置2h，2m等，注意ignore_older必須大於close_inactive的值</a>.表示忽略超過設置值未更新的
+文件或者文件從來沒有被harvester收集
+close_* <a class="tag" onclick="toggleTagSearch(this)" data-content="#close_">#close_</a> *配置選項用於在特定標准或時間之後關閉harvester。 關閉harvester意味著關閉文件處理程序。 如果在harvester關閉
+後文件被更新，則在scan_frequency過後，文件將被重新拾取。 但是，如果在harvester關閉時移動或刪除文件，Filebeat將無法再次接收文件
+，並且harvester未讀取的任何數據都將丟失。
+close_inactive  <a class="tag" onclick="toggleTagSearch(this)" data-content="#啟動選項時，如果在制定時間沒有被讀取，將關閉文件句柄">#啟動選項時，如果在制定時間沒有被讀取，將關閉文件句柄</a>
+讀取的最後一條日誌定義為下一次讀取的起始點，而不是基於文件的修改時間
+如果關閉的文件發生變化，一個新的harverster將在scan_frequency運行後被啟動
+建議至少設置一個大於讀取日誌頻率的值，配置多個prospector來實現針對不同更新速度的日誌文件
+使用內部時間戳機制，來反映記錄日誌的讀取，每次讀取到最後一行日誌時開始倒計時使用2h 5m 來表示
+close_rename <a class="tag" onclick="toggleTagSearch(this)" data-content="#當選項啟動，如果文件被重命名和移動，filebeat關閉文件的處理讀取">#當選項啟動，如果文件被重命名和移動，filebeat關閉文件的處理讀取</a>
+close_removed <a class="tag" onclick="toggleTagSearch(this)" data-content="#當選項啟動，文件被刪除時，filebeat關閉文件的處理讀取這個選項啟動後，必須啟動clean_removed">#當選項啟動，文件被刪除時，filebeat關閉文件的處理讀取這個選項啟動後，必須啟動clean_removed</a>
+close_eof <a class="tag" onclick="toggleTagSearch(this)" data-content="#適合只寫一次日誌的文件，然後filebeat關閉文件的處理讀取">#適合只寫一次日誌的文件，然後filebeat關閉文件的處理讀取</a>
+close_timeout <a class="tag" onclick="toggleTagSearch(this)" data-content="#當選項啟動時，filebeat會給每個harvester設置預定義時間，不管這個文件是否被讀取，達到設定時間後，將被關閉">#當選項啟動時，filebeat會給每個harvester設置預定義時間，不管這個文件是否被讀取，達到設定時間後，將被關閉</a>
+close_timeout 不能等於ignore_older,會導致文件更新時，不會被讀取如果output一直沒有輸出日誌事件，這個timeout是不會被啟動的，
+至少要要有一個事件發送，然後haverter將被關閉
+設置0 表示不啟動
+clean_inactived <a class="tag" onclick="toggleTagSearch(this)" data-content="#從注冊表文件中刪除先前收獲的文件的狀態">#從注冊表文件中刪除先前收獲的文件的狀態</a>
+設置必須大於ignore_older+scan_frequency，以確保在文件仍在收集時沒有刪除任何狀態
+配置選項有助於減小注冊表文件的大小，特別是如果每天都生成大量的新文件
+此配置選項也可用於防止在Linux上重用inode的Filebeat問題
+clean_removed <a class="tag" onclick="toggleTagSearch(this)" data-content="#啟動選項後，如果文件在磁盤上找不到，將從注冊表中清除filebeat">#啟動選項後，如果文件在磁盤上找不到，將從注冊表中清除filebeat</a>
+如果關閉close removed 必須關閉clean removed
+scan_frequency <a class="tag" onclick="toggleTagSearch(this)" data-content="#prospector檢查指定用於收獲的路徑中的新文件的頻率">#prospector檢查指定用於收獲的路徑中的新文件的頻率</a>,默認10s
+tail_files：#如果設置為true，Filebeat從文件尾開始監控文件新增內容，把新增的每一行文件作為一個事件依次發送，
+而不是從文件開始處重新發送所有內容。
+symlinks：#符號鏈接選項允許Filebeat除常規文件外,可以收集符號鏈接。收集符號鏈接時，即使報告了符號鏈接的路徑，
+Filebeat也會打開並讀取原始文件。
+backoff： <a class="tag" onclick="toggleTagSearch(this)" data-content="#backoff選項指定Filebeat如何積極地抓取新文件進行更新。默認1s，backoff選項定義Filebeat在達到EOF之後">#backoff選項指定Filebeat如何積極地抓取新文件進行更新。默認1s，backoff選項定義Filebeat在達到EOF之後</a>
+再次檢查文件之間等待的時間。
+max_backoff： <a class="tag" onclick="toggleTagSearch(this)" data-content="#在達到EOF之後再次檢查文件之前Filebeat等待的最長時間">#在達到EOF之後再次檢查文件之前Filebeat等待的最長時間</a>
+backoff_factor： <a class="tag" onclick="toggleTagSearch(this)" data-content="#指定backoff嘗試等待時間幾次，默認是2">#指定backoff嘗試等待時間幾次，默認是2</a>
+harvester_limit：#harvester_limit選項限制一個prospector並行啟動的harvester數量，直接影響文件打開數
+
+tags <a class="tag" onclick="toggleTagSearch(this)" data-content="#列表中添加標簽，用過過濾，例如：tags">#列表中添加標簽，用過過濾，例如：tags</a>: [&quot;json&quot;]
+fields <a class="tag" onclick="toggleTagSearch(this)" data-content="#可選字段，選擇額外的字段進行輸出可以是標量值，元組，字典等嵌套類型">#可選字段，選擇額外的字段進行輸出可以是標量值，元組，字典等嵌套類型</a>
+默認在sub-dictionary位置
+filebeat.inputs:
+fields:
+app_id: query_engine_12
+fields_under_root <a class="tag" onclick="toggleTagSearch(this)" data-content="#如果值為ture，那麼fields存儲在輸出文檔的頂級位置">#如果值為ture，那麼fields存儲在輸出文檔的頂級位置</a>
+
+multiline.pattern <a class="tag" onclick="toggleTagSearch(this)" data-content="#必須匹配的regexp模式">#必須匹配的regexp模式</a>
+multiline.negate <a class="tag" onclick="toggleTagSearch(this)" data-content="#定義上面的模式匹配條件的動作是">#定義上面的模式匹配條件的動作是</a> 否定的，默認是false
+假如模式匹配條件'^b'，默認是false模式，表示講按照模式匹配進行匹配 將不是以b開頭的日誌行進行合並
+如果是true，表示將不以b開頭的日誌行進行合並
+multiline.match # 指定Filebeat如何將匹配行組合成事件,在之前或者之後，取決於上面所指定的negate
+multiline.max_lines <a class="tag" onclick="toggleTagSearch(this)" data-content="#可以組合成一個事件的最大行數，超過將丟棄，默認500">#可以組合成一個事件的最大行數，超過將丟棄，默認500</a>
+multiline.timeout <a class="tag" onclick="toggleTagSearch(this)" data-content="#定義超時時間，如果開始一個新的事件在超時時間內沒有發現匹配，也將發送日誌，默認是5smax_procs">#定義超時時間，如果開始一個新的事件在超時時間內沒有發現匹配，也將發送日誌，默認是5smax_procs</a> <a class="tag" onclick="toggleTagSearch(this)" data-content="#設置可以同時執行的最大CPU數。默認值為系統中可用的邏輯CPU的數量。name">#設置可以同時執行的最大CPU數。默認值為系統中可用的邏輯CPU的數量。name</a> <a class="tag" onclick="toggleTagSearch(this)" data-content="#為該filebeat指定名字，默認為主機的hostname">#為該filebeat指定名字，默認為主機的hostname</a>
+</code></pre>
+<p>ref.</p>
+<ul>
+<li><a href="https://www.cnblogs.com/zsql/p/13137833.htmll" target="_blank" class="external-link">一篇文章搞懂filebeat（ELK）</a></li>
+</ul>
+<hr>
+<h2 id="filebeat-log" tabindex="-1">filebeat log寫入到檔案</h2>
+<p>filebeat在運作時，會產生一堆log，這些我原本都不想讓他輸出，直接寫在自己的檔案就好。<br>
+<picture src="/img/user/EFK/57.fig-2.jpg" alt="57.fig-2.jpg"><source       media="(max-width:480px)"
+      srcset="/img/optimized/6ATKJN-qg2-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/6ATKJN-qg2-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/6ATKJN-qg2-700.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/6ATKJN-qg2-700.jpeg"
+        ><img       class=""
+      src="/img/user/EFK/57.fig-2.jpg"
+      alt="57.fig-2.jpg"
+      width=""
+      ></picture><br>
+但沒測試成功，最後只好採用治標不治本的方式，<br>
+在該namespace底下的log通通不進ES。</p>
+<p>留一下查到的資料。</p>
+<pre><code>logging:
+    to_files: true
+    metrics.enabled: false 
+    files:
+      path: '/usr/share/filebeat/logs'
+      name: 'filebeat'
+      rotateeverybytes: 10485760 # = 10MB
+      keepfiles: 7
+      permission: '0640'
+</code></pre>
+<p>ref.</p>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/configuration-logging.html" target="_blank" class="external-link">Configure logging</a></li>
+</ul>
+<hr>
+<h2 id="yaml-operator" tabindex="-1">完整yaml，使用operator</h2>
+<pre><code>apiVersion: beat.k8s.elastic.co/v1beta1
+kind: Beat
+metadata:
+  name: yabo
+  namespace: elastic-system
+spec:
+  type: filebeat
+  version: 7.15.0
+  elasticsearchRef:
+    name: yabo
+  kibanaRef:
+    name: yabo
+  config:
+    filebeat:
+      autodiscover:
+        providers:
+        - type: kubernetes
+          node: ${NODE_NAME}
+          # templates:
+          #   - condition:
+          #       not:
+          #         equals:
+          #           kubernetes.namespace: kube-system
+              #         - kubernetes.namespace: elastic-system 
+              # config:
+              #   - type: container
+              #     paths:
+              #     - /var/log/containers/*${data.kubernetes.container.id}.log                                                  
+          hints:
+            enabled: true
+            default_config:
+              type: container
+              paths:
+              - /var/log/containers/*${data.kubernetes.container.id}.log
+              exclude_lines: 
+              - &quot;.*(NAT rule custom-iptables|unknown operand).*&quot;  # 排除 k8s-custom-iptables
+              - &quot;.*(YABO_WS.Services.PromoWebSocketService|YABO_WS.BLL.ActivityEventLogic).*&quot;      # 排除yabo-ws
+    processors:
+    - add_cloud_metadata: {}
+    # - add_host_metadata: {}
+    - drop_event.when:
+        or:
+        - equals:
+            kubernetes.namespace: &quot;kube-system&quot;
+        - equals:
+            kubernetes.namespace: &quot;elastic-system&quot;
+    - drop_fields:
+          fields: 
+            - 'kubernetes.node'
+            - 'kubernetes.namespace_uid'
+            - 'agent.hostname'
+            - 'cloud.account'
+            - 'cloud.provider'
+            - 'cloud.instance.name'
+            - 'container.id'
+    - decode_json_fields:
+          fields: [&quot;message&quot;]
+          target: &quot;&quot;
+          overwrite_keys: true   
+    # 測試沒用，無法寫到 
+    # logging:
+    #   to_files: true
+    #   metrics.enabled: false 
+    #   files:
+    #     path: '/usr/share/filebeat/logs'
+    #     name: 'filebeat'
+    #     rotateeverybytes: 10485760 # = 10MB
+    #     keepfiles: 7
+    #     permission: '0644'
+  daemonSet:
+    podTemplate:
+      spec:
+        serviceAccountName: filebeat
+        automountServiceAccountToken: true
+        terminationGracePeriodSeconds: 30
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true # Allows to provide richer host metadata
+        containers:
+        - name: filebeat
+          securityContext:
+            runAsUser: 0
+            # If using Red Hat OpenShift uncomment this:
+            <a class="tag" onclick="toggleTagSearch(this)" data-content="#privileged">#privileged</a>: true
+          volumeMounts:
+          - name: varlogcontainers
+            mountPath: /var/log/containers
+          - name: varlogpods
+            mountPath: /var/log/pods
+          - name: varlibdockercontainers
+            mountPath: /var/lib/docker/containers
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+        volumes:
+        - name: varlogcontainers
+          hostPath:
+            path: /var/log/containers
+        - name: varlogpods
+          hostPath:
+            path: /var/log/pods
+        - name: varlibdockercontainers
+          hostPath:
+            path: /var/lib/docker/containers
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: filebeat
+rules:
+- apiGroups: [&quot;&quot;] # &quot;&quot; indicates the core API group
+  resources:
+  - namespaces
+  - pods
+  - nodes
+  verbs:
+  - get
+  - watch
+  - list
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: filebeat
+  namespace: elastic-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: filebeat
+subjects:
+- kind: ServiceAccount
+  name: filebeat
+  namespace: elastic-system
+roleRef:
+  kind: ClusterRole
+  name: filebeat
+  apiGroup: rbac.authorization.k8s.io
+
+...
+</code></pre>
+<p>ref.</p>
+<ul>
+<li><a href="https://www.cnblogs.com/jatq/articles/14651723.html" target="_blank" class="external-link">ECK部署</a></li>
+<li><a href="https://arch-long.cn/articles/elasticsearch/FileBeat.html" target="_blank" class="external-link">FileBeat</a></li>
+<li><a href="https://www.codeless.me/posts/elastic-beats-on-google-kubernetes-engine-gke/" target="_blank" class="external-link">Elastic Beats on Google Kubernetes Engine (GKE)</a></li>
+<li><a href="https://github.com/DanRoscigno/GKE-on-Prem-logging-and-metrics/blob/master/filebeat-kubernetes.yaml" target="_blank" class="external-link">filebeat-kubernetes.yaml</a></li>
+<li><a href="https://www.deepnetwork.com/blog/2020/01/27/ELK-stack-filebeat-k8s-deployment.html" target="_blank" class="external-link">How to Setup an ELK Stack and Filebeat on Kubernetes</a></li>
+</ul>
+
+      
+      
+    </main>
+
+    
+      <aside>
+      <div class="sidebar">
+            <div class="sidebar-container">
+                  
+                  
+                        <script>
+    async function fetchGraphData() {
+        const graphData = await fetch('/graph.json').then(res => res.json());
+        const fullGraphData  = filterFullGraphData(graphData);
+        return {graphData, fullGraphData}
+    }
+
+    function getNextLevelNeighbours(existing, remaining) {
+        const keys = Object.values(existing).map((n) => n.neighbors).flat();
+        const n_remaining = Object.keys(remaining).reduce((acc, key) => {
+                if (keys.indexOf(key) != -1) {
+                    if (!remaining[key].hide) {
+                        existing[key] = remaining[key];
+                    }
+                } else {
+                    acc[key] = remaining[key];
+                }
+                return acc;
+            }, {});
+        return existing, n_remaining;
+    }
+
+    function filterLocalGraphData(graphData, depth) {
+        if (graphData == null) {
+            return null;
+        }
+        let remaining = JSON.parse(JSON.stringify(graphData.nodes));
+        let links = JSON.parse(JSON.stringify(graphData.links));
+        let currentLink = decodeURI(window.location.pathname);
+        let currentNode = remaining[currentLink] || Object.values(remaining).find((v) => v.home);
+        delete remaining[currentNode.url];
+        if (!currentNode.home) {
+            let home = Object.values(remaining).find((v) => v.home);
+            delete remaining[home.url];
+        }
+        currentNode.current = true;
+        let existing = {};
+        existing[currentNode.url] = currentNode;
+        for (let i = 0; i < depth; i++) {
+            existing, remaining = getNextLevelNeighbours(existing, remaining);
+        }
+        nodes = Object.values(existing);
+        if (!currentNode.home) {
+            nodes = nodes.filter(n => !n.home);
+        }
+        let ids = nodes.map((n) => n.id);
+        return {
+            nodes,
+            links: links.filter(function (con) {
+                return ids.indexOf(con.target) > -1 && ids.indexOf(con.source) > -1;
+            }),
+        }
+    }
+
+    function getCssVar(variable) {return getComputedStyle(document.body).getPropertyValue(variable)}
+
+    function htmlDecode(input) {
+        var doc = new DOMParser().parseFromString(input, "text/html");
+        return doc.documentElement.textContent;
+    }
+
+    function renderGraph(graphData, id, delay, fullScreen) {
+        if (graphData == null) {
+            return;
+        }
+        const el = document.getElementById(id);
+        width = el.offsetWidth;
+        height = el.offsetHeight;
+        const highlightNodes = new Set();
+        let hoverNode = null;
+        const color = getCssVar("--graph-main");
+        const mutedColor = getCssVar("--graph-muted");
+        let Graph = ForceGraph()
+        (el)
+            .graphData(graphData)
+            .nodeId('id')
+            .nodeLabel('title')
+            .linkSource('source')
+            .linkTarget('target')
+            .d3AlphaDecay(0.10)
+            .width(width)
+            .height(height)
+            .linkDirectionalArrowLength(2)
+            .linkDirectionalArrowRelPos(0.5)
+            .autoPauseRedraw(false)
+            .linkColor((link) => {
+                if (hoverNode == null) {
+                    return color;
+                }
+                if (link.source.id == hoverNode.id || link.target.id == hoverNode.id) {
+                    return color;
+                } else {
+                    return mutedColor;
+                }
+                
+            })
+            .nodeCanvasObject((node, ctx) => {
+                const numberOfNeighbours = (node.neighbors && node.neighbors.length) || 2;
+                const nodeR = Math.min(7, Math.max(numberOfNeighbours / 2, 2));
+                
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, nodeR, 0, 2 * Math.PI, false);
+                if (hoverNode == null) {
+                    ctx.fillStyle = color;
+                } else {
+                    if (node == hoverNode || highlightNodes.has(node.url)) {
+                        ctx.fillStyle = color;
+                    } else {
+                        ctx.fillStyle = mutedColor;
+                    }
+                }
+                 
+                ctx.fill();
+                
+                if (node.current) {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, nodeR + 1, 0, 2 * Math.PI, false);
+                    ctx.lineWidth = 0.5;
+                    ctx.strokeStyle = color;
+                    ctx.stroke();
+                }
+
+                const label = htmlDecode(node.title)
+                const fontSize = 3.5;
+                ctx.font = `${fontSize}px Sans-Serif`;
+
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'top';
+                ctx.fillText(label, node.x, node.y + nodeR + 2);
+            })
+            .onNodeClick(node => {
+                window.location = node.url;
+            })
+            .onNodeHover(node => {
+                highlightNodes.clear();
+                if (node) {
+                highlightNodes.add(node);
+                node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+                }
+                hoverNode = node || null;
+                
+            });
+            if (fullScreen || (delay != null && graphData.nodes.length > 4)) {
+                setTimeout(() => {
+                    Graph.zoomToFit(5, 75);
+                }, delay || 200);
+            }
+        return Graph;
+    }
+
+    function renderLocalGraph(graphData, depth, fullScreen) {
+        if (window.graph){
+            window.graph._destructor();
+        }
+        const data = filterLocalGraphData(graphData, depth);
+        return renderGraph(data, 'link-graph', null, fullScreen);
+    }
+
+    function filterFullGraphData(graphData) {
+        if (graphData == null) {
+            return null;
+        }
+        graphData = JSON.parse(JSON.stringify(graphData));
+        const hiddens = Object.values(graphData.nodes).filter((n) => n.hide).map((n) => n.id);
+        const data = {
+            links: JSON.parse(JSON.stringify(graphData.links)).filter((l) => hiddens.indexOf(l.source) == -1 && hiddens.indexOf(l.target) == -1),
+            nodes: [...Object.values(graphData.nodes).filter((n) => !n.hide)]
+        }
+        return data
+    }
+
+    function openFullGraph(fullGraphData) {
+        lucide.createIcons({
+                attrs: {
+                    class: ["svg-icon"]
+                }
+            });
+        return renderGraph(fullGraphData, "full-graph-container", 200, false);;
+    }
+
+    function closefullGraph(fullGraph) {
+        if (fullGraph) {
+            fullGraph._destructor();
+        }
+        return null;
+    }
+</script>
+<div  x-init="{graphData, fullGraphData} = await fetchGraphData();" x-data="{ graphData: null, depth: 1, graph: null, fullGraph: null, showFullGraph: false, fullScreen: false, fullGraphData: null}" id="graph-component" x-bind:class="fullScreen ? 'graph graph-fs' : 'graph'" v-scope>
+    <div class="graph-title-container">
+        <div class="graph-title">Connected Pages</div>
+        <div id="graph-controls">
+                <div class="depth-control">
+                    <label for="graph-depth">Depth</label>
+                    <div class="slider">
+                            <input x-model.number="depth" name="graph-depth" list="depthmarkers" type="range" step="1" min="1" max="3" id="graph-depth">
+                    <datalist id="depthmarkers">
+                            <option value="1" label="1"></option>
+                            <option value="2" label="2"></option>
+                            <option value="3" label="3"></option>
+                    </datalist>
+                    </div>
+                    <span id="depth-display" x-text="depth"></span>
+                </div>
+                <div class="ctrl-right">
+                    <span id="global-graph-btn" x-on:click="showFullGraph = true; setTimeout(() => {fullGraph = openFullGraph(fullGraphData)}, 100)"><i  icon-name="globe" aria-hidden="true"></i></span>
+                    <span  id="graph-fs-btn"  x-on:click="fullScreen = !fullScreen"><i  icon-name="expand" aria-hidden="true"></i></span>
+                </div>
+        </div>
+    </div>
+    <div x-effect="window.graph = renderLocalGraph(graphData, depth, fullScreen)" id="link-graph" ></div>
+    <div x-show="showFullGraph" id="full-graph" class="show" style="display: none;">
+        <span id="full-graph-close" x-on:click="fullGraph = closefullGraph(fullGraph); showFullGraph = false;"><i icon-name="x" aria-hidden="true"></i></span><div id="full-graph-container"></div>
+    </div>
+</div>
+                  
+
+                  
+                        
+                        
+                              <div class="toc">
+                                    <div class="toc-title-container">
+                                          <div class="toc-title">
+                                                On this page
+                                          </div>
+                                    </div>
+                                    <div class="toc-container">
+                                          <nav class="toc">
+                <ol>
+                    
+                    <li><a href="#前言">前言</a>
+            		</li>
+
+                    <li><a href="#正文">正文</a>
+            
+                <ol>
+                    
+                    <li><a href="#filebeat">filebeat抓資料的方式</a>
+            		</li>
+
+                    <li><a href="#排除資料的方式">排除資料的方式</a>
+            		</li>
+
+                    <li><a href="#移除特定欄位">移除特定欄位</a>
+            		</li>
+
+                    <li><a href="#詳細參數說明">詳細參數說明</a>
+            		</li>
+
+                    <li><a href="#filebeat-log">filebeat log寫入到檔案</a>
+            		</li>
+
+                    <li><a href="#yaml-operator">完整yaml，使用operator</a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </nav>
+                                    </div>
+                              </div>
+                        
+
+                  
+
+                        
+                  
+            </div>
+      </div>
+</aside>
+    
+
+    
+      
+<style>
+#tooltip-wrapper {
+  background: var(--background-primary);
+  padding: 1em;
+  border-radius: 4px;
+  overflow: hidden;
+  position: fixed;
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  max-height: 300px;
+  font-size: 0.8em;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  opacity: 0;
+  transition: opacity 100ms;
+  unicode-bidi: plaintext;
+  overflow-y: scroll;
+  z-index: 10;
+}
+
+#tooltip-wrapper:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  unicode-bidi: plaintext;
+  height: 75px;
+}
+</style>
+<div style="opacity: 0; display: none;" id='tooltip-wrapper'>
+  <div id='tooltip-content'>
+  </div>
+</div>
+
+<iframe style="display: none; height: 0; width: 0;" id='link-preview-iframe' src="">
+</iframe>
+
+<script>
+  var opacityTimeout;
+  var contentTimeout;
+  var transitionDurationMs = 100;
+
+  var iframe = document.getElementById('link-preview-iframe')
+  var tooltipWrapper = document.getElementById('tooltip-wrapper')
+  var tooltipContent = document.getElementById('tooltip-content')
+
+  var linkHistories = {};
+
+  function hideTooltip() {
+    opacityTimeout = setTimeout(function () {
+      tooltipWrapper.style.opacity = 0;
+      contentTimeout = setTimeout(function () {
+        tooltipContent.innerHTML = '';
+        tooltipWrapper.style.display = 'none';
+      }, transitionDurationMs + 1);
+    }, transitionDurationMs)
+  }
+
+  function showTooltip(event) {
+    var elem = event.target;
+    var elem_props = elem.getClientRects()[elem.getClientRects().length - 1];
+    var top = window.pageYOffset || document.documentElement.scrollTop;
+    var url = event.target.getAttribute("href");
+    if (url.indexOf("http") === -1 || url.indexOf(window.location.host) !== -1) {
+      let contentURL = url.split('#')[0]
+      if (!linkHistories[contentURL]) {
+        iframe.src = contentURL
+        iframe.onload = function () {
+          tooltipContentHtml = ''
+          tooltipContentHtml += '<div style="font-weight: bold; unicode-bidi: plaintext;">' + iframe.contentWindow.document.querySelector('h1').innerHTML + '</div>'
+          tooltipContentHtml += iframe.contentWindow.document.querySelector('.content').innerHTML
+          tooltipContent.innerHTML = tooltipContentHtml
+          linkHistories[contentURL] = tooltipContentHtml
+          tooltipWrapper.style.display = 'block';
+          tooltipWrapper.scrollTop = 0;
+          setTimeout(function () {
+            tooltipWrapper.style.opacity = 1;
+            if (url.indexOf("#") != -1) {
+              let id = url.split('#')[1];
+              const focus = tooltipWrapper.querySelector(`[id='${id}']`);
+              focus.classList.add('referred');
+              console.log(focus);
+              focus.scrollIntoView({behavior: 'smooth'}, true)
+            } else {
+              tooltipWrapper.scroll(0, 0);
+            }
+          }, 1)
+        }
+      } else {
+        tooltipContent.innerHTML = linkHistories[contentURL]
+        tooltipWrapper.style.display = 'block';
+        setTimeout(function () {
+          tooltipWrapper.style.opacity = 1;
+          if (url.indexOf("#") != -1) {
+              let id = url.split('#')[1];
+              const focus = tooltipWrapper.querySelector(`[id='${id}']`);
+              focus.classList.add('referred');
+              focus.scrollIntoView({behavior: 'smooth'}, true)
+          } else {
+              tooltipWrapper.scroll(0, 0);
+          }
+        }, 1)
+      }
+
+      function getInnerWidth(elem) {
+        var style = window.getComputedStyle(elem);
+        return elem.offsetWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight) - parseFloat(style.borderLeft) - parseFloat(style.borderRight) - parseFloat(style.marginLeft) - parseFloat(style.marginRight);
+      }
+
+      tooltipWrapper.style.left = elem_props.left - (tooltipWrapper.offsetWidth / 2) + (elem_props.width / 2) + "px";
+
+      if ((window.innerHeight - elem_props.top) < (tooltipWrapper.offsetHeight)) {
+        tooltipWrapper.style.top = elem_props.top + top - tooltipWrapper.offsetHeight - 10 + "px";
+      } else if ((window.innerHeight - elem_props.top) > (tooltipWrapper.offsetHeight)) {
+        tooltipWrapper.style.top = elem_props.top + top + 35 + "px";
+      }
+
+      if ((elem_props.left + (elem_props.width / 2)) < (tooltipWrapper.offsetWidth / 2)) {
+        tooltipWrapper.style.left = "10px";
+      } else if ((document.body.clientWidth - elem_props.left - (elem_props.width / 2)) < (tooltipWrapper.offsetWidth / 2)) {
+        tooltipWrapper.style.left = document.body.clientWidth - tooltipWrapper.offsetWidth - 20 + "px";
+      }
+    }
+  }
+
+  function setupListeners(linkElement) {
+    linkElement.addEventListener('mouseleave', function (_event) {
+      hideTooltip();
+    });
+
+    tooltipWrapper.addEventListener('mouseleave', function (_event) {
+      hideTooltip();
+    });
+
+    linkElement.addEventListener('mouseenter', function (event) {
+      clearTimeout(opacityTimeout);
+      clearTimeout(contentTimeout);
+      showTooltip(event);
+    });
+
+    tooltipWrapper.addEventListener('mouseenter', function (event) {
+      clearTimeout(opacityTimeout);
+      clearTimeout(contentTimeout);
+    });
+  }
+
+  window.addEventListener("load", function(event) 
+  {
+    document.querySelectorAll('.internal-link').forEach(setupListeners);
+    document.querySelectorAll('.backlink-card a').forEach(setupListeners);
+  });
+</script>
+
+    
+        <script>
+      if (window.location.hash) {
+        document.getElementById(window.location.hash.slice(1)).classList.add('referred');
+      }
+      window.addEventListener('hashchange', (evt) => {
+        const oldParts = evt.oldURL.split("#");
+        if (oldParts[1]) {
+          document.getElementById(oldParts[1]).classList.remove('referred');
+        }
+        const newParts = evt.newURL.split("#");
+        if (newParts[1]) {
+          document.getElementById(newParts[1]).classList.add('referred');
+        }
+      }, false);
+      const url_parts = window.location.href.split("#")
+      const url = url_parts[0];
+      const referrence = url_parts[1];
+      document.querySelectorAll(".cm-s-obsidian > *[id]").forEach(function (el) {
+        el.ondblclick = function(evt) {
+          const ref_url = url + '#' + evt.target.id
+          navigator.clipboard.writeText(ref_url);
+      }
+      });
+
+      
+    </script>
+    <script src=" https://fastly.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js "></script>
+<script defer>
+    TIMESTAMP_FORMAT = "MMM dd, yyyy h:mm a";
+    document.querySelectorAll('.human-date').forEach(function (el) {
+        el.innerHTML = luxon.DateTime.fromISO(el.getAttribute('data-date') || el.innerText).toFormat(TIMESTAMP_FORMAT);
+      });
+</script>
+    
+    
+      <script defer src="/_vercel/insights/script.js"></script>
+
+    
+      
+    
+    <script>
+lucide.createIcons({
+            attrs: {
+                class: ["svg-icon"]
+            }
+        });
+</script>
+  </body>
+</html>
