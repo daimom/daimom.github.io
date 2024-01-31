@@ -2749,7 +2749,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-01-31T07:37:54.582Z';
+        const searchIndexDate = '2024-01-31T10:18:23.374Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -2761,9 +2761,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-01-31T07:37:54.582Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-01-31T10:18:23.374Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-01-31T07:37:54.582Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-01-31T10:18:23.374Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3024,7 +3024,23 @@
 <ol>
 <li>
 <p>先將IP變成靜態，而不是臨時。<br>
-<img src="/img/user/istio/14.fig-1.jpg" alt="14.fig-1.jpg"></p>
+<picture src="/img/user/istio/14.fig-1.jpg" alt="14.fig-1.jpg"><source       media="(max-width:480px)"
+      srcset="/img/optimized/lNEBaiRLbY-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/lNEBaiRLbY-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/lNEBaiRLbY-700.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/lNEBaiRLbY-700.jpeg"
+        ><img       class=""
+      src="/img/user/istio/14.fig-1.jpg"
+      alt="14.fig-1.jpg"
+      width=""
+      ></picture></p>
 </li>
 <li>
 <p>將下面yaml另存成檔案</p>
