@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>pod debug方式</title>
+    <title>istio安裝時固定ip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -1320,7 +1320,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/14.istio安裝時固定ip/">istio安裝時固定ip </a>
                 </div>
@@ -1896,7 +1896,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/193. pod debug方式/">pod debug方式 </a>
                 </div>
@@ -2995,7 +2995,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">pod debug方式</h1>
+          <h1 data-note-icon="">istio安裝時固定ip</h1>
         
         <div class="header-meta">
           
@@ -3005,7 +3005,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #⎈
+                    #⛵️
                   </a>
                 
               
@@ -3017,48 +3017,44 @@
       
       
       <h1 id="前言" tabindex="-1">前言</h1>
-<p>這陣子建了一個新環境，<br>
-然後pod在第一次啓動時，都會重啓，<br>
-但一旦重啓就看不到之前的log。</p>
+<p>如果刪除GKE的節點，重建新的話，必須要把istio移除，才能夠使用 遷移工作負載到不同node。<br>
+但如果已經將istio的ip ，綁上固定的domain，一旦移除就必須要重新綁定。</p>
 <h1 id="正文" tabindex="-1">正文</h1>
-<h3 id="log" tabindex="-1">看上一次的log記錄</h3>
-<pre><code>kubectl logs {PODNAME} --previous
+<p>以下內容都在GCP上面實作(istio 版本為1.8.2)。 騰訊雲不能這樣玩。</p>
+<ol>
+<li>
+<p>先將IP變成靜態，而不是臨時。<br>
+<img src="/img/user/istio/14.fig-1.jpg" alt="14.fig-1.jpg"></p>
+</li>
+<li>
+<p>將下面yaml另存成檔案</p>
+</li>
+</ol>
+<pre><code>apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  components:
+    ingressGateways:
+    - name: istio-ingressgateway
+      enabled: true
+      k8s:
+        service:
+          loadBalancerIP: 123.123.123.123
+          loadBalancerSourceRanges:
+          - 111.222.222.111/32
 </code></pre>
-<p>其他用法</p>
-<pre><code># Return snapshot logs from pod nginx with only one container
-kubectl logs nginx
-
-# Return snapshot of previous terminated ruby container logs from pod web-1
-kubectl logs -p -c ruby web-1
-
-# Begin streaming the logs of the ruby container in pod web-1
-kubectl logs -f -c ruby web-1
-
-# Display only the most recent 20 lines of output in pod nginx
-kubectl logs --tail=20 nginx
-
-# Show all logs from pod nginx written in the last hour
-kubectl logs --since=1h nginx
+<p>跟舊版的差異在必須加上name的名稱，不然在manifest generate 的時候會發生錯誤</p>
+<ol start="3">
+<li>安裝</li>
+</ol>
+<pre><code>istioctl install  -f value.yaml
 </code></pre>
-<p>ref .</p>
-<ul>
-<li><a href="https://medium.com/@tasslin/k8s%E5%A6%82%E4%BD%95%E6%96%B9%E4%BE%BF%E6%9F%A5%E6%89%BE%E4%BA%8B%E4%BB%B6%E7%99%BC%E7%94%9F%E6%88%96%E6%98%AF%E5%8F%96%E5%BE%97%E5%B7%B2%E6%B6%88%E9%80%9D%E7%9A%84log%E7%B4%80%E9%8C%84-8bb7ee2505f8" target="_blank" class="external-link">K8s如何方便尋找事件發生或是取得已消逝的LOG紀錄</a></li>
-<li><a href="https://jamesdefabia.github.io/docs/user-guide/kubectl/kubectl_logs/" target="_blank" class="external-link">kubectl logs</a></li>
-</ul>
-<h3 id="pod" tabindex="-1">連進去pod裏面監控</h3>
-<p>有時會碰到這個pod沒有權限可以安裝htop或 top等等，<br>
-這些看系統效能的東西，<br>
-此時可以透過這種方式，直接外掛一個debug的image，<br>
-就能隨便你亂搞了，還不怕會影響到正在執行的pod。</p>
-<p>下面指令的意思是，連去 filebeat的pod。<br>
-如果要指定container的話，增加 <code>--target=filebeat</code>的指令。</p>
-<pre><code>    kubectl debug -it \
-    --container=debug-container \
-    --image=alpine \
-    filebeat-beat-filebeat-bcb666b79-vm6dt
+<p>可以先產生yaml看內容是不是有跟想象中的一樣</p>
+<pre><code>istioctl manifest generate -f value.yaml
 </code></pre>
 <p>ref.<br>
-- <a href="https://medium.com/datamindedbe/debugging-running-pods-on-kubernetes-2ba160c47ef5" target="_blank" class="external-link">Debugging Running Pods on Kubernetes</a></p>
+<a href="https://cloud.tencent.com/developer/article/1607842" target="_blank" class="external-link">Istio 1.5 部署指南修正版</a><br>
+<a href="https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#ServiceSpec" target="_blank" class="external-link">IstioOperator Options</a></p>
 
       
       
@@ -3303,15 +3299,6 @@ kubectl logs --since=1h nginx
             		</li>
 
                     <li><a href="#正文">正文</a>
-            
-                <ol>
-                    
-                    <li><a href="#log">看上一次的log記錄</a>
-            		</li>
-
-                    <li><a href="#pod">連進去pod裏面監控</a>
-            		</li>
-                </ol>
             		</li>
                 </ol>
             </nav>

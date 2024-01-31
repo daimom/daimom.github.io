@@ -3,7 +3,7 @@
     <title>度估筆記本</title>
     <link href="https://daimom.vercel.app/feed.xml" rel="self" />
     <link href="https://daimom.vercel.app" />
-    <updated>2024-01-31T07:37:55Z</updated>
+    <updated>2024-01-31T07:37:56Z</updated>
     <id>https://daimom.vercel.app</id>
         <entry>
             <title>
@@ -4083,6 +4083,57 @@ istioctl manifest install -f newingeressway.yaml&lt;/p&gt;
         </entry>
         <entry>
             <title>
+                14.istio安裝時固定ip
+                
+            </title>
+            <updated>2024-01-31T07:37:40Z</updated>
+            <id>https://daimom.vercel.app/istio/14.istio安裝時固定ip/</id>
+            <content type="html">
+                &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;如果刪除GKE的節點，重建新的話，必須要把istio移除，才能夠使用 遷移工作負載到不同node。&lt;br /&gt;
+但如果已經將istio的ip ，綁上固定的domain，一旦移除就必須要重新綁定。&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;p&gt;以下內容都在GCP上面實作(istio 版本為1.8.2)。 騰訊雲不能這樣玩。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;先將IP變成靜態，而不是臨時。&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/istio/14.fig-1.jpg&quot; alt=&quot;14.fig-1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;將下面yaml另存成檔案&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  components:
+    ingressGateways:
+    - name: istio-ingressgateway
+      enabled: true
+      k8s:
+        service:
+          loadBalancerIP: 123.123.123.123
+          loadBalancerSourceRanges:
+          - 111.222.222.111/32
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;跟舊版的差異在必須加上name的名稱，不然在manifest generate 的時候會發生錯誤&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;安裝&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;istioctl install  -f value.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以先產生yaml看內容是不是有跟想象中的一樣&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;istioctl manifest generate -f value.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ref.&lt;br /&gt;
+&lt;a href=&quot;https://cloud.tencent.com/developer/article/1607842&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Istio 1.5 部署指南修正版&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#ServiceSpec&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;IstioOperator Options&lt;/a&gt;&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/istio/14.istio安裝時固定ip/" />
+        </entry>
+        <entry>
+            <title>
                 11. istio 與 kiali
                 
             </title>
@@ -4187,7 +4238,7 @@ spec:
 &lt;h1 id=&quot;建置&quot; tabindex=&quot;-1&quot;&gt;建置&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/istio/7.%20Istio%E5%AE%89%E8%A3%9D%E5%8F%8A%E4%BD%BF%E7%94%A8/&quot;&gt;7. Istio安裝及使用&lt;/a&gt;&lt;br /&gt;
 &lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/istio/11.%20istio%20%E8%88%87%20kiali/&quot;&gt;11. istio 與 kiali&lt;/a&gt;&lt;br /&gt;
-&lt;a class=&quot;internal-link is-unresolved&quot; href=&quot;https://daimom.vercel.app/404&quot;&gt;14.istio安裝時固定ip&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/istio/14.istio%E5%AE%89%E8%A3%9D%E6%99%82%E5%9B%BA%E5%AE%9Aip/&quot;&gt;14.istio安裝時固定ip&lt;/a&gt;&lt;br /&gt;
 &lt;a class=&quot;internal-link is-unresolved&quot; href=&quot;https://daimom.vercel.app/404&quot;&gt;blog-20. 訪問istio 內部負載平衡ip&lt;/a&gt;&lt;br /&gt;
 &lt;a class=&quot;internal-link is-unresolved&quot; href=&quot;https://daimom.vercel.app/404&quot;&gt;blog-21. flagger 自動金絲雀佈署 for istio&lt;/a&gt;&lt;br /&gt;
 &lt;a class=&quot;internal-link is-unresolved&quot; href=&quot;https://daimom.vercel.app/404&quot;&gt;blog.23.istio的 prometheus截取GKE metrics&lt;/a&gt;&lt;br /&gt;
