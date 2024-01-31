@@ -2736,7 +2736,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-01-31T06:37:02.411Z';
+        const searchIndexDate = '2024-01-31T07:37:47.008Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -2748,9 +2748,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-01-31T06:37:02.411Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-01-31T07:37:47.008Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-01-31T06:37:02.411Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-01-31T07:37:47.008Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3008,7 +3008,7 @@
 <h1 id="建置" tabindex="-1">建置</h1>
 <p><a class="internal-link" data-note-icon="" href="/istio/7. Istio安裝及使用/">7. Istio安裝及使用</a><br>
 <a class="internal-link" data-note-icon="" href="/istio/11. istio 與 kiali/">11. istio 與 kiali</a><br>
-<a class="internal-link is-unresolved" href="/404">blog-14.istio安裝時固定ip</a><br>
+<a class="internal-link is-unresolved" href="/404">14.istio安裝時固定ip</a><br>
 <a class="internal-link is-unresolved" href="/404">blog-20. 訪問istio 內部負載平衡ip</a><br>
 <a class="internal-link is-unresolved" href="/404">blog-21. flagger 自動金絲雀佈署 for istio</a><br>
 <a class="internal-link is-unresolved" href="/404">blog.23.istio的 prometheus截取GKE metrics</a><br>

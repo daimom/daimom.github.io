@@ -2736,7 +2736,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-01-31T06:37:02.411Z';
+        const searchIndexDate = '2024-01-31T07:37:47.008Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -2748,9 +2748,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-01-31T06:37:02.411Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-01-31T07:37:47.008Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-01-31T06:37:02.411Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-01-31T07:37:47.008Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3014,23 +3014,7 @@
 <ol>
 <li>No matching workload found for gateway selector in this namespace</li>
 </ol>
-<p><picture src="/img/user/istio/11.%20fig-1.jpg" alt="11. fig-1.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/QkdvQGMWjs-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/QkdvQGMWjs-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/QkdvQGMWjs-591.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/QkdvQGMWjs-591.jpeg"
-        ><img       class=""
-      src="/img/user/istio/11.%20fig-1.jpg"
-      alt="11. fig-1.jpg"
-      width=""
-      ></picture><br>
+<p><img src="/img/user/istio/11.fig-1.jpg" alt="11.fig-1.jpg"><br>
 簡單講就是目前的namespace沒有找到目前的 ingressgateway，未來可能會發生問題<br>
 ref.</p>
 <ul>
