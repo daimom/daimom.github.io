@@ -3,14 +3,14 @@
     <title>度估筆記本</title>
     <link href="https://daimom.vercel.app/feed.xml" rel="self" />
     <link href="https://daimom.vercel.app" />
-    <updated>2024-02-14T10:18:37Z</updated>
+    <updated>2024-02-15T10:18:59Z</updated>
     <id>https://daimom.vercel.app</id>
         <entry>
             <title>
                 98. k8s中的command與dockerfile的 CMD
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Yaml/98. k8s中的command與dockerfile的 CMD/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -142,7 +142,7 @@ args ： 外加的參數，可與command一起使用，&lt;/p&gt;
                 94. k8s 細節補充
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Yaml/94. k8s 細節補充/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -238,7 +238,7 @@ ls -l /bin/sh
                 87.kustomize 共用label(optional）
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Yaml/87.kustomize 共用label(optional）/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -291,7 +291,7 @@ ls -l /bin/sh
                 85. gke-cronjob筆記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Yaml/85. gke-cronjob筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -341,7 +341,7 @@ spec:
                 74. kubernetes 批次檢查yaml特定字元
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Yaml/74. kubernetes 批次檢查yaml特定字元/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -379,7 +379,7 @@ spec:
                 2. k8s yaml撰寫 volume 踩坑篇
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Yaml/2. k8s yaml撰寫 volume 踩坑篇/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -439,7 +439,7 @@ volumes: 的意思是定義磁碟區，emptyDir是伴隨著pod的生命，當pod
                 136. 一步步篩選k8s的deploy內容
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Yaml/136. 一步步篩選k8s的deploy內容/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -475,7 +475,7 @@ volumes: 的意思是定義磁碟區，emptyDir是伴隨著pod的生命，當pod
                 12. k8s YAML 小細節
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Yaml/12. k8s YAML 小細節/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -596,7 +596,7 @@ ref.&lt;br /&gt;
                 82. Terraform vs Ansible
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Terraform/82. Terraform vs Ansible/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -640,7 +640,7 @@ ref.&lt;br /&gt;
                 183. Terrafrom 建立private cluster
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Terraform/183. Terrafrom 建立private cluster/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1012,7 +1012,7 @@ module &amp;quot;gke&amp;quot; {
                 149. terraform 部署VM，啓動docker安裝metadata_startup_script
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Terraform/149. terraform 部署VM，啓動docker安裝metadata_startup_script/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -1096,7 +1096,7 @@ module &amp;quot;gke&amp;quot; {
                 148. Terraform的基本概念
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Terraform/148. Terraform的基本概念/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -1380,7 +1380,7 @@ Count = 2&lt;br /&gt;
                 147. 用chatGPT學Terraform
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/Terraform/147. 用chatGPT學Terraform/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -1547,7 +1547,7 @@ A：&lt;br /&gt;
                 71.gitlab on GKE 災害還原筆記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/71.gitlab on GKE 災害還原筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1746,7 +1746,7 @@ spec:
                 70. GKE pvc還原
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/70. GKE pvc還原/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1846,7 +1846,7 @@ statefulSet不會用到pvc。&lt;/p&gt;
                 56. GKE記錄 nginx log
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/56. GKE記錄 nginx log/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1952,7 +1952,7 @@ http {
                 50.GKE workload Identity 實地演練
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/50.GKE workload Identity 實地演練/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2000,7 +2000,7 @@ GKE 中繼資料伺服器 ： 已啟用&lt;br /&gt;
                 44.srs 影音串流 on GKE
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/44.srs 影音串流 on GKE/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2072,7 +2072,7 @@ webrtc，是直撥者跟觀看者直接連線，也就是點對點的連接方�
                 41.GKE節點無法自動縮小
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/41.GKE節點無法自動縮小/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2168,7 +2168,7 @@ istio在安裝時，ingressgateway會同時設定pdb，&lt;br /&gt;
                 4. GKE使用GPU
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/4. GKE使用GPU/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -2252,7 +2252,7 @@ gcloud compute instances list --format=&amp;quot;table(guestAccelerators.acceler
                 39.solrCloud的初體驗
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/39.solrCloud的初體驗/</id>
             <content type="html">
                 &lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
@@ -2341,7 +2341,7 @@ yaml佈署時，&lt;a href=&quot;https://kubernetes.io/zh/docs/tasks/inject-data
                 37.SolrCloud on GKE
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/GKE/37.SolrCloud on GKE/</id>
             <content type="html">
                 &lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
@@ -2659,7 +2659,7 @@ spec:
                 76. k8s error,The node was low on resource..
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/76. k8s error,The node was low on resource../</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2737,7 +2737,7 @@ prometheus會這樣、gitlab最近在弄新版的CI/CD也跑這個出來。&lt;b
                 42.k8s PDB（pod中斷預算）
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/42.k8s PDB（pod中斷預算）/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2780,7 +2780,7 @@ prometheus會這樣、gitlab最近在弄新版的CI/CD也跑這個出來。&lt;b
                 27.K8s的節點選擇與污染
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/27.K8s的節點選擇與污染/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2860,11 +2860,11 @@ spec:
         </entry>
         <entry>
             <title>
-                193. pod debug方式
+                194. pod debug方式
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
-            <id>https://daimom.vercel.app/k8s/193. pod debug方式/</id>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/k8s/194. pod debug方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
 &lt;p&gt;這陣子建了一個新環境，&lt;br /&gt;
@@ -2911,14 +2911,14 @@ kubectl logs --since=1h nginx
 - &lt;a href=&quot;https://medium.com/datamindedbe/debugging-running-pods-on-kubernetes-2ba160c47ef5&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Debugging Running Pods on Kubernetes&lt;/a&gt;&lt;/p&gt;
 
             </content>
-            <link href="https://daimom.vercel.app/k8s/193. pod debug方式/" />
+            <link href="https://daimom.vercel.app/k8s/194. pod debug方式/" />
         </entry>
         <entry>
             <title>
                 192. 自建的k8s拉取private registry
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/192. 自建的k8s拉取private registry/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2962,7 +2962,7 @@ stackoverflow的說明指出，該email是沒在用的，所以可以隨便打�
                 172. 自建k8s版本升級
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/172. 自建k8s版本升級/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -3064,7 +3064,7 @@ kubectl uncordon $node
                 162.查詢已棄用的API
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/162.查詢已棄用的API/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3106,7 +3106,7 @@ kubectl uncordon $node
                 151. kubeadm重新產生驗證
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/151. kubeadm重新產生驗證/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3174,7 +3174,7 @@ ref. &lt;a href=&quot;https://juejin.cn/post/7068909995701567501&quot; target=&q
                 144. k8s 的sercret複製
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/144. k8s 的sercret複製/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3205,7 +3205,7 @@ default太肥了，實在不想再往那邊塞，&lt;br /&gt;
                 143. k8s取得登入憑證
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/143. k8s取得登入憑證/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3242,7 +3242,7 @@ admin-user-token-tm7g4&lt;br /&gt;
                 139. openlens add pod shell or logs button
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/139. openlens add pod shell or logs button/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3282,7 +3282,7 @@ kubectl logs pod_name
                 137. kubecolor 直觀的kubectl
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/137. kubecolor 直觀的kubectl/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3328,7 +3328,7 @@ mac 是在 個人目錄底下&lt;/p&gt;
                 123.Helm 使用方式
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/123.Helm 使用方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3415,7 +3415,7 @@ ezio
                 118. kubernetes Dashboard
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/118. kubernetes Dashboard/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -3480,7 +3480,7 @@ EOF
                 105. linux系統時間與k8s
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/105. linux系統時間與k8s/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3565,7 +3565,7 @@ spec:
                 104. rabbitmq operator安裝
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/104. rabbitmq operator安裝/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3624,7 +3624,7 @@ ref. &lt;a href=&quot;https://www.rabbitmq.com/kubernetes/operator/using-operato
                 101. 批次修改hpa
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/101. 批次修改hpa/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3675,7 +3675,7 @@ done &amp;lt;hpa.txt
                 0.K8s MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/k8s/0.K8s MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;基本概念&quot; tabindex=&quot;-1&quot;&gt;基本概念&lt;/h1&gt;
@@ -3687,7 +3687,7 @@ done &amp;lt;hpa.txt
 &lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/123.Helm%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/&quot;&gt;123.Helm 使用方式&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/172.%20%E8%87%AA%E5%BB%BAk8s%E7%89%88%E6%9C%AC%E5%8D%87%E7%B4%9A/&quot;&gt;172. 自建k8s版本升級&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/192.%20%E8%87%AA%E5%BB%BA%E7%9A%84k8s%E6%8B%89%E5%8F%96private%20registry/&quot;&gt;192. 自建的k8s拉取private registry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/193.%20pod%20debug%E6%96%B9%E5%BC%8F/&quot;&gt;193. pod debug方式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/194.%20pod%20debug%E6%96%B9%E5%BC%8F/&quot;&gt;194. pod debug方式&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;h1 id=&quot;terraform&quot; tabindex=&quot;-1&quot;&gt;Terraform&lt;/h1&gt;
@@ -3749,7 +3749,7 @@ done &amp;lt;hpa.txt
                 89. istio 常見狀態碼
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/89. istio 常見狀態碼/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3854,7 +3854,7 @@ done &amp;lt;hpa.txt
                 75. istio virtual service 常用參數
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/75. istio virtual service 常用參數/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4045,7 +4045,7 @@ http:
                 73. istio sidecar 注入規則
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/73. istio sidecar 注入規則/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4143,7 +4143,7 @@ namespace只要是 disabled的，通通不會inject sidecar&lt;/p&gt;
                 7. Istio安裝及使用
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/7. Istio安裝及使用/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4481,7 +4481,7 @@ istioctl manifest install -f newingeressway.yaml&lt;/p&gt;
                 62. isito 鏡像流量
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/62. isito 鏡像流量/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4557,7 +4557,7 @@ v2是鏡像流量，流量過去後就不會管是否回應。&lt;/p&gt;
                 54. istio 掛載ECK kibana
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/54. istio 掛載ECK kibana/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4621,7 +4621,7 @@ spec:
                 35. istio virtualService delegate使用
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/35. istio virtualService delegate使用/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4785,7 +4785,7 @@ spec:
                 34. istio operator 安裝新的 ingress deploy及service
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/34. istio operator 安裝新的 ingress deploy及service/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4893,7 +4893,7 @@ components:
                 31.istio 抓蟲記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/31.istio 抓蟲記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4944,7 +4944,7 @@ e.g.   curl -v 123.213.123.213 -H &amp;quot;Host:abc.com&amp;quot;&lt;br /&gt;
                 30. istio的virtualservice match比對
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/30. istio的virtualservice match比對/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5014,7 +5014,7 @@ e.g.   curl -v 123.213.123.213 -H &amp;quot;Host:abc.com&amp;quot;&lt;br /&gt;
                 23.istio的 prometheus截取GKE metrics
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/23.istio的 prometheus截取GKE metrics/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5069,7 +5069,7 @@ ref. &lt;a href=&quot;https://stackoverflow.com/questions/63741959/prometheus-no
                 21. flagger 自動金絲雀佈署 for istio
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/21. flagger 自動金絲雀佈署 for istio/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5314,7 +5314,7 @@ telegram做機器人還挺快的，改天再寫一篇關於telegram的使用方�
                 20. 訪問istio 內部負載平衡ip
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/20. 訪問istio 內部負載平衡ip/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -5387,7 +5387,7 @@ spec:
                 18.istio Virtual Service 跨namespace讀取 DestinationRule
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/18.istio Virtual Service 跨namespace讀取 DestinationRule/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -5458,7 +5458,7 @@ ref. &lt;a href=&quot;https://istio.io/latest/docs/reference/config/networking/v
                 15.istio服務無法訪問
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/15.istio服務無法訪問/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5536,7 +5536,8 @@ spec:
 （ref. &lt;a href=&quot;https://istio.io/v1.8/docs/tasks/traffic-management/ingress/secure-ingress/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Secure Gateways&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;自己建立憑證的話，&lt;br /&gt;
 根據上面的網址，產生 crt 跟 key ，然後使用&lt;/p&gt;
-&lt;p&gt;kubectl create secret tls credential-httpbin -n istio-system --cert=./httpbin.com.crt --key=./httpbin.com.key&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl create secret tls credential-httpbin -n istio-system --cert=./httpbin.com.crt --key=./httpbin.com.key
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;建立sercret，最後再yaml內直接使用這個sercret的name&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: networking.istio.io/v1beta1
 kind: Gateway
@@ -5575,7 +5576,7 @@ spec:
                 14.istio安裝時固定ip
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/14.istio安裝時固定ip/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5626,7 +5627,7 @@ spec:
                 11. istio 與 kiali
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/11. istio 與 kiali/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5719,7 +5720,7 @@ spec:
                 0.istio MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/istio/0.istio MOC/</id>
             <content type="html">
                 &lt;p&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/istio/73.%20istio%20sidecar%20%E6%B3%A8%E5%85%A5%E8%A6%8F%E5%89%87/&quot;&gt;73. istio sidecar 注入規則&lt;/a&gt;&lt;br /&gt;
@@ -5753,7 +5754,7 @@ spec:
                 blog.113. 微軟官方office 大量授權
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Window/blog.113. 微軟官方office 大量授權/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -5818,7 +5819,7 @@ slmgr /ato
                 174. win10 下載Microsoft Store的檔案
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Window/174. win10 下載Microsoft Store的檔案/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -5850,7 +5851,7 @@ slmgr /ato
                 166. MSSQL版本差異
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Window/166. MSSQL版本差異/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6013,11 +6014,11 @@ slmgr /ato
         </entry>
         <entry>
             <title>
-                153.MSSQL減少資料庫大小
+                153. CloudSQL MSSQL減少資料庫大小
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
-            <id>https://daimom.vercel.app/Window/153.MSSQL減少資料庫大小/</id>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Window/153. CloudSQL MSSQL減少資料庫大小/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
 &lt;p&gt;也不知道我怎麼也兼DBA了，有種MIS的感覺，啥都管。&lt;br /&gt;
@@ -6093,14 +6094,14 @@ ALTER DATABASE table_name SET RECOVERY FULL
 &lt;/ul&gt;
 
             </content>
-            <link href="https://daimom.vercel.app/Window/153.MSSQL減少資料庫大小/" />
+            <link href="https://daimom.vercel.app/Window/153. CloudSQL MSSQL減少資料庫大小/" />
         </entry>
         <entry>
             <title>
                 160.Obsidian發佈網站
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/SideProject/160.Obsidian發佈網站/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6218,7 +6219,7 @@ Mac：Cmd+P&lt;/p&gt;
                 125. Google sheet Query
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/SideProject/125. Google sheet Query/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -6279,29 +6280,38 @@ select A,B offset 3      跳過3行，開始取資料
                 README
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/</id>
             <content type="html">
                 &lt;h1 id=&quot;度估記事本&quot; tabindex=&quot;-1&quot;&gt;度估記事本&lt;/h1&gt;
-&lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;懶人，始終相信科技始終來自於人類的惰性。&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;懶是一種方式，卻不是一種態度。&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;你如果想要有更多的時間偷懶，就一定要有最高的效率。&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/blockquote&gt;
 &lt;hr /&gt;
-&lt;h1 id=&quot;obsidian&quot; tabindex=&quot;-1&quot;&gt;用Obsidian發佈網站&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/SideProject/160.Obsidian%E7%99%BC%E4%BD%88%E7%B6%B2%E7%AB%99/&quot;&gt;160.Obsidian發佈網站&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;a-href-http-xn-obsidian-github-x70we45a303md9e-io-target-blank-class-external-link-obsidian-github-io-a&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;http://xn--obsidiangithub-x70we45a303md9e.io/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;用Obsidian發佈到Github.io&lt;/a&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&quot;internal-link is-unresolved&quot; href=&quot;https://daimom.vercel.app/404&quot;&gt;193. &lt;a href=&quot;http://xn--obsidiangithub-x70we45ahs9m.io/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Obsidian發佈到github.io&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;電影評分表&quot; tabindex=&quot;-1&quot;&gt;電影評分表&lt;/h1&gt;
+&lt;p&gt;做好玩的 &lt;a href=&quot;https://daimom.github.io/movieRating/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;電影評分表&lt;/a&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1 id=&quot;last-post&quot; tabindex=&quot;-1&quot;&gt;Last Post:&lt;/h1&gt;
 &lt;p&gt;最近事情多，寫了也都沒分類，有點麻煩。&lt;br /&gt;
 日後應該是先發佈，改天再歸類到各自的資料夾好了。&lt;br /&gt;
 希望不會累積太多沒歸類到資料夾。&lt;/p&gt;
+&lt;p&gt;2/1&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/186.%20istio%E7%9A%84Authorization%20policy(%E7%99%BD%E5%90%8D%E5%96%AE)/&quot;&gt;186. istio的Authorization policy(白名單)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/187.%20ECK%E7%9A%84filebeat/&quot;&gt;187. ECK的filebeat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/188.%20CloudSQL%20server%20%E6%9F%A5%E8%A9%A2%E8%A8%98%E6%86%B6%E9%AB%94/&quot;&gt;188. CloudSQL server 查詢記憶體&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/189.%20%E5%B0%8E%E5%85%A5Terraform/&quot;&gt;189. 導入Terraform&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/190.%20cert-manager%E5%AE%89%E8%A3%9D/&quot;&gt;190. cert-manager安裝&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/191.%20Steam%20deck%E5%AE%89%E8%A3%9D%E9%99%A4%E9%8C%AF%E8%A8%98/&quot;&gt;191. Steam deck安裝除錯記&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;1/12&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/192.%20%E8%87%AA%E5%BB%BA%E7%9A%84k8s%E6%8B%89%E5%8F%96private%20registry/&quot;&gt;192. 自建的k8s拉取private registry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/193.%20pod%20debug%E6%96%B9%E5%BC%8F/&quot;&gt;193. pod debug方式&lt;/a&gt;]&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/194.%20pod%20debug%E6%96%B9%E5%BC%8F/&quot;&gt;194. pod debug方式&lt;/a&gt;]&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;11/8&lt;/p&gt;
 &lt;ul&gt;
@@ -6324,8 +6334,8 @@ select A,B offset 3      跳過3行，開始取資料
 ⎈：&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/k8s/0.K8s%20MOC/&quot;&gt;k8s MOC&lt;/a&gt;&lt;br /&gt;
 🐧：&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Linux/0.Linux%20MOC/&quot;&gt;Linux MOC&lt;/a&gt;&lt;br /&gt;
 🍎：Apple&lt;br /&gt;
-☎️：Network&lt;br /&gt;
-👁：Observability&lt;br /&gt;
+☎️：&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Network/0.Network%20MOC/&quot;&gt;Network MOC&lt;/a&gt;&lt;br /&gt;
+👁：&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/0.Observability%20MOC/&quot;&gt;0.Observability MOC&lt;/a&gt;&lt;br /&gt;
 🎮：Game&lt;br /&gt;
 🆒：Side Project&lt;/p&gt;
 &lt;hr /&gt;
@@ -6333,6 +6343,12 @@ select A,B offset 3      跳過3行，開始取資料
 &lt;p&gt;當單一筆記的數量越來越多時，就能夠構成一個MOC(Map of Contens)&lt;br /&gt;
 詳細請參考下面連結，&lt;br /&gt;
 &lt;a href=&quot;https://medium.com/pm%E7%9A%84%E7%94%9F%E7%94%A2%E5%8A%9B%E5%B7%A5%E5%85%B7%E7%AE%B1/%E6%95%B8%E4%BD%8D%E7%AD%86%E8%A8%98%E5%A4%AA%E5%A4%9A%E5%BE%88%E5%87%8C%E4%BA%82%E6%80%8E%E9%BA%BC%E8%BE%A6-451a6cb4ab17&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;數位筆記太多很凌亂怎麼辦？使用 MOC 架構有系統地管理數百則的數位筆記&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;技術文章寫法要點&quot; tabindex=&quot;-1&quot;&gt;技術文章寫法要點&lt;/h1&gt;
+&lt;h4 id=&quot;strong-strong&quot; tabindex=&quot;-1&quot;&gt;&lt;strong&gt;文章採用單線結構&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;一點接着一點，就是一張卡片接着一個卡片，&lt;br /&gt;
+把問題拆成多篇文章，&lt;br /&gt;
+讓文章一篇就只有一個要點。&lt;/p&gt;
+&lt;p&gt;ref. &lt;a href=&quot;https://www.ruanyifeng.com/blog/2024/01/weekly-issue-288.html&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;# 科技愛好者週刊（第 288 期）：技術寫作的首要訣竅&lt;/a&gt;&lt;/p&gt;
 &lt;hr /&gt;
 &lt;h1 id=&quot;舊筆記&quot; tabindex=&quot;-1&quot;&gt;舊筆記&lt;/h1&gt;
 &lt;p&gt;2021年以前文章請至 &lt;a href=&quot;https://daimom3020.blogspot.com/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;度估記事本&lt;/a&gt; 查詢&lt;/p&gt;
@@ -6342,10 +6358,288 @@ select A,B offset 3      跳過3行，開始取資料
         </entry>
         <entry>
             <title>
+                28.Prometheus的專用語言promQL
+                
+            </title>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Observability/28.Prometheus的專用語言promQL/</id>
+            <content type="html">
+                &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;在寫監控告警的時候，看別人寫好的dashboard裡面有一堆函數，&lt;br /&gt;
+但卻偏偏不知道該怎麼使用，後來才知道這是 Prometheus的語言 PromQL，&lt;br /&gt;
+這邊會將寫監控時用到的東西記下，基本上都是針對metrics做的處理。&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;h2 id=&quot;聚合函數&quot; tabindex=&quot;-1&quot;&gt;聚合函數&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;sum (求和)&lt;/li&gt;
+&lt;li&gt;min (最小值)&lt;/li&gt;
+&lt;li&gt;max (最大值)&lt;/li&gt;
+&lt;li&gt;avg (平均值)&lt;/li&gt;
+&lt;li&gt;stddev (標准差)&lt;/li&gt;
+&lt;li&gt;stdvar (標准差異)&lt;/li&gt;
+&lt;li&gt;count (計數)&lt;/li&gt;
+&lt;li&gt;count_values (對value進行計數)&lt;/li&gt;
+&lt;li&gt;bottomk (後n條時序)&lt;/li&gt;
+&lt;li&gt;topk (前n條時序)&lt;br /&gt;
+topk(10,prometheus_http_requests_total) ：前10筆資料&lt;/li&gt;
+&lt;li&gt;quantile (分佈統計)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;聚合函數可與by 或 without共同使用 ，可取得metrics裡的欄位名稱&lt;br /&gt;
+例：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sum(rate(istio_requests_total{reporter=&amp;quot;destination&amp;quot;}[1m])) by (destination_workload)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;內建函數&quot; tabindex=&quot;-1&quot;&gt;內建函數&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;abs(絕對值)&lt;/li&gt;
+&lt;li&gt;absent(判斷指標名稱或標籤是否有值)&lt;/li&gt;
+&lt;li&gt;absent_over_time(同上，多了時間範圍)&lt;/li&gt;
+&lt;li&gt;ceil(四捨五入)&lt;/li&gt;
+&lt;li&gt;changes(返回區間變數每個樣本值變化的次數)&lt;/li&gt;
+&lt;li&gt;delta(計算區間向量第一個值和最後一個值的差值)&lt;/li&gt;
+&lt;li&gt;floor(取整數)&lt;/li&gt;
+&lt;li&gt;increase(返回區間向量第一個和最後一個樣本的增加值)&lt;/li&gt;
+&lt;li&gt;rate(計算區間向量 v 在時間視窗內平均每時間增長速率)&lt;br /&gt;
+rate(prometheus_http_requests_total[5m])  ： HTTP請求量的增長率&lt;/li&gt;
+&lt;li&gt;irate(計算區間向量的增長率，但是它反應的是瞬時增長率)&lt;/li&gt;
+&lt;li&gt;deriv(計算樣本的線性回歸模型)&lt;/li&gt;
+&lt;li&gt;predict_linear(預測時間序列在n秒後的值)&lt;/li&gt;
+&lt;li&gt;sort(對向量按元素的值進行升序排序)&lt;/li&gt;
+&lt;li&gt;sort_desc(對向量按元素的值進行降序排序)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;實際演練&quot; tabindex=&quot;-1&quot;&gt;實際演練&lt;/h2&gt;
+&lt;p&gt;可以先在prometheus上面測試語法，當測試完成後，再放到grafana上面看實際的圖表。&lt;br /&gt;
+也可透過現有的grafana的dashboard裡面的Query Inspect 將Metric撈出來（這邊可以直接將變數取出）(fig.1)&lt;br /&gt;
+撈出來的資料要再經過 &lt;a href=&quot;https://www.urldecoder.org/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;urldecode&lt;/a&gt; 將符號轉成正常的符號&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/28-fig.1.jpg&quot; alt=&quot;28-fig.1.jpg&quot; /&gt;&lt;br /&gt;
+(fig.1)&lt;/p&gt;
+&lt;p&gt;所有的Metric格式如下，&lt;br /&gt;
+指標名稱只能由ASCII字符、數字、下劃線以及冒號組成並必須符合正則表達式[a-zA-Z_:][a-zA-Z0-9_:]*&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;metric name&amp;gt;{&amp;lt;label name&amp;gt;=&amp;lt;label value&amp;gt;, ...}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;匹配函數&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;=   等於&lt;/li&gt;
+&lt;li&gt;!=  不等於&lt;/li&gt;
+&lt;li&gt;=~  開頭等於&lt;/li&gt;
+&lt;li&gt;!~  開頭不等於&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;有時也會在label name上面使用 正規表示法，這邊使用的是&lt;a href=&quot;https://github.com/google/re2/wiki/Syntax&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;RE2語法&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;例如，我們要取得memory的資料，其中的image的開頭只要包含 &lt;a href=&quot;http://gcr.io/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;gcr.io&lt;/a&gt; 跟 istio。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  container_memory_working_set_bytes{id!=&amp;quot;/&amp;quot;,pod=~&amp;quot;.*&amp;quot;,image=~&amp;quot;[gcr.io | istio].*&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;變數設定&lt;/p&gt;
+&lt;p&gt;在grafana上面通常會設定一些參數，這是為了看指定的指標&lt;br /&gt;
+有四種可選，&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;label_values(label) :&lt;br /&gt;
+返回Promthues所有監控指標中，標籤稱為label的所有可選值&lt;/li&gt;
+&lt;li&gt;label_values(metric, label) :&lt;br /&gt;
+返回Promthues所有監控指標metric中，標籤稱為label的所有可選值&lt;/li&gt;
+&lt;li&gt;metrics(metric) :&lt;br /&gt;
+返回所有指標名稱滿足metric定義正則表達式的指標名稱&lt;/li&gt;
+&lt;li&gt;query_result(query) :&lt;br /&gt;
+返回prometheus查詢語句的查詢結果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;常用的label_value&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  $Node       label_values(kubernetes_io_hostname)
+  $Pod        label_values(kube_pod_info, pod)
+  $Pod_ip     label_values(kube_pod_info, pod_ip)
+  $phase      label_values(kube_pod_status_phase, phase)
+  $container  label_values(kube_pod_container_info, container)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;query_result範例，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;query_result(kube_deployment_status_replicas{namespace !~ &amp;quot;istio-system|kube-system&amp;quot;}&amp;gt;0)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;解釋：排除Deployment裡面的namespace 不是 istio-system或 kube-system，並且value&amp;gt;0的metrics。&lt;br /&gt;
+這邊會顯示全部的資料，故在regex要再指定抓取 deployment的資料&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/.*deployment=&amp;quot;(.*?)&amp;quot;.*/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ref.&lt;br /&gt;
+&lt;a href=&quot;https://banzaicloud.com/blog/grafana-templating/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Grafana templating with Prometheus labels&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://yunlzheng.gitbook.io/prometheus-book/part-ii-prometheus-jin-jie/grafana/templating&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;模板化Dashboard&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://www.mdeditor.tw/pl/g0OB/zh-tw&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;PromQL的簡單使用&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ref.&lt;br /&gt;
+&lt;a href=&quot;https://zhuanlan.zhihu.com/p/121104877&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Prometheus-基礎系列-(四)-PromQL語句實踐-2&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://prometheus.fuckcloudnative.io/di-san-zhang-prometheus/di-4-jie-cha-xun/functions&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;PromQL 內置函數&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://yunlzheng.gitbook.io/prometheus-book/parti-prometheus-ji-chu/promql/prometheus-promql-operators-v2&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;PromQL操作符&lt;/a&gt;&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/Observability/28.Prometheus的專用語言promQL/" />
+        </entry>
+        <entry>
+            <title>
+                26.grafana alert message parameters傳入
+                
+            </title>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Observability/26.grafana alert message parameters傳入/</id>
+            <content type="html">
+                &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;在設計grafana alert message的時候，&lt;br /&gt;
+一直想傳參數進去，看官方文章顯示是可行的，&lt;br /&gt;
+但是不知道是我理解能力太爛還是文章寫的太簡單...弄了半天才生出來。&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;p&gt;先決條件， Grafana v7.4 以上，才能夠使用 Notification templating 。&lt;br /&gt;
+ref. &lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/notifications/#notification-templating&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Notification templating&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;這邊的parameters只限定於 圖表上的 Legend 的value&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/26-fig.1.jpg&quot; alt=&quot;26-fig.1.jpg&quot; /&gt;&lt;br /&gt;
+(fig.1)，&lt;br /&gt;
+需使用 ，將值顯示在上面。&lt;br /&gt;
+所以這上面沒有資料，就無法傳過去給alert message。&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/26-fig.1.jpg&quot; alt=&quot;26-fig.1.jpg&quot; /&gt;&lt;br /&gt;
+(fig.1)&lt;/p&gt;
+&lt;p&gt;之後在alert上面則可以使用 ${label}，將值傳入。&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/26-fig.2.jpg&quot; alt=&quot;26-fig.2.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;telegram 呈現&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/26-fig.3.jpg&quot; alt=&quot;26-fig.3.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;缺點是告警訊息的Metrics上面的數值，我目前還找不到方式可以自定。&lt;br /&gt;
+所以長的不怎麼討喜。&lt;br /&gt;
+另外可以在圖表上直接將Legend隱藏，這樣至少畫面會好看許多。&lt;/p&gt;
+&lt;p&gt;ref.&lt;br /&gt;
+&lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/add-notification-template/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Alert notification templating&lt;/a&gt;&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/Observability/26.grafana alert message parameters傳入/" />
+        </entry>
+        <entry>
+            <title>
+                25.在GKE上的grafana上安裝grafana-image-renderer
+                
+            </title>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Observability/25.在GKE上的grafana上安裝grafana-image-renderer/</id>
+            <content type="html">
+                &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;在寫grafana的時候，才發現告警的圖片無法寄出，&lt;br /&gt;
+必須要額外安裝plugin : grafana-image-renderer ，&lt;br /&gt;
+然後，我又卡住了...&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;p&gt;如果你看到這張圖(fig.1)，就表示你該裝&lt;a href=&quot;https://grafana.com/grafana/plugins/grafana-image-renderer/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Grafana Image Renderer&lt;/a&gt;了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/25-fig.1.jpg&quot; alt=&quot;25-fig.1.jpg&quot; /&gt;&lt;br /&gt;
+(fig.1)&lt;/p&gt;
+&lt;p&gt;先說結論，我測過『在pod裡面利用grafana-cli 安裝』、『改成使用ubuntu的image預先安裝plugin』，都失敗，最後只能建立 grafana-image-renderer的 服務，透過這個服務，負責宣染當下的告警圖，再隨着telegram送出。&lt;/p&gt;
+&lt;p&gt;佈署的yaml， grafana-image-render.yaml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+namespace: istio-system
+name: grafana-image-renderer
+labels:
+  app: grafana-image-renderer
+  version: v1
+spec:
+replicas: 1
+selector:
+  matchLabels:
+    app: grafana-image-renderer
+    version: v1
+strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1
+template:
+  metadata:
+    labels:
+      app: grafana-image-renderer
+      version: v1
+  spec:
+    containers:
+      - image: grafana/grafana-image-renderer:latest
+        imagePullPolicy: &amp;quot;Always&amp;quot;
+        name: renderer
+        ports:
+          - containerPort: 80
+        env:
+          - name: &amp;quot;RENDERING_VERBOSE_LOGGING&amp;quot;
+            value: &amp;quot;true&amp;quot;
+        resources:
+          requests:
+            memory: &amp;quot;30Mi&amp;quot;
+            cpu: &amp;quot;30m&amp;quot;
+    restartPolicy: Always
+    serviceAccountName: &amp;quot;&amp;quot;
+---
+apiVersion: v1
+kind: Service
+metadata:
+namespace: istio-system
+labels:
+  app: grafana-image-renderer
+name: grafana-image-renderer
+spec:
+ports:
+  - name: &amp;quot;http&amp;quot;
+    port: 8081
+selector:
+  app:  grafana-image-renderer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然後在佈署 grafana的yaml上面，增加環境參數&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- name: &amp;quot;GF_RENDERING_SERVER_URL&amp;quot;
+  value: &amp;quot;http://grafana-image-renderer.istio-system:8081/render&amp;quot;
+- name: &amp;quot;GF_RENDERING_CALLBACK_URL&amp;quot;
+  value: &amp;quot;http://grafana.istio-system:3000/grafana/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果要開啟debug的話，加上&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- name: &amp;quot;GF_LOG_FILTERS&amp;quot;
+  value: &amp;quot;rendering:debug&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果需要更多的log訊息，可參考 &lt;a href=&quot;https://github.com/grafana/grafana-image-renderer/blob/master/docs/remote_rendering_using_docker.md&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;grafana-image-renderer&lt;/a&gt;，這邊就是改加至grafana-image-renderer上面了。&lt;/p&gt;
+&lt;p&gt;一開始在測試的時候有碰到一個問題，&lt;br /&gt;
+那就是抓圖的時候，一直抓到grafana的首頁(Fig.2)&lt;/p&gt;
+&lt;p&gt;[[25-fig.2.jpg]]&lt;br /&gt;
+(Fig.2)&lt;/p&gt;
+&lt;p&gt;後來才發現是 GF_RENDERING_CALLBACK_URL 錯誤，由於我的grafana.ini 的 root_url 是 &lt;a href=&quot;http://localhost/grafana%EF%BC%8C&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;http://localhost/grafana，&lt;/a&gt;&lt;br /&gt;
+所以 我的網址後面也要加上grafana，但是，如果在grafana.ini上面 的 root_url 寫 &lt;a href=&quot;http://localhost/grafana&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;http://localhost/grafana&lt;/a&gt;&lt;br /&gt;
+那telegram的告警，顯示的url也會變成localhost (fig.3)&lt;/p&gt;
+&lt;p&gt;[[25-fig.3.jpg]]&lt;br /&gt;
+(Fig.3)&lt;/p&gt;
+&lt;p&gt;所以，grafana.ini的root_url 最好還是寫實際的ip位置。&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/Observability/25.在GKE上的grafana上安裝grafana-image-renderer/" />
+        </entry>
+        <entry>
+            <title>
+                24.grafana設計篇-第二個Y軸
+                
+            </title>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Observability/24.grafana設計篇-第二個Y軸/</id>
+            <content type="html">
+                &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;應該是個很常見的功能，但是我卻找了很久，一直找不到。&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;p&gt;要做出來的東西像（Fig.1) 一樣，左右都各有一個Y軸數值。&lt;/p&gt;
+&lt;p&gt;(Fig.1)&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先要先在右邊的圖表將show打開，，這裡分成左右兩邊的Y軸&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/24-fig.2.jpg&quot; alt=&quot;24-fig.2.jpg&quot; /&gt;&lt;br /&gt;
+(Fig.2)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;點一下label的標籤，選擇 Y-Axis ，將 use y-axis 打開&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/24-fig.3.jpg&quot; alt=&quot;24-fig.3.jpg&quot; /&gt;&lt;br /&gt;
+(Fig.3)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ref.&lt;br /&gt;
+&lt;a href=&quot;https://grafana.com/blog/2020/03/10/learn-grafana-how-to-use-dual-axis-graphs/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Learn Grafana: How to use dual axis graphs&lt;/a&gt;&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/Observability/24.grafana設計篇-第二個Y軸/" />
+        </entry>
+        <entry>
+            <title>
                 184. grafana error  reverse proxy settings on istio
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Observability/184. grafana error  reverse proxy settings on istio/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6397,7 +6691,7 @@ spec:
                 179.  install Bindplane
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Observability/179.  install Bindplane/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6457,7 +6751,7 @@ helm repo update
                 178. Install Prometheus Operator
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Observability/178. Install Prometheus Operator/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6521,10 +6815,150 @@ helm repo update
         </entry>
         <entry>
             <title>
+                131. rabbitMQ on Prometheus
+                
+            </title>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Observability/131. rabbitMQ on Prometheus/</id>
+            <content type="html">
+                &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
+&lt;p&gt;最近demo環境發生問題，初步懷疑是MQ因為訊息量太大掛了。&lt;br /&gt;
+但沒有證據，因為MQ的管理介面只能看到一小時的資料。&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;p&gt;本來用operator安裝完後，看了一些介紹都說要額外啓動外掛，&lt;br /&gt;
+但operator要怎麼啓動外掛，我就兩眼一抹黑了。&lt;/p&gt;
+&lt;p&gt;看到 &lt;a href=&quot;https://blog.csdn.net/yaomingyang/article/details/104037083&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;RabbitMQ學習筆記：內建Prometheus支援rabbit_prometheus外掛&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;原來，我的MQ的15692 port 已經開了，prometheus已經設定好。&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/131-fig.1.jpg&quot; alt=&quot;131-fig.1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;用curl去抓資料也有metrics，看來沒問題了。&lt;/p&gt;
+&lt;p&gt;想說可以結案了，但是（就怕這個但是），裏面沒有queue的資料，&lt;br /&gt;
+所以看不到每個queue的message rate&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/131-fig.2.jpg&quot; alt=&quot;131-fig.2.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;撈了相關的metric裏面也沒有Queue的名稱，可供filter&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/rabbitmq/rabbitmq-prometheus/blob/master/metrics.md&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;metrics說明&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;所以，rabitMQ on k8s建好後，只要在prometheus寫個job就能去撈資料了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; - job_name: &#39;rabbitmq&#39;
+   scrape_interval: 30s
+   static_configs:
+     - targets:
+       - &#39;prod-rabbitmq.rabbitmq-system.svc.cluster.local:15692&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;prod-rabbitmq&lt;/code&gt; 指的是service name.&lt;/p&gt;
+&lt;p&gt;然後，grafana dashboard可以用 &lt;a href=&quot;https://grafana.com/grafana/dashboards/10991-rabbitmq-overview/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;# RabbitMQ-Overview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/131-fig.3.png&quot; alt=&quot;131-fig.3.png&quot; /&gt;&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/Observability/131. rabbitMQ on Prometheus/" />
+        </entry>
+        <entry>
+            <title>
+                124. grafana alert每四小時重發一次
+                
+            </title>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Observability/124. grafana alert每四小時重發一次/</id>
+            <content type="html">
+                &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
+&lt;p&gt;新的Grafana alert manage ，可調整的地方還真多阿..&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;p&gt;告警上線後，只要告警狀態沒解除的話，他每4小時會重發一次。&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/124-fig.1.jpg&quot; alt=&quot;124-fig.1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;到 Alerting 的 Notification policies ，設定Root policy&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/124-fig.2.jpg&quot; alt=&quot;124-fig.2.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;展開 Timing options，設定 Repeat interval&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/124-fig.3.jpg&quot; alt=&quot;124-fig.3.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;ref&lt;br /&gt;
+- &lt;a href=&quot;https://community.grafana.com/t/unified-alerting-alert-triggers-every-4-hours/55053&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Unified Alerting: alert triggers every 4 hours&lt;/a&gt;&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/Observability/124. grafana alert每四小時重發一次/" />
+        </entry>
+        <entry>
+            <title>
+                122. Grafana 8.X以後的alert 參數
+                
+            </title>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Observability/122. Grafana 8.X以後的alert 參數/</id>
+            <content type="html">
+                &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;p&gt;新版的Grafana換了alert ,&lt;br /&gt;
+現在把alert通通整合在一起了，&lt;/p&gt;
+&lt;p&gt;然後我以前用的傳參數方法不能用了，&lt;br /&gt;
+最近都在測試這個東西&lt;/p&gt;
+&lt;h2 id=&quot;print-labels&quot; tabindex=&quot;-1&quot;&gt;Print Labels&lt;/h2&gt;
+&lt;p&gt;如果在summary上面寫&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/122-fig.1.jpg&quot; alt=&quot;122-fig.1.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;會印出此alert上面的預設labels標籤，&lt;/p&gt;
+&lt;p&gt;下圖，是我自訂的標籤&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/122-fig.2.jpg&quot; alt=&quot;122-fig.2.jpg&quot; /&gt;&lt;br /&gt;
+但實際印出來的都沒有出現&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/122-fig.3.jpg&quot; alt=&quot;122-fig.3.jpg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;陣列印出來後，就能夠指定名稱顯示了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/122-fig.4.jpg&quot; alt=&quot;122-fig.4.jpg&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;print-value&quot; tabindex=&quot;-1&quot;&gt;Print Value&lt;/h2&gt;
+&lt;p&gt;這次改使用這個參數&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;會顯示 三個值。&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/122-fig.5.jpg&quot; alt=&quot;122-fig.5.jpg&quot; /&gt;&lt;br /&gt;
+設定所用的條件有兩個，&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/Observability/122-fig.6.jpg&quot; alt=&quot;122-fig.6.jpg&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;結論&quot; tabindex=&quot;-1&quot;&gt;結論&lt;/h2&gt;
+&lt;p&gt;基本使用變數的方法，&lt;br /&gt;
+如果要進階點，可能就需要改用alert template了。&lt;/p&gt;
+&lt;p&gt;alert template參考下面網址&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://community.grafana.com/t/how-to-use-alert-message-templates-in-grafana/67537&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;How To Use Alert Message Templates in Grafana&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/manage-notifications/create-message-template/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Create and edit message templates&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;參考來源&quot; tabindex=&quot;-1&quot;&gt;參考來源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/fundamentals/annotation-label/variables-label-annotation/#templating-labels-and-annotations&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Templating labels and annotations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/fundamentals/annotation-label/how-to-use-labels/#grafana-reserved-labels&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Labels in Grafana Alerting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/Observability/122. Grafana 8.X以後的alert 參數/" />
+        </entry>
+        <entry>
+            <title>
+                0.Observability MOC
+                
+            </title>
+            <updated>2024-02-15T10:18:48Z</updated>
+            <id>https://daimom.vercel.app/Observability/0.Observability MOC/</id>
+            <content type="html">
+                &lt;h1 id=&quot;概念&quot; tabindex=&quot;-1&quot;&gt;概念&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&quot;internal-link is-unresolved&quot; href=&quot;https://daimom.vercel.app/404&quot;&gt;blog.45.網站效能指標一覽（未）&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link is-unresolved&quot; href=&quot;https://daimom.vercel.app/404&quot;&gt;96. SRE監控的四大指標及SLI、SLO、SLA&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;grafana&quot; tabindex=&quot;-1&quot;&gt;Grafana&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/24.grafana%E8%A8%AD%E8%A8%88%E7%AF%87-%E7%AC%AC%E4%BA%8C%E5%80%8BY%E8%BB%B8/&quot;&gt;24.grafana設計篇-第二個Y軸&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/25.%E5%9C%A8GKE%E4%B8%8A%E7%9A%84grafana%E4%B8%8A%E5%AE%89%E8%A3%9Dgrafana-image-renderer/&quot;&gt;25.在GKE上的grafana上安裝grafana-image-renderer&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/26.grafana%20alert%20message%20parameters%E5%82%B3%E5%85%A5/&quot;&gt;26.grafana alert message parameters傳入&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/28.Prometheus%E7%9A%84%E5%B0%88%E7%94%A8%E8%AA%9E%E8%A8%80promQL/&quot;&gt;28.Prometheus的專用語言promQL&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/122.%20Grafana%208.X%E4%BB%A5%E5%BE%8C%E7%9A%84alert%20%E5%8F%83%E6%95%B8/&quot;&gt;122. Grafana 8.X以後的alert 參數&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/124.%20grafana%20alert%E6%AF%8F%E5%9B%9B%E5%B0%8F%E6%99%82%E9%87%8D%E7%99%BC%E4%B8%80%E6%AC%A1/&quot;&gt;124. grafana alert每四小時重發一次&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/184.%20grafana%20error%20%20reverse%20proxy%20settings%20on%20istio/&quot;&gt;184. grafana error  reverse proxy settings on istio&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;prometheus&quot; tabindex=&quot;-1&quot;&gt;Prometheus&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/131.%20rabbitMQ%20on%20Prometheus/&quot;&gt;131. rabbitMQ on Prometheus&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/178.%20Install%20Prometheus%20Operator/&quot;&gt;178. Install Prometheus Operator&lt;/a&gt;&lt;br /&gt;
+&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.vercel.app/Observability/179.%20%20install%20Bindplane/&quot;&gt;179.  install Bindplane&lt;/a&gt;&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.vercel.app/Observability/0.Observability MOC/" />
+        </entry>
+        <entry>
+            <title>
                 99. nginx的除錯筆記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Network/99. nginx的除錯筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6760,7 +7194,7 @@ http {
                 92. proxy 代理
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Network/92. proxy 代理/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6824,7 +7258,7 @@ Shadowsocks，基於SOCKS5代理方式的加密協定&lt;/p&gt;
                 182. Fortigate 設定 內部服務負載平衡
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Network/182. Fortigate 設定 內部服務負載平衡/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6870,7 +7304,7 @@ Shadowsocks，基於SOCKS5代理方式的加密協定&lt;/p&gt;
                 176. Nginx cheat sheet
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Network/176. Nginx cheat sheet/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6946,7 +7380,7 @@ networks:
                 169. Nginx的負載平衡
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Network/169. Nginx的負載平衡/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -7039,7 +7473,7 @@ networks:
                 106. zyxel 與 fortigate 建立VPN 點對點通道
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Network/106. zyxel 與 fortigate 建立VPN 點對點通道/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7127,7 +7561,7 @@ diagnose sniffer packet any &amp;quot;host 192.168.103.221 and icmp&amp;quot; 4
                 102. OSI七層
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Network/102. OSI七層/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7167,7 +7601,7 @@ All People Seem To Need Domino&#39;s Pizza&lt;br /&gt;
                 0.Network MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Network/0.Network MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;基礎&quot; tabindex=&quot;-1&quot;&gt;基礎&lt;/h1&gt;
@@ -7194,7 +7628,7 @@ All People Seem To Need Domino&#39;s Pizza&lt;br /&gt;
                 php exec ssh 發生 Host key verification failed 錯誤
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/php exec ssh 發生 Host key verification failed 錯誤/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7266,7 +7700,7 @@ echo &amp;quot;return:&amp;quot;.$return_var;
                 93. shellscript解析
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/93. shellscript解析/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7342,7 +7776,7 @@ echo  -e &amp;quot;&amp;gt;&amp;gt;&amp;gt; How to using? Please visit : $manual
                 65. Linux command - grep
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/65. Linux command - grep/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7380,7 +7814,7 @@ echo  -e &amp;quot;&amp;gt;&amp;gt;&amp;gt; How to using? Please visit : $manual
                 63.alpine linux apk ERROR unable to select packages
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/63.alpine linux apk ERROR unable to select packages/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7418,7 +7852,7 @@ echo  -e &amp;quot;&amp;gt;&amp;gt;&amp;gt; How to using? Please visit : $manual
                 6. 編譯ffmpeg 硬體加速的坑
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/6. 編譯ffmpeg 硬體加速的坑/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7506,7 +7940,7 @@ ref. &lt;a href=&quot;https://arnon.dk/matching-sm-architectures-arch-and-gencod
                 51.curl 筆記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/51.curl 筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7614,7 +8048,7 @@ curl 可以改成下面的指令&lt;/p&gt;
                 49.npm 與 yarn 比較
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/49.npm 與 yarn 比較/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7686,7 +8120,7 @@ curl 可以改成下面的指令&lt;/p&gt;
                 48.SSH無法連線，REMOTE HOST IDENTIFICATION HAS CHANGED
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/48.SSH無法連線，REMOTE HOST IDENTIFICATION HAS CHANGED/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7713,7 +8147,7 @@ curl 可以改成下面的指令&lt;/p&gt;
                 33. centos 7安裝redis 改port
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/33. centos 7安裝redis 改port/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7769,7 +8203,7 @@ sudo systemctl status redis
                 173. Linux殭屍程式
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/173. Linux殭屍程式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7798,7 +8232,7 @@ sudo systemctl status redis
                 171. linux top指令詳解
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/171. linux top指令詳解/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -8051,7 +8485,7 @@ sudo systemctl status redis
                 165. Linux網路追蹤工具- MTR
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/165. Linux網路追蹤工具- MTR/</id>
             <content type="html">
                 &lt;h2 id=&quot;mtr&quot; tabindex=&quot;-1&quot;&gt;mtr&lt;/h2&gt;
@@ -8134,7 +8568,7 @@ RTT (Round Trip Time) 亦可稱為往返時間&lt;/p&gt;
                 163.Shell的區別及查詢
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/163.Shell的區別及查詢/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8168,7 +8602,7 @@ zsh =&amp;gt;  ~/.zshrc
                 16.dustise sleep 測試工具簡介
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/16.dustise sleep 測試工具簡介/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -8268,7 +8702,7 @@ jq&lt;br /&gt;
                 134. 關閉ssh連線後，仍可執行程式
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/134. 關閉ssh連線後，仍可執行程式/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -8324,7 +8758,7 @@ yum install screen
                 133. shell script字串處理
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/133. shell script字串處理/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -8376,7 +8810,7 @@ set -x 是屬於xtrace的應用，用來除錯的。&lt;br /&gt;
                 132. shell script 雙引號與單引號
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/132. shell script 雙引號與單引號/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -8441,7 +8875,7 @@ a=B  &lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-
                 116. 安裝linux server 基本設定
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/116. 安裝linux server 基本設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -8502,7 +8936,7 @@ a=B  &lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-
                 114. alpine linux 宣告變數,error bad variable name
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/114. alpine linux 宣告變數,error bad variable name/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -8538,7 +8972,7 @@ helloworlda
                 108. linux shell 進階指令
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/108. linux shell 進階指令/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -8663,7 +9097,7 @@ ls -F | grep &#92;/$  # 檔案名稱的最後如果有/表示是folder
                 0.Linux MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Linux/0.Linux MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;basic&quot; tabindex=&quot;-1&quot;&gt;basic&lt;/h1&gt;
@@ -8698,7 +9132,7 @@ ls -F | grep &#92;/$  # 檔案名稱的最後如果有/表示是folder
                 GCP費用
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/Price/GCP費用/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8748,7 +9182,7 @@ ref. &lt;a href=&quot;https://blog.cloud-ace.tw/google-cloud-platform/pricing/gc
                 GCP CPU用途
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/Price/GCP CPU用途/</id>
             <content type="html">
                 &lt;h1 id=&quot;官方建議&quot; tabindex=&quot;-1&quot;&gt;官方建議&lt;/h1&gt;
@@ -8828,7 +9262,7 @@ ref.&lt;a href=&quot;https://cloud.google.com/compute/docs/general-purpose-machi
                 180. GCP 監控費用
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/Price/180. GCP 監控費用/</id>
             <content type="html">
                 &lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
@@ -8929,7 +9363,7 @@ ref.&lt;a href=&quot;https://cloud.google.com/compute/docs/general-purpose-machi
                 126. GCP 硬碟費用比較
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/Price/126. GCP 硬碟費用比較/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -8961,7 +9395,7 @@ ref.&lt;a href=&quot;https://cloud.google.com/compute/docs/general-purpose-machi
                 97. Anthos 初體驗
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/97. Anthos 初體驗/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9009,7 +9443,7 @@ ref. &lt;a href=&quot;https://cloud.google.com/service-mesh/docs/ui-differences&
                 95.cloud build的問題
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/95.cloud build的問題/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9038,7 +9472,7 @@ cloud build是使用google的浮動ip，&lt;br /&gt;
                 9.GCP網路對外的方式
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/9.GCP網路對外的方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9087,7 +9521,7 @@ ref. &lt;a href=&quot;https://cloud.google.com/nat/docs/using-nat&quot; target=&
                 88.批次修改GCP的label
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/88.批次修改GCP的label/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9142,7 +9576,7 @@ done &amp;lt;lbfr.txt
                 8.GCS使用方式
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/8.GCS使用方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9316,7 +9750,7 @@ fi
                 79. gcloud compute instance 筆記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/79. gcloud compute instance 筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9369,7 +9803,7 @@ product 為 key值&lt;/p&gt;
                 5. Google Cloud Function限制
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/5. Google Cloud Function限制/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -9400,7 +9834,7 @@ product 為 key值&lt;/p&gt;
                 46.列出GCE的所有VM
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/46.列出GCE的所有VM/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9431,7 +9865,7 @@ networkInterfaces[].subnetwork)&amp;quot; | sort -k 5 | grep -E &#39;gateway.*te
                 46.GCE機器列表內的CPU個數
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/46.GCE機器列表內的CPU個數/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9485,7 +9919,7 @@ done
                 19. GCE硬碟增加容量大小
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/19. GCE硬碟增加容量大小/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -9585,7 +10019,7 @@ Couldn&#39;t find valid filesystem superblock.&lt;/p&gt;
                 181. cloudstorage無法使用cloudflare轉址
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/181. cloudstorage無法使用cloudflare轉址/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9616,7 +10050,7 @@ client到origin server 都使用ssl連線後，就掛了，&lt;br /&gt;
                 17. Gcloud AttributeError module importlib has no attribute util
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/17. Gcloud AttributeError module importlib has no attribute util/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -9650,7 +10084,7 @@ gcloud components update          # 更新gcloud
                 164.gcloud install by bash
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/164.gcloud install by bash/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9703,7 +10137,7 @@ echo &amp;quot;30 1 * * 1 root /bin/bash ${SCRIPTPATH}/update-cert.sh&amp;quot; 
                 161. GKE利用pubsub通知訊息到discord
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/161. GKE利用pubsub通知訊息到discord/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9785,7 +10219,7 @@ ref. &lt;a href=&quot;https://cloud.google.com/pubsub/docs/overview?hl=zh-cn&quo
                 142.gcs cors設定
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/142.gcs cors設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -9823,7 +10257,7 @@ ref. &lt;a href=&quot;https://cloud.google.com/pubsub/docs/overview?hl=zh-cn&quo
                 141. gcs自動刪除檔案
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/141. gcs自動刪除檔案/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -9867,7 +10301,7 @@ ref. &lt;a href=&quot;https://cloud.google.com/pubsub/docs/overview?hl=zh-cn&quo
                 140. gcs 掛載domain
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/140. gcs 掛載domain/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -9957,7 +10391,7 @@ google管理，不用管，時間到會自己展延，前提是你必須要有�
                 135. gsutil整批複製
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/135. gsutil整批複製/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10023,7 +10457,7 @@ done &amp;lt; keepfile-sort.csv
                 130. Google IAP ssh失敗
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/130. Google IAP ssh失敗/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10091,7 +10525,7 @@ ref.&lt;br /&gt;
                 13.騰訊雲連接GOOGLE雲
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/13.騰訊雲連接GOOGLE雲/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10234,7 +10668,7 @@ GCP-&amp;gt;VPC網路-&amp;gt;路徑&lt;/li&gt;
                 129. nginx 掛載gcs
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/129. nginx 掛載gcs/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10595,7 +11029,7 @@ spec:
                 128. 解決 the gcp auth plugin is deprecated in v1.22+
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/128. 解決 the gcp auth plugin is deprecated in v1.22+/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10648,7 +11082,7 @@ To learn more, consult &lt;a href=&quot;https://cloud.google.com/blog/products/c
                 127. fuse device not found, try &#39;modprobe fuse&#39; first
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/127. fuse device not found, try &#39;modprobe fuse&#39; first/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10686,7 +11120,7 @@ gcsfuse sms_backend_backup ./gcs-mount
                 121.cloudCDN設定
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/121.cloudCDN設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -10716,7 +11150,7 @@ gcsfuse sms_backend_backup ./gcs-mount
                 120. 指令備份cloudSQL及下載
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/120. 指令備份cloudSQL及下載/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10771,7 +11205,7 @@ cloudStorage下載權限&lt;br /&gt;
                 109.GCS臨時下載權限
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/109.GCS臨時下載權限/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -10811,7 +11245,7 @@ gs 的網址，可以到詳細資料內取得 gsutil URI&lt;br /&gt;
                 0.GCP MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/GCP/0.GCP MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;price&quot; tabindex=&quot;-1&quot;&gt;Price&lt;/h1&gt;
@@ -10858,7 +11292,7 @@ gs 的網址，可以到詳細資料內取得 gsutil URI&lt;br /&gt;
                 91. elasticsearch ingest processor補充
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/91. elasticsearch ingest processor補充/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10979,7 +11413,7 @@ Uses a pre-trained data frame analytics model to infer against the data that is 
                 90. elasticsearch ingest pipeline
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/90. elasticsearch ingest pipeline/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11115,7 +11549,7 @@ ingest pipeline就會停止。&lt;/p&gt;
                 84.Elasticsearch筆記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/84.Elasticsearch筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11173,7 +11607,7 @@ cluster.name相同，就會自動發現集群並加入。&lt;/li&gt;
                 80. ECK 8.1 ,APM intergration安裝方式
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/80. ECK 8.1 ,APM intergration安裝方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11207,7 +11641,7 @@ Step 2.&lt;/p&gt;
                 69. kibana錯誤解法 , parent Data too large...
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/69. kibana錯誤解法 , parent Data too large.../</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11294,7 +11728,7 @@ ref. &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/cu
                 68.ECK , api筆記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/68.ECK , api筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11336,7 +11770,7 @@ sort=column name    排序
                 67. ECK，filebeat LOG蒐集遺失
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/67. ECK，filebeat LOG蒐集遺失/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11389,7 +11823,7 @@ memory: 500Mi&lt;/p&gt;
                 61. kibana 查詢語法
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/61. kibana 查詢語法/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11492,7 +11926,7 @@ kubernetes.namespace: istio-sigua and message: &amp;quot;img*&amp;quot;
                 60. ECK的 kibana 警告， server.publicBaseUrl is missing
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/60. ECK的 kibana 警告， server.publicBaseUrl is missing/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11540,7 +11974,7 @@ spec:
                 57.filebeat 補充說明
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/57.filebeat 補充說明/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11872,7 +12306,7 @@ roleRef:
                 55. es基本概念篇
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/55. es基本概念篇/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12053,7 +12487,7 @@ r  ：代表 replica shard&lt;br /&gt;
                 53. apm error
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/53. apm error/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12082,7 +12516,7 @@ r  ：代表 replica shard&lt;br /&gt;
                 52. ILM 設定
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/52. ILM 設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12198,7 +12632,7 @@ r  ：代表 replica shard&lt;br /&gt;
                 43.自建ECK on GKE
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/43.自建ECK on GKE/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12513,7 +12947,7 @@ kubernetes.namespace: istio-sigua and message: &amp;quot;img*&amp;quot;
                 111. filebeat error
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/111. filebeat error/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -12573,7 +13007,7 @@ kubernetes.namespace: istio-sigua and message: &amp;quot;img*&amp;quot;
                 0.EFK MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/EFK/0.EFK MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;概念&quot; tabindex=&quot;-1&quot;&gt;概念&lt;/h1&gt;
@@ -12609,7 +13043,7 @@ kubernetes.namespace: istio-sigua and message: &amp;quot;img*&amp;quot;
                 78. drone k8s-runner 進階設定
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Drone/78. drone k8s-runner 進階設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12788,7 +13222,7 @@ spec:
                 77. drone build Open Source Edition
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Drone/77. drone build Open Source Edition/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12877,7 +13311,7 @@ ENTRYPOINT [&amp;quot;/bin/drone-server&amp;quot;]
                 72. drone on GKE 建立
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Drone/72. drone on GKE 建立/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13262,7 +13696,7 @@ spec:
                 3. 撰寫drone.yml 筆記篇(未)
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Drone/3. 撰寫drone.yml 筆記篇(未)/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13368,7 +13802,7 @@ ref.&lt;br /&gt;
                 119. Drone  plugin-Drone-docker 修改原始檔
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Drone/119. Drone  plugin-Drone-docker 修改原始檔/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -13512,7 +13946,7 @@ export GO111MODULE=on
                 109. drone jsonnet 各種怪招
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Drone/109. drone jsonnet 各種怪招/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -13575,7 +14009,7 @@ fi&#39;
                 10.drone 使用 騰訊雲 K8S及 容器鏡像服務
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Drone/10.drone 使用 騰訊雲 K8S及 容器鏡像服務/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13685,7 +14119,7 @@ ref.&lt;a href=&quot;https://stackoverflow.com/questions/43441454/docker-login-a
                 0.Drone MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Drone/0.Drone MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;建置&quot; tabindex=&quot;-1&quot;&gt;建置&lt;/h1&gt;
@@ -13706,7 +14140,7 @@ ref.&lt;a href=&quot;https://stackoverflow.com/questions/43441454/docker-login-a
                 32. nuxtJS 的 Dockerfile
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/32. nuxtJS 的 Dockerfile/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13762,7 +14196,7 @@ CMD [ &amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot; ]
                 29.Dockerfile echo something
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/29.Dockerfile echo something/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13792,7 +14226,7 @@ CMD [ &amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot; ]
                 170. Docker啓用GPU
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/170. Docker啓用GPU/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -13873,7 +14307,7 @@ networks:
                 168. Docker build失敗跳出killed
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/168. Docker build失敗跳出killed/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -13907,7 +14341,7 @@ ref. &lt;a href=&quot;https://github.com/pytorch/pytorch/issues/6935&quot; targe
                 157. Docker NGINX-Certbot 自動跟Let&#39;sEncrytp取得憑證
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/157. Docker NGINX-Certbot 自動跟Let&#39;sEncrytp取得憑證/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -14034,7 +14468,7 @@ ref.&lt;br /&gt;
                 154. PaddlePaddle 打包image
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/154. PaddlePaddle 打包image/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -14086,7 +14520,7 @@ ENTRYPOINT [&amp;quot;gunicorn&amp;quot;,&amp;quot;-c&amp;quot; ,&amp;quot;gunic
                 152. 硬碟空間不足，無法進入容器
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/152. 硬碟空間不足，無法進入容器/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -14155,7 +14589,7 @@ systemctl restart docker
                 138. gerapy+scrapyd+mongo爬蟲整套流程
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/138. gerapy+scrapyd+mongo爬蟲整套流程/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -14351,7 +14785,7 @@ networks:
                 115. .net core 打包dockerfile
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/115. .net core 打包dockerfile/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -14411,7 +14845,7 @@ RUN for file in $(ls *.csproj); do mkdir -p ./${file%.*}/ &amp;amp;&amp;amp; mv 
                 112. pyenchant &amp; opencc error fix
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/112. pyenchant &amp; opencc error fix/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -14503,7 +14937,7 @@ ENTRYPOINT [&amp;quot;python3&amp;quot;, &amp;quot;Speech.py&amp;quot;]
                 0.Container MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Container/0.Container MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;docker-debug&quot; tabindex=&quot;-1&quot;&gt;Docker Debug&lt;/h1&gt;
@@ -14525,7 +14959,7 @@ ENTRYPOINT [&amp;quot;python3&amp;quot;, &amp;quot;Speech.py&amp;quot;]
                 47. GO get 參數
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/Golang/47. GO get 參數/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14555,7 +14989,7 @@ ENTRYPOINT [&amp;quot;python3&amp;quot;, &amp;quot;Speech.py&amp;quot;]
                 40. golang 重新讀取設定檔的方法
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/Golang/40. golang 重新讀取設定檔的方法/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14618,7 +15052,7 @@ ENTRYPOINT [&amp;quot;sh&amp;quot;,&amp;quot;-x&amp;quot;,&amp;quot;/init.sh&amp
                 155. scrapy爬暗黑編年史的世界王時間
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/Golang/155. scrapy爬暗黑編年史的世界王時間/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -14689,7 +15123,7 @@ ref. &lt;a href=&quot;https://stackoverflow.com/questions/53074642/scrapy-scrapi
                 59. git refs，branch 跟 tag是一樣的。
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/59. git refs，branch 跟 tag是一樣的。/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14733,7 +15167,7 @@ git show apm2
                 38.正則取代，留下特定字串
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/38.正則取代，留下特定字串/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14775,7 +15209,7 @@ git show apm2
                 22.telegram api使用
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/22.telegram api使用/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14840,7 +15274,7 @@ ezioflaggernotfiy就是我的chatid，&lt;br /&gt;
                 145. git submodule 下載失敗
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/145. git submodule 下載失敗/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -14897,7 +15331,7 @@ git config user.email
                 110.github action pipeline筆記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/110.github action pipeline筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14972,7 +15406,7 @@ git config user.email
                 107. vscode 忽略設定同步
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/107. vscode 忽略設定同步/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -15012,7 +15446,7 @@ git config user.email
                 0.Code MOC
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/Code/0.Code MOC/</id>
             <content type="html">
                 &lt;h2 id=&quot;api&quot; tabindex=&quot;-1&quot;&gt;API串接&lt;/h2&gt;
@@ -15039,7 +15473,7 @@ git config user.email
                 193. Obsidian發佈到github.io
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/193. Obsidian發佈到github.io/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15175,6 +15609,9 @@ runs:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;這樣只要推上去main就會觸發動作了(注意排版)。&lt;/p&gt;
 &lt;p&gt;ref. &lt;a href=&quot;https://gugod.org/2021/02/run-twitter-bot-with-github-actions/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;以 GitHub Action 來發推文&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;或者是直接手動部署，&lt;br /&gt;
+在public_vercel的github action選擇你的Action ，再選 Run workflow&lt;br /&gt;
+&lt;img src=&quot;https://daimom.vercel.app/img/user/193-fig.6.jpg&quot; alt=&quot;193-fig.6.jpg&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;程式裏面的 &lt;code&gt;$ &lt;/code&gt; 是要到repository裏面設定。&lt;br /&gt;
 &lt;img src=&quot;https://daimom.vercel.app/img/user/193-fig.5.jpg&quot; alt=&quot;193-fig.5.jpg&quot; /&gt;&lt;br /&gt;
 也可以直接輸入你的email，反正email這東西應該已經...。&lt;br /&gt;
@@ -15196,7 +15633,7 @@ runs:
                 191. Steam deck安裝除錯記
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/191. Steam deck安裝除錯記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15355,7 +15792,7 @@ runs:
                 190. cert-manager安裝
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/190. cert-manager安裝/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15449,7 +15886,7 @@ spec:
                 189. 導入Terraform
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/189. 導入Terraform/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15600,7 +16037,7 @@ terraform.rc
                 188. CloudSQL server 查詢記憶體
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/188. CloudSQL server 查詢記憶體/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15652,7 +16089,7 @@ terraform.rc
                 187. ECK的filebeat
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/187. ECK的filebeat/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15845,7 +16282,7 @@ spec:
                 186. istio的Authorization policy(白名單)
                 
             </title>
-            <updated>2024-02-14T10:18:25Z</updated>
+            <updated>2024-02-15T10:18:48Z</updated>
             <id>https://daimom.vercel.app/186. istio的Authorization policy(白名單)/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
