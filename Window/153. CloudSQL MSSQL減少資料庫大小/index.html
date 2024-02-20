@@ -3173,7 +3173,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-02-20T10:17:58.163Z';
+        const searchIndexDate = '2024-02-20T22:22:43.714Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3185,9 +3185,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-02-20T10:17:58.163Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-02-20T22:22:43.714Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-02-20T10:17:58.163Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-02-20T22:22:43.714Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3487,10 +3487,10 @@ ORDER BY
 <ol start="3">
 <li>刪除完後，可以先做交易記錄檔壓縮</li>
 </ol>
-<pre><code class="language-sql">ALTER DATABASE table_name SET RECOVERY simple
-use table_name
+<pre><code class="language-sql">ALTER DATABASE DB_name SET RECOVERY simple
+use DB_name
 go
-dbcc shrinkfile('table_name_log',2)
+dbcc shrinkfile('DB_name_log',2)
 
 ALTER DATABASE table_name SET RECOVERY FULL
 </code></pre>
@@ -3498,7 +3498,7 @@ ALTER DATABASE table_name SET RECOVERY FULL
 <li>壓縮DB，將空間釋放，可以用指令，也可以直接用SSMS操作<br>
 指令，可以跟step 3 一起動作</li>
 </ol>
-<pre><code class="language-sql">1.  DBCC SHRINKDATABASE(N'Stage_db' )
+<pre><code class="language-sql">1.  DBCC SHRINKDATABASE(N'DB_name' )
 </code></pre>
 <p>或是直接照圖操作<br>
 <picture src="/img/user/Window/153-fig.1.jpg" alt="153-fig.1.jpg"><source       media="(max-width:480px)"
