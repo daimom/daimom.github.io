@@ -3004,6 +3004,50 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/197. Grafana 以及Prometheus 除錯方式/">Grafana以及Prometheus 除錯方式 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/198. SRE好文連結/">SRE好文連結 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/200. Net core SDK安裝至container/">200. Net core SDK安裝至container </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/202. GCP多帳號切換/">GCP多帳號切換 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3173,7 +3217,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-03-13T10:18:25.410Z';
+        const searchIndexDate = '2024-03-14T10:18:30.154Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3185,9 +3229,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-03-13T10:18:25.410Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-03-14T10:18:30.154Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-13T10:18:25.410Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-14T10:18:30.154Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3486,6 +3530,7 @@ ref.<a href="https://github.com/servicemesher/istio-knowledge-map" target="_blan
  istioctl install
 </code></pre>
 <h2 id="移除安裝" tabindex="-1">移除安裝</h2>
+<p>1.20指令更改為  <code>istioctl uninstall -y --purge</code></p>
 <p><code>istioctl x uninstall --purge</code><br>
 (注意 purge會把共用的東西通通刪光光，不使用purge也可刪除，但會留下 deployment以及 service)<br>
 istioctl x uninstall -f /Users/ezio_liu/Documents/k8s/Sample-Yaml/istio-sample-newingeressway.yaml   （當初安裝的yaml)</p>
