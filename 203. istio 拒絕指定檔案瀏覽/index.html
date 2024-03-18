@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>GKE使用GPU</title>
+    <title>istio 拒絕指定檔案瀏覽</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -1619,7 +1619,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/k8s/GKE/4. GKE使用GPU/">GKE使用GPU </a>
                 </div>
@@ -3052,7 +3052,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/203. istio 拒絕指定檔案瀏覽/">istio 拒絕指定檔案瀏覽 </a>
                 </div>
@@ -3474,7 +3474,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">GKE使用GPU</h1>
+          <h1 data-note-icon="">istio 拒絕指定檔案瀏覽</h1>
         
         <div class="header-meta">
           
@@ -3484,7 +3484,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #⎈
+                    #⛵️
                   </a>
                 
               
@@ -3495,142 +3495,93 @@
       </header>
       
       
-      <h2 id="前言" tabindex="-1">前言</h2>
-<p>接了一個工作，要幫人在GKE上面生一個能夠使用GPU的叢集，並且佈署。</p>
-<h2 id="正文" tabindex="-1">正文</h2>
-<p>要使用Google上面的 GPU，GKE版本要到1.9以上，<br>
-節點池要到1.11.3以上。<br>
-另外，GPU只支援通用N1的機器支援，其他細項 請詳閱 <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpus?_ga=2.80461332.-2097975552.1599111033#availability" target="_blank" class="external-link">Google 運行 GPU</a></p>
-<p>可用性建議先用<br>
-gcloud compute accelerator-types list<br>
-看一下你的區域支援哪些顯卡，<br>
-像我這邊的是  asia-east1-a ，就只支援特定顯卡。</p>
-<p><picture src="/img/user/k8s/GKE/4.%20fig-1.jpg" alt="4. fig-1.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/CWwMCZJDLa-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/CWwMCZJDLa-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/CWwMCZJDLa-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/CWwMCZJDLa-700.jpeg"
-        ><img       class=""
-      src="/img/user/k8s/GKE/4.%20fig-1.jpg"
-      alt="4. fig-1.jpg"
-      width=""
-      ></picture></p>
-<p>到 <a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpus?_ga=2.80461332.-2097975552.1599111033#installing_drivers" target="_blank" class="external-link">安裝 NVIDIA GPU 設備驅動程序</a>，這邊基本上都沒問題。</p>
-<p>kubectl apply -f <a href="https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml" target="_blank" class="external-link">https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml</a></p>
-<p>這主要會裝在每個節點上的Daemonset，當pod起來後，會自動在pod上面安裝驅動程式。<br>
-所以必須檢查一下，看pod是否有起來。<br>
-<picture src="/img/user/k8s/GKE/4.%20fig-2.jpg" alt="4. fig-2.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/znkDx3y1f0-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/znkDx3y1f0-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/znkDx3y1f0-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/znkDx3y1f0-700.jpeg"
-        ><img       class=""
-      src="/img/user/k8s/GKE/4.%20fig-2.jpg"
-      alt="4. fig-2.jpg"
-      width=""
-      ></picture></p>
-<p>也可以執行<br>
-kubectl describe node -l <a href="http://cloud.google.com/gke-accelerator" target="_blank" class="external-link">cloud.google.com/gke-accelerator</a> | grep <a href="http://nvidia.com/gpu" target="_blank" class="external-link">nvidia.com/gpu</a><br>
-看顯卡的使用情況</p>
-<p>當執行下一步驟<a href="https://cloud.google.com/kubernetes-engine/docs/how-to/gpus?_ga=2.80461332.-2097975552.1599111033#pods_gpus" target="_blank" class="external-link">配置 Pod 以使用 GPU</a>時，這邊就會有問題了。<br>
-他的image(nvidia/cuda:10.0-runtime-ubuntu18.04)會無法啟動，一直在crashLoopbackoff。</p>
-<p>更新<br>
-在12/24有開工單詢問，他們那邊給出了解法。後續應該會改他們的文件。<br>
-<picture src="/img/user/k8s/GKE/4.%20fig-4.jpg" alt="4. fig-4.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/-96lxMZKmz-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/-96lxMZKmz-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/-96lxMZKmz-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/-96lxMZKmz-700.jpeg"
-        ><img       class=""
-      src="/img/user/k8s/GKE/4.%20fig-4.jpg"
-      alt="4. fig-4.jpg"
-      width=""
-      ></picture><br>
-google的回覆如下</p>
-<p>按照文檔簡單使用“command: [&quot;/bin/bash&quot;]”測試。此時bash執行後立刻退出，故pod被重啟。<br>
-你們可以嘗試使用以下死循環避免這個問題：</p>
-<pre><code>        command: [ &quot;/bin/sh&quot;, &quot;-c&quot;, &quot;--&quot; ]
-        args: [ &quot;while true; do sleep 600; done;&quot; ]
+      <h1 id="前言" tabindex="-1">前言</h1>
+<p>接到個需求，要限定網站的某個副檔名不能被瀏覽。</p>
+<h1 id="正文" tabindex="-1">正文</h1>
+<p>Authorization-policy的yaml</p>
+<p>Rule規則分成三大塊</p>
+<p>From<br>
+請求來源<br>
+To<br>
+請求目的<br>
+When<br>
+指定的請求附加條件</p>
+<h3 id="to" tabindex="-1">To</h3>
+<p>nginx查一下，是有類似的東西。<br>
+但istio我看了官方文件，<br>
+寫法是</p>
+<pre><code>- to:
+  - operation:
+      paths: [&quot;/user/profile/*&quot;]
 </code></pre>
-<p>所以，可以改成下面的YAML，就能正常執行了。</p>
-<p>apiVersion: v1<br>
-kind: Pod<br>
-metadata:<br>
-name: gpu-pod<br>
-spec:<br>
-containers:</p>
+<p>目前只有支援單個 <code>*</code></p>
 <ul>
-<li>name: digits-container<br>
-image: nvidia/cuda:10.0-runtime-ubuntu18.04<br>
-command: [ &quot;/bin/sh&quot;, &quot;-c&quot;, &quot;--&quot; ]<br>
-args: [ &quot;while true; do sleep 600; done;&quot; ]<br>
-resources:<br>
-limits:<br>
-<a href="http://nvidia.com/gpu:" target="_blank" class="external-link">nvidia.com/gpu:</a> 1</li>
+<li>Exact match: <code>abc</code> will match on value <code>abc</code>.<br>
+完全匹配： <code>abc</code> 將匹配值 <code>abc</code> 。</li>
+<li>Prefix match: <code>abc*</code> will match on value <code>abc</code> and <code>abcd</code>.<br>
+前綴匹配： <code>abc*</code> 將匹配值 <code>abc</code> 和 <code>abcd</code> 。</li>
+<li>Suffix match: <code>*abc</code> will match on value <code>abc</code> and <code>xabc</code>.<br>
+後綴匹配： <code>*abc</code> 將匹配值 <code>abc</code> 和 <code>xabc</code> 。</li>
+<li>Presence match: <code>*</code> will match when value is not empty.<br>
+存在匹配：當值不為空時， <code>*</code> 將匹配。</li>
 </ul>
-<p>以下也可以使用<br>
-最後的解法是，不要用他的image。<br>
-完整 YAML</p>
-<p>apiVersion: v1<br>
-kind: Pod<br>
-metadata:<br>
-name: gpu-pod<br>
-spec:<br>
-containers:<br>
-- name: digits-container<br>
-image: nvidia/digits:6.0<br>
-resources:<br>
-limits:<br>
-<a href="http://nvidia.com/gpu:" target="_blank" class="external-link">nvidia.com/gpu:</a> 1</p>
-<p>佈署完後，執行<br>
-kubectl exec gpu-pod  -- nvidia-smi<br>
-這段話的意思是，在gpu-pod裡面執行 nvidia-smi的指令<br>
-正常的話，會顯示如下</p>
-<p><picture src="/img/user/k8s/GKE/4.%20fig-3.jpg" alt="4. fig-3.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/fhEhJrVaDB-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/fhEhJrVaDB-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/fhEhJrVaDB-566.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/fhEhJrVaDB-566.jpeg"
-        ><img       class=""
-      src="/img/user/k8s/GKE/4.%20fig-3.jpg"
-      alt="4. fig-3.jpg"
-      width=""
-      ></picture></p>
-<p>下面參考的文件，可以看看，但目前只需要做到上面那段『安裝 NVIDIA GPU 設備驅動程序』的指令即可<br>
-ref.<br>
-<a href="https://github.com/NVIDIA/k8s-device-plugin/issues/106" target="_blank" class="external-link">CrashLoopBackOff message wen running GPU Jobs example and others</a><br>
-<a href="https://gist.github.com/danisla/77afbb88f215d116f1905f723d3d879d" target="_blank" class="external-link">GPU Sharing on GKE DaemonSet</a><br>
-<a href="https://www.hwchiu.com/gpu-gke.html" target="_blank" class="external-link">Install GPU in GKE(Google Kubernetes Engine)（中）</a></p>
-<p>查詢各有哪些VM使用GPU的指令<br>
-gcloud compute instances list --format=&quot;table(guestAccelerators.acceleratorCount, name)&quot;</p>
+<p>現在的目標是要阻擋 index-erscvs.js.map ，禁止任何人觀看。<br>
+但 index-erscvs.js 不能被deny</p>
+<p>於是</p>
+<pre><code>kind: AuthorizationPolicy
+metadata:
+  name: frontend-map-policy
+spec:
+  selector:
+    matchLabels:
+      group: frontend
+  action: DENY
+  rules:
+    - to:
+      - operation:
+          hosts: [&quot;abc.def.com&quot;]
+          ports: [&quot;80&quot;]
+          paths: [&quot;*.js.map&quot;]
+</code></pre>
+<p>優先順序評估表 <code>Custom &gt; Deny &gt; Allow</code></p>
+<p>ref. <a href="https://istio.io/latest/docs/reference/config/security/authorization-policy" target="_blank" class="external-link">Authorization Policy</a></p>
+<h3 id="when" tabindex="-1">When</h3>
+<p>這邊沿用 <a class="internal-link" data-note-icon="" href="/186. istio的Authorization policy(白名單)/">186. istio的Authorization policy(白名單)</a> 的方式，<br>
+設定白名單。</p>
+<p>於是，下面的設定方式，label 是 group=frontend的deploy，<br>
+不允許訪問<code>*.js.map</code>的檔案，除了來源是 <code>123.123.123.123</code></p>
+<pre><code>apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: frontend-map-policy
+spec:
+  selector:
+    matchLabels:
+      group: frontend
+  action: DENY
+  rules:
+    - to:
+      - operation:
+          hosts: [&quot;abc.def.com&quot;]
+          ports: [&quot;80&quot;]
+          paths: [&quot;*.js.map&quot;]
+    - when:      
+      - key: request.headers[X-Envoy-External-Address]
+        notValues:
+          - &quot;123.123.123.123&quot; 
+</code></pre>
+<p>驗證時，可以用下面的兩個指令協助查詢，<br>
+要注意是不是被其他的policy影響了</p>
+<pre><code>for i in {1..20}; do curl -H 'Cache-Control: no-cache, no-store' https://abc.def.com/assets/index-d74bceac.js -s -o /dev/null -w &quot;%{http_code}\n&quot;; done
+
+
+kubectl logs &lt;pod name&gt; -c istio-proxy
+</code></pre>
+<p>ref.</p>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/security/authorization-policy" target="_blank" class="external-link">Authorization Policy</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/security/conditions/" target="_blank" class="external-link">Authorization Policy Conditions</a></li>
+</ul>
 
       
       
@@ -3875,6 +3826,15 @@ gcloud compute instances list --format=&quot;table(guestAccelerators.accelerator
             		</li>
 
                     <li><a href="#正文">正文</a>
+            
+                <ol>
+                    
+                    <li><a href="#to">To</a>
+            		</li>
+
+                    <li><a href="#when">When</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>

@@ -3048,6 +3048,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/203. istio 拒絕指定檔案瀏覽/">istio 拒絕指定檔案瀏覽 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3217,7 +3228,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-03-17T10:16:57.451Z';
+        const searchIndexDate = '2024-03-18T10:19:05.719Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3229,9 +3240,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-03-17T10:16:57.451Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-03-18T10:19:05.719Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-17T10:16:57.451Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-18T10:19:05.719Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3488,6 +3499,7 @@
 <ul>
 <li><a class="internal-link" data-note-icon="" href="/Mac/iTerm2安裝/">iTerm2安裝</a></li>
 <li><a class="internal-link" data-note-icon="" href="/Mac/鼠鬚管輸入法/">鼠鬚管輸入法</a></li>
+<li><a href="https://mcbopomofo.openvanilla.org/" target="_blank" class="external-link">小麥注音輸入法</a></li>
 <li><a href="https://www.mediaatelier.com/CheatSheet/" target="_blank" class="external-link">cheatSheet</a></li>
 <li><a href="https://free.com.tw/hidden-bar/" target="_blank" class="external-link">hidden Bar</a></li>
 <li><a href="https://www.kocpc.com.tw/archives/280072" target="_blank" class="external-link">Xnip</a></li>

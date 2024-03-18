@@ -3048,6 +3048,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/203. istio 拒絕指定檔案瀏覽/">istio 拒絕指定檔案瀏覽 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3217,7 +3228,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-03-17T10:16:57.451Z';
+        const searchIndexDate = '2024-03-18T10:19:05.719Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3229,9 +3240,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-03-17T10:16:57.451Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-03-18T10:19:05.719Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-17T10:16:57.451Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-18T10:19:05.719Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3487,7 +3498,7 @@
       <h1 id="前言" tabindex="-1">前言</h1>
 <p>最近適逢專案搬家時期，帳號要切來切去，<br>
 結果一切過去就不能用了。<br>
-錯誤就直接寫說，你的B帳號無法在A專案使用。</p>
+錯誤寫，你的B帳號無法在A專案使用。</p>
 <h1 id="正文" tabindex="-1">正文</h1>
 <p>OS是 MacOS，window會不會有相同錯誤不清楚</p>
 <p>試了幾次，切換GCP帳號的指令都沒用，<br>
