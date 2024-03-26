@@ -3059,6 +3059,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/steamDeck 的 Cheat Engine替代品/">steamDeck 的 Cheat Engine替代品 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3228,7 +3239,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-03-25T10:18:25.828Z';
+        const searchIndexDate = '2024-03-26T10:19:25.474Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3240,9 +3251,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-03-25T10:18:25.828Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-03-26T10:19:25.474Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-25T10:18:25.828Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-26T10:19:25.474Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3546,6 +3557,7 @@ spec:
 <p>優先順序評估表 <code>Custom &gt; Deny &gt; Allow</code></p>
 <p>ref. <a href="https://istio.io/latest/docs/reference/config/security/authorization-policy" target="_blank" class="external-link">Authorization Policy</a></p>
 <h3 id="when" tabindex="-1">When</h3>
+<h5 id="values-cidr" tabindex="-1">注意，values不支援CIDR，需用* 代替私有網段</h5>
 <p>這邊沿用 <a class="internal-link" data-note-icon="" href="/186. istio的Authorization policy(白名單)/">186. istio的Authorization policy(白名單)</a> 的方式，<br>
 設定白名單。</p>
 <p>於是，下面的設定方式，label 是 group=frontend的deploy，<br>
@@ -3565,22 +3577,40 @@ spec:
           hosts: [&quot;abc.def.com&quot;]
           ports: [&quot;80&quot;]
           paths: [&quot;*.js.map&quot;]
-    - when:      
+      when:      
       - key: request.headers[X-Envoy-External-Address]
         notValues:
           - &quot;123.123.123.123&quot; 
 </code></pre>
-<p>驗證時，可以用下面的兩個指令協助查詢，<br>
+<p>驗證時，可以用下面的指令協助查詢，<br>
 要注意是不是被其他的policy影響了</p>
-<pre><code>for i in {1..20}; do curl -H 'Cache-Control: no-cache, no-store' https://abc.def.com/assets/index-d74bceac.js -s -o /dev/null -w &quot;%{http_code}\n&quot;; done
+<pre><code># 先開啟debug模式，資訊比較多，查完後將deploy重啟即可
+istioctl proxy-config log deploy/httpbin --level &quot;rbac:debug&quot; | grep rbac
 
+for i in {1..20}; do curl -H 'Cache-Control: no-cache, no-store' https://abc.def.com/assets/index-d74bceac.js -s -o /dev/null -w &quot;%{http_code}\n&quot;; done
 
 kubectl logs &lt;pod name&gt; -c istio-proxy
+</code></pre>
+<h2 id="注意" tabindex="-1">注意</h2>
+<p>when 跟 to 如果用 下面方式的話，表示是兩條規則</p>
+<pre><code>...
+	- to:
+		...
+	- when:
+		...
+</code></pre>
+<p>這樣才是同一條規則，<br>
+我犯了這個蠢錯誤</p>
+<pre><code>	- to:
+		...
+	  when:
+		...
 </code></pre>
 <p>ref.</p>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/security/authorization-policy" target="_blank" class="external-link">Authorization Policy</a></li>
 <li><a href="https://istio.io/latest/docs/reference/config/security/conditions/" target="_blank" class="external-link">Authorization Policy Conditions</a></li>
+<li><a href="https://blog.csdn.net/hxpjava1/article/details/117330067" target="_blank" class="external-link">authorizationPolicy詳解</a></li>
 </ul>
 
       
@@ -3833,6 +3863,15 @@ kubectl logs &lt;pod name&gt; -c istio-proxy
             		</li>
 
                     <li><a href="#when">When</a>
+            
+                <ol>
+                    
+                    <li><a href="#values-cidr">注意，values不支援CIDR，需用* 代替私有網段</a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#注意">注意</a>
             		</li>
                 </ol>
             		</li>

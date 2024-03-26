@@ -3059,6 +3059,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/steamDeck 的 Cheat Engine替代品/">steamDeck 的 Cheat Engine替代品 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3228,7 +3239,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-03-25T10:18:25.828Z';
+        const searchIndexDate = '2024-03-26T10:19:25.474Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3240,9 +3251,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-03-25T10:18:25.828Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-03-26T10:19:25.474Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-25T10:18:25.828Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-26T10:19:25.474Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3548,7 +3559,7 @@ e.g.   curl -v 123.213.123.213 -H &quot;Host:abc.com&quot;<br>
 <p>額外補充，查詢 Inbound handler</p>
 <pre><code>   istioctl proxy-config listener reviews-v1-54b8794ddf-jxksn
 </code></pre>
-<p>可直接用 istioctl pc 來取帶 proxy-config</p>
+<p>可直接用 istioctl pc 來取代 proxy-config</p>
 <p>ref. <a href="https://jimmysong.io/blog/sidecar-injection-iptables-and-traffic-routing/" target="_blank" class="external-link">Istio 中的 Sidecar 注入及透明流量劫持過程詳解</a></p>
 
       
