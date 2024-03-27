@@ -1,0 +1,3949 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CL21F57N33"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-CL21F57N33');
+    </script>  
+    <title>188. SQL server 查詢記憶體</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({
+        startOnLoad: true,
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js" integrity="sha512-hpZ5pDCF2bRCweL5WoA0/N1elet1KYL5mx3LP555Eg/0ZguaHawxNvEjF6O3rufAChs16HVNhEc6blF/rZoowQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-sv0slik/5O0JIPdLBCR2A3XDg/1U3WuDEheZfI/DI5n8Yqc3h5kjrnr46FGBNiUAJF7rE4LHKwQ/SoSLRKAxEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.115.0/dist/umd/lucide.min.js"></script>
+<script>
+    // Create callout icons
+    window.addEventListener("load", () => {
+        document.querySelectorAll(".callout").forEach((elem) => {
+            const icon = getComputedStyle(elem).getPropertyValue('--callout-icon');
+            const iconName = icon && icon.trim().replace(/^lucide-/, "");
+
+            if (iconName) {
+                const calloutTitle = elem.querySelector(".callout-title");
+
+                if (calloutTitle) {
+                    const calloutIconContainer = document.createElement("div");
+                    const calloutIcon = document.createElement("i");
+
+                    calloutIconContainer.appendChild(calloutIcon);
+                    calloutIcon.setAttribute("icon-name", iconName);
+                    calloutIconContainer.setAttribute("class", "callout-icon");
+                    calloutTitle.insertBefore(calloutIconContainer, calloutTitle.firstChild);
+                }
+            }
+        });
+
+        lucide.createIcons();
+
+        // Collapse callouts
+        Array.from(document.querySelectorAll(".callout.is-collapsible")).forEach((elem) => {
+            elem.querySelector('.callout-title').addEventListener("click", (event) => {
+                if (elem.classList.contains("is-collapsed")) {
+                    elem.classList.remove("is-collapsed");
+                } else {
+                    elem.classList.add("is-collapsed");
+                }
+            });
+        });
+    });
+</script>
+
+
+<script src="https://fastly.jsdelivr.net/npm/force-graph@1.43.0/dist/force-graph.min.js"></script>
+
+<script defer src="https://fastly.jsdelivr.net/npm/@alpinejs/persist@3.11.1/dist/cdn.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/alpinejs@3.11.1/dist/cdn.min.js" defer></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css" integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script src="https://fastly.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<link href="/styles/digital-garden-base.css" rel="stylesheet">
+    <link href="/styles/obsidian-base.css" rel="stylesheet">
+    <link href="/styles/_theme.8373b199.css" rel="stylesheet">
+
+
+<link href="/styles/custom-style.css" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+
+
+
+
+
+<style></style>
+    
+    
+  </head>
+  <body class="theme-dark markdown-preview-view markdown-rendered markdown-preview-section ">
+    
+    
+    
+      
+    
+    <div x-init="isDesktop = (window.innerWidth>=1400) ? true: false;" 
+            x-on:resize.window="isDesktop = (window.innerWidth>=1400) ? true : false;" 
+            x-data="{isDesktop: true, showFilesMobile: false}">
+
+        <div x-show.important="!isDesktop" style="display: none;">
+            <nav class="navbar">
+    <div class="navbar-inner">
+        <span style="font-size: 1.5rem; margin-right: 10px;" @click="showFilesMobile=!showFilesMobile"><i  icon-name="menu"></i></span>
+        
+        <a href="/" style="text-decoration: none;">
+            <h1 style="margin: 15px !important;">度估筆記本</h1>
+        </a>
+        
+    </div>
+    
+    
+        <div class="search-button align-icon" onclick="toggleSearch()">
+    <span class="search-icon">
+        <i icon-name="search" ></i>
+    </span>
+    <span class="search-text">
+        <span>Search</span>
+        <span style="font-size: 0.6rem; padding: 2px 2px 0 6px; text-align:center; transform: translateY(4px);" class="search-keys">
+            CTRL + K
+        </span>
+    </span>
+</div>
+    
+</nav>
+        </div>
+        
+        <div x-show="showFilesMobile && !isDesktop" @click="showFilesMobile = false" style="display:none;" class="fullpage-overlay"></div>
+
+      <nav class="filetree-sidebar"  x-show.important="isDesktop || showFilesMobile" style="display: none;">
+        
+         <a href="/" style="text-decoration: none;">
+               <h1 style="text-align:center;">度估筆記本</h1>
+         </a>
+        <div class="badge-base LI-profile-badge" align="center" data-locale="zh_TW" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="yuke-liu-2a9426ab" data-version="v1"></div> 
+        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+         
+        
+            <div style="display: flex; justify-content: center;">
+                <div class="search-button align-icon" onclick="toggleSearch()">
+    <span class="search-icon">
+        <i icon-name="search" ></i>
+    </span>
+    <span class="search-text">
+        <span>Search</span>
+        <span style="font-size: 0.6rem; padding: 2px 2px 0 6px; text-align:center; transform: translateY(4px);" class="search-keys">
+            CTRL + K
+        </span>
+    </span>
+</div>
+            </div>
+        
+         <div class="folder" x-data="{isOpen: true}">
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/193. Obsidian發佈到github.io/">Obsidian發佈到github.io </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/">README </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('⎈ k8s')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">⎈ k8s</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/0.K8s MOC/"> ⎈ K8s MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('⎈ k8s/GKE')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">GKE</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/37.SolrCloud on GKE/">GKE上架設SolrCloud </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/39.solrCloud的初體驗/">solrCloud的初體驗 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/4. GKE使用GPU/">GKE使用GPU </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/41.GKE節點無法自動縮小/">GKE節點無法自動縮小，查錯之旅 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/44.srs 影音串流 on GKE/">srs 影音串流 on GKE </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/50.GKE workload Identity 實地演練/">GKE workload Identity 實地演練 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/56. GKE記錄 nginx log/">GKE記錄 nginx log </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/70. GKE pvc還原/">GKE pvc還原 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/GKE/71.gitlab on GKE 災害還原筆記/">gitlab on GKE 災害還原筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('⎈ k8s/Terraform')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Terraform</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Terraform/147. 用chatGPT學Terraform/">用chatGPT學Terraform </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Terraform/148. Terraform的基本概念/">Terraform的基本概念 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Terraform/149. terraform 部署VM，啓動docker安裝metadata_startup_script/">terraform 部署VM，啓動docker安裝metadata_startup_script </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Terraform/183. Terrafrom 建立private cluster/">Terrafrom 建立private cluster </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Terraform/82. Terraform vs Ansible/">Terraform vs Ansible </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('⎈ k8s/Yaml')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Yaml</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Yaml/12. k8s YAML 小細節/">k8s YAML 小細節 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Yaml/136. 一步步篩選k8s的deploy內容/">一步步篩選k8s的deploy內容 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Yaml/2. k8s yaml撰寫 volume 踩坑篇/">k8s yaml撰寫 volume 踩坑篇 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Yaml/74. kubernetes 批次檢查yaml特定字元/">kubernetes 批次檢查yaml特定字元 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Yaml/85. gke-cronjob筆記/">gke-cronjob筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Yaml/87.kustomize 共用label(optional）/">kustomize 共用label(optional） </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Yaml/94. k8s 細節補充/">k8s 細節補充 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/Yaml/98. k8s中的command與dockerfile的 CMD/">k8s中的command與dockerfile的 CMD </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/101. 批次修改hpa/">批次修改hpa </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/104. rabbitmq operator安裝/">rabbitmq operator安裝 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/105. linux系統時間與k8s/">linux系統時間與k8s </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/118. kubernetes Dashboard/">kubenetes簡易介面 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/123.Helm 使用方式/">Helm 使用方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/137. kubecolor 直觀的kubectl/">kubecolor 直觀的kubectl </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/139. openlens add pod shell or logs button/">openlens增加shell和logs 按鈕 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/143. k8s取得登入憑證/">k8s取得登入憑證 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/144. k8s 的sercret複製/">k8s 的sercret複製 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/151. kubeadm重新產生驗證/">kubeadm重新產生驗證 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/162.查詢已棄用的API/">查詢GKE已棄用的API </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/172. 自建k8s版本升級/">自建k8s版本升級 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/190. cert-manager安裝/">cert-manager安裝 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/192. 自建的k8s拉取private registry/">192. 自建的k8s拉取private registry </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/194. pod debug方式/">pod debug方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/27.K8s的節點選擇與污染/">k8s的節點選擇與污染 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/42.k8s PDB（pod中斷預算）/">k8s PDB（pod中斷預算） </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/76. k8s error,The node was low on resource../">k8s error,The node was low on resource.. </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('⏱ Drone')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">⏱ Drone</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⏱ Drone/0.Drone MOC/"> ⏱ Drone MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⏱ Drone/10.drone 使用 騰訊雲 K8S及 容器鏡像服務/">drone 使用 騰訊雲 K8S及 容器鏡像服務 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⏱ Drone/109. drone jsonnet 各種怪招/">drone jsonnet 各種怪招 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⏱ Drone/119. Drone  plugin-Drone-docker 修改原始檔/">Drone  plugin-Drone-docker 修改原始檔 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⏱ Drone/3. 撰寫drone.yml 筆記篇(未)/">撰寫drone.yml 筆記篇 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⏱ Drone/72. drone on GKE 建立/">drone on GKE 建立 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⏱ Drone/77. drone build Open Source Edition/">drone build Open Source Edition </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⏱ Drone/78. drone k8s-runner 進階設定/">drone k8s-runner 進階設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('☁︎ GCP')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">☁︎ GCP</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/0.GCP MOC/">GCP MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('☁︎ GCP/Price')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Price</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/Price/126. GCP 硬碟費用比較/">GCP 硬碟費用比較 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/Price/180. GCP 監控費用/">GCP 監控費用 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/Price/GCP CPU用途/">GCP CPU用途 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/Price/GCP費用/">GCP費用 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/109.GCS臨時下載權限/">GCS臨時下載權限 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/120. 指令備份cloudSQL及下載/">指令備份cloudSQL及下載 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/121.cloudCDN設定/">cloudCDN設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/127. fuse device not found, try &#39;modprobe fuse&#39; first/">fuse device not found, try &#39;modprobe fuse&#39; first </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/128. 解決 the gcp auth plugin is deprecated in v1.22+/">解決 the gcp auth plugin is deprecated in v1.22+ </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/129. nginx 掛載gcs/">nginx 掛載gcs </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/13.騰訊雲連接GOOGLE雲/">騰訊雲連接GOOGLE雲 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/130. Google IAP ssh失敗/">Google IAP ssh失敗 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/135. gsutil整批複製/">gsutil整批複製 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/140. gcs 掛載domain/">gcs 掛載domain </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/141. gcs自動刪除檔案/">gcs自動刪除檔案 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/142.gcs cors設定/">gcs cors設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/161. GKE利用pubsub通知訊息到discord/">GKE Pub/Sub通知訊息到DC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/164.gcloud install by bash/">使用bash安裝gcloud cli </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/17. Gcloud AttributeError module importlib has no attribute util/">Gcloud AttributeError module importlib has no attribute util </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/181. cloudstorage無法使用cloudflare轉址/">Debian install </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/19. GCE硬碟增加容量大小/">GCE硬碟增加容量大小 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/46.GCE機器列表內的CPU個數/">GCE機器列表內的CPU個數 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/46.列出GCE的所有VM/">列出GCE的所有VM </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/5. Google Cloud Function限制/">Google Cloud Function限制 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/79. gcloud compute instance 筆記/">gcloud compute instance 筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/8.GCS使用方式/">GCS使用方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/88.批次修改GCP的label/">批次修改GCP的label </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/9.GCP網路對外的方式/">GCP網路對外的方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/95.cloud build的問題/">cloud build的問題 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/97. Anthos 初體驗/">Anthos 初體驗 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('☎️ Network')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">☎️ Network</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/0.Network MOC/"> 🌐 Network MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/102. OSI七層/">OSI七層 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/106. zyxel 與 fortigate 建立VPN 點對點通道/">zyxel 與 fortigate 建立VPN 點對點通道 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/169. Nginx的負載平衡/">Nginx的負載平衡 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/176. Nginx cheat sheet/">Nginx cheat sheet </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/182. Fortigate 設定 內部服務負載平衡/">Fortigate 設定 內部服務負載平衡 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/92. proxy 代理/">proxy 代理 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/99. nginx的除錯筆記/">nginx的除錯筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('⛵️ istio')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">⛵️ istio</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/0.istio MOC/"> ⛵️ istio MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/11. istio 與 kiali/">istio 與 kiali </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/14.istio安裝時固定ip/">istio安裝時固定ip </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/15.istio服務無法訪問/">istio服務無法訪問 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/18.istio Virtual Service 跨namespace讀取 DestinationRule/">istio Virtual Service 跨namespace讀取 DestinationRule </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/186. istio的Authorization policy(白名單)/">186. istio的Authorization policy(白名單) </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/20. 訪問istio 內部負載平衡ip/">訪問istio 內部負載平衡ip </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/21. flagger 自動金絲雀佈署 for istio/">istio flagger 自動金絲雀佈署 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/23.istio的 prometheus截取GKE metrics/">istio的 prometheus截取GKE metrics </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/30. istio的virtualservice match比對/">istio的virtualservice match比對 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/31.istio 抓蟲記/">istio 抓蟲記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/34. istio operator 安裝新的 ingress deploy及service/">istio operator 安裝新的 ingress deploy及service </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/35. istio virtualService delegate使用/">istio virtualService delegate使用 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/54. istio 掛載ECK kibana/">istio 掛載ECK kibana </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/62. isito 鏡像流量/">isito 鏡像流量 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/7. Istio安裝及使用/">Istio安裝及使用 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/73. istio sidecar 注入規則/">istio sidecar 注入規則 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/75. istio virtual service 常用參數/">istio virtual service 常用參數 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/89. istio 常見狀態碼/">istio 常見狀態碼 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('🆒 SideProject')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">🆒 SideProject</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🆒 SideProject/125. Google sheet Query/">Google sheet Query函數 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🆒 SideProject/160.Obsidian發佈網站/">Obsidian發佈網站 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('🍎 Mac')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">🍎 Mac</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🍎 Mac/0.ＭAC MOC/"> 🍎 MAC MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🍎 Mac/iTerm2安裝/">iTerm2安裝 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🍎 Mac/永久別名 alias/">mac 永久別名 alias </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🍎 Mac/鼠鬚管輸入法/">鼠鬚管輸入法 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('🐧 Linux')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">🐧 Linux</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/0.Linux MOC/"> 🐧 Linux MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/108. linux shell 進階指令/">linux shell 進階指令 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/114. alpine linux 宣告變數,error bad variable name/">alpine linux 宣告變數,error bad variable name </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/116. 安裝linux server 基本設定/">安裝linux server 基本設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/132. shell script 雙引號與單引號/">shell script 雙引號與單引號 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/133. shell script字串處理/">shell script字串處理 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/134. 關閉ssh連線後，仍可執行程式/">關閉ssh連線後，仍可執行程式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/16.dustise sleep 測試工具簡介/">blog-16.dustise sleep 測試工具簡介 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/163.Shell的區別及查詢/">Shell的區別及查詢 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/165. Linux網路追蹤工具- MTR/">Linux路由追蹤工具 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/171. linux top指令詳解/">linux top指令詳解 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/173. Linux殭屍程式/">殭屍程式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/33. centos 7安裝redis 改port/">centos 7安裝redis 改port </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/48.SSH無法連線，REMOTE HOST IDENTIFICATION HAS CHANGED/">SSH無法連線，REMOTE HOST IDENTIFICATION HAS CHANGED </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/49.npm 與 yarn 比較/">npm 與 yarn 比較 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/51.curl 筆記/">curl 筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/6. 編譯ffmpeg 硬體加速的坑/">編譯ffmpeg 硬體加速的坑 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/63.alpine linux apk ERROR unable to select packages/">alpine linux apk ERROR unable to select packages </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/65. Linux command - grep/">Linux command - grep </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/93. shellscript解析/">shellscript解析 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/php exec ssh 發生 Host key verification failed 錯誤/">1.php exec ssh 發生 Host key verification failed 錯誤 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('🐳 Container')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">🐳 Container</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/0.Container MOC/"> 🐳 Container MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/112. pyenchant &amp; opencc error fix/">python打包dockerfile除錯日記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/115. .net core 打包dockerfile/">.Net Core打包Dockerfile </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/138. gerapy+scrapyd+mongo爬蟲整套流程/">gerapy+scrapyd+mongo爬蟲整套流程 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/152. 硬碟空間不足，無法進入容器/">硬碟空間不足，無法進入容器，清除資料大作戰 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/154. PaddlePaddle 打包image/">python PaddlePaddle 打包image </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/157. Docker NGINX-Certbot 自動跟Let&#39;sEncrytp取得憑證/">NGINX-Certbot 自動跟Let&#39;sEncrytp取得憑證 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/168. Docker build失敗跳出killed/">Docker build失敗跳出killed </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/170. Docker啓用GPU/">Docker啓用GPU </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/29.Dockerfile echo something/">Dockerfile除錯模式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐳 Container/32. nuxtJS 的 Dockerfile/">nuxtJS的Dockerfile </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('👁 Observability')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">👁 Observability</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/0.Observability MOC/"> 👁 Observability MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/122. Grafana 8.X以後的alert 參數/">Grafana 8.X以後的alert 參數 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/124. grafana alert每四小時重發一次/">grafana alert每四小時重發一次 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/131. rabbitMQ on Prometheus/">rabbitMQ on Prometheus </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/178. Install Prometheus Operator/">Install Prometheus Operator </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/179.  install Bindplane/">install Bindplane </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/184. grafana error  reverse proxy settings on istio/">grafana error reverse proxy settings on istio </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/24.grafana設計篇-第二個Y軸/">grafana設計篇-第二個Y軸 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/25.在GKE上的grafana上安裝grafana-image-renderer/">在GKE上的grafana上安裝grafana-image-renderer </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/26.grafana alert message parameters傳入/">grafana alert message parameters傳入 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/👁 Observability/28.Prometheus的專用語言promQL/">Prometheus的專用語言promQL </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('💻 Code')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">💻 Code</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/0.Code MOC/"> 💻 Code MOC  </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('💻 Code/Golang')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">Golang</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/Golang/155. scrapy爬暗黑編年史的世界王時間/">爬蟲暗黑編年史的世界王時間 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/Golang/40. golang 重新讀取設定檔的方法/">Golang 重新讀取設定檔 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/Golang/47. GO get 參數/">GO get 參數 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/107. vscode 忽略設定同步/">vscode 忽略設定同步 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/110.github action pipeline筆記/">github action pipeline筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/145. git submodule 下載失敗/">git submodule 下載失敗 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/22.telegram api使用/">telegram api使用方法 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/38.正則取代，留下特定字串/">正則取代，留下特定字串 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/💻 Code/59. git refs，branch 跟 tag是一樣的。/">git refs，branch 跟 tag是一樣的 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('🖼 Window')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">🖼 Window</span>
+                    </div>
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🖼 Window/113. 微軟官方office 大量授權/">微軟官方office 大量授權 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🖼 Window/174. win10 下載Microsoft Store的檔案/">win10 下載Microsoft Store的檔案 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('🗄 Database')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">🗄 Database</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗄 Database/0.Database MOC/"> 🗄 Database MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗄 Database/150. mysql備份還原指令/">150. mysql備份還原指令 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗄 Database/153. CloudSQL MSSQL減少資料庫大小/">153. CloudSQL MSSQL減少資料庫大小 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗄 Database/166. MSSQL 2017版本差異/">MSSQL版本差異 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink active-note">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗄 Database/188. CloudSQL server 查詢記憶體/">188. SQL server 查詢記憶體 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('🗒 EFK')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">🗒 EFK</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/0.EFK MOC/"> 🗒 Drone MOC   </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/111. filebeat error/">filebeat error </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/187. ECK的filebeat/">187. ECK的filebeat </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/43.自建ECK on GKE/">自建ECK on GKE </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/52. ILM 設定/">ILM 設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/53. apm error/">apm error </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/55. es基本概念篇/">es基本概念篇 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/57.filebeat 補充說明/">filebeat 補充說明 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/60. ECK的 kibana 警告， server.publicBaseUrl is missing/">ECK的 kibana 警告， server.publicBaseUrl is missing </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/61. kibana 查詢語法/">kibana 查詢語法 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/67. ECK，filebeat LOG蒐集遺失/">ECK，filebeat LOG蒐集遺失 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/68.ECK , api筆記/">ECK , api筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/69. kibana錯誤解法 , parent Data too large.../">kibana錯誤解法 , parent Data too large... </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/80. ECK 8.1 ,APM intergration安裝方式/">ECK 8.1 ,APM intergration安裝方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/84.Elasticsearch筆記/">Elasticsearch筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/90. elasticsearch ingest pipeline/">elasticsearch ingest pipeline </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/91. elasticsearch ingest processor補充/">elasticsearch ingest processor補充 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/189. 導入Terraform/">導入Terraform </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/190. cert-manager安裝/">cert-manager安裝 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/191. Steam deck安裝除錯記/">Steam deck安裝筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/195. SRE可觀測性三大支柱/">SRE可觀測性三大支柱 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/196. http健康度偵測/">http健康度偵測 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/197. Grafana 以及Prometheus 除錯方式/">Grafana以及Prometheus 除錯方式 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/198. SRE好文連結/">SRE好文連結 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/200. Net core SDK安裝至container/">200. Net core SDK安裝至container </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/202. GCP多帳號切換/">GCP多帳號切換 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/203. istio 拒絕指定檔案瀏覽/">istio 拒絕指定檔案瀏覽 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/205. Grafana 筆記/">205. Grafana 筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/206. steamDeck 的 Cheat Engine替代品/">steamDeck 的 Cheat Engine替代品 </a>
+                </div>
+            
+        </div>
+        
+    </div>
+      </nav>
+
+    </div>
+
+    
+
+    
+      <div class="search-container" id="globalsearch" onclick="toggleSearch()">
+    <div class="search-box">
+        <input type="search" id="term" placeholder="Start typing...">
+        <div id="search-results"></div>
+        <footer class="search-box-footer">
+            <div class="navigation-hint">
+                <span>Enter to select</span>
+            </div>
+
+            <div class="navigation-hint align-icon">
+                <i  icon-name="arrow-up" aria-hidden="true"></i>
+                <i  icon-name="arrow-down" aria-hidden="true"></i>
+                <span>to navigate</span>
+            </div>
+
+            <div class="navigation-hint">
+                <span>ESC to close</span>
+            </div>
+
+        </footer>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', init, false);
+    document.addEventListener('DOMContentLoaded', setCorrectShortcut, false);
+
+    window.toggleSearch = function () {
+        if (document.getElementById('globalsearch').classList.contains('active')) {
+            document
+                .getElementById('globalsearch')
+                .classList
+                .remove('active');
+        } else {
+            document
+                .getElementById('globalsearch')
+                .classList
+                .add('active');
+            document
+                .getElementById('term')
+                .focus();
+        }
+    }
+
+    window.toggleTagSearch = function (evt) {
+        console.log(evt.textContent);
+        const term = evt.textContent;
+        if (term) {
+            window
+                .document
+                .getElementById('term')
+                .value = term.trim();
+            window.toggleSearch();
+            window.search();
+        }
+    }
+
+    const loadingSvg = `
+    <svg width="100" height="100" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+      <g fill="none" fill-rule="evenodd" transform="translate(1 1)" stroke-width="2">
+          <circle cx="22" cy="22" r="6" stroke-opacity="0">
+              <animate attributeName="r"
+                   begin="1.5s" dur="3s"
+                   values="6;22"
+                   calcMode="linear"
+                   repeatCount="indefinite" />
+              <animate attributeName="stroke-opacity"
+                   begin="1.5s" dur="3s"
+                   values="1;0" calcMode="linear"
+                   repeatCount="indefinite" />
+              <animate attributeName="stroke-width"
+                   begin="1.5s" dur="3s"
+                   values="2;0" calcMode="linear"
+                   repeatCount="indefinite" />
+          </circle>
+          <circle cx="22" cy="22" r="6" stroke-opacity="0">
+              <animate attributeName="r"
+                   begin="3s" dur="3s"
+                   values="6;22"
+                   calcMode="linear"
+                   repeatCount="indefinite" />
+              <animate attributeName="stroke-opacity"
+                   begin="3s" dur="3s"
+                   values="1;0" calcMode="linear"
+                   repeatCount="indefinite" />
+              <animate attributeName="stroke-width"
+                   begin="3s" dur="3s"
+                   values="2;0" calcMode="linear"
+                   repeatCount="indefinite" />
+          </circle>
+          <circle cx="22" cy="22" r="8">
+              <animate attributeName="r"
+                   begin="0s" dur="1.5s"
+                   values="6;1;2;3;4;5;6"
+                   calcMode="linear"
+                   repeatCount="indefinite" />
+          </circle>
+      </g>
+  </svg>`;
+
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function () {
+            var context = this,
+                args = arguments;
+            var later = function () {
+                timeout = null;
+                if (!immediate) 
+                    func.apply(context, args);
+                };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) 
+                func.apply(context, args);
+            };
+    };
+
+    function setCorrectShortcut() {
+        if (navigator.platform.toUpperCase().indexOf('MAC') >= 0) {
+            document
+                .querySelectorAll(".search-keys")
+                .forEach(x => x.innerHTML = "⌘ + K");
+        }
+    }
+
+    function createIndex(posts) {
+        const encoder = (str) => str
+            .toLowerCase()
+            .split(/([^a-z]|[^\x00-\x7F])/)
+        const contentIndex = new FlexSearch.Document({
+            cache: true,
+            charset: "latin:extra",
+            optimize: true,
+            index: [
+                {
+                    field: "content",
+                    tokenize: "reverse",
+                    encode: encoder
+                }, {
+                    field: "title",
+                    tokenize: "forward",
+                    encode: encoder
+                }, {
+                    field: "tags",
+                    tokenize: "forward",
+                    encode: encoder
+                }
+            ]
+        })
+        posts.forEach((p, idx) => {
+            contentIndex.add({
+                id: idx, title: p.title, content: p.content, tags: p.tags //Change to removeHTML
+            })
+        });
+        return contentIndex;
+    }
+
+    async function init() {
+        //init offline search index
+
+        const searchIndexDate = '2024-03-27T04:24:42.098Z';
+        let shouldFetch = true;
+        if(localStorage.getItem("searchIndex")) {
+            let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
+            if(date === searchIndexDate){
+                shouldFetch = false;
+                let index = createIndex(docs);
+                window.docs = docs
+                window.index = index;
+            }        
+        }
+        if(shouldFetch){
+            let docs = await(await fetch('/searchIndex.json?v=2024-03-27T04:24:42.098Z')).json();
+            let index = createIndex(docs);
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-27T04:24:42.098Z', docs}));
+            window.docs = docs
+            window.index = index;
+        }
+
+        //open searchmodal when ctrl + k is pressed, cmd + k on mac
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                toggleSearch();
+            }
+            if (e.key === 'Escape') {
+                document
+                    .getElementById('globalsearch')
+                    .classList
+                    .remove('active');
+            }
+
+            //navigate search results with arrow keys
+            if (document.getElementById('globalsearch').classList.contains('active')) {
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    let active = document.querySelector('.searchresult.active');
+                    if (active) {
+                        active
+                            .classList
+                            .remove('active');
+                        if (active.nextElementSibling) {
+                            active
+                                .nextElementSibling
+                                .classList
+                                .add('active');
+                        } else {
+                            document
+                                .querySelector('.searchresult')
+                                .classList
+                                .add('active');
+                        }
+                    } else {
+                        document
+                            .querySelector('.searchresult')
+                            .classList
+                            .add('active');
+                    }
+
+                    let currentActive = document.querySelector('.searchresult.active');
+                    if (currentActive) {
+                        currentActive.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
+                    }
+                }
+                if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    let active = document.querySelector('.searchresult.active');
+                    if (active) {
+                        active
+                            .classList
+                            .remove('active');
+                        if (active.previousElementSibling) {
+                            active
+                                .previousElementSibling
+                                .classList
+                                .add('active');
+                        } else {
+                            document
+                                .querySelectorAll('.searchresult')
+                                .forEach((el) => {
+                                    if (!el.nextElementSibling) {
+                                        el
+                                            .classList
+                                            .add('active');
+                                    }
+                                });
+                        }
+                    } else {
+                        document
+                            .querySelectorAll('.searchresult')
+                            .forEach((el) => {
+                                if (el.nextElementSibling) {
+                                    el
+                                        .classList
+                                        .add('active');
+                                }
+                            });
+                    }
+
+                    let currentActive = document.querySelector('.searchresult.active');
+                    if (currentActive) {
+                        currentActive.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
+                    }
+
+                }
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    let active = document.querySelector('.searchresult.active');
+                    if (active) {
+                        window.location.href = active
+                            .querySelector("a")
+                            .href;
+                    }
+                }
+            }
+        });
+
+        const debouncedSearch = debounce(search, 200, false);
+        field = document.querySelector('#term');
+        field.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') {
+                debouncedSearch();
+            }
+        });
+        resultsDiv = document.querySelector('#search-results');
+
+        const params = new URL(location.href).searchParams;
+        if (params.get('q')) {
+            field.setAttribute('value', params.get('q'));
+            toggleSearch();
+            search();
+        }
+    }
+    window.lastSearch = '';
+    async function search() {
+        let search = field
+            .value
+            .trim();
+        if (!search) 
+            return;
+        if (search == lastSearch) 
+            return;
+        console.log(`search for ${search}`);
+        window.lastSearch = search;
+
+        resultsDiv.innerHTML = loadingSvg;
+        //let searchRequest = await fetch(`/api/search?term=${encodeURIComponent(search)}`);
+        //let results = await searchRequest.json();
+        let results = offlineSearch(search);
+        let resultsHTML = '';
+        if (!results.length) {
+            let resultParagraph = document.createElement("p");
+            resultParagraph.innerText = `No results for "${search}"`;
+            resultsDiv.innerHTML = '';
+            resultsDiv.appendChild(resultParagraph);
+            return;
+        }
+        resultsHTML += '<div style="max-width:100%;">';
+        // we need to add title, url from ref
+        results.forEach(r => {
+            if(r.tags && r.tags.length > 0){
+                resultsHTML += `<div class="searchresult">
+                    <a class="search-link" href="${r.url}">${r.title}</a>
+                    <div onclick="window.location='${r.url}'">
+                        <div class="header-meta">
+                            <div class="header-tags">
+                                ${r.tags.map(tag=>'<a class="tag" href="JavaScript:Void(0);">#'+tag+'</a>').join("")}
+                            </div>
+                        </div>
+                        ${r.content}
+                    </div>
+                </div>`;
+            } else {
+                resultsHTML += `<div class="searchresult">
+                    <a class="search-link" href="${r.url}">${r.title}</a>
+                    <div onclick="window.location='${r.url}'">
+                        ${r.content}
+                    </div>
+                </div>`;
+            }
+        });
+        resultsHTML += '</div>';
+        resultsDiv.innerHTML = resultsHTML;
+    }
+
+    function truncate(str, size) {
+        //first, remove HTML
+        str = str.replaceAll(/<[^>]*>/g, '');
+        if (str.length < size) 
+            return str;
+        return str.substring(0, size - 3) + '...';
+    }
+
+    function offlineSearch(searchQuery) {
+        let data = window.docs;
+
+        let isTagSearch = searchQuery[0] === "#" && searchQuery.length > 1;
+
+        let searchResults = isTagSearch
+            ? index.search(searchQuery.substring(1), [
+                {
+                    field: "tags"
+                }
+            ])
+            : index.search(searchQuery, [
+                {
+                    field: "title",
+                    limit: 5
+                }, {
+                    field: "content",
+                    weight: 10
+                }
+            ]);
+
+        const getByField = (field) => {
+            const results = searchResults.filter((x) => x.field === field)
+            if (results.length === 0) {
+                return []
+            } else {
+                return [...results[0].result]
+            }
+        }
+        const allIds = new Set([
+            ...getByField("title"),
+            ...getByField("content"),
+            ...getByField("tags")
+        ])
+        const dataIds = [...allIds];
+        const finalResults = dataIds.map((id) => {
+            let result = data[id];
+            result.content = truncate(result.content, 400);
+            result.tags = result
+                .tags
+                .filter((x) => x != "gardenEntry" && x != "note"); //Note is automatically added by 11ty. GardenEntry is used internally to mark the home page
+
+            return result;
+        })
+        return finalResults;
+
+    }
+</script>
+    
+
+    <main class="content cm-s-obsidian ">
+      <header>
+        
+          <h1 data-note-icon="">188. SQL server 查詢記憶體</h1>
+        
+        <div class="header-meta">
+          
+            <div class="header-tags">
+              
+                
+              
+                
+                  <a class="tag" onclick="toggleTagSearch(this)">
+                    #🗄
+                  </a>
+                
+              
+            </div>
+          <div class="timestamps"></div></div>
+      
+      
+      </header>
+      
+      
+      <h1 id="前言" tabindex="-1">前言</h1>
+<p>週五碰到sql server的記憶體飆漲到90%，<br>
+找後端看了一下，看不出個所以然。<br>
+很不幸的，禮拜六又衝到95%，<br>
+只好緊急維護重開了，<br>
+禮拜一開始找問題。</p>
+<h1 id="正文" tabindex="-1">正文</h1>
+<p>實際上要把記憶體操到100%，還真的很難。<br>
+試了好幾天，最多只能到97%。</p>
+<p>然後服務都沒什麼症狀，<br>
+讓我們開始想，是不是cloudSQL真的強，<br>
+這要操下去都沒事。</p>
+<p>再來查到cloudSQL的一篇文章，</p>
+<p>CloudSQL的記憶體分成下面幾種</p>
+<ul>
+<li><a href="https://cloud.google.com/sql/docs/sqlserver/optimize-high-memory-usage#cache" target="_blank" class="external-link">Caches  快取</a></li>
+<li><a href="https://cloud.google.com/sql/docs/sqlserver/optimize-high-memory-usage#fixed-memory" target="_blank" class="external-link">Fixed memory  固定記憶體</a></li>
+<li><a href="https://cloud.google.com/sql/docs/sqlserver/optimize-high-memory-usage#sql-server-overhead" target="_blank" class="external-link">SQL Server overhead  SQL Server 開銷</a></li>
+<li><a href="https://cloud.google.com/sql/docs/sqlserver/optimize-high-memory-usage#oltp" target="_blank" class="external-link">In-Memory online transactional processing (OLTP)<br>
+記憶體中線上事務處理 (OLTP)</a></li>
+</ul>
+<p>然後，我們得知可以更改 <code>max server memory</code>，<br>
+強迫SQL不要使用那麼多的記憶體。</p>
+<p><picture src="/img/user/%F0%9F%97%84%20Database/188-fig.1.jpg" alt="188-fig.1.jpg"><source       media="(max-width:480px)"
+      srcset="/img/optimized/w91adtcS66-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/w91adtcS66-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/w91adtcS66-577.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/w91adtcS66-577.jpeg"
+        ><img       class=""
+      src="/img/user/%F0%9F%97%84%20Database/188-fig.1.jpg"
+      alt="188-fig.1.jpg"
+      width=""
+      ></picture></p>
+<p>然後，再照之前的壓測方式打下去，暴了。<br>
+確定會影響服務。</p>
+<p>再針對 <code>max server memory</code> ，增加容量測試，<br>
+我們得到下面的結論。</p>
+<p>當 <code>Page life expectancy</code> 這個值只要&lt;300，<br>
+就有可能造成服務的延遲。<br>
+當掉的當下，這個值都是處於0。</p>
+<p><code>Page life expectancy</code> 表示最舊的頁面在緩衝池中停留的時間（以秒為單位），微軟建議這個值再300以上。</p>
+<pre><code>SELECT   [object_name],  [counter_name],  [cntr_value] FROM   sys.dm_os_performance_countersWHERE   [object_name] LIKE   '%Manager%'AND   [counter_name] = 'Page life expectancy'
+</code></pre>
+<p>我們可以同時看一下有沒有SQL處於pending狀態。</p>
+<pre><code>SELECT  @@SERVERNAME AS [Server Name],  RTRIM([object_name]) AS [Object Name],  cntr_value AS [Memory Grants Pending]FROM   sys.dm_os_performance_counters WITH(NOLOCK)WHERE  [object_name] LIKE   N'%Memory Manager%'  -- Handles named instancesAND   counter_name = N'Memory Grants Pending'
+</code></pre>
+<p>當這個值&gt;0時，表示sql服務已經面臨崩潰邊緣，<br>
+該準備重啓資料庫了。</p>
+<p>ref. <a href="https://cloud.google.com/sql/docs/sqlserver/optimize-high-memory-usage" target="_blank" class="external-link">Optimize high memory consumption in instances</a></p>
+
+      
+      
+    </main>
+
+    
+      <aside>
+      <div class="sidebar">
+            <div class="sidebar-container">
+                  
+                  
+                        <script>
+    async function fetchGraphData() {
+        const graphData = await fetch('/graph.json').then(res => res.json());
+        const fullGraphData  = filterFullGraphData(graphData);
+        return {graphData, fullGraphData}
+    }
+
+    function getNextLevelNeighbours(existing, remaining) {
+        const keys = Object.values(existing).map((n) => n.neighbors).flat();
+        const n_remaining = Object.keys(remaining).reduce((acc, key) => {
+                if (keys.indexOf(key) != -1) {
+                    if (!remaining[key].hide) {
+                        existing[key] = remaining[key];
+                    }
+                } else {
+                    acc[key] = remaining[key];
+                }
+                return acc;
+            }, {});
+        return existing, n_remaining;
+    }
+
+    function filterLocalGraphData(graphData, depth) {
+        if (graphData == null) {
+            return null;
+        }
+        let remaining = JSON.parse(JSON.stringify(graphData.nodes));
+        let links = JSON.parse(JSON.stringify(graphData.links));
+        let currentLink = decodeURI(window.location.pathname);
+        let currentNode = remaining[currentLink] || Object.values(remaining).find((v) => v.home);
+        delete remaining[currentNode.url];
+        if (!currentNode.home) {
+            let home = Object.values(remaining).find((v) => v.home);
+            delete remaining[home.url];
+        }
+        currentNode.current = true;
+        let existing = {};
+        existing[currentNode.url] = currentNode;
+        for (let i = 0; i < depth; i++) {
+            existing, remaining = getNextLevelNeighbours(existing, remaining);
+        }
+        nodes = Object.values(existing);
+        if (!currentNode.home) {
+            nodes = nodes.filter(n => !n.home);
+        }
+        let ids = nodes.map((n) => n.id);
+        return {
+            nodes,
+            links: links.filter(function (con) {
+                return ids.indexOf(con.target) > -1 && ids.indexOf(con.source) > -1;
+            }),
+        }
+    }
+
+    function getCssVar(variable) {return getComputedStyle(document.body).getPropertyValue(variable)}
+
+    function htmlDecode(input) {
+        var doc = new DOMParser().parseFromString(input, "text/html");
+        return doc.documentElement.textContent;
+    }
+
+    function renderGraph(graphData, id, delay, fullScreen) {
+        if (graphData == null) {
+            return;
+        }
+        const el = document.getElementById(id);
+        width = el.offsetWidth;
+        height = el.offsetHeight;
+        const highlightNodes = new Set();
+        let hoverNode = null;
+        const color = getCssVar("--graph-main");
+        const mutedColor = getCssVar("--graph-muted");
+        let Graph = ForceGraph()
+        (el)
+            .graphData(graphData)
+            .nodeId('id')
+            .nodeLabel('title')
+            .linkSource('source')
+            .linkTarget('target')
+            .d3AlphaDecay(0.10)
+            .width(width)
+            .height(height)
+            .linkDirectionalArrowLength(2)
+            .linkDirectionalArrowRelPos(0.5)
+            .autoPauseRedraw(false)
+            .linkColor((link) => {
+                if (hoverNode == null) {
+                    return color;
+                }
+                if (link.source.id == hoverNode.id || link.target.id == hoverNode.id) {
+                    return color;
+                } else {
+                    return mutedColor;
+                }
+                
+            })
+            .nodeCanvasObject((node, ctx) => {
+                const numberOfNeighbours = (node.neighbors && node.neighbors.length) || 2;
+                const nodeR = Math.min(7, Math.max(numberOfNeighbours / 2, 2));
+                
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, nodeR, 0, 2 * Math.PI, false);
+                if (hoverNode == null) {
+                    ctx.fillStyle = color;
+                } else {
+                    if (node == hoverNode || highlightNodes.has(node.url)) {
+                        ctx.fillStyle = color;
+                    } else {
+                        ctx.fillStyle = mutedColor;
+                    }
+                }
+                 
+                ctx.fill();
+                
+                if (node.current) {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, nodeR + 1, 0, 2 * Math.PI, false);
+                    ctx.lineWidth = 0.5;
+                    ctx.strokeStyle = color;
+                    ctx.stroke();
+                }
+
+                const label = htmlDecode(node.title)
+                const fontSize = 3.5;
+                ctx.font = `${fontSize}px Sans-Serif`;
+
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'top';
+                ctx.fillText(label, node.x, node.y + nodeR + 2);
+            })
+            .onNodeClick(node => {
+                window.location = node.url;
+            })
+            .onNodeHover(node => {
+                highlightNodes.clear();
+                if (node) {
+                highlightNodes.add(node);
+                node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+                }
+                hoverNode = node || null;
+                
+            });
+            if (fullScreen || (delay != null && graphData.nodes.length > 4)) {
+                setTimeout(() => {
+                    Graph.zoomToFit(5, 75);
+                }, delay || 200);
+            }
+        return Graph;
+    }
+
+    function renderLocalGraph(graphData, depth, fullScreen) {
+        if (window.graph){
+            window.graph._destructor();
+        }
+        const data = filterLocalGraphData(graphData, depth);
+        return renderGraph(data, 'link-graph', null, fullScreen);
+    }
+
+    function filterFullGraphData(graphData) {
+        if (graphData == null) {
+            return null;
+        }
+        graphData = JSON.parse(JSON.stringify(graphData));
+        const hiddens = Object.values(graphData.nodes).filter((n) => n.hide).map((n) => n.id);
+        const data = {
+            links: JSON.parse(JSON.stringify(graphData.links)).filter((l) => hiddens.indexOf(l.source) == -1 && hiddens.indexOf(l.target) == -1),
+            nodes: [...Object.values(graphData.nodes).filter((n) => !n.hide)]
+        }
+        return data
+    }
+
+    function openFullGraph(fullGraphData) {
+        lucide.createIcons({
+                attrs: {
+                    class: ["svg-icon"]
+                }
+            });
+        return renderGraph(fullGraphData, "full-graph-container", 200, false);;
+    }
+
+    function closefullGraph(fullGraph) {
+        if (fullGraph) {
+            fullGraph._destructor();
+        }
+        return null;
+    }
+</script>
+<div  x-init="{graphData, fullGraphData} = await fetchGraphData();" x-data="{ graphData: null, depth: 1, graph: null, fullGraph: null, showFullGraph: false, fullScreen: false, fullGraphData: null}" id="graph-component" x-bind:class="fullScreen ? 'graph graph-fs' : 'graph'" v-scope>
+    <div class="graph-title-container">
+        <div class="graph-title">Connected Pages</div>
+        <div id="graph-controls">
+                <div class="depth-control">
+                    <label for="graph-depth">Depth</label>
+                    <div class="slider">
+                            <input x-model.number="depth" name="graph-depth" list="depthmarkers" type="range" step="1" min="1" max="3" id="graph-depth">
+                    <datalist id="depthmarkers">
+                            <option value="1" label="1"></option>
+                            <option value="2" label="2"></option>
+                            <option value="3" label="3"></option>
+                    </datalist>
+                    </div>
+                    <span id="depth-display" x-text="depth"></span>
+                </div>
+                <div class="ctrl-right">
+                    <span id="global-graph-btn" x-on:click="showFullGraph = true; setTimeout(() => {fullGraph = openFullGraph(fullGraphData)}, 100)"><i  icon-name="globe" aria-hidden="true"></i></span>
+                    <span  id="graph-fs-btn"  x-on:click="fullScreen = !fullScreen"><i  icon-name="expand" aria-hidden="true"></i></span>
+                </div>
+        </div>
+    </div>
+    <div x-effect="window.graph = renderLocalGraph(graphData, depth, fullScreen)" id="link-graph" ></div>
+    <div x-show="showFullGraph" id="full-graph" class="show" style="display: none;">
+        <span id="full-graph-close" x-on:click="fullGraph = closefullGraph(fullGraph); showFullGraph = false;"><i icon-name="x" aria-hidden="true"></i></span><div id="full-graph-container"></div>
+    </div>
+</div>
+                  
+
+                  
+                        
+                        
+                              <div class="toc">
+                                    <div class="toc-title-container">
+                                          <div class="toc-title">
+                                                On this page
+                                          </div>
+                                    </div>
+                                    <div class="toc-container">
+                                          <nav class="toc">
+                <ol>
+                    
+                    <li><a href="#前言">前言</a>
+            		</li>
+
+                    <li><a href="#正文">正文</a>
+            		</li>
+                </ol>
+            </nav>
+                                    </div>
+                              </div>
+                        
+
+                  
+
+                        
+                  
+            </div>
+      </div>
+</aside>
+    
+
+    
+        <script>
+      if (window.location.hash) {
+        document.getElementById(window.location.hash.slice(1)).classList.add('referred');
+      }
+      window.addEventListener('hashchange', (evt) => {
+        const oldParts = evt.oldURL.split("#");
+        if (oldParts[1]) {
+          document.getElementById(oldParts[1]).classList.remove('referred');
+        }
+        const newParts = evt.newURL.split("#");
+        if (newParts[1]) {
+          document.getElementById(newParts[1]).classList.add('referred');
+        }
+      }, false);
+      const url_parts = window.location.href.split("#")
+      const url = url_parts[0];
+      const referrence = url_parts[1];
+      document.querySelectorAll(".cm-s-obsidian > *[id]").forEach(function (el) {
+        el.ondblclick = function(evt) {
+          const ref_url = url + '#' + evt.target.id
+          navigator.clipboard.writeText(ref_url);
+      }
+      });
+
+      
+    </script>
+    <script src=" https://fastly.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js "></script>
+<script defer>
+    TIMESTAMP_FORMAT = "MMM dd, yyyy h:mm a";
+    document.querySelectorAll('.human-date').forEach(function (el) {
+        el.innerHTML = luxon.DateTime.fromISO(el.getAttribute('data-date') || el.innerText).toFormat(TIMESTAMP_FORMAT);
+      });
+</script>
+    
+    
+      <script defer src="/_vercel/insights/script.js"></script>
+
+    
+      
+    
+    <script>
+lucide.createIcons({
+            attrs: {
+                class: ["svg-icon"]
+            }
+        });
+</script>
+  </body>
+</html>
