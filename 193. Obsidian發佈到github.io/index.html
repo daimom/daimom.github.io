@@ -1385,259 +1385,6 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('istio')}" @click.stop="isOpen=!isOpen">
-                    <div class="foldername-wrapper align-icon">
-                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
-                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
-                    <span class="foldername">istio</span>
-                    </div>
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/0.istio MOC/"> ⛵️ istio MOC   </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/11. istio 與 kiali/">istio 與 kiali </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/14.istio安裝時固定ip/">istio安裝時固定ip </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/15.istio服務無法訪問/">istio服務無法訪問 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/18.istio Virtual Service 跨namespace讀取 DestinationRule/">istio Virtual Service 跨namespace讀取 DestinationRule </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/20. 訪問istio 內部負載平衡ip/">訪問istio 內部負載平衡ip </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/21. flagger 自動金絲雀佈署 for istio/">istio flagger 自動金絲雀佈署 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/23.istio的 prometheus截取GKE metrics/">istio的 prometheus截取GKE metrics </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/30. istio的virtualservice match比對/">istio的virtualservice match比對 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/31.istio 抓蟲記/">istio 抓蟲記 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/34. istio operator 安裝新的 ingress deploy及service/">istio operator 安裝新的 ingress deploy及service </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/35. istio virtualService delegate使用/">istio virtualService delegate使用 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/54. istio 掛載ECK kibana/">istio 掛載ECK kibana </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/62. isito 鏡像流量/">isito 鏡像流量 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/7. Istio安裝及使用/">Istio安裝及使用 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/73. istio sidecar 注入規則/">istio sidecar 注入規則 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/75. istio virtual service 常用參數/">istio virtual service 常用參數 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/istio/89. istio 常見狀態碼/">istio 常見狀態碼 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                </div>
-            
-        </div>
-        
-    
-    
-        <div x-show="isOpen" style="display:none" class="">
-            
                 <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('k8s')}" @click.stop="isOpen=!isOpen">
                     <div class="foldername-wrapper align-icon">
                     <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
@@ -2950,19 +2697,6 @@
             
                 <div @click.stop class="notelink ">
                     
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Window/166. MSSQL版本差異/">MSSQL版本差異 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Window/174. win10 下載Microsoft Store的檔案/">win10 下載Microsoft Store的檔案 </a>
                 </div>
             
@@ -2977,6 +2711,129 @@
                 <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/Window/blog.113. 微軟官方office 大量授權/">微軟官方office 大量授權 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div class="folder inner-folder"  x-data="{isOpen: $persist(false).as('⎈ k8s')}" @click.stop="isOpen=!isOpen">
+                    <div class="foldername-wrapper align-icon">
+                    <i x-show="isOpen" style="display: none;"  icon-name="chevron-down"></i>
+                    <i x-show="!isOpen"  icon-name="chevron-right"></i>
+                    <span class="foldername">⎈ k8s</span>
+                    </div>
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/0.K8s MOC/"> ⎈ K8s MOC </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/101. 批次修改hpa/">批次修改hpa </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/104. rabbitmq operator安裝/">rabbitmq operator安裝 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/105. linux系統時間與k8s/">linux系統時間與k8s </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/118. kubernetes Dashboard/">kubenetes簡易介面 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/123.Helm 使用方式/">Helm 使用方式 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/137. kubecolor 直觀的kubectl/">kubecolor 直觀的kubectl </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/139. openlens add pod shell or logs button/">openlens增加shell和logs 按鈕 </a>
                 </div>
             
         </div>
@@ -3396,17 +3253,6 @@
             
         </div>
         
-    
-    
-        <div x-show="isOpen" style="display:none" class="">
-            
-                <div @click.stop class="notelink ">
-                    
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/steamDeck 的 Cheat Engine替代品/">steamDeck 的 Cheat Engine替代品 </a>
-                </div>
-            
-        </div>
-        
     </div>
       </nav>
 
@@ -3576,7 +3422,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-03-27T03:20:49.999Z';
+        const searchIndexDate = '2024-03-27T04:04:12.589Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3588,9 +3434,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-03-27T03:20:49.999Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-03-27T04:04:12.589Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-27T03:20:49.999Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-03-27T04:04:12.589Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3849,7 +3695,7 @@
 因為是免費用戶，所以會碰到無法更新。<br>
 有天一怒之下，就自己改成用github了。</p>
 <h1 id="正文" tabindex="-1">正文</h1>
-<p>首先前面還是一樣<a class="internal-link" data-note-icon="" href="/SideProject/160.Obsidian發佈網站/">160.Obsidian發佈網站</a>，<br>
+<p>首先前面還是一樣<a class="internal-link is-unresolved" href="/404">160.Obsidian發佈網站</a>，<br>
 步驟要先設定好從Obsidiant傳到你的github。<br>
 <picture src="/img/user/193-fig.1.png" alt="193-fig.1.png"><source       media="(max-width:480px)"
       srcset="/img/optimized/phQiO_Ef3D-500.webp"
@@ -4070,12 +3916,12 @@ runs:
 也可以直接輸入你的email，反正email這東西應該已經...。<br>
 但重點是底下的 <code>$</code> ，<br>
 這個一定要用secret隱藏，而且不能外流。<br>
-產生的方式，詳閱， <a class="internal-link" data-note-icon="" href="/SideProject/160.Obsidian發佈網站/#github-token">160.Obsidian發佈網站#建立github token</a><br>
+產生的方式，詳閱， <a class="internal-link is-unresolved" href="/404">160.Obsidian發佈網站#建立github token</a><br>
 再來將產生的token，新增到sercret裏面。</p>
 <p>ref.</p>
 <ul>
 <li><a href="https://docs.github.com/zh/actions" target="_blank" class="external-link">GitHub Actions 文件</a></li>
-<li><a class="internal-link" data-note-icon="" href="/Code/110.github action pipeline筆記/">110.github action pipeline筆記</a></li>
+<li><a class="internal-link is-unresolved" href="/404">110.github action pipeline筆記</a></li>
 </ul>
 
       
