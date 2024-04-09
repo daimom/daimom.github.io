@@ -3155,6 +3155,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/207. mapgenie整批unfound/">207. mapgenie整批unfound </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3324,7 +3335,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-04-08T10:21:36.794Z';
+        const searchIndexDate = '2024-04-09T10:21:45.026Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3336,9 +3347,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-04-08T10:21:36.794Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-04-09T10:21:45.026Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-08T10:21:36.794Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-09T10:21:45.026Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3599,6 +3610,10 @@
 <p>但有夠<strong>麻煩</strong>！！！！！</p>
 <h1 id="正文" tabindex="-1">正文</h1>
 <h3 id="鎮重聲明，修改有一定風險。" tabindex="-1">鎮重聲明，修改有一定風險。</h3>
+<h4 id="c-c-memory-deck" tabindex="-1">感謝巴友C.C告知另一套軟體『memory deck』</h4>
+<p>直接在Decky loader 搜尋，安裝即可。<br>
+搜尋方式也很簡單，直接按掌機右下的 <code>...</code> 就能搜尋。<br>
+缺點是每次要改就要重新搜尋一次。</p>
 <p>最後在<a href="https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fwww.reddit.com%2Fr%2FSteamDeck%2Fcomments%2F10dslcm%2Fcheat_engine_or_some_equivalent_on_steam_deck%2F" target="_blank" class="external-link">reddit</a>找到了 <a href="https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fprimetime00%2Fmemory_hack" target="_blank" class="external-link">memory_hack</a></p>
 <p>這款的好處在於，steam deck(桌面模式)開啟遊戲後，</p>
 <p>用手機或電腦在同一個wifi底下，開啟網頁即可修改。</p>
@@ -3651,7 +3666,10 @@ p.s 改完後，數值可能不會馬上重現，讓遊戲的數值變動一下�
 
   
 
-完整操作說明，請參考 [Memory Hack Beginner Tutorial](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fprimetime00%2Fmemory_hack%2Fblob%2Fmaster%2Fdocs%2Ftutorial%2FTUTORIAL.md)</code></pre>
+完整操作說明，請參考 [Memory Hack Beginner Tutorial](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fprimetime00%2Fmemory_hack%2Fblob%2Fmaster%2Fdocs%2Ftutorial%2FTUTORIAL.md)
+
+
+</code></pre>
 
       
       
@@ -3900,6 +3918,12 @@ p.s 改完後，數值可能不會馬上重現，讓遊戲的數值變動一下�
                 <ol>
                     
                     <li><a href="#鎮重聲明，修改有一定風險。">鎮重聲明，修改有一定風險。</a>
+            
+                <ol>
+                    
+                    <li><a href="#c-c-memory-deck">感謝巴友C.C告知另一套軟體『memory deck』</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             		</li>

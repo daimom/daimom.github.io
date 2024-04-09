@@ -3155,6 +3155,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/207. mapgenie整批unfound/">207. mapgenie整批unfound </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3324,7 +3335,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-04-08T10:21:36.794Z';
+        const searchIndexDate = '2024-04-09T10:21:45.026Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3336,9 +3347,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-04-08T10:21:36.794Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-04-09T10:21:45.026Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-08T10:21:36.794Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-09T10:21:45.026Z', docs}));
             window.docs = docs
             window.index = index;
         }
