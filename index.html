@@ -3165,6 +3165,28 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/208. 架設 sftp/">208. 架設sftp </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/209. k8s中srs的各個pod  metrics取得/">209.k8s中srs的各個pod  metrics取得 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3333,7 +3355,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-04-10T10:20:18.488Z';
+        const searchIndexDate = '2024-04-11T10:19:26.693Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3345,9 +3367,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-04-10T10:20:18.488Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-04-11T10:19:26.693Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-10T10:20:18.488Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-11T10:19:26.693Z', docs}));
             window.docs = docs
             window.index = index;
         }

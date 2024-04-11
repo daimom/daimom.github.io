@@ -3166,6 +3166,28 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/208. 架設 sftp/">208. 架設sftp </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/209. k8s中srs的各個pod  metrics取得/">209.k8s中srs的各個pod  metrics取得 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3335,7 +3357,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-04-10T10:20:18.488Z';
+        const searchIndexDate = '2024-04-11T10:19:26.693Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3347,9 +3369,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-04-10T10:20:18.488Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-04-11T10:19:26.693Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-10T10:20:18.488Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-11T10:19:26.693Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3688,6 +3710,13 @@ kubectl config current-context
       ></picture></li>
 </ol>
 <p>差點都想直接用 <code>gcloud auth revoke &lt;account&gt;</code> 把帳號強制登出了。</p>
+<h4 id="2024-04-11" tabindex="-1">2024/04/11</h4>
+<p>要切帳號時，terraform又掛了，一直提示我用另一個帳號。<br>
+但用kubectl 指令時，都正常。</p>
+<p>後來執行這行，</p>
+<pre><code>gcloud auth application-default login
+</code></pre>
+<p>重新登入後正常。</p>
 <p>ref.</p>
 <ul>
 <li><a href="https://www.kmp.tw/post/gcloudchangeaccountandproject/" target="_blank" class="external-link">[GCP]gcloud切換帳號、專案</a></li>
@@ -3937,6 +3966,12 @@ kubectl config current-context
             		</li>
 
                     <li><a href="#正文">正文</a>
+            
+                <ol>
+                    
+                    <li><a href="#2024-04-11">2024/04/11</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>
