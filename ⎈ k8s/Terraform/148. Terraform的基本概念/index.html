@@ -3357,7 +3357,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-04-14T14:13:05.749Z';
+        const searchIndexDate = '2024-04-15T10:16:56.881Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3369,9 +3369,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-04-14T14:13:05.749Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-04-15T10:16:56.881Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-14T14:13:05.749Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-04-15T10:16:56.881Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3890,6 +3890,8 @@ Count = 2<br>
 <p>如果後續要改值，可以改成</p>
 <pre><code class="language-terraform.tfvars">gcp_region = &quot;asia-east2&quot;
 </code></pre>
+<p>如果要測試，可以執行 <code>terraform console</code><br>
+再輸入變數名稱驗證。</p>
 <p>變數文件載入方式</p>
 <ul>
 <li>檔案名稱為 <code>terraform.tfvars</code> or <code>terraform.tfvars.json</code></li>
