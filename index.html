@@ -3187,6 +3187,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/210. Arc Browser筆記/">210. Arc Browser筆記 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3355,7 +3366,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-01T10:21:32.997Z';
+        const searchIndexDate = '2024-05-02T10:19:35.064Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3367,9 +3378,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-01T10:21:32.997Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-02T10:19:35.064Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-01T10:21:32.997Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-02T10:19:35.064Z', docs}));
             window.docs = docs
             window.index = index;
         }
