@@ -3379,7 +3379,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-07T10:19:38.779Z';
+        const searchIndexDate = '2024-05-08T10:20:15.119Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3391,9 +3391,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-07T10:19:38.779Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-08T10:20:15.119Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-07T10:19:38.779Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-08T10:20:15.119Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3704,13 +3704,19 @@ istio增加6379 的port ，<br>
 就不清楚了。</p>
 <p><a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml" target="_blank" class="external-link"># Service Name and Transport Protocol Port Number Registry</a></p>
 <p>目前測試出來，只要有設定Name就會綁不到endpoints。</p>
-<p>另外，EndpointSlice目前(2024/05/03)仍會無法綁定，<br>
-請先改用Endpoint的api。</p>
+<p><s>另外，EndpointSlice目前(2024/05/03)仍會無法綁定，<br>
+請先改用Endpoint的api。</s><br>
+尚未驗證</p>
 <p>參照官方文件的作法也不會綁定。<br>
 <a href="https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors" target="_blank" class="external-link">Services without selectors</a></p>
+<p>2024/05/8</p>
+<p>有另一個工程師告知，<br>
+endpoint那邊的Port Name也加上去的話，<br>
+就好了。</p>
 <h1 id="結論" tabindex="-1">結論</h1>
 <p>頂多改改 Endpoints的address就好了，<br>
-port name那些，別亂加。</p>
+port name那些，別亂加。<br>
+要加就要一起加，且名稱也要一樣。</p>
 <pre><code>---
 apiVersion: v1
 kind: Endpoints
@@ -3722,6 +3728,7 @@ subsets:
       - ip: 10.122.11.43
     ports:
       - port: 6379
+	    name: redis
 ---
 apiVersion: v1
 kind: Service
@@ -3733,6 +3740,7 @@ spec:
     - protocol: TCP
       port: 6379
       targetPort: 6379
+      name: redis
 </code></pre>
 
       
