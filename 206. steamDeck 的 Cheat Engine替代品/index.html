@@ -3379,7 +3379,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-13T10:20:03.963Z';
+        const searchIndexDate = '2024-05-14T10:21:16.533Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3391,9 +3391,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-13T10:20:03.963Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-14T10:21:16.533Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-13T10:20:03.963Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-14T10:21:16.533Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3666,54 +3666,42 @@
 <li>
 <p>建立一個資料夾，要放安裝檔</p>
 </li>
+<li></li>
+</ol>
+<pre><code>python3 &lt;(wget -qO- https://github.com/primetime00/memory_hack/raw/master/app/patches/install.py)
+</code></pre>
+<ol start="3">
+<li>安裝完後，會問你要不要當成預設程式，我是選n ，當有需要時再到剛剛的資料夾啟動就好。</li>
+</ol>
+<p>啟動指令，到該資料夾底下執行   <code>./run.sh</code></p>
+<p><a href="https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fprimetime00%2Fmemory_hack%3Ftab%3Dreadme-ov-file%23steam-deck" target="_blank" class="external-link">安裝說明連結</a></p>
+<p>然後就可以先在steam deck上面開網頁，<a href="http://localhost:5000" target="_blank" class="external-link">http://localhost:5000</a> 看有沒有資料。</p>
+<p>如果要用手機或電腦連的話，</p>
+<p>可以另外開啟konsole ，執行 <code>ip -4 addr</code>  就會看到你的ip，假設是192.168.0.125，</p>
+<p>在手機上開啟 <a href="http://192.168.0.125:5000" target="_blank" class="external-link">http://192.168.0.125:5000</a> ，就會看到畫面了。</p>
+<p>簡易操作</p>
+<ol>
 <li>
-<pre><code></code></pre>
+<p>到 Search 的頁籤上，選擇 Process的 遊戲名稱</p>
+</li>
+<li>
+<p>輸入數值查詢，通常要兩次查詢，第一次有很多資料，當數值變動時，再搜尋一次，就會有了</p>
+</li>
+<li>
+<p>複製記憶體位置</p>
+</li>
+<li>
+<p>到 Code的頁籤，選擇 Process的遊戲名稱</p>
+</li>
+<li>
+<p>輸入數值，旁邊的方格，打勾表示鎖定數值。</p>
 </li>
 </ol>
-<p>python3 &lt;(wget -qO- <a href="https://github.com/primetime00/memory_hack/raw/master/app/patches/install.py" target="_blank" class="external-link">https://github.com/primetime00/memory_hack/raw/master/app/patches/install.py</a>)</p>
-<pre><code>
-3. 安裝完後，會問你要不要當成預設程式，我是選n ，當有需要時再到剛剛的資料夾啟動就好。
-
-啟動指令，到該資料夾底下執行   `./run.sh`
-
-  
-
-[安裝說明連結](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fprimetime00%2Fmemory_hack%3Ftab%3Dreadme-ov-file%23steam-deck)  
-
-  
-
-然後就可以先在steam deck上面開網頁，http://localhost:5000 看有沒有資料。
-
-如果要用手機或電腦連的話，
-
-可以另外開啟konsole ，執行 `ip -4 addr`  就會看到你的ip，假設是192.168.0.125，
-
-在手機上開啟 http://192.168.0.125:5000 ，就會看到畫面了。
-
-  
-
-簡易操作
-
-1. 到 Search 的頁籤上，選擇 Process的 遊戲名稱
-
-2. 輸入數值查詢，通常要兩次查詢，第一次有很多資料，當數值變動時，再搜尋一次，就會有了
-
-3. 複製記憶體位置
-
-4. 到 Code的頁籤，選擇 Process的遊戲名稱
-
-5. 輸入數值，旁邊的方格，打勾表示鎖定數值。
-
-  
-
-p.s 改完後，數值可能不會馬上重現，讓遊戲的數值變動一下。
-
-  
-
-完整操作說明，請參考 [Memory Hack Beginner Tutorial](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fprimetime00%2Fmemory_hack%2Fblob%2Fmaster%2Fdocs%2Ftutorial%2FTUTORIAL.md)
-
-
-</code></pre>
+<p>p.s 改完後，數值可能不會馬上重現，讓遊戲的數值變動一下。</p>
+<p>完整操作說明，請參考 <a href="https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fprimetime00%2Fmemory_hack%2Fblob%2Fmaster%2Fdocs%2Ftutorial%2FTUTORIAL.md" target="_blank" class="external-link">Memory Hack Beginner Tutorial</a></p>
+<p>之前有人介紹另一款，<br>
+Memory Deck ，直接在掌機模式下的Decky loader 商店搜尋，<br>
+裝起來就好了。</p>
 
       
       
