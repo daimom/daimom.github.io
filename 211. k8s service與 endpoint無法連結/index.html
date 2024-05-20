@@ -3210,6 +3210,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/212. k8s的親和性與反親和性/">212. k8s的親和性與反親和性 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3379,7 +3390,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-19T10:17:56.751Z';
+        const searchIndexDate = '2024-05-20T01:46:02.008Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3391,9 +3402,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-19T10:17:56.751Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-20T01:46:02.008Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-19T10:17:56.751Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-20T01:46:02.008Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3704,9 +3715,57 @@ istio增加6379 的port ，<br>
 就不清楚了。</p>
 <p><a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml" target="_blank" class="external-link"># Service Name and Transport Protocol Port Number Registry</a></p>
 <p>目前測試出來，只要有設定Name就會綁不到endpoints。</p>
-<p><s>另外，EndpointSlice目前(2024/05/03)仍會無法綁定，<br>
-請先改用Endpoint的api。</s><br>
-尚未驗證</p>
+<h4 id="endpoint-slice-2024-05-20" tabindex="-1">另外，EndpointSlice目前(2024/05/20)仍會無法綁定，</h4>
+<p>請先改用Endpoint的api。</p>
+<p><picture src="/img/user/211-fig.3.jpg" alt="211-fig.3.jpg"><source       media="(max-width:480px)"
+      srcset="/img/optimized/Da4OvMiyZs-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/Da4OvMiyZs-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/Da4OvMiyZs-607.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/Da4OvMiyZs-607.jpeg"
+        ><img       class=""
+      src="/img/user/211-fig.3.jpg"
+      alt="211-fig.3.jpg"
+      width=""
+      ></picture></p>
+<pre><code>apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: redis # must be the same as service name
+  namespace: istio-system
+  labels:
+    # You should set the &quot;kubernetes.io/service-name&quot; label.
+    # Set its value to match the name of the Service
+    kubernetes.io/service-name: redis
+addressType: IPv4
+ports:
+  - name: redis # should match with the name of the service port defined above
+    appProtocol: redis
+    protocol: TCP
+    port: 6379
+endpoints:
+  - addresses:
+      - &quot;10.1.11.43&quot;
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: istio-system
+spec:
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+      name: redis    
+</code></pre>
 <p>參照官方文件的作法也不會綁定。<br>
 <a href="https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors" target="_blank" class="external-link">Services without selectors</a></p>
 <p>2024/05/8</p>
@@ -3986,6 +4045,12 @@ spec:
             		</li>
 
                     <li><a href="#故事展開">故事展開</a>
+            
+                <ol>
+                    
+                    <li><a href="#endpoint-slice-2024-05-20">另外，EndpointSlice目前(2024/05/20)仍會無法綁定，</a>
+            		</li>
+                </ol>
             		</li>
 
                     <li><a href="#結論">結論</a>

@@ -3210,6 +3210,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/212. k8s的親和性與反親和性/">212. k8s的親和性與反親和性 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3379,7 +3390,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-19T10:17:56.751Z';
+        const searchIndexDate = '2024-05-20T01:46:02.008Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3391,9 +3402,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-19T10:17:56.751Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-20T01:46:02.008Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-19T10:17:56.751Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-20T01:46:02.008Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3681,6 +3692,8 @@ done  &gt; 1.txt
 </code></pre>
 <h3 id="取得檔案詳細時間" tabindex="-1">取得檔案詳細時間</h3>
 <pre><code class="language-bash">ls --full-time | sort -k6
+or
+stat file.txt
 </code></pre>
 <h3 id="取得檔案列表後刪除" tabindex="-1">取得檔案列表後刪除</h3>
 <pre><code class="language-bash">ls | grep 4793877c | xargs -p rm -f
