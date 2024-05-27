@@ -3390,7 +3390,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-26T10:21:05.675Z';
+        const searchIndexDate = '2024-05-27T10:20:48.476Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3402,9 +3402,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-26T10:21:05.675Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-27T10:20:48.476Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-26T10:21:05.675Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-27T10:20:48.476Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3703,7 +3703,7 @@ EOF
 <pre><code>	kubectl get elasticsearch
 </code></pre>
 <p>到pod裡面測試elastic是否正常<br>
-密碼需使用 kubectl get secret  取得</p>
+密碼需使用 kubectl get secret  取得，<a class="internal-link" data-note-icon="" href="/🗒 EFK/43.自建ECK on GKE/#取得密碼："><a class="tag" onclick="toggleTagSearch(this)" data-content="#取得密碼：">#取得密碼：</a></a></p>
 <pre><code>curl https://10.107.201.126:9200 -u 'elastic:J1fO9bu8adfsepYK8rIu91a73o' -k
 </code></pre>
 <p>正常的話，會顯示<br>
@@ -3738,8 +3738,8 @@ EOF
 <pre><code>	kubectl get kibana
 </code></pre>
 <p>登入</p>
-<p>帳號：elastic<br>
-密碼：</p>
+<p>帳號：elastic</p>
+<h4 id="取得密碼：" tabindex="-1">取得密碼：</h4>
 <pre><code>kubectl get secret quickstart-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 </code></pre>
 <p>轉port</p>
@@ -3896,7 +3896,23 @@ func main() {
 </code></pre>
 <p>主要只有  apmgorilla.Instrument(router) 這行，<br>
 然後只要有經過80 port的資料就通通都會進入到APM裡面了。</p>
-<p>![](/img/user/🗒 EFK/43-fig.3.jpg)</p>
+<p><picture src="/img/user/%F0%9F%97%92%20EFK/43-fig.3.jpg" alt="43-fig.3.jpg"><source       media="(max-width:480px)"
+      srcset="/img/optimized/PKmGKx-oT2-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/PKmGKx-oT2-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/PKmGKx-oT2-700.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/PKmGKx-oT2-700.jpeg"
+        ><img       class=""
+      src="/img/user/%F0%9F%97%92%20EFK/43-fig.3.jpg"
+      alt="43-fig.3.jpg"
+      width=""
+      ></picture></p>
 <p>這張圖裡面的TPS意思，可參考 <a class="internal-link is-unresolved" href="/404">blog.45.網站效能指標一覽（未）</a></p>
 <p>ref.<br>
 <a href="https://www.elastic.co/guide/en/cloud-on-k8s/master/k8s-apm-connecting.html" target="_blank" class="external-link">APM Server secret token</a><br>
@@ -3908,115 +3924,7 @@ func main() {
 <h2 id="vue-apm-agent" tabindex="-1">vue-APM agent</h2>
 <p>安裝依賴套件</p>
 <h2 id="kibana" tabindex="-1">Kibana</h2>
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/efk/61-kibana/" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
-<h1 id="前言-1" tabindex="-1">前言</h1>
-<h1 id="正文-1" tabindex="-1">正文</h1>
-<p>KQL其實沒很複雜，<br>
-建議把介紹<a href="https://www.elastic.co/guide/en/kibana/7.15/kuery-query.html" target="_blank" class="external-link">Kibana Query Language</a>看完後基本上就會了。</p>
-<p>主要常用的是，使用 特定欄位搜尋，</p>
-<ol>
-<li>
-<p>萬用字元 *</p>
-<p>例如，<br>
-今天要搜尋一個 pod Name 叫 grafana<br>
-那KQL 可輸入</p>
-</li>
-</ol>
-<pre><code>kubernetes.pod.name: *grafana*
-</code></pre>
-<p>搜尋出來的名稱，只要是 中間有 grafana的通通會列出。</p>
-<p>覺得前面名稱太長的話，<a href="http://xn--pod-0v1e893z.name" target="_blank" class="external-link">輸入pod.name</a>，用下拉選擇就好。</p>
-<ol start="2">
-<li>引號使用&quot; &quot;<br>
-將裡面的字變成一個詞搜尋</li>
-</ol>
-<pre><code>	message: &quot;hello world&quot;
-</code></pre>
-<ol start="3">
-<li>不使用引號<br>
-裡面的字都會分別搜尋，已下面來說就是 會搜尋 hello 跟 world</li>
-</ol>
-<pre><code>kubernetes.pod.name: hello world
-</code></pre>
-<ol start="4">
-<li>and 跟 or 條件<br>
-多條件查詢</li>
-</ol>
-<pre><code>	message: &quot;hello world&quot; and kubernetes.pod.name:*grafana*
-</code></pre>
-<ol start="5">
-<li>not 否定</li>
-</ol>
-<pre><code>	not (kubernetes.pod.name: *grafana*)
-</code></pre>
-<ol start="6">
-<li>大於 小於 等於 判斷式  &gt;, &gt;= , &lt;,&lt;=</li>
-</ol>
-<pre><code>	@timestamp &lt; &quot;2021-01-30&quot;
-</code></pre>
-<ol start="7">
-<li>
-<p>還有一種不使用KQL的查詢，Lucene<br>
-這種語法可支援正則表達式，但KQL不支援。<br>
-ref.<a href="https://www.elastic.co/guide/en/kibana/7.15/lucene-query.html" target="_blank" class="external-link">Lucene query syntax</a></p>
-</li>
-<li>
-<p>nested fields 看來是可以查詢整串的json<br>
-但我想不到可以運用在哪</p>
-</li>
-<li>
-<p>搜尋x-forward-for ip<br>
-有一個log如下圖，這個特別奇怪，不能加雙引號，<br>
-『.』 在kibana裡面似乎有特殊的用法，<br>
-<picture src="/img/user/%F0%9F%97%92%20EFK/61-fig.1.jpg" alt="61-fig.1.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/kY0usDf3HG-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/kY0usDf3HG-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/kY0usDf3HG-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/kY0usDf3HG-700.jpeg"
-        ><img       class=""
-      src="/img/user/%F0%9F%97%92%20EFK/61-fig.1.jpg"
-      alt="61-fig.1.jpg"
-      width=""
-      ></picture></p>
-<pre><code>kubernetes.namespace: istio-sigua and message: 103.170.26.90*
-</code></pre>
-<p>如果要加雙引號的話，就必須搜尋完整的ip。</p>
-<pre><code>kubernetes.namespace: istio-sigua and message: &quot;221.210.89.170,10.120.17.1&quot;
-</code></pre>
-<p>追根究底，還是要把message對應到欄位...<br>
-沒時間用阿QQ...</p>
-</li>
-<li>
-<p>搜尋url path</p>
-</li>
-</ol>
-<pre><code>kubernetes.namespace: istio-sigua and message: &quot;img/huawei_ans02.c7bcdbdf.jpg&quot;
-kubernetes.namespace: istio-sigua and message: &quot;img*&quot;
-</code></pre>
-<ol start="11">
-<li>特殊字元<br>
-如果要用特殊字元查詢的話，要加上 \ ，<br>
-但只限於下列這些關鍵字<pre><code>+ - &amp;&amp; || ! ( ) { } [ ] ^ &quot; ~ * ? : \ /
-</code></pre>
-</li>
-<li></li>
-</ol>
-<p>ref.</p>
-<ul>
-<li><a href="https://www.elastic.co/guide/en/kibana/7.15/kuery-query.html" target="_blank" class="external-link">Kibana Query Language</a></li>
-<li><a href="https://codingnote.cc/zh-hk/p/289218/" target="_blank" class="external-link">Kibana查詢語言（KQL）</a></li>
-<li><a href="https://blog.csdn.net/cjfeii/article/details/79771399" target="_blank" class="external-link">Kibana查詢語法詳解</a></li>
-<li><a href="https://www.jesse.top/2020/08/25/elk/kibana%E6%9F%A5%E8%AF%A2%E8%AF%AD%E6%B3%95/" target="_blank" class="external-link">kibana查詢語法</a></li>
-<li><a href="https://developer.aliyun.com/article/770157" target="_blank" class="external-link">大神都這麼做，讓 Kibana 搜索語法 query string 也能輕松上手</a></li>
-</ul>
-</div></div>
+<p><a class="internal-link" data-note-icon="" href="/🗒 EFK/61. kibana 查詢語法/">61. kibana 查詢語法</a></p>
 <p>ref.<br>
 <a href="https://www.elastic.co/guide/en/kibana/7.15/kuery-query.html" target="_blank" class="external-link">Kibana Query Language</a></p>
 
@@ -4263,6 +4171,12 @@ kubernetes.namespace: istio-sigua and message: &quot;img*&quot;
             		</li>
 
                     <li><a href="#正文">正文</a>
+            
+                <ol>
+                    
+                    <li><a href="#取得密碼：">取得密碼：</a>
+            		</li>
+                </ol>
             		</li>
 
                     <li><a href="#beat">beat</a>
@@ -4290,12 +4204,6 @@ kubernetes.namespace: istio-sigua and message: &quot;img*&quot;
                     <li><a href="#kibana">Kibana</a>
             		</li>
                 </ol>
-            		</li>
-
-                    <li><a href="#前言-1">前言</a>
-            		</li>
-
-                    <li><a href="#正文-1">正文</a>
             		</li>
                 </ol>
             </nav>

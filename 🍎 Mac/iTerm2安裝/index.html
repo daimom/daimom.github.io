@@ -3390,7 +3390,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-26T10:21:05.675Z';
+        const searchIndexDate = '2024-05-27T10:20:48.476Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3402,9 +3402,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-26T10:21:05.675Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-27T10:20:48.476Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-26T10:21:05.675Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-27T10:20:48.476Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3657,10 +3657,13 @@
       </header>
       
       
-      <ol>
+      <h1 id="2024-05-27" tabindex="-1">2024/05/27 更新</h1>
+<p>換了一台mac mini，<br>
+東西要重裝，然後發現，我指令都過時了，順便重新整理一下。</p>
+<ol>
 <li>安裝 Homebrew</li>
 </ol>
-<pre><code>   /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+<pre><code>   /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
 </code></pre>
 <ol start="2">
 <li>安裝iTerm2</li>
@@ -3668,9 +3671,47 @@
 <pre><code>brew install --cask iterm2   
 </code></pre>
 <ol start="3">
-<li>套用配色<br>
-到<a href="http://iterm2colorschemes.com/" target="_blank" class="external-link">iterm2 color schemes</a> 選擇喜歡的配色後import</li>
-<li>安裝ZSH</li>
+<li>
+<p>套用配色<br>
+到<a href="http://iterm2colorschemes.com/" target="_blank" class="external-link">iterm2 color schemes</a> 選擇喜歡的配色後import。<br>
+<picture src="/img/user/%F0%9F%8D%8E%20Mac/iTerm2-1.png" alt="iTerm2-1.png"><source       media="(max-width:480px)"
+      srcset="/img/optimized/Jr3CKF2zCU-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/Jr3CKF2zCU-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/Jr3CKF2zCU-700.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/Jr3CKF2zCU-700.jpeg"
+        ><img       class=""
+      src="/img/user/%F0%9F%8D%8E%20Mac/iTerm2-1.png"
+      alt="iTerm2-1.png"
+      width=""
+      ></picture><br>
+<picture src="/img/user/%F0%9F%8D%8E%20Mac/iTerm2-2.png" alt="iTerm2-2.png"><source       media="(max-width:480px)"
+      srcset="/img/optimized/Fb_JAeuu7U-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/Fb_JAeuu7U-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/Fb_JAeuu7U-700.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/Fb_JAeuu7U-700.jpeg"
+        ><img       class=""
+      src="/img/user/%F0%9F%8D%8E%20Mac/iTerm2-2.png"
+      alt="iTerm2-2.png"
+      width=""
+      ></picture></p>
+</li>
+<li>
+<p>安裝ZSH</p>
+</li>
 </ol>
 <pre><code>   brew install zsh zsh-completions
 </code></pre>
@@ -3695,7 +3736,17 @@ chsh -s $(which zsh)
 <pre><code>ZSH_THEME=&quot;agnoster&quot;
 </code></pre>
 <ol start="8">
-<li>修改字體，不然有亂碼</li>
+<li>
+<p>安裝 powerline font</p>
+<pre><code>brew install --cask font-sauce-code-pro-nerd-font
+</code></pre>
+<p>參考上面圖片，改選擇Text，修改字體，字體名稱為 <code>SauceCodePro Nerd Ford</code><br>
+如果要找其他字體的話，搜尋關鍵字<code>Nerd</code><br>
+<code>brew search --cask nerd</code></p>
+</li>
+<li>
+<p>修改字體，不然有亂碼（已棄用）</p>
+</li>
 </ol>
 <pre><code># clone 複製  
 git clone https://github.com/powerline/fonts.git --depth=1  
@@ -3704,8 +3755,10 @@ cd fonts
 ./install.sh
 </code></pre>
 <p>套用字體<br>
-iTerm → Preferences → Profiles → Text → Change Font→ Meslo<br>
-9. 程式碼高亮</p>
+iTerm → Preferences → Profiles → Text → Change Font→ Meslo</p>
+<ol start="9">
+<li>程式碼高亮</li>
+</ol>
 <pre><code>brew install zsh-syntax-highlighting
 </code></pre>
 <p>然後修改設定</p>
@@ -3717,7 +3770,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 </code></pre>
 <p>ref.</p>
 <ul>
-<li><a href="https://pjchender.dev/app/iterm2/" target="_blank" class="external-link">為 MAC 的 Terminal 上色 - 透過 iTerm 2 和 Oh My Zsh 高亮你的終端機</a></li>
+<li><a href="https://medium.com/statementdog-engineering/prettify-your-zsh-command-line-prompt-3ca2acc967f" target="_blank" class="external-link">超簡單！十分鐘打造漂亮又好用的 zsh command line 環境</a></li>
 <li><a href="https://medium.com/@hazelwu/%E7%94%A8oh-my-zsh%E6%8A%8Aiterm%E8%AE%8A%E7%BE%8E%E7%BE%8E-8a18daa8eac" target="_blank" class="external-link">用Oh My Zsh把iTerm變美美</a></li>
 <li><a href="https://spreered.medium.com/%E5%AE%A2%E8%A3%BD%E6%88%91%E7%9A%84-cli-%E7%B5%82%E6%96%BC%E7%A8%8D%E5%BE%AE%E6%90%9E%E6%87%82-iterm-zsh-d3feed27f664" target="_blank" class="external-link">客製我的 CLI — 終於稍微搞懂 iTerm + ZSH</a></li>
 </ul>
@@ -3950,6 +4003,23 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
                   
                         
+                        
+                              <div class="toc">
+                                    <div class="toc-title-container">
+                                          <div class="toc-title">
+                                                On this page
+                                          </div>
+                                    </div>
+                                    <div class="toc-container">
+                                          <nav class="toc">
+                <ol>
+                    
+                    <li><a href="#2024-05-27">2024/05/27 更新</a>
+            		</li>
+                </ol>
+            </nav>
+                                    </div>
+                              </div>
                         
 
                   
