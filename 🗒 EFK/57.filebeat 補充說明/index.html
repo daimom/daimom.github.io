@@ -1836,6 +1836,19 @@
             
                 <div @click.stop class="notelink ">
                     
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🍎 Mac/iTerm2-Powerlevel10k設定/">iTerm2-Powerlevel10k設定 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🍎 Mac/iTerm2安裝/">iTerm2安裝 </a>
                 </div>
             
@@ -3390,7 +3403,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-28T10:20:26.338Z';
+        const searchIndexDate = '2024-05-29T10:21:45.965Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3402,9 +3415,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-28T10:20:26.338Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-29T10:21:45.965Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-28T10:20:26.338Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-29T10:21:45.965Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3657,8 +3670,8 @@
       </header>
       
       
-      <h1 id="前言" tabindex="-1">前言</h1>
-<h1 id="正文" tabindex="-1">正文</h1>
+      <h1 id="內容" tabindex="-1">內容</h1>
+<h3 id="efk-57-filebeat-2024-05-28-2024-05-28" tabindex="-1"><a class="internal-link" data-note-icon="" href="/🗒 EFK/57.filebeat 補充說明/#2024-05-28"><a class="tag" onclick="toggleTagSearch(this)" data-content="#2024/05/28補充">#2024/05/28補充</a></a></h3>
 <h2 id="filebeat" tabindex="-1">filebeat抓資料的方式</h2>
 <ol>
 <li>autodiscover</li>
@@ -3876,17 +3889,7 @@ spec:
       autodiscover:
         providers:
         - type: kubernetes
-          node: ${NODE_NAME}
-          # templates:
-          #   - condition:
-          #       not:
-          #         equals:
-          #           kubernetes.namespace: kube-system
-              #         - kubernetes.namespace: elastic-system 
-              # config:
-              #   - type: container
-              #     paths:
-              #     - /var/log/containers/*${data.kubernetes.container.id}.log                                                  
+          node: ${NODE_NAME}    
           hints:
             enabled: true
             default_config:
@@ -3895,7 +3898,7 @@ spec:
               - /var/log/containers/*${data.kubernetes.container.id}.log
               exclude_lines: 
               - &quot;.*(NAT rule custom-iptables|unknown operand).*&quot;  # 排除 k8s-custom-iptables
-              - &quot;.*(YABO_WS.Services.PromoWebSocketService|YABO_WS.BLL.ActivityEventLogic).*&quot;      # 排除yabo-ws
+              - &quot;.*(YABO_WS.Services.PromoWebSocketService|YABO_WS.BLL.ActivityEventLogic).*&quot;      
     processors:
     - add_cloud_metadata: {}
     # - add_host_metadata: {}
@@ -4008,6 +4011,84 @@ roleRef:
 <li><a href="https://www.codeless.me/posts/elastic-beats-on-google-kubernetes-engine-gke/" target="_blank" class="external-link">Elastic Beats on Google Kubernetes Engine (GKE)</a></li>
 <li><a href="https://github.com/DanRoscigno/GKE-on-Prem-logging-and-metrics/blob/master/filebeat-kubernetes.yaml" target="_blank" class="external-link">filebeat-kubernetes.yaml</a></li>
 <li><a href="https://www.deepnetwork.com/blog/2020/01/27/ELK-stack-filebeat-k8s-deployment.html" target="_blank" class="external-link">How to Setup an ELK Stack and Filebeat on Kubernetes</a></li>
+</ul>
+<hr>
+<h2 id="2024-05-28" tabindex="-1">2024/05/28補充</h2>
+<h3 id="autodiscover-log-indices" tabindex="-1">使用autodiscover，拆分兩個log indices</h3>
+<p>以下程式碼為『片段』。</p>
+<pre><code>apiVersion: beat.k8s.elastic.co/v1beta1
+kind: Beat
+metadata:
+  name: prod
+  namespace: elastic-system
+spec:
+  type: filebeat
+  version: 8.13.2
+  elasticsearchRef:
+    name: prod
+    namespace: elastic-system
+  kibanaRef:
+    name: prod
+    namespace: elastic-system
+  config:     
+    filebeat:
+      autodiscover:
+        providers:
+        - type: kubernetes
+          node: ${NODE_NAME} 
+          templates:
+            - condition:
+                equals:
+                  kubernetes.labels.app: &quot;video&quot;
+              config:
+                - type: container
+                  paths:
+                    - /var/log/containers/*${data.kubernetes.container.id}.log
+                  processors:
+                    - add_kubernetes_metadata:
+                        host: ${NODE_NAME}                                                       
+            - condition:
+                equals:
+                  kubernetes.labels.app: &quot;auth&quot;
+              config:
+                - type: container
+                  paths:
+                    - /var/log/containers/*${data.kubernetes.container.id}.log
+                  processors:
+                    - add_kubernetes_metadata:
+                        host: ${NODE_NAME}                                                       
+    processors:
+    - add_cloud_metadata: {} 
+    output.elasticsearch:
+      username: &quot;elastic&quot;
+      password: &quot;password&quot;  
+      index: &quot;logs-%{[kubernetes.labels.app]}-%{+yyyy.MM.dd}&quot;
+      indices:
+        - index: &quot;videoworker-%{+yyyy.MM.dd}&quot;
+          when.equals:
+            kubernetes.labels.app: &quot;videoworker&quot;
+        - index: &quot;authcontrol-%{+yyyy.MM.dd}&quot;
+          when.equals:
+            kubernetes.labels.app: &quot;authcontrol&quot; 
+    setup.template.enabled: true
+    setup.template.name: &quot;filebeat-8.13.2&quot;
+    setup.template.pattern: &quot;filebeat-8.13.2&quot;
+</code></pre>
+<p>說明：</p>
+<ul>
+<li>
+<p>config.filebeat.autodiscover.providers ：底下使用template，作為拆分的範本，原先是使用hints機制，使用關鍵label作為擷取的方式。</p>
+</li>
+<li>
+<p>output.elasticsearch: 輸出到elasticsearch ，預設的index使用 logs作為datastream，底下的indices則是再細分規則， 如果符合規則，則使用其他的datastream名稱。</p>
+<p>官方文件，是不用寫output.elasticsearch，但我搞不出來。<br>
+改天在繼續追了。</p>
+</li>
+</ul>
+<p>ref.</p>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover-hints.html" target="_blank" class="external-link">Hints based autodiscover</a></li>
+<li><a href="https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-beat-configuration-examples.html#k8s-beat-configuration-examples" target="_blank" class="external-link">Filebeat example</a></li>
 </ul>
 
       
@@ -4249,13 +4330,13 @@ roleRef:
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#前言">前言</a>
-            		</li>
-
-                    <li><a href="#正文">正文</a>
+                    <li><a href="#內容">內容</a>
             
                 <ol>
                     
+                    <li><a href="#efk-57-filebeat-2024-05-28-2024-05-28">[[🗒 EFK/57.filebeat 補充說明#2024/05/28補充|#2024/05/28補充]]</a>
+            		</li>
+
                     <li><a href="#filebeat">filebeat抓資料的方式</a>
             		</li>
 
@@ -4272,6 +4353,15 @@ roleRef:
             		</li>
 
                     <li><a href="#yaml-operator">完整yaml，使用operator</a>
+            		</li>
+
+                    <li><a href="#2024-05-28">2024/05/28補充</a>
+            
+                <ol>
+                    
+                    <li><a href="#autodiscover-log-indices">使用autodiscover，拆分兩個log indices</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             		</li>
