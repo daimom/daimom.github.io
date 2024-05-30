@@ -3233,6 +3233,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/214. Elastic API建立 Index_template/">214. Elastic API建立 Index_template </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3401,7 +3412,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-05-29T10:21:45.965Z';
+        const searchIndexDate = '2024-05-30T10:20:15.417Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3413,9 +3424,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-05-29T10:21:45.965Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-05-30T10:20:15.417Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-29T10:21:45.965Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-05-30T10:20:15.417Z', docs}));
             window.docs = docs
             window.index = index;
         }

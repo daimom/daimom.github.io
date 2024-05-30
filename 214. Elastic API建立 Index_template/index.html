@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>istio virtualService delegate使用</title>
+    <title>214. Elastic API建立 Index_template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -1666,7 +1666,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/35. istio virtualService delegate使用/">istio virtualService delegate使用 </a>
                 </div>
@@ -3238,7 +3238,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/214. Elastic API建立 Index_template/">214. Elastic API建立 Index_template </a>
                 </div>
@@ -3660,7 +3660,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">istio virtualService delegate使用</h1>
+          <h1 data-note-icon="">214. Elastic API建立 Index_template</h1>
         
         <div class="header-meta">
           
@@ -3670,7 +3670,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #⛵️
+                    #🗒
                   </a>
                 
               
@@ -3682,173 +3682,273 @@
       
       
       <h1 id="前言" tabindex="-1">前言</h1>
+<p>幫同事測試不同LOG的刪除時間，<br>
+每次要去點一點又怕忘記，<br>
+弄個API了，<br>
+不知道之後能不能在部屬時直接掛上去，再研究看看。<br>
+這次就先簡單建立個 index template跟life cycle了</p>
 <h1 id="正文" tabindex="-1">正文</h1>
-<p>會用到delegate的原因，是為了要解決在維護時上的痛點。<br>
-因目前使用flagger canary，<br>
-導致每個服務就一個virtualService (下面會用VS代替)，<br>
-而多個服務會共用一個host ，導致在維護上的困難。<br>
-而且在kiali上面會出現警告(fig.1)，看了實在礙眼。</p>
-<p><picture src="/img/user/%E2%9B%B5%EF%B8%8F%20istio/35-fig.1.jpg" alt="35-fig.1.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/rW9tsKz6YJ-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/rW9tsKz6YJ-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/rW9tsKz6YJ-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/rW9tsKz6YJ-700.jpeg"
-        ><img       class=""
-      src="/img/user/%E2%9B%B5%EF%B8%8F%20istio/35-fig.1.jpg"
-      alt="35-fig.1.jpg"
-      width=""
-      ></picture></p>
-<p>所以使用delegate。這樣的話，流量會先導到 delegate vs，之後才會根據path到各服務的vs。</p>
-<p>delegate 有幾點要注意，</p>
+<h3 id="filebeat-elastic-efk-57-filebeat-57-filebeat" tabindex="-1">首先要先確定你的filebeat有將資料丟到elastic裡面，可參考<a class="internal-link" data-note-icon="" href="/🗒 EFK/57.filebeat 補充說明/">57.filebeat 補充說明</a>。</h3>
+<p>再來根據你建的是indices還是datastream，來決定你的index_template。<br>
+下面的指令，都在dev tools中執行。</p>
+<blockquote>
+<p>API後面的最後一個路徑為名稱</p>
+</blockquote>
+<h4 id="indices" tabindex="-1">indices</h4>
 <ol>
-<li>不支援 regex</li>
-<li>在delegate上寫rewrite不會被轉導，要在導過去的vs寫。</li>
-<li>目前測試只能在同一個namespace上面。如果不是用藍綠佈署自定義的話，在destination 上面，可以使用完整的FQDN，是可以執行的。(例如: video-admin-primary.default.svc.cluster.local)</li>
+<li>API建立 Index Lifecycle Policies</li>
 </ol>
-<p>VS delegate</p>
-<pre><code>apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  name: control-dashboard
-  namespace: default
-spec:
-  hosts:
-  - &quot;*&quot;
-  gateways:
-    - istio-gateway-external.istio-system.svc.cluster.local
-  http:
-    - delegate:
-        name: video-admin
-        namespace: default
-      match:
-        - uri:
-            prefix: /ezio
-        - uri:
-            prefix: /abc
-        - uri:
-            prefix: /api
-      name: reviews-v2-routes
-    - delegate:
-        name: tw-frontend
-        namespace: default
-      match:
-        - uri:
-            prefix: /
-      name: tw-frontend
+<pre><code>PUT _ilm/policy/worker
+{
+  &quot;policy&quot;: {
+    &quot;_meta&quot;: {
+      &quot;description&quot;: &quot;used for worker log&quot;,
+      &quot;author&quot;: &quot;Ezio&quot;,
+      &quot;project&quot;: {
+        &quot;name&quot;: &quot;srs&quot;,
+        &quot;department&quot;: &quot;lerouge&quot;
+      }
+    },
+    &quot;phases&quot;: {
+      &quot;hot&quot;: {
+        &quot;min_age&quot;: &quot;0ms&quot;,
+        &quot;actions&quot;: {
+          &quot;set_priority&quot;: {
+            &quot;priority&quot;: 100
+          },
+          &quot;rollover&quot;: {
+            &quot;max_age&quot;: &quot;3d&quot;,
+            &quot;max_primary_shard_size&quot;: &quot;50gb&quot;
+          }
+        }
+      },
+      &quot;delete&quot;: {
+        &quot;min_age&quot;: &quot;3d&quot;,
+        &quot;actions&quot;: {
+          &quot;delete&quot;: {
+            &quot;delete_searchable_snapshot&quot;: true
+          }
+        }
+      }
+    }
+  }
+}
 </code></pre>
-<p>服務的 vs，（注意：此處的yaml是由flagger自動產生的）</p>
-<pre><code>kind: VirtualService
-apiVersion: networking.istio.io/v1alpha3
-metadata:
-  name: video-admin
-  namespace: default
-spec:
-  hosts: []
-  http:
-    - match:
-        - uri:
-            prefix: /api
-        - uri:
-            prefix: /abc
-        - uri:
-            prefix: /ezio
-      rewrite:
-        uri: /api
-      route:
-        - destination:
-            host: video-admin-primary
-          weight: 100
-        - destination:
-            host: video-admin-canary
-          weight: 0
-
+<ol start="2">
+<li>建立 index_template</li>
+</ol>
+<pre><code>PUT _index_template/worker
+{
+  &quot;index_patterns&quot; : [&quot;worker-*&quot;],
+  &quot;template&quot;: {
+    &quot;settings&quot;: {
+      &quot;index&quot;: {
+        &quot;lifecycle&quot;: {
+          &quot;name&quot;: &quot;videoworker&quot;
+        }
+      }
+    }
+  },
+  &quot;composed_of&quot;: [&quot;ecs@mappings&quot;, &quot;logs@mappings&quot;,&quot;logs@settings&quot;],
+  &quot;priority&quot; : 200,
+  &quot;version&quot;: 1,
+  &quot;_meta&quot;: {
+    &quot;description&quot;: &quot;test by Ezio&quot;,
+    &quot;latest_modify_date&quot;: &quot;2024-05-28&quot;
+  }
+}
 </code></pre>
-<p>ps. 使用canary的話，在service下面加上</p>
-<pre><code>delegation: true  
+<ol start="3">
+<li>檢查  Index Lifecycle Policies 及 index template</li>
+</ol>
+<pre><code>GET _ilm/policy/worker  #  Index Lifecycle Policies
+GET _index_template/worker # index template
 </code></pre>
-<p>ref. <a href="https://docs.flagger.app/faq#how-does-flagger-interact-with-istio" target="_blank" class="external-link">How does Flagger interact with Istio?</a></p>
-<pre><code>apiVersion: flagger.app/v1beta1
-kind: Canary
-metadata:
-  name: example-api-qa-v2
-  namespace: istio-example
-spec:
-  provider: istio
-  targetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: example-api-qa-v2
-  autoscalerRef:
-    apiVersion: autoscaling/v1
-    kind: HorizontalPodAutoscaler
-    name: example-api-qa-v2
-
-  service:
-    delegation: true    # use delegate
-    name: example-api-qa-v2
-    port: 80
-    targetPort: 80
-    portName: http
-    portDiscovery: true
-
-    trafficPolicy:
-      tls:
-        mode: DISABLE
-    match:
-      - uri:
-          prefix: /api-v2
-    rewrite:
-      uri: /api
-    timeout: 30s
-  analysis:
-    # analysis spend time  : interval * iterations 
-    # 時間間隔 (默認 60s)
-    interval: 30s
-    # 回滾前的最大失敗指標檢查次數(可能因為檢查時間差的關係，至少會有兩次失敗)
-    threshold: 5
-    iterations: 1
-    metrics:
-      - name: request-success-rate
-        thresholdRange:
-          min: 99
-        interval: 1m
-      - name: request-duration
-        thresholdRange:
-          max: 500
-        interval: 30s
-    webhooks:
-      - name: load-test-get
-        type: pre-rollout
-        url: http://flagger-loadtester.tools/
-        timeout: 15s
-        metadata:
-          type: cmd
-          cmd: &quot;hey -z 1m -q 10 -c 2 http://example-api-qa-v2-canary.istio-example&quot;
-      - name: &quot;notify&quot;
-        type: event
-        url: http://webhook-api.tools/webhook/flagger
-        timeout: 5s
-        metadata:
-          channel: &quot;-1001429024676&quot;
-      - name: load-test
-        type: rollout
-        url: http://flagger-loadtester.tools/
-        timeout: 5s
-        metadata:
-          type: cmd
-          cmd: &quot;hey -z 1m -q 10  http://example-api-qa-v2-canary.istio-example&quot;
-
+<p>ref.</p>
+<ul>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html" target="_blank" class="external-link">Create or update lifecycle policy API</a></li>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-templates.html" target="_blank" class="external-link">Index templates</a></li>
+</ul>
+<h4 id="data-stream" tabindex="-1">data stream</h4>
+<ol>
+<li>建立 index template<br>
+與上面的差異點在於，有沒有增加<code>data_stream</code>與 <code>template.lifecycle.data_retention</code></li>
+</ol>
+<pre><code>PUT _index_template/videowork
+{
+  &quot;index_patterns&quot; : [&quot;videoworker-*&quot;],
+  &quot;template&quot;: {
+    &quot;lifecycle&quot;: {
+      &quot;data_retention&quot;: &quot;3d&quot;
+    }
+  },
+  &quot;data_stream&quot;: { },
+  &quot;composed_of&quot;: [&quot;ecs@mappings&quot;, &quot;logs@mappings&quot;,&quot;logs@settings&quot;],
+  &quot;priority&quot; : 200,
+  &quot;version&quot;: 1,
+  &quot;_meta&quot;: {
+    &quot;description&quot;: &quot;test by Ezio&quot;,
+    &quot;latest_modify_date&quot;: &quot;2024-05-28&quot;
+  }
+}
 </code></pre>
-<p>ref.<br>
-<a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Delegate" target="_blank" class="external-link">VS Delegate</a><br>
-<a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest" target="_blank" class="external-link">VS HTTPMatchRequest</a></p>
+<p>ref. <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/tutorial-manage-new-data-stream.html" target="_blank" class="external-link">Create a data stream with a lifecycle</a></p>
+<h3 id="indices-vs-data-stream" tabindex="-1">indices vs data stream</h3>
+<p>下面資料是用gpt-4o提供的</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Indices</th>
+<th>Data Streams</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>管理方式</strong></td>
+<td>手動管理或使用 ILM</td>
+<td>自動管理滾動和索引</td>
+</tr>
+<tr>
+<td><strong>數據存儲</strong></td>
+<td>適合任意結構數據</td>
+<td>專為時間序列數據設計</td>
+</tr>
+<tr>
+<td><strong>對應組態</strong></td>
+<td>每個索引獨立組態</td>
+<td>透過索引範本自動組態</td>
+</tr>
+<tr>
+<td><strong>滾動策略</strong></td>
+<td>需手動或 ILM 組態</td>
+<td>自動滾動</td>
+</tr>
+<tr>
+<td><strong>查詢性能</strong></td>
+<td>基於標準索引</td>
+<td>優化時間序列數據查詢</td>
+</tr>
+<tr>
+<td><strong>索引創建</strong></td>
+<td>使用 <code>PUT /index_name</code></td>
+<td>透過索引範本自動創建</td>
+</tr>
+<tr>
+<td><strong>適用數據</strong></td>
+<td>任意數據，包括非時間序列數據</td>
+<td>主要為日誌、指標等時間序列數據</td>
+</tr>
+<tr>
+<td><strong>學習曲線</strong></td>
+<td>需要學習和管理索引的細節</td>
+<td>簡化，特別適合大規模時間序列數據</td>
+</tr>
+<tr>
+<td><strong>生命週期管理</strong></td>
+<td>需要組態 ILM</td>
+<td>自動管理</td>
+</tr>
+<tr>
+<td><strong>存儲效率</strong></td>
+<td>依賴手動優化</td>
+<td>為時間序列數據設計，具備存儲效率</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="優缺點" tabindex="-1">優缺點</h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>Indices</th>
+<th>Data Streams</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>優點</strong></td>
+<td>- 更靈活，可用於任意類型數據</td>
+<td>- 自動管理滾動和索引</td>
+</tr>
+<tr>
+<td></td>
+<td>- 完全自定義對應和設置</td>
+<td>- 簡化組態和管理</td>
+</tr>
+<tr>
+<td></td>
+<td>- 支援複雜的查詢和聚合</td>
+<td>- 優化時間序列數據查詢和存儲</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>- 適合大規模日誌和指標數據</td>
+</tr>
+<tr>
+<td><strong>缺點</strong></td>
+<td>- 需手動管理索引和滾動策略</td>
+<td>- 主要針對時間序列數據</td>
+</tr>
+<tr>
+<td></td>
+<td>- 組態和管理相對複雜</td>
+<td>- 不適合非時間序列數據</td>
+</tr>
+<tr>
+<td></td>
+<td>- 需要組態和維護 ILM</td>
+<td>- 對應和設置相對不靈活</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="推薦使用場景" tabindex="-1">推薦使用場景</h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>使用場景</th>
+<th>Indices</th>
+<th>Data Streams</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>日誌管理</strong></td>
+<td>可以使用，但需要手動組態滾動和管理</td>
+<td>最佳選擇，自動管理，簡化運維</td>
+</tr>
+<tr>
+<td><strong>應用監控</strong></td>
+<td>可以使用，但需自定義索引和對應</td>
+<td>最佳選擇，專為時間序列數據設計</td>
+</tr>
+<tr>
+<td><strong>定期報表</strong></td>
+<td>適合任何類型報表</td>
+<td>適合時間序列報表</td>
+</tr>
+<tr>
+<td><strong>歷史數據查詢</strong></td>
+<td>最佳選擇，可針對具體需求優化查詢</td>
+<td>適合基於時間範圍的歷史數據查詢</td>
+</tr>
+<tr>
+<td><strong>複雜數據分析</strong></td>
+<td>最佳選擇，支援靈活的對應和查詢</td>
+<td>適合時間序列數據的快速查詢和聚合</td>
+</tr>
+<tr>
+<td><strong>非時間序列數據存儲</strong></td>
+<td>最佳選擇，適合所有類型數據</td>
+<td>不推薦，僅適合時間序列數據</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="結論" tabindex="-1">結論</h3>
+<p>其實從API來看的話，直接用data stream比較快，也比較省事。<br>
+加上目前用的是ECK，<br>
+我根本沒去設計 warm phase 或 cold phase的硬碟。</p>
 
       
       
@@ -4093,6 +4193,36 @@ spec:
             		</li>
 
                     <li><a href="#正文">正文</a>
+            
+                <ol>
+                    
+                    <li><a href="#filebeat-elastic-efk-57-filebeat-57-filebeat">首先要先確定你的filebeat有將資料丟到elastic裡面，可參考[[🗒 EFK/57.filebeat 補充說明|57.filebeat 補充說明]]。</a>
+            
+                <ol>
+                    
+                    <li><a href="#indices">indices</a>
+            		</li>
+
+                    <li><a href="#data-stream">data stream</a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#indices-vs-data-stream">indices vs data stream</a>
+            
+                <ol>
+                    
+                    <li><a href="#優缺點">優缺點</a>
+            		</li>
+
+                    <li><a href="#推薦使用場景">推薦使用場景</a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#結論">結論</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>
