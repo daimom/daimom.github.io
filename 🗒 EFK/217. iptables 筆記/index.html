@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>Fortigate 設定 內部服務負載平衡</title>
+    <title>217. iptables 筆記</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -1452,7 +1452,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/182. Fortigate 設定 內部服務負載平衡/">Fortigate 設定 內部服務負載平衡 </a>
                 </div>
@@ -2898,7 +2898,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/217. iptables 筆記/">217. iptables 筆記 </a>
                 </div>
@@ -3684,7 +3684,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">Fortigate 設定 內部服務負載平衡</h1>
+          <h1 data-note-icon="">217. iptables 筆記</h1>
         
         <div class="header-meta">
           
@@ -3694,7 +3694,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #🌐
+                    #🐧
                   </a>
                 
               
@@ -3705,120 +3705,54 @@
       </header>
       
       
-      <h1 id="前言" tabindex="-1">前言</h1>
-<p><em>&amp;(</em>&amp;%(%^&amp;<em>%@#$%^((&amp;^%</em> 一連串消音，<br>
-說過我只會簡易的網路管理，然後現在叫我搞這個，<br>
-目前是第二次，再來一次，直接畢業好了。<br>
-直接去改客戶的防火牆設定是你瘋了，還是我瘋了。<br>
-弄不好網路全斷誰負責！？<br>
-還是你認爲網路很簡單，那你他馬的怎麼不自己搞。</p>
-<h1 id="正文" tabindex="-1">正文</h1>
-<p>要達成的目標，user呼叫一個ip網址，會自動轉到其他的伺服器上面 。</p>
-<p>主要參考fortigate官網說明，<a href="https://docs.fortinet.com/document/fortigate/6.2.15/cookbook/713497/virtual-server" target="_blank" class="external-link">Virtual server</a></p>
-<p>測試使用的FortiOS版本為 7.2.5</p>
-<h4 id="簡略說明" tabindex="-1">簡略說明</h4>
-<ol>
-<li>打開 Virtual server<br>
-如果沒看到，需到 System -&gt; Feature Visibility 開啓 Additional Features底下的  Load Balance<br>
-<picture src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.1.png" alt="182-fig.1.png"><source       media="(max-width:480px)"
-      srcset="/img/optimized/YUTw6yffJt-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/YUTw6yffJt-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/YUTw6yffJt-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/YUTw6yffJt-700.jpeg"
-        ><img       class=""
-      src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.1.png"
-      alt="182-fig.1.png"
-      width=""
-      ></picture></li>
-<li>新增Virtual Server<br>
-<picture src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.2.png" alt="182-fig.2.png"><source       media="(max-width:480px)"
-      srcset="/img/optimized/mzkVwktPju-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/mzkVwktPju-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/mzkVwktPju-572.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/mzkVwktPju-572.jpeg"
-        ><img       class=""
-      src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.2.png"
-      alt="182-fig.2.png"
-      width=""
-      ></picture></li>
-<li>新增Firewall Policy<br>
-問題點在 Inspection Mode ，選擇 Flow-based的話，會找不到你剛剛設定的virtual server，必需設定Proxy-based才有<br>
-<picture src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.3.png" alt="182-fig.3.png"><source       media="(max-width:480px)"
-      srcset="/img/optimized/dd1p2PVHvl-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/dd1p2PVHvl-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/dd1p2PVHvl-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/dd1p2PVHvl-700.jpeg"
-        ><img       class=""
-      src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.3.png"
-      alt="182-fig.3.png"
-      width=""
-      ></picture><br>
-<picture src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.4.png" alt="182-fig.4.png"><source       media="(max-width:480px)"
-      srcset="/img/optimized/WV1o3iy-0x-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/WV1o3iy-0x-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/WV1o3iy-0x-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/WV1o3iy-0x-700.jpeg"
-        ><img       class=""
-      src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.4.png"
-      alt="182-fig.4.png"
-      width=""
-      ></picture></li>
-</ol>
-<h4 id="troubleshoting" tabindex="-1">troubleshoting</h4>
+      <h1 id="緣由" tabindex="-1">緣由</h1>
+<p>istio重新複習概念的時候，<br>
+又碰到了iptable，然後，我又忘了。<br>
+沒有用自己理解過的作法，<br>
+果然很容易忘記啊。</p>
+<h1 id="主題" tabindex="-1">主題</h1>
+<p>iptables簡單說是個管高速公路大門的。</p>
+<p>基本有三條路(chain)，<br>
+分別是</p>
 <ul>
-<li>測試結果跟沒走virtual server不一樣？<br>
-檢查看看 virtual server 的 Persistence 有沒有設定 HTTP Cookie</li>
-<li>呼叫api，發現呼叫的都是同一個ip<br>
-檢查一下 Load Balancing method 是不是設定成 Static，上面設定就設錯了，導致固定只打同一個。<br>
-<picture src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.5.png" alt="182-fig.5.png"><source       media="(max-width:480px)"
-      srcset="/img/optimized/lNvjL1flvS-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/lNvjL1flvS-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/lNvjL1flvS-673.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/lNvjL1flvS-673.jpeg"
-        ><img       class=""
-      src="/img/user/%E2%98%8E%EF%B8%8F%20Network/182-fig.5.png"
-      alt="182-fig.5.png"
-      width=""
-      ></picture></li>
-<li>Firewall Policy的 Inspection Mode 沒出現選項<br>
-這塊比較不確定，但我是先到 System -&gt; Feature Visibility 開啓 Security Features底下的  Zero Trust Network Access後，才突然跑出來，但我把他關掉，也沒有消失...</li>
+<li>filter：這條路會直接到管高速公路大門的管理單位大樓裡面。</li>
+<li>nat：要去這條高速公路的其他地方，就往這邊。</li>
+<li>mangle：特權道路，有高官要過時，就走這條。</li>
 </ul>
-<p>ref. <a href="https://docs.fortinet.com/document/fortigate/6.2.15/cookbook/713497/virtual-server" target="_blank" class="external-link">Virtual server</a></p>
+<hr>
+<p>鳥哥的說明：</p>
+<ul>
+<li>
+<p>filter (過濾器)：主要跟進入 Linux 本機的封包有關，這個是預設的 table 喔！</p>
+<ul>
+<li>INPUT：主要與想要進入我們 Linux 本機的封包有關；</li>
+<li>OUTPUT：主要與我們 Linux 本機所要送出的封包有關；</li>
+<li>FORWARD：這個咚咚與 Linux 本機比較沒有關係， 他可以『轉遞封包』到後端的電腦中，與下列 nat table 相關性較高。</li>
+</ul>
+</li>
+<li>
+<p>nat (位址轉換)：是 Network Address Translation 的縮寫， 這個表格主要在進行來源與目的之 IP 或 port 的轉換，與 Linux 本機較無關，主要與 Linux 主機後的區域網路內電腦較有相關。</p>
+<ul>
+<li>PREROUTING：在進行路由判斷之前所要進行的規則(DNAT/REDIRECT)</li>
+<li>POSTROUTING：在進行路由判斷之後所要進行的規則(SNAT/MASQUERADE)</li>
+<li>OUTPUT：</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>mangle (破壞者)：這個表格主要是與特殊的封包的路由旗標有關， 早期僅有 PREROUTING 及 OUTPUT 鏈，不過從 kernel 2.4.18 之後加入了 INPUT 及 FORWARD 鏈。 由於這個表格與特殊旗標相關性較高，所以像咱們這種單純的環境當中，較少使用 mangle 這個表格。</li>
+</ul>
+</li>
+</ul>
+<p>ref. <a href="https://linux.vbird.org/linux_server/centos6/0250simple_firewall.php#netfilter" target="_blank" class="external-link">iptables 的表格 (table) 與鏈 (chain)</a></p>
+<hr>
+<p>每個chain裡面都有自己rule，<br>
+rule 1 是去彰化，<br>
+rule 2 是去員林，<br>
+rule 3是去嘉義。</p>
+<p>從台中南下要去彰化的話，rule 1 符合就直接去彰化了。<br>
+但如果是要去嘉義，前面不符合，就跳過，直到rule 3判斷符合才會執行。</p>
+<p>ref. <a href="https://jimmysong.io/blog/sidecar-injection-iptables-and-traffic-routing/" target="_blank" class="external-link">Istio 中的 Sidecar 注入、透明流量劫持及流量路由過程詳解</a></p>
 
       
       
@@ -4059,19 +3993,10 @@
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#前言">前言</a>
+                    <li><a href="#緣由">緣由</a>
             		</li>
 
-                    <li><a href="#正文">正文</a>
-            
-                <ol>
-                    
-                    <li><a href="#簡略說明">簡略說明</a>
-            		</li>
-
-                    <li><a href="#troubleshoting">troubleshoting</a>
-            		</li>
-                </ol>
+                    <li><a href="#主題">主題</a>
             		</li>
                 </ol>
             </nav>
