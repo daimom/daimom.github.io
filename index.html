@@ -2899,19 +2899,6 @@
             
                 <div @click.stop class="notelink ">
                     
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/217. iptables 筆記/">217. iptables 筆記 </a>
-                </div>
-            
-        </div>
-        
-    
-                    
-                        
-    
-        <div x-show="isOpen" style="display:none" class="filelist">
-            
-                <div @click.stop class="notelink ">
-                    
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/43.自建ECK on GKE/">自建ECK on GKE </a>
                 </div>
             
@@ -3268,6 +3255,28 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/217. iptables 筆記/">217. iptables 筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/219. Google Cloud Managed Service for Prometheus  費用/">219. Google Cloud Managed Service for Prometheus  費用 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3436,7 +3445,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-06-06T10:20:12.056Z';
+        const searchIndexDate = '2024-06-07T10:20:33.511Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3448,9 +3457,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-06-06T10:20:12.056Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-06-07T10:20:33.511Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-06T10:20:12.056Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-07T10:20:33.511Z', docs}));
             window.docs = docs
             window.index = index;
         }

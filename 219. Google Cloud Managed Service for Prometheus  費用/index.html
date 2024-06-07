@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>殭屍程式</title>
+    <title>219. Google Cloud Managed Service for Prometheus  費用</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -2048,7 +2048,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🐧 Linux/173. Linux殭屍程式/">殭屍程式 </a>
                 </div>
@@ -3271,7 +3271,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/219. Google Cloud Managed Service for Prometheus  費用/">219. Google Cloud Managed Service for Prometheus  費用 </a>
                 </div>
@@ -3693,7 +3693,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">殭屍程式</h1>
+          <h1 data-note-icon="">219. Google Cloud Managed Service for Prometheus  費用</h1>
         
         <div class="header-meta">
           
@@ -3703,7 +3703,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #🐧
+                    #☁️
                   </a>
                 
               
@@ -3714,39 +3714,61 @@
       </header>
       
       
-      <h1 id="前言" tabindex="-1">前言</h1>
-<p>看文章看到一篇詳解，TOP指令，重新把linux的top理解一遍。<br>
-然後看到一個怪名詞 zombie ，這是我理解的意思嗎！？</p>
-<h1 id="正文" tabindex="-1">正文</h1>
-<p>簡單說有點像是windows 的應用程式，要死不死，卡在那邊當掉的情況。</p>
-<p>每一個process都會有一個parent process，<br>
-當child process處於結束與尚未結束中間時會發生。<br>
-詳細，請參考<a href="https://ithelp.ithome.com.tw/articles/10302966" target="_blank" class="external-link">Day 17: 殭屍與孤兒</a></p>
-<p>top 顯示PPID</p>
-<ol>
-<li>執行 top</li>
-<li>按下<code>f</code></li>
-<li>選擇需要的欄位，按<code>d</code> 或 <code>space</code> 選擇</li>
-<li>按下<code>→</code> 鍵盤的方向鍵，然後按<code>上下鍵</code>可以調整順序</li>
-<li>按<code>q</code>離開</li>
-</ol>
-<p><picture src="/img/user/%F0%9F%90%A7%20Linux/173.fig-1.jpg" alt="173.fig-1.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/ROtqT37YfF-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/ROtqT37YfF-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/ROtqT37YfF-537.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/ROtqT37YfF-537.jpeg"
-        ><img       class=""
-      src="/img/user/%F0%9F%90%A7%20Linux/173.fig-1.jpg"
-      alt="173.fig-1.jpg"
-      width=""
-      ></picture></p>
+      <h1 id="緣由" tabindex="-1">緣由</h1>
+<p>由於GKE預設惠啟用 Google Cloud Managed Service for Prometheus，<br>
+來比較一下，看之後是不是能夠一個網站看到全部的圖表。<br>
+不過也要先看下價格，如果太貴，那也只能分開了。</p>
+<h1 id="主題" tabindex="-1">主題</h1>
+<h3 id="2024-06-07" tabindex="-1">2024/06/07</h3>
+<p>價格</p>
+<ul>
+<li>$0.06/百萬個<a href="https://cloud.google.com/stackdriver/pricing?hl=zh-cn#metrics-charged-by-samples" target="_blank" class="external-link">樣本</a>†：注入的前 0-50 億個樣本†</li>
+<li>$0.048/百萬樣本：接下來的 50-2500 億個樣本</li>
+<li>$0.036/百萬樣本：接下來注入的 250-5,000 億個樣本</li>
+<li>注入的每百萬個樣本 $0.024：超過 5000 億個樣本</li>
+</ul>
+<p>這數字以百萬計。</p>
+<p>一下子真的不知道該怎麼算，<br>
+那就先算出 每10秒一個metric，那一個月會有多少資料。<br>
+ans: 259,200筆。所以一個月 $0.06USD</p>
+<p>加減算一下50億個樣本，要多少錢。<br>
+ans: $300 USD</p>
+<p>現在來算一下，一般建pvc要多少，<br>
+建立一個PVC，預設使用 Balanced persistent disk。<br>
+pvc通常掛個100G，每個月約$10 USD。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Price (monthly in USD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard provisioned space</td>
+<td>$0.04 per GiB</td>
+</tr>
+<tr>
+<td>SSD provisioned space</td>
+<td>$0.17 per GiB</td>
+</tr>
+<tr>
+<td>Balanced provisioned space</td>
+<td>$0.1 per GiB</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="結論" tabindex="-1">結論</h1>
+<p>這價格看起來還頗有吸引力的，來試試看吧。</p>
+<p>日後如果要從帳單看有多少筆資料的話，</p>
+<p>Service -&gt; <strong>Cloud Monitoring</strong><br>
+SKUs -&gt; Prometheus Samples Ingested &amp;  Monitoring API Requests</p>
+<p>ref.</p>
+<ul>
+<li><a href="https://cloud.google.com/stackdriver/pricing?hl=zh-cn#mgd-prometheus-pricing-summary" target="_blank" class="external-link">Cloud Monitoring 價格摘要</a></li>
+<li><a href="https://cloud.google.com/stackdriver/docs/managed-prometheus/cost-controls?hl=zh-cn" target="_blank" class="external-link">費用控制和歸因</a></li>
+<li><a href="https://cloud.google.com/compute/disks-image-pricing#disk" target="_blank" class="external-link">硬碟價格</a></li>
+</ul>
 
       
       
@@ -3987,10 +4009,19 @@
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#前言">前言</a>
+                    <li><a href="#緣由">緣由</a>
             		</li>
 
-                    <li><a href="#正文">正文</a>
+                    <li><a href="#主題">主題</a>
+            
+                <ol>
+                    
+                    <li><a href="#2024-06-07">2024/06/07</a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#結論">結論</a>
             		</li>
                 </ol>
             </nav>
