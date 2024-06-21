@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>Nginx的負載平衡</title>
+    <title>L7mp stunner監控</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -1426,7 +1426,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/169. Nginx的負載平衡/">Nginx的負載平衡 </a>
                 </div>
@@ -3293,7 +3293,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/221. L7mp stunner監控/">L7mp stunner監控 </a>
                 </div>
@@ -3715,7 +3715,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">Nginx的負載平衡</h1>
+          <h1 data-note-icon="">L7mp stunner監控</h1>
         
         <div class="header-meta">
           
@@ -3725,7 +3725,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #🌐
+                    #👁
                   </a>
                 
               
@@ -3736,87 +3736,556 @@
       </header>
       
       
-      <h1 id="睡睡唸" tabindex="-1">睡睡唸</h1>
-<p>雖然知道nginx應該可以做到負載平衡，<br>
-但從來沒弄過，<br>
-查了一下，還挺簡單的。</p>
-<h1 id="正文" tabindex="-1">正文</h1>
-<p>主要有四種模式，<br>
-都是寫在upstream底下</p>
-<ul>
-<li>輪詢(Round Robin) ：什麼都不要寫，預設的方法</li>
-<li>最少連接(least_conn)：會轉發到伺服器連接數最少的那臺</li>
-<li>ip地址雜湊(ip_hash)：使用者會連到特定的伺服器上</li>
-<li>權重劃分(weight)：根據權重比例切換伺服器，這種寫法跟上面的三種不一樣。</li>
-</ul>
-<p>ref. <a href="https://www.cnblogs.com/felixzh/p/9047021.html" target="_blank" class="external-link">Nginx負載平衡的4種方式 ：輪詢-Round Robin 、Ip地址-ip_hash、最少連接-least_conn、加權-weight=n</a></p>
-<p>config.conf</p>
-<pre><code>upstream yolox-brand {
-    least_conn;
-    server yolox-brand-1:8080;
-    server yolox-brand-2:8080;
-}
-
-server {
-    listen       80;
-    server_name  192.168.1.79;
-
-    location / {
-        proxy_pass         http://yolox-brand;
-        proxy_redirect     off;
-        proxy_set_header   Host $host;
-        proxy_set_header   X-Real-IP $remote_addr;
-        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header   X-Forwarded-Host $server_name;
-        
-        proxy_hide_header  'Access-Control-Allow-Origin';
-        add_header Access-Control-Allow-Origin *;
-        add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
-        add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
-
-        if ($request_method = 'OPTIONS') {
-            return 204;
+      <h1 id="why" tabindex="-1">Why</h1>
+<p>有人搞了一個webRTC for k8s用的即時媒體串流方案，<br>
+然後我要來接監控了。<br>
+<a href="https://l7mp.io/" target="_blank" class="external-link">L7mp</a></p>
+<h1 id="solution" tabindex="-1">Solution</h1>
+<p>參考<a href="https://docs.l7mp.io/en/stable/MONITORING/" target="_blank" class="external-link">文件</a></p>
+<ol>
+<li>加 <code>enableMetricsEndpoint</code> 參數加到Dataplane裡面</li>
+</ol>
+<pre><code>...
+spec:
+  args:
+    - '-w'
+    - '--udp-thread-num=16'
+  command:
+    - stunnerd
+  enableMetricsEndpoint: true
+  hostNetwork: false
+  image: docker.io/l7mp/stunnerd:0.18.0
+  imagePullPolicy: Always
+  replicas: 1
+  resources:
+    limits:
+      cpu: 2
+      memory: 512Mi
+    requests:
+      cpu: 500m
+      memory: 128Mi
+  terminationGracePeriodSeconds: 3600
+</code></pre>
+<ol start="2">
+<li>弄個暫時的pod測試看看metrics有沒有資料</li>
+</ol>
+<pre><code>kubectl run alpine-pod -n istio-system --image=alpine --restart=Never -- /bin/sleep 600
+</code></pre>
+<p>先取得stunner的pod ip，再來就看有沒有資料了</p>
+<pre><code>curl http://192.168.1.25:8080/metrics
+</code></pre>
+<p>有資料後再來下一步。<br>
+這邊要注意一下，剛開後，<code>stunner</code>開頭的指標通通找不到，<br>
+像是<code>stunner_listener_connections_total</code>、<code>stunner_listener_bytes_total</code>...等。</p>
+<p>我放了一陣子(一兩個小時？)，就突然跑出來了，<br>
+我不確定為什麼，等之後再測試看看。</p>
+<ol start="3">
+<li>prometheus 設定 discover<br>
+詳細說明，參考<a class="internal-link" data-note-icon="" href="/209. k8s中srs的各個pod  metrics取得/">209. k8s中srs的各個pod  metrics取得</a></li>
+</ol>
+<pre><code>scrape_configs:
+- job_name: 'ome'
+  scrape_interval: 10s
+  kubernetes_sd_configs:
+    - role: pod  
+  relabel_configs:
+    - source_labels: [__meta_kubernetes_pod_name]
+      action: keep
+      regex: tcp-gateway.*
+    - source_labels: [__meta_kubernetes_pod_container_port_name]
+      action: replace
+      target_label: portname
+      replacement: 8080  
+</code></pre>
+<ol start="4">
+<li>建立Grafana</li>
+</ol>
+<pre><code>{
+  &quot;annotations&quot;: {
+    &quot;list&quot;: [
+      {
+        &quot;builtIn&quot;: 1,
+        &quot;datasource&quot;: {
+          &quot;type&quot;: &quot;grafana&quot;,
+          &quot;uid&quot;: &quot;-- Grafana --&quot;
+        },
+        &quot;enable&quot;: true,
+        &quot;hide&quot;: true,
+        &quot;iconColor&quot;: &quot;rgba(0, 211, 255, 1)&quot;,
+        &quot;name&quot;: &quot;Annotations &amp; Alerts&quot;,
+        &quot;type&quot;: &quot;dashboard&quot;
+      }
+    ]
+  },
+  &quot;editable&quot;: true,
+  &quot;fiscalYearStartMonth&quot;: 0,
+  &quot;graphTooltip&quot;: 0,
+  &quot;id&quot;: 14,
+  &quot;links&quot;: [],
+  &quot;liveNow&quot;: false,
+  &quot;panels&quot;: [
+    {
+      &quot;datasource&quot;: {
+        &quot;type&quot;: &quot;prometheus&quot;,
+        &quot;uid&quot;: &quot;PBFA97CFB590B2093&quot;
+      },
+      &quot;fieldConfig&quot;: {
+        &quot;defaults&quot;: {
+          &quot;color&quot;: {
+            &quot;mode&quot;: &quot;palette-classic&quot;
+          },
+          &quot;custom&quot;: {
+            &quot;axisCenteredZero&quot;: false,
+            &quot;axisColorMode&quot;: &quot;text&quot;,
+            &quot;axisLabel&quot;: &quot;&quot;,
+            &quot;axisPlacement&quot;: &quot;auto&quot;,
+            &quot;barAlignment&quot;: 0,
+            &quot;drawStyle&quot;: &quot;line&quot;,
+            &quot;fillOpacity&quot;: 0,
+            &quot;gradientMode&quot;: &quot;none&quot;,
+            &quot;hideFrom&quot;: {
+              &quot;legend&quot;: false,
+              &quot;tooltip&quot;: false,
+              &quot;viz&quot;: false
+            },
+            &quot;lineInterpolation&quot;: &quot;linear&quot;,
+            &quot;lineWidth&quot;: 1,
+            &quot;pointSize&quot;: 5,
+            &quot;scaleDistribution&quot;: {
+              &quot;type&quot;: &quot;linear&quot;
+            },
+            &quot;showPoints&quot;: &quot;auto&quot;,
+            &quot;spanNulls&quot;: false,
+            &quot;stacking&quot;: {
+              &quot;group&quot;: &quot;A&quot;,
+              &quot;mode&quot;: &quot;none&quot;
+            },
+            &quot;thresholdsStyle&quot;: {
+              &quot;mode&quot;: &quot;off&quot;
+            }
+          },
+          &quot;mappings&quot;: [],
+          &quot;thresholds&quot;: {
+            &quot;mode&quot;: &quot;absolute&quot;,
+            &quot;steps&quot;: [
+              {
+                &quot;color&quot;: &quot;green&quot;,
+                &quot;value&quot;: null
+              },
+              {
+                &quot;color&quot;: &quot;red&quot;,
+                &quot;value&quot;: 80
+              }
+            ]
+          }
+        },
+        &quot;overrides&quot;: []
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 8,
+        &quot;w&quot;: 12,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 0
+      },
+      &quot;id&quot;: 3,
+      &quot;options&quot;: {
+        &quot;legend&quot;: {
+          &quot;calcs&quot;: [],
+          &quot;displayMode&quot;: &quot;list&quot;,
+          &quot;placement&quot;: &quot;bottom&quot;,
+          &quot;showLegend&quot;: true
+        },
+        &quot;tooltip&quot;: {
+          &quot;mode&quot;: &quot;single&quot;,
+          &quot;sort&quot;: &quot;none&quot;
         }
+      },
+      &quot;targets&quot;: [
+        {
+          &quot;datasource&quot;: {
+            &quot;type&quot;: &quot;prometheus&quot;,
+            &quot;uid&quot;: &quot;PBFA97CFB590B2093&quot;
+          },
+          &quot;editorMode&quot;: &quot;code&quot;,
+          &quot;expr&quot;: &quot;stunner_listener_connections&quot;,
+          &quot;legendFormat&quot;: &quot;__auto&quot;,
+          &quot;range&quot;: true,
+          &quot;refId&quot;: &quot;A&quot;
+        }
+      ],
+      &quot;title&quot;: &quot;stunner_listener_connections&quot;,
+      &quot;type&quot;: &quot;timeseries&quot;
+    },
+    {
+      &quot;datasource&quot;: {
+        &quot;type&quot;: &quot;prometheus&quot;,
+        &quot;uid&quot;: &quot;PBFA97CFB590B2093&quot;
+      },
+      &quot;fieldConfig&quot;: {
+        &quot;defaults&quot;: {
+          &quot;color&quot;: {
+            &quot;mode&quot;: &quot;palette-classic&quot;
+          },
+          &quot;custom&quot;: {
+            &quot;axisCenteredZero&quot;: false,
+            &quot;axisColorMode&quot;: &quot;text&quot;,
+            &quot;axisLabel&quot;: &quot;&quot;,
+            &quot;axisPlacement&quot;: &quot;auto&quot;,
+            &quot;barAlignment&quot;: 0,
+            &quot;drawStyle&quot;: &quot;line&quot;,
+            &quot;fillOpacity&quot;: 0,
+            &quot;gradientMode&quot;: &quot;none&quot;,
+            &quot;hideFrom&quot;: {
+              &quot;legend&quot;: false,
+              &quot;tooltip&quot;: false,
+              &quot;viz&quot;: false
+            },
+            &quot;lineInterpolation&quot;: &quot;linear&quot;,
+            &quot;lineWidth&quot;: 1,
+            &quot;pointSize&quot;: 5,
+            &quot;scaleDistribution&quot;: {
+              &quot;type&quot;: &quot;linear&quot;
+            },
+            &quot;showPoints&quot;: &quot;auto&quot;,
+            &quot;spanNulls&quot;: false,
+            &quot;stacking&quot;: {
+              &quot;group&quot;: &quot;A&quot;,
+              &quot;mode&quot;: &quot;none&quot;
+            },
+            &quot;thresholdsStyle&quot;: {
+              &quot;mode&quot;: &quot;off&quot;
+            }
+          },
+          &quot;mappings&quot;: [],
+          &quot;thresholds&quot;: {
+            &quot;mode&quot;: &quot;absolute&quot;,
+            &quot;steps&quot;: [
+              {
+                &quot;color&quot;: &quot;green&quot;,
+                &quot;value&quot;: null
+              },
+              {
+                &quot;color&quot;: &quot;red&quot;,
+                &quot;value&quot;: 80
+              }
+            ]
+          }
+        },
+        &quot;overrides&quot;: [
+          {
+            &quot;matcher&quot;: {
+              &quot;id&quot;: &quot;byName&quot;,
+              &quot;options&quot;: &quot;{__name__=\&quot;stunner_listener_connections_total\&quot;, instance=\&quot;192.168.58.102:8080\&quot;, job=\&quot;ome\&quot;, name=\&quot;stunner/tcp-gateway/tcp-listener\&quot;, portname=\&quot;8080\&quot;}&quot;
+            },
+            &quot;properties&quot;: [
+              {
+                &quot;id&quot;: &quot;color&quot;,
+                &quot;value&quot;: {
+                  &quot;fixedColor&quot;: &quot;dark-yellow&quot;,
+                  &quot;mode&quot;: &quot;fixed&quot;
+                }
+              }
+            ]
+          }
+        ]
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 8,
+        &quot;w&quot;: 12,
+        &quot;x&quot;: 12,
+        &quot;y&quot;: 0
+      },
+      &quot;id&quot;: 1,
+      &quot;options&quot;: {
+        &quot;legend&quot;: {
+          &quot;calcs&quot;: [],
+          &quot;displayMode&quot;: &quot;list&quot;,
+          &quot;placement&quot;: &quot;bottom&quot;,
+          &quot;showLegend&quot;: true
+        },
+        &quot;tooltip&quot;: {
+          &quot;mode&quot;: &quot;single&quot;,
+          &quot;sort&quot;: &quot;none&quot;
+        }
+      },
+      &quot;targets&quot;: [
+        {
+          &quot;datasource&quot;: {
+            &quot;type&quot;: &quot;prometheus&quot;,
+            &quot;uid&quot;: &quot;PBFA97CFB590B2093&quot;
+          },
+          &quot;editorMode&quot;: &quot;code&quot;,
+          &quot;expr&quot;: &quot;rate(stunner_listener_connections_total[1m])&quot;,
+          &quot;legendFormat&quot;: &quot;__auto&quot;,
+          &quot;range&quot;: true,
+          &quot;refId&quot;: &quot;A&quot;
+        }
+      ],
+      &quot;title&quot;: &quot;listener_connections_total&quot;,
+      &quot;type&quot;: &quot;timeseries&quot;
+    },
+    {
+      &quot;datasource&quot;: {
+        &quot;type&quot;: &quot;prometheus&quot;,
+        &quot;uid&quot;: &quot;PBFA97CFB590B2093&quot;
+      },
+      &quot;description&quot;: &quot;監聽器上發送或接收的字節總數。&quot;,
+      &quot;fieldConfig&quot;: {
+        &quot;defaults&quot;: {
+          &quot;color&quot;: {
+            &quot;mode&quot;: &quot;palette-classic&quot;
+          },
+          &quot;custom&quot;: {
+            &quot;axisCenteredZero&quot;: false,
+            &quot;axisColorMode&quot;: &quot;text&quot;,
+            &quot;axisLabel&quot;: &quot;&quot;,
+            &quot;axisPlacement&quot;: &quot;auto&quot;,
+            &quot;barAlignment&quot;: 0,
+            &quot;drawStyle&quot;: &quot;line&quot;,
+            &quot;fillOpacity&quot;: 0,
+            &quot;gradientMode&quot;: &quot;none&quot;,
+            &quot;hideFrom&quot;: {
+              &quot;legend&quot;: false,
+              &quot;tooltip&quot;: false,
+              &quot;viz&quot;: false
+            },
+            &quot;lineInterpolation&quot;: &quot;linear&quot;,
+            &quot;lineWidth&quot;: 1,
+            &quot;pointSize&quot;: 5,
+            &quot;scaleDistribution&quot;: {
+              &quot;type&quot;: &quot;linear&quot;
+            },
+            &quot;showPoints&quot;: &quot;auto&quot;,
+            &quot;spanNulls&quot;: false,
+            &quot;stacking&quot;: {
+              &quot;group&quot;: &quot;A&quot;,
+              &quot;mode&quot;: &quot;none&quot;
+            },
+            &quot;thresholdsStyle&quot;: {
+              &quot;mode&quot;: &quot;off&quot;
+            }
+          },
+          &quot;mappings&quot;: [],
+          &quot;thresholds&quot;: {
+            &quot;mode&quot;: &quot;absolute&quot;,
+            &quot;steps&quot;: [
+              {
+                &quot;color&quot;: &quot;green&quot;,
+                &quot;value&quot;: null
+              },
+              {
+                &quot;color&quot;: &quot;red&quot;,
+                &quot;value&quot;: 80
+              }
+            ]
+          },
+          &quot;unit&quot;: &quot;bytes&quot;
+        },
+        &quot;overrides&quot;: [
+          {
+            &quot;matcher&quot;: {
+              &quot;id&quot;: &quot;byName&quot;,
+              &quot;options&quot;: &quot;{__name__=\&quot;stunner_listener_bytes_total\&quot;, direction=\&quot;rx\&quot;, instance=\&quot;192.168.58.102:8080\&quot;, job=\&quot;ome\&quot;, name=\&quot;stunner/tcp-gateway/tcp-listener\&quot;, portname=\&quot;8080\&quot;}&quot;
+            },
+            &quot;properties&quot;: [
+              {
+                &quot;id&quot;: &quot;color&quot;,
+                &quot;value&quot;: {
+                  &quot;fixedColor&quot;: &quot;purple&quot;,
+                  &quot;mode&quot;: &quot;fixed&quot;
+                }
+              }
+            ]
+          },
+          {
+            &quot;matcher&quot;: {
+              &quot;id&quot;: &quot;byName&quot;,
+              &quot;options&quot;: &quot;rx&quot;
+            },
+            &quot;properties&quot;: [
+              {
+                &quot;id&quot;: &quot;color&quot;,
+                &quot;value&quot;: {
+                  &quot;fixedColor&quot;: &quot;dark-red&quot;,
+                  &quot;mode&quot;: &quot;fixed&quot;
+                }
+              }
+            ]
+          }
+        ]
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 9,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 8
+      },
+      &quot;id&quot;: 2,
+      &quot;options&quot;: {
+        &quot;legend&quot;: {
+          &quot;calcs&quot;: [],
+          &quot;displayMode&quot;: &quot;list&quot;,
+          &quot;placement&quot;: &quot;bottom&quot;,
+          &quot;showLegend&quot;: true
+        },
+        &quot;tooltip&quot;: {
+          &quot;mode&quot;: &quot;single&quot;,
+          &quot;sort&quot;: &quot;none&quot;
+        }
+      },
+      &quot;targets&quot;: [
+        {
+          &quot;datasource&quot;: {
+            &quot;type&quot;: &quot;prometheus&quot;,
+            &quot;uid&quot;: &quot;PBFA97CFB590B2093&quot;
+          },
+          &quot;editorMode&quot;: &quot;code&quot;,
+          &quot;expr&quot;: &quot;sum(irate(stunner_listener_bytes_total[1m])) by (direction)&quot;,
+          &quot;hide&quot;: false,
+          &quot;legendFormat&quot;: &quot;__auto&quot;,
+          &quot;range&quot;: true,
+          &quot;refId&quot;: &quot;A&quot;
+        }
+      ],
+      &quot;title&quot;: &quot;stunner_listener_bytes_total&quot;,
+      &quot;type&quot;: &quot;timeseries&quot;
+    },
+    {
+      &quot;datasource&quot;: {
+        &quot;type&quot;: &quot;prometheus&quot;,
+        &quot;uid&quot;: &quot;PBFA97CFB590B2093&quot;
+      },
+      &quot;description&quot;: &quot;發送到後端或從後端接收的字節總數。&quot;,
+      &quot;fieldConfig&quot;: {
+        &quot;defaults&quot;: {
+          &quot;color&quot;: {
+            &quot;mode&quot;: &quot;palette-classic&quot;
+          },
+          &quot;custom&quot;: {
+            &quot;axisCenteredZero&quot;: false,
+            &quot;axisColorMode&quot;: &quot;text&quot;,
+            &quot;axisLabel&quot;: &quot;&quot;,
+            &quot;axisPlacement&quot;: &quot;auto&quot;,
+            &quot;barAlignment&quot;: 0,
+            &quot;drawStyle&quot;: &quot;line&quot;,
+            &quot;fillOpacity&quot;: 0,
+            &quot;gradientMode&quot;: &quot;none&quot;,
+            &quot;hideFrom&quot;: {
+              &quot;legend&quot;: false,
+              &quot;tooltip&quot;: false,
+              &quot;viz&quot;: false
+            },
+            &quot;lineInterpolation&quot;: &quot;linear&quot;,
+            &quot;lineWidth&quot;: 1,
+            &quot;pointSize&quot;: 5,
+            &quot;scaleDistribution&quot;: {
+              &quot;type&quot;: &quot;linear&quot;
+            },
+            &quot;showPoints&quot;: &quot;auto&quot;,
+            &quot;spanNulls&quot;: false,
+            &quot;stacking&quot;: {
+              &quot;group&quot;: &quot;A&quot;,
+              &quot;mode&quot;: &quot;none&quot;
+            },
+            &quot;thresholdsStyle&quot;: {
+              &quot;mode&quot;: &quot;off&quot;
+            }
+          },
+          &quot;mappings&quot;: [],
+          &quot;thresholds&quot;: {
+            &quot;mode&quot;: &quot;absolute&quot;,
+            &quot;steps&quot;: [
+              {
+                &quot;color&quot;: &quot;green&quot;,
+                &quot;value&quot;: null
+              },
+              {
+                &quot;color&quot;: &quot;red&quot;,
+                &quot;value&quot;: 80
+              }
+            ]
+          },
+          &quot;unit&quot;: &quot;bytes&quot;
+        },
+        &quot;overrides&quot;: [
+          {
+            &quot;matcher&quot;: {
+              &quot;id&quot;: &quot;byName&quot;,
+              &quot;options&quot;: &quot;rx&quot;
+            },
+            &quot;properties&quot;: [
+              {
+                &quot;id&quot;: &quot;color&quot;,
+                &quot;value&quot;: {
+                  &quot;fixedColor&quot;: &quot;dark-red&quot;,
+                  &quot;mode&quot;: &quot;fixed&quot;
+                }
+              }
+            ]
+          }
+        ]
+      },
+      &quot;gridPos&quot;: {
+        &quot;h&quot;: 8,
+        &quot;w&quot;: 24,
+        &quot;x&quot;: 0,
+        &quot;y&quot;: 17
+      },
+      &quot;id&quot;: 4,
+      &quot;options&quot;: {
+        &quot;legend&quot;: {
+          &quot;calcs&quot;: [],
+          &quot;displayMode&quot;: &quot;list&quot;,
+          &quot;placement&quot;: &quot;bottom&quot;,
+          &quot;showLegend&quot;: true
+        },
+        &quot;tooltip&quot;: {
+          &quot;mode&quot;: &quot;single&quot;,
+          &quot;sort&quot;: &quot;none&quot;
+        }
+      },
+      &quot;targets&quot;: [
+        {
+          &quot;datasource&quot;: {
+            &quot;type&quot;: &quot;prometheus&quot;,
+            &quot;uid&quot;: &quot;PBFA97CFB590B2093&quot;
+          },
+          &quot;editorMode&quot;: &quot;code&quot;,
+          &quot;expr&quot;: &quot;sum(irate(stunner_cluster_bytes_total[1m])) by (direction)&quot;,
+          &quot;legendFormat&quot;: &quot;__auto&quot;,
+          &quot;range&quot;: true,
+          &quot;refId&quot;: &quot;A&quot;
+        }
+      ],
+      &quot;title&quot;: &quot;stunner_cluster_bytes_total&quot;,
+      &quot;type&quot;: &quot;timeseries&quot;
     }
+  ],
+  &quot;refresh&quot;: false,
+  &quot;schemaVersion&quot;: 38,
+  &quot;style&quot;: &quot;dark&quot;,
+  &quot;tags&quot;: [],
+  &quot;templating&quot;: {
+    &quot;list&quot;: []
+  },
+  &quot;time&quot;: {
+    &quot;from&quot;: &quot;2024-06-21T01:25:08.227Z&quot;,
+    &quot;to&quot;: &quot;2024-06-21T04:12:21.776Z&quot;
+  },
+  &quot;timepicker&quot;: {},
+  &quot;timezone&quot;: &quot;&quot;,
+  &quot;title&quot;: &quot;stunner&quot;,
+  &quot;uid&quot;: &quot;cbd52e5c-df69-45e6-b2ba-84433a4cd6ec&quot;,
+  &quot;version&quot;: 5,
+  &quot;weekStart&quot;: &quot;&quot;
 }
-
 </code></pre>
-<p>然後，docker-compose.yaml如下，<br>
-要注意別把config檔塞錯地方了，不然會碰到 <a class="internal-link" data-note-icon="" href="/☎️ Network/99. nginx的除錯筆記/">99. nginx的除錯筆記</a>的錯誤</p>
-<pre><code>version: '3.8'
-services:
-  python-1:
-    container_name: yolox-brand-1
-    image: busybox
-    pull_policy: if_not_present
-    restart: always
-    networks:
-      - internal
-  python-2:
-    container_name: yolox-brand-2
-    image: busybox
-    pull_policy: if_not_present
-    restart: always
-    networks:
-      - internal
-  nginx-lb:
-    container_name: nginx
-    image: nginx
-    pull_policy: if_not_present
-    restart: always
-    volumes:
-      - ./proxy.conf:/etc/nginx/conf.d/proxy.conf
-    ports:
-      - 80:80
-    networks:
-      - internal
-networks:
-  internal:
-    name: internal
-    driver: bridge
-</code></pre>
-<p>補充，<code>proxy_pass url</code> 中包含路徑時，結尾的 <code>/</code> 最好同 <code>location</code> 匹配規則一致。</p>
-<p>ref. <a href="https://xuexb.github.io/learn-nginx/example/proxy_pass.html#url-%E5%8C%85%E5%90%AB%E8%B7%AF%E5%BE%84" target="_blank" class="external-link">proxy_pass url 反向代理的坑</a></p>
+<p>ref.</p>
+<ul>
+<li><a href="https://yunlzheng.gitbook.io/prometheus-book/parti-prometheus-ji-chu/promql/prometheus-aggr-ops" target="_blank" class="external-link">PromQL聚合操作</a></li>
+<li><a href="https://github.com/l7mp/stunner" target="_blank" class="external-link">stunner Github</a></li>
+<li><a href="https://docs.l7mp.io/en/stable/MONITORING/" target="_blank" class="external-link">stunner Document</a></li>
+</ul>
 
       
       
@@ -4057,10 +4526,10 @@ networks:
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#睡睡唸">睡睡唸</a>
+                    <li><a href="#why">Why</a>
             		</li>
 
-                    <li><a href="#正文">正文</a>
+                    <li><a href="#solution">Solution</a>
             		</li>
                 </ol>
             </nav>

@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>Nginx的負載平衡</title>
+    <title>220. winSW將程式變成服務的好東西</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -1426,7 +1426,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☎️ Network/169. Nginx的負載平衡/">Nginx的負載平衡 </a>
                 </div>
@@ -3282,7 +3282,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/220. windows將程式變成服務的好東西-winSW/">220. winSW將程式變成服務的好東西 </a>
                 </div>
@@ -3715,7 +3715,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">Nginx的負載平衡</h1>
+          <h1 data-note-icon="">220. winSW將程式變成服務的好東西</h1>
         
         <div class="header-meta">
           
@@ -3725,7 +3725,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #🌐
+                    #🖼
                   </a>
                 
               
@@ -3736,87 +3736,53 @@
       </header>
       
       
-      <h1 id="睡睡唸" tabindex="-1">睡睡唸</h1>
-<p>雖然知道nginx應該可以做到負載平衡，<br>
-但從來沒弄過，<br>
-查了一下，還挺簡單的。</p>
-<h1 id="正文" tabindex="-1">正文</h1>
-<p>主要有四種模式，<br>
-都是寫在upstream底下</p>
+      <h1 id="緣由" tabindex="-1">緣由</h1>
+<p>本來在Linux上面跑的docker環境，<br>
+這次在客戶那邊突然要變成用windows，<br>
+非常好，之前弄的架構完全不一樣。</p>
+<h1 id="主題" tabindex="-1">主題</h1>
+<p>今天有一個程式，你想讓他開機時自己啟動，<br>
+不是到msconfig設定開機啟動，就是弄成服務。<br>
+但開機啟動，如果沒有開機就沒用了，<br>
+所以弄成服務，一般是最穩定的方式。</p>
+<p>用nginx為範例說明，<br>
+我也是找nginx啟動時，才發現這個好東西。</p>
+<ol>
+<li>
+<p>首先，先下載<a href="https://github.com/winsw/winsw" target="_blank" class="external-link">winSW</a>，<br>
+下載回來的程式，改名成<code>nginx-server.exe</code>。</p>
+</li>
+<li>
+<p>同一層目錄下，建立nginx-server.xml</p>
+</li>
+</ol>
+<pre><code>&lt;!-- nginx-service.xml --&gt;
+&lt;service&gt;
+    &lt;id&gt;nginx&lt;/id&gt;
+    &lt;name&gt;nginx&lt;/name&gt;
+    &lt;description&gt;nginx&lt;/description&gt;
+    &lt;logpath&gt;C:\nginx-1.26.1\server-logs\&lt;/logpath&gt;
+    &lt;logmode&gt;roll&lt;/logmode&gt;
+    &lt;depend&gt;&lt;/depend&gt;
+    &lt;executable&gt;C:\nginx-1.26.1\nginx.exe&lt;/executable&gt;
+    &lt;stopexecutable&gt;C:\nginx-1.26.1\nginx.exe -s stop&lt;/stopexecutable&gt;
+&lt;/service&gt;
+</code></pre>
+<ol start="3">
+<li>安裝<br>
+command執行 <code>nginx-server.exe install</code><br>
+如果要刪除則是 <code>nginx-server.exe uninstall</code></li>
+</ol>
+<h3 id="除錯" tabindex="-1">除錯</h3>
+<p>nginx.conf如果寫錯，導致服務無法啟動時，<br>
+可到上面的<code>&lt;logpaht&gt;</code>位置查看錯誤訊息，<br>
+照上面的範例，是<code>C:\nginx-1.26.1\server-logs\</code>。</p>
+<p>以上是最簡單的用法。</p>
+<p>ref.</p>
 <ul>
-<li>輪詢(Round Robin) ：什麼都不要寫，預設的方法</li>
-<li>最少連接(least_conn)：會轉發到伺服器連接數最少的那臺</li>
-<li>ip地址雜湊(ip_hash)：使用者會連到特定的伺服器上</li>
-<li>權重劃分(weight)：根據權重比例切換伺服器，這種寫法跟上面的三種不一樣。</li>
+<li><a href="https://github.com/winsw/winsw" target="_blank" class="external-link">github文件</a></li>
+<li><a href="https://book.king011.com/view/en-US/view/ms-os-tools/WinSW" target="_blank" class="external-link">WinSW</a></li>
 </ul>
-<p>ref. <a href="https://www.cnblogs.com/felixzh/p/9047021.html" target="_blank" class="external-link">Nginx負載平衡的4種方式 ：輪詢-Round Robin 、Ip地址-ip_hash、最少連接-least_conn、加權-weight=n</a></p>
-<p>config.conf</p>
-<pre><code>upstream yolox-brand {
-    least_conn;
-    server yolox-brand-1:8080;
-    server yolox-brand-2:8080;
-}
-
-server {
-    listen       80;
-    server_name  192.168.1.79;
-
-    location / {
-        proxy_pass         http://yolox-brand;
-        proxy_redirect     off;
-        proxy_set_header   Host $host;
-        proxy_set_header   X-Real-IP $remote_addr;
-        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header   X-Forwarded-Host $server_name;
-        
-        proxy_hide_header  'Access-Control-Allow-Origin';
-        add_header Access-Control-Allow-Origin *;
-        add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
-        add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
-
-        if ($request_method = 'OPTIONS') {
-            return 204;
-        }
-    }
-}
-
-</code></pre>
-<p>然後，docker-compose.yaml如下，<br>
-要注意別把config檔塞錯地方了，不然會碰到 <a class="internal-link" data-note-icon="" href="/☎️ Network/99. nginx的除錯筆記/">99. nginx的除錯筆記</a>的錯誤</p>
-<pre><code>version: '3.8'
-services:
-  python-1:
-    container_name: yolox-brand-1
-    image: busybox
-    pull_policy: if_not_present
-    restart: always
-    networks:
-      - internal
-  python-2:
-    container_name: yolox-brand-2
-    image: busybox
-    pull_policy: if_not_present
-    restart: always
-    networks:
-      - internal
-  nginx-lb:
-    container_name: nginx
-    image: nginx
-    pull_policy: if_not_present
-    restart: always
-    volumes:
-      - ./proxy.conf:/etc/nginx/conf.d/proxy.conf
-    ports:
-      - 80:80
-    networks:
-      - internal
-networks:
-  internal:
-    name: internal
-    driver: bridge
-</code></pre>
-<p>補充，<code>proxy_pass url</code> 中包含路徑時，結尾的 <code>/</code> 最好同 <code>location</code> 匹配規則一致。</p>
-<p>ref. <a href="https://xuexb.github.io/learn-nginx/example/proxy_pass.html#url-%E5%8C%85%E5%90%AB%E8%B7%AF%E5%BE%84" target="_blank" class="external-link">proxy_pass url 反向代理的坑</a></p>
 
       
       
@@ -4057,10 +4023,16 @@ networks:
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#睡睡唸">睡睡唸</a>
+                    <li><a href="#緣由">緣由</a>
             		</li>
 
-                    <li><a href="#正文">正文</a>
+                    <li><a href="#主題">主題</a>
+            
+                <ol>
+                    
+                    <li><a href="#除錯">除錯</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>

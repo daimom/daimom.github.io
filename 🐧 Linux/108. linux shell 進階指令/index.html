@@ -3278,6 +3278,28 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/220. windows將程式變成服務的好東西-winSW/">220. winSW將程式變成服務的好東西 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/221. L7mp stunner監控/">L7mp stunner監控 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3447,7 +3469,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-06-20T10:20:21.868Z';
+        const searchIndexDate = '2024-06-21T10:20:52.378Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3459,9 +3481,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-06-20T10:20:21.868Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-06-21T10:20:52.378Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-20T10:20:21.868Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-21T10:20:52.378Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3728,6 +3750,7 @@
 <li>ls參數</li>
 <li>計算目錄底下的檔案數</li>
 <li>查詢使用者</li>
+<li>消耗最多CPU的process</li>
 </ol>
 <h1 id="正文" tabindex="-1">正文</h1>
 <h3 id="tag" tabindex="-1">計算某個開頭的tag數量有多少</h3>
@@ -3883,6 +3906,13 @@ bindmount &quot;/home/mike/upload&quot; &quot;/home/bms/mike&quot;
       alt="108.fig-1.png"
       width=""
       ></picture></p>
+<hr>
+<h3 id="cpu-process" tabindex="-1">消耗最多CPU的process</h3>
+<pre><code>ps H -eo pid,pcpu | sort -nk2 | tail   
+</code></pre>
+<p>對應的服務名稱</p>
+<pre><code>ps aux | fgrep &lt;PID&gt;
+</code></pre>
 
       
       
@@ -4176,6 +4206,9 @@ bindmount &quot;/home/mike/upload&quot; &quot;/home/bms/mike&quot;
             		</li>
 
                     <li><a href="#function">function 建立</a>
+            		</li>
+
+                    <li><a href="#cpu-process">消耗最多CPU的process</a>
             		</li>
                 </ol>
             		</li>
