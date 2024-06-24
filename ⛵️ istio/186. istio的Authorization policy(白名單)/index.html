@@ -3469,7 +3469,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-06-23T10:20:33.597Z';
+        const searchIndexDate = '2024-06-24T10:21:48.366Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3481,9 +3481,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-06-23T10:20:33.597Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-06-24T10:21:48.366Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-23T10:20:33.597Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-24T10:21:48.366Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3860,7 +3860,7 @@ spec:
     - when:
         - key: request.headers[X-Envoy-External-Address]
           values:
-            - &quot;10.0.0.0/8&quot;
+            - &quot;10.*&quot;
 </code></pre>
 <p>ref. <a href="https://istio.io/latest/docs/ops/configuration/traffic-management/network-topologies/" target="_blank" class="external-link">Configuring Gateway Network Topology</a></p>
 <h4 id="troubleshooting" tabindex="-1">Troubleshooting</h4>

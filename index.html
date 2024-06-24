@@ -3467,7 +3467,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-06-23T10:20:33.597Z';
+        const searchIndexDate = '2024-06-24T10:21:48.366Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3479,9 +3479,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-06-23T10:20:33.597Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-06-24T10:21:48.366Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-23T10:20:33.597Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-24T10:21:48.366Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3747,27 +3747,14 @@
 <p>最近事情多，寫了也都沒分類，有點麻煩。<br>
 日後應該是先發佈，改天再歸類到各自的資料夾好了。<br>
 希望不會累積太多沒歸類到資料夾。</p>
-<p>2/1</p>
+<p>真的都會沒歸類到資料夾wwww<br>
+連首頁的更新都會忘記寫，<br>
+這算自動化的缺點嗎XD</p>
+<p>6/24</p>
 <ul>
-<li><a class="internal-link" data-note-icon="" href="/⛵️ istio/186. istio的Authorization policy(白名單)/">186. istio的Authorization policy(白名單)</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/187. ECK的filebeat/">187. ECK的filebeat</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗄 Database/188. CloudSQL server 查詢記憶體/">188. CloudSQL server 查詢記憶體</a></li>
-<li><a class="internal-link" data-note-icon="" href="/⎈ k8s/Terraform/189. 導入Terraform/">189. 導入Terraform</a></li>
-<li><a class="internal-link" data-note-icon="" href="/⎈ k8s/190. cert-manager安裝/">190. cert-manager安裝</a></li>
-<li><a class="internal-link" data-note-icon="" href="/191. Steam deck安裝除錯記/">191. Steam deck安裝除錯記</a></li>
-</ul>
-<p>1/12</p>
-<ul>
-<li><a class="internal-link" data-note-icon="" href="/⎈ k8s/192. 自建的k8s拉取private registry/">192. 自建的k8s拉取private registry</a></li>
-<li><a class="internal-link" data-note-icon="" href="/⎈ k8s/194. pod debug方式/">194. pod debug方式</a>]</li>
-</ul>
-<p>11/8</p>
-<ul>
-<li><a class="internal-link" data-note-icon="" href="/👁 Observability/184. grafana error  reverse proxy settings on istio/">184. grafana error  reverse proxy settings on istio</a></li>
-<li><a class="internal-link" data-note-icon="" href="/⎈ k8s/Terraform/183. Terrafrom 建立private cluster/">183. Terrafrom 建立private cluster</a></li>
-<li><a class="internal-link" data-note-icon="" href="/☎️ Network/182. Fortigate 設定 內部服務負載平衡/">182. Fortigate 設定 內部服務負載平衡</a></li>
-<li><a class="internal-link" data-note-icon="" href="/☁︎ GCP/181. cloudstorage無法使用cloudflare轉址/">181. cloudstorage無法使用cloudflare轉址</a></li>
-<li><a class="internal-link" data-note-icon="" href="/☁︎ GCP/Price/180. GCP 監控費用/">180. GCP 監控費用</a></li>
+<li><a class="internal-link" data-note-icon="" href="/219. Google Cloud Managed Service for Prometheus  費用/">219. Google Cloud Managed Service for Prometheus  費用</a></li>
+<li><a class="internal-link" data-note-icon="" href="/220. windows將程式變成服務的好東西-winSW/">220. windows將程式變成服務的好東西-winSW</a></li>
+<li><a class="internal-link" data-note-icon="" href="/221. L7mp stunner監控/">221. L7mp stunner監控</a></li>
 </ul>
 <hr>
 <h1 id="tag" tabindex="-1">Tag列表</h1>
