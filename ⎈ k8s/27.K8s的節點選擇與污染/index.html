@@ -3469,7 +3469,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-06-25T10:20:32.892Z';
+        const searchIndexDate = '2024-06-26T10:19:57.421Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3481,9 +3481,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-06-25T10:20:32.892Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-06-26T10:19:57.421Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-25T10:20:32.892Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-06-26T10:19:57.421Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3818,20 +3818,21 @@ k8s可以設定節點為 污點(Taint)，使此污染的節點，只能接受有
 <p>之後在deploy上面建立容忍(toleration)污點， 在 spec.template.spec 的下一層<br>
 其中 key 與 value 為自訂，效果請參考上面選擇。</p>
 <pre><code>apiVersion: apps/v1
-kind: Deployment
+kind: pod
 metadata:
   name: deployabc
 spec:
   replicas: 10
   template:
     spec:
-      .......
-    tolerations:
-    - key: &quot;visible&quot;
-      operator: &quot;Equal&quot;
-      value: &quot;private&quot;
-      effect: &quot;NoExecute&quot;
-      tolerationSeconds: 3600
+		container:
+	      .......
+		tolerations:
+		- key: &quot;visible&quot;
+		  operator: &quot;Equal&quot;
+		  value: &quot;private&quot;
+		  effect: &quot;NoExecute&quot;
+		  tolerationSeconds: 3600
 </code></pre>
 <p>補充，如果是舊的節點集區，在GKE上面，可以改使用這個label去選擇。</p>
 <pre><code>cloud.google.com/gke-nodepool: &lt;節點池的名稱&gt;   
