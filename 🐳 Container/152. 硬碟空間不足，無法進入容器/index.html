@@ -3300,6 +3300,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/222. elastic 整批刪除indics/">222. elastic 整批刪除indics </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3469,7 +3480,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-07-16T10:18:02.373Z';
+        const searchIndexDate = '2024-07-17T10:21:40.072Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3481,9 +3492,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-07-16T10:18:02.373Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-07-17T10:21:40.072Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-07-16T10:18:02.373Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-07-17T10:21:40.072Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3736,7 +3747,8 @@
       </header>
       
       
-      <h1 id="睡睡念" tabindex="-1">睡睡念</h1>
+      <p><a class="internal-link" data-note-icon="" href="/🐳 Container/152. 硬碟空間不足，無法進入容器/#2024-07-16-docker-compose"><a class="tag" onclick="toggleTagSearch(this)" data-content="#2024/07/16，docker">#2024/07/16，docker</a> compose設定方法</a></p>
+<h1 id="睡睡念" tabindex="-1">睡睡念</h1>
 <p>上週同事問我怎麼連進去容器裏面，<br>
 我很順的回答指令，<br>
 然後他就跳出 這個錯誤</p>
@@ -3793,6 +3805,17 @@ systemctl restart docker
 <li><a href="https://www.cnblogs.com/sxdcgaq8080/p/10689223.html" target="_blank" class="external-link">【docker】docker限制記錄檔大小的方法+查看記錄檔的方法</a></li>
 <li><a href="https://www.jianshu.com/p/594e0a2af6f2" target="_blank" class="external-link">docker 報錯： failed to create runc console socket: mkdir /tmp/pty328598598: no space left on device</a></li>
 </ul>
+<h3 id="2024-07-16-docker-compose" tabindex="-1">2024/07/16，docker compose設定方法</h3>
+<p>在docker compose 增加下面語法</p>
+<pre><code>services:
+  srs:
+    container_name: srs
+    logging:
+      driver: &quot;json-file&quot;
+      options:
+        max-size: &quot;300m&quot;
+        max-file: &quot;3&quot;
+</code></pre>
 
       
       
@@ -4044,6 +4067,9 @@ systemctl restart docker
             		</li>
 
                     <li><a href="#解決問題">解決問題</a>
+            		</li>
+
+                    <li><a href="#2024-07-16-docker-compose">2024/07/16，docker compose設定方法</a>
             		</li>
                 </ol>
             		</li>

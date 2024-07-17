@@ -3300,6 +3300,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/222. elastic 整批刪除indics/">222. elastic 整批刪除indics </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3469,7 +3480,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-07-16T10:18:02.373Z';
+        const searchIndexDate = '2024-07-17T10:21:40.072Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3481,9 +3492,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-07-16T10:18:02.373Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-07-17T10:21:40.072Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-07-16T10:18:02.373Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-07-17T10:21:40.072Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3736,7 +3747,8 @@
       </header>
       
       
-      <h1 id="官方建議" tabindex="-1">官方建議</h1>
+      <p><a class="internal-link" data-note-icon="" href="/☁︎ GCP/Price/GCP CPU用途/#2024-07-09"><a class="tag" onclick="toggleTagSearch(this)" data-content="#2024/07/09更新">#2024/07/09更新</a></a></p>
+<h1 id="官方建議" tabindex="-1">官方建議</h1>
 <p>下表是官方建議的機器型號及用途<br>
 ref.<a href="https://cloud.google.com/compute/docs/general-purpose-machines" target="_blank" class="external-link">通用機器系列</a></p>
 <p>E2</p>
@@ -3804,6 +3816,70 @@ ref.<a href="https://cloud.google.com/compute/docs/general-purpose-machines" tar
 </tbody>
 </table></div>
 <p>更詳細的價格，參考 <a href="https://cloud.google.com/compute/vm-instance-pricing" target="_blank" class="external-link">虛擬機器實例價格</a></p>
+<h2 id="2024-07-09" tabindex="-1">2024/07/09更新</h2>
+<p>今天來算數學了，<br>
+現在要來比較N2D與C2D的價格差距</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:center">類型</th>
+<th style="text-align:center">On-demand price</th>
+<th style="text-align:center">1-year</th>
+<th style="text-align:center">3-year</th>
+<th style="text-align:center">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">N2D CPU</td>
+<td style="text-align:center">$23.24612</td>
+<td style="text-align:center">$14.64453</td>
+<td style="text-align:center">$10.4609</td>
+<td style="text-align:center">vCPU month</td>
+</tr>
+<tr>
+<td style="text-align:center">C2D CPU</td>
+<td style="text-align:center">$24.98863</td>
+<td style="text-align:center">$15.74245</td>
+<td style="text-align:center">$11.24492</td>
+<td style="text-align:center">vCPU month</td>
+</tr>
+<tr>
+<td style="text-align:center">C3D CPU</td>
+<td style="text-align:center">$26.62383</td>
+<td style="text-align:center">$16.77321</td>
+<td style="text-align:center">$11.98076</td>
+<td style="text-align:center">vCPU month</td>
+</tr>
+<tr>
+<td style="text-align:center">N2D Memory</td>
+<td style="text-align:center">$3.11564</td>
+<td style="text-align:center">$1.96297</td>
+<td style="text-align:center">$1.40233</td>
+<td style="text-align:center">GB month</td>
+</tr>
+<tr>
+<td style="text-align:center">C2D Memory</td>
+<td style="text-align:center">$3.34632</td>
+<td style="text-align:center">$2.10824</td>
+<td style="text-align:center">$1.50599</td>
+<td style="text-align:center">GB month</td>
+</tr>
+<tr>
+<td style="text-align:center">C3D Memory</td>
+<td style="text-align:center">$3.56532</td>
+<td style="text-align:center">$2.24621</td>
+<td style="text-align:center">$1.60454</td>
+<td style="text-align:center">GB month</td>
+</tr>
+</tbody>
+</table></div>
+<p>但要特別注意 N2D，如果自定義CPU與Memory的話，<br>
+價格又不一樣了。</p>
+<p>CPU 會來到  $24.408426 / vCPU month<br>
+Memory 會來到  $3.271422 / GB month</p>
+<p>同樣以4顆CPU來算的話，<br>
+當記憶體到13.82G時，價格將接近標準N2D。</p>
 
       
       
@@ -4045,6 +4121,12 @@ ref.<a href="https://cloud.google.com/compute/docs/general-purpose-machines" tar
                 <ol>
                     
                     <li><a href="#官方建議">官方建議</a>
+            
+                <ol>
+                    
+                    <li><a href="#2024-07-09">2024/07/09更新</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>

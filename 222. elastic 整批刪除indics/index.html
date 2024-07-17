@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>Helm 使用方式</title>
+    <title>222. elastic 整批刪除indics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -607,7 +607,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/123.Helm 使用方式/">Helm 使用方式 </a>
                 </div>
@@ -3304,7 +3304,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/222. elastic 整批刪除indics/">222. elastic 整批刪除indics </a>
                 </div>
@@ -3726,7 +3726,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">Helm 使用方式</h1>
+          <h1 data-note-icon="">222. elastic 整批刪除indics</h1>
         
         <div class="header-meta">
           
@@ -3736,7 +3736,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #⎈
+                    #🗒
                   </a>
                 
               
@@ -3747,81 +3747,54 @@
       </header>
       
       
-      <h1 id="睡睡念" tabindex="-1">睡睡念</h1>
-<p>最近要用coturn，看到有人用helm 架在k8s上面，就順便來試試了。<br>
-之前剛開始接觸k8s，碰到helm一堆錯誤，無法執行。<br>
-現在想應該是裏面有些設定要修改的關係，<br>
-現在應該會比較好了吧！？</p>
-<h1 id="正文" tabindex="-1">正文</h1>
-<h2 id="架構" tabindex="-1">架構</h2>
-<p>helm的架構，可先產生一個範例檔，<br>
-看有哪些東西。</p>
-<pre><code>helm create ezio
+      <h1 id="why" tabindex="-1">Why</h1>
+<p>不知道為什麼，ILM沒有動作，沒將舊的indics刪除。<br>
+導致elastic直接報錯。</p>
+<pre><code>this action would add [2] shards, but this cluster currently has [1000]/[1000] maximum normal shards open;
 </code></pre>
-<blockquote>
-<p>在Helm裏面，將kubernetes的應用程式稱為Chart</p>
-</blockquote>
-<pre><code>tree ezio
-
-ezio
-├── Chart.yaml
-├── charts
-├── templates
-│   ├── NOTES.txt
-│   ├── _helpers.tpl
-│   ├── deployment.yaml
-│   ├── hpa.yaml
-│   ├── ingress.yaml
-│   ├── service.yaml
-│   ├── serviceaccount.yaml
-│   └── tests
-│       └── test-connection.yaml
-└── values.yaml
+<p>緊急處理先將node的 shared開成1500</p>
+<pre><code>PUT /_cluster/settings
+{
+  &quot;persistent&quot;: {
+    &quot;cluster.max_shards_per_node&quot;: 1500
+  }
+}
 </code></pre>
-<ul>
-<li>Chart.yaml ：包含了chart的內容描述</li>
-<li>charts(folder) ：此目錄可能包含了其他不同的 chart，也可稱為 <code>subcharts</code></li>
-<li>templates(folder)：此目錄為要部署的所有類型範本</li>
-<li>values.yaml ： 參數設定檔，所有的變數都寫在這。</li>
-</ul>
-<p>templates內寫的參數，通常為</p>
-<p><code>.Values.replicas</code>：表示values.yaml裏面的replicas參數</p>
-<p>其他非values的取得方式，參考 <a href="https://godleon.github.io/blog/DevOps/Helm-v3-Chart-Template-Guide/#Built-in-Objects" target="_blank" class="external-link">Built-in Objects</a></p>
-<p>template有一些可能會用到的函數，<br>
-主要有</p>
-<ul>
-<li>pipeline ( linux 裏面常見到的 <code>|</code> )</li>
-<li>if/else</li>
-<li>with（<a href="http://xn--vb-xm3cq78y.net" target="_blank" class="external-link">類似vb.net</a> 的with）</li>
-<li>range(for loop)</li>
-</ul>
-<h2 id="cheatsheet" tabindex="-1">Cheatsheet</h2>
-<h4 id="dry-run" tabindex="-1">dry-run</h4>
-<p>先查看helm所產生的yaml</p>
-<pre><code>helm install --dry-run coturn ./coturn 
+<h1 id="solution" tabindex="-1">Solution</h1>
+<p>再來是檢查為什麼有那麼多shared沒刪除，<br>
+但一整批，一個一個刪除會瘋掉。<br>
+用wildcard卻會發生錯誤。</p>
+<pre><code>DELETE /qa-backend-2024.02.*
 </code></pre>
-<h4 id="設定參數" tabindex="-1">設定參數</h4>
-<pre><code>helm install coturn ./conturn --set certificate.enabled=false 
-
+<p>錯誤</p>
+<pre><code>{
+  &quot;error&quot;: {
+    &quot;root_cause&quot;: [
+      {
+        &quot;type&quot;: &quot;illegal_argument_exception&quot;,
+        &quot;reason&quot;: &quot;Wildcard expressions or all indices are not allowed&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;illegal_argument_exception&quot;,
+    &quot;reason&quot;: &quot;Wildcard expressions or all indices are not allowed&quot;
+  },
+  &quot;status&quot;: 400
+}
 </code></pre>
-<h4 id="values-yaml" tabindex="-1">指定values.yaml</h4>
-<pre><code>helm install coturn ./conturn -f myval.yaml
+<p>不想寫shellscript，一個一個撈index去刪除，<br>
+於是先開放wildcard吧。</p>
+<pre><code>PUT _cluster/settings
+{
+    &quot;transient&quot;: {
+        &quot;action.destructive_requires_name&quot;: false // allow wildcards
+    }
+}
 </code></pre>
-<h4 id="namespace" tabindex="-1">指定namespace</h4>
-<pre><code>helm install coturn ./conturn -n tools
+<p>再來執行</p>
+<pre><code>DELETE /qa-backend-2024.02.*
 </code></pre>
-<h4 id="helm" tabindex="-1">看helm列表</h4>
-<pre><code>  helm ls
-</code></pre>
-<h4 id="chart" tabindex="-1">更新chart</h4>
-<pre><code>helm upgrade coturn ./coturn
-</code></pre>
-<h4 id="chart-1" tabindex="-1">移除chart</h4>
-<pre><code>helm uninstall coturn
-</code></pre>
-<p>ref.<br>
-- <a href="https://godleon.github.io/blog/DevOps/Helm-v3-Chart-Template-Guide/" target="_blank" class="external-link">[Helm] Helm v3 使用簡介</a><br>
-- <a href="https://ithelp.ithome.com.tw/articles/10238998" target="_blank" class="external-link">Helm介紹</a></p>
+<p>結束。</p>
+<p>ref.  <a href="https://stackoverflow.com/questions/63388937/elasticsearch-how-to-delete-multiple-indexes-with-wildcard" target="_blank" class="external-link">elasticsearch, how to delete multiple indexes with wildcard</a></p>
 
       
       
@@ -4062,43 +4035,10 @@ ezio
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#睡睡念">睡睡念</a>
+                    <li><a href="#why">Why</a>
             		</li>
 
-                    <li><a href="#正文">正文</a>
-            
-                <ol>
-                    
-                    <li><a href="#架構">架構</a>
-            		</li>
-
-                    <li><a href="#cheatsheet">Cheatsheet</a>
-            
-                <ol>
-                    
-                    <li><a href="#dry-run">dry-run</a>
-            		</li>
-
-                    <li><a href="#設定參數">設定參數</a>
-            		</li>
-
-                    <li><a href="#values-yaml">指定values.yaml</a>
-            		</li>
-
-                    <li><a href="#namespace">指定namespace</a>
-            		</li>
-
-                    <li><a href="#helm">看helm列表</a>
-            		</li>
-
-                    <li><a href="#chart">更新chart</a>
-            		</li>
-
-                    <li><a href="#chart-1">移除chart</a>
-            		</li>
-                </ol>
-            		</li>
-                </ol>
+                    <li><a href="#solution">Solution</a>
             		</li>
                 </ol>
             </nav>

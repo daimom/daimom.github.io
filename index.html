@@ -3299,6 +3299,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/222. elastic 整批刪除indics/">222. elastic 整批刪除indics </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3467,7 +3478,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-07-16T10:18:02.373Z';
+        const searchIndexDate = '2024-07-17T10:21:40.072Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3479,9 +3490,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-07-16T10:18:02.373Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-07-17T10:21:40.072Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-07-16T10:18:02.373Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-07-17T10:21:40.072Z', docs}));
             window.docs = docs
             window.index = index;
         }
