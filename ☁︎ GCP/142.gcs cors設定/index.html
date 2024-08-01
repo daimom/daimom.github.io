@@ -3322,6 +3322,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/225.  Debian安裝後設定/">225.  Debian安裝後設定 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3491,7 +3502,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-07-31T10:16:45.056Z';
+        const searchIndexDate = '2024-08-01T10:21:47.045Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3503,9 +3514,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-07-31T10:16:45.056Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-08-01T10:21:47.045Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-07-31T10:16:45.056Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-08-01T10:21:47.045Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3765,8 +3776,8 @@
 <p>將下面檔案，存成json</p>
 <pre><code class="language-json">[
     {
-      &quot;origin&quot;: [&quot;https://tester.abc.com/&quot;],
-      &quot;method&quot;: [&quot;GET&quot;,&quot;PUT&quot;,&quot;POST&quot;,&quot;OPTIONS&quot;,&quot;DELETE&quot;,&quot;PATCH&quot;],
+      &quot;origin&quot;: [&quot;https://tester.abc.com&quot;],
+      &quot;method&quot;: [&quot;GET&quot;,&quot;PUT&quot;,&quot;POST&quot;,&quot;HEAD&quot;,&quot;DELETE&quot;,&quot;PATCH&quot;],
       &quot;responseHeader&quot;: [&quot;Content-Type&quot;, &quot;DNT&quot;,&quot;X-CustomHeader&quot;,&quot;X-LANG,Keep-Alive&quot;,&quot;User-Agent&quot;,&quot;X-Requested-With&quot;,&quot;If-Modified-Since,Cache-Control&quot;,&quot;X-Api-Key,X-Device-Id&quot;,&quot;Access-Control-Allow-Origin&quot;],
       &quot;maxAgeSeconds&quot;: 3600
     }
@@ -3775,11 +3786,14 @@
 <p>執行，收工。</p>
 <pre><code>gsutil cors set example_cors_file.json gs://example_bucket
 </code></pre>
-<p>感覺我好像再騙文章。</p>
-<p>補充，origin不能用 * 的萬用符號，之前測了沒有效果 ，<br>
-未來會不會改不清楚。</p>
+<p>但要注意，這個不會馬上生效，感覺要等超過10分鐘以上。</p>
+<p>~~補充，origin不能用 * 的萬用符號，之前測了沒有效果 ，<br>
+未來會不會改不清楚。 ~~</p>
+<p>測試時，可以用* ，直接用 <code>origin:*</code></p>
 <p>查看bucket有沒有設定cors則用</p>
 <pre><code>gsutil cors get gs://example_bucket
+or
+gcloud storage buckets describe gs://example_bucket --format=&quot;default(cors_config)&quot;
 </code></pre>
 <p><picture src="/img/user/%E2%98%81%EF%B8%8E%20GCP/142-fig.1.jpg" alt="142-fig.1.jpg"><source       media="(max-width:480px)"
       srcset="/img/optimized/VqReq3ZKn--500.webp"
@@ -3800,6 +3814,19 @@
       ></picture></p>
 <p>如果要用gcloud/api，請看下面連結</p>
 <p>ref. <a href="https://cloud.google.com/storage/docs/using-cors?hl=zh-cn" target="_blank" class="external-link">設定和查看 CORS 組態</a></p>
+<h3 id="cors" tabindex="-1">Cors的工作原理</h3>
+<p>當瀏覽器向 Cloud Storage 發出簡單請求時，會發生以下過程：</p>
+<ol>
+<li>
+<p>瀏覽器將 <code>Origin</code> 標頭新增到請求中。<code>Origin</code> 標頭包含相應資源（該資源在尋求共享 Cloud Storage 儲存桶的資源）的來源，例如 <code>Origin:https://www.example.appspot.com</code>。</p>
+</li>
+<li>
+<p>Cloud Storage 將請求的 HTTP 方法以及 <code>Origin</code> 標頭的值與目標儲存桶的 CORS 組態中的<strong>方法</strong>和<strong>來源</strong>資訊進行比較，以查看是否存在匹配項。如果存在匹配項，Cloud Storage 將在響應中包含 <code>Access-Control-Allow-Origin</code> 標頭。<code>Access-Control-Allow-Origin</code> 標頭包含初始請求的 <code>Origin</code> 標頭的值。</p>
+</li>
+<li>
+<p>瀏覽器接收響應並檢查 <code>Access-Control-Allow-Origin</code> 值是否與原始請求中指定的網域匹配。如果它們匹配，則請求成功。如果它們不匹配，或者響應中不存在 <code>Access-Control-Allow-Origin</code> 標頭，則請求失敗。</p>
+</li>
+</ol>
 
       
       
@@ -4044,6 +4071,12 @@
             		</li>
 
                     <li><a href="#正文">正文</a>
+            
+                <ol>
+                    
+                    <li><a href="#cors">Cors的工作原理</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>

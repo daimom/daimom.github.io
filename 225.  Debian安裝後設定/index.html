@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title> 🗒 Drone MOC  </title>
+    <title>225.  Debian安裝後設定</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -2855,7 +2855,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/0.EFK MOC/"> 🗒 Drone MOC   </a>
                 </div>
@@ -3326,7 +3326,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/225.  Debian安裝後設定/">225.  Debian安裝後設定 </a>
                 </div>
@@ -3748,7 +3748,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon=""> 🗒 Drone MOC  </h1>
+          <h1 data-note-icon="">225.  Debian安裝後設定</h1>
         
         <div class="header-meta">
           
@@ -3758,7 +3758,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #🗒
+                    #🐧
                   </a>
                 
               
@@ -3769,40 +3769,43 @@
       </header>
       
       
-      <h1 id="概念" tabindex="-1">概念</h1>
-<ul>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/55. es基本概念篇/">55. es基本概念篇</a></li>
-<li><a class="internal-link is-unresolved" href="/404">81. Beat vs elastic agent</a></li>
-<li><a class="internal-link is-unresolved" href="/404">83. Elasticsearch 權威指南 修正</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/84.Elasticsearch筆記/">84.Elasticsearch筆記</a></li>
-</ul>
-<h1 id="建置" tabindex="-1">建置</h1>
-<ul>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/43.自建ECK on GKE/">43.自建ECK on GKE</a></li>
-</ul>
-<h1 id="設定" tabindex="-1">設定</h1>
-<ul>
-<li><a class="internal-link" data-note-icon="" href="/⛵️ istio/54. istio 掛載ECK kibana/">54. istio 掛載ECK kibana</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/52. ILM 設定/">52. ILM 設定</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/57.filebeat 補充說明/">57.filebeat 補充說明</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/80. ECK 8.1 ,APM intergration安裝方式/">80. ECK 8.1 ,APM intergration安裝方式</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/90. elasticsearch ingest pipeline/">90. elasticsearch ingest pipeline</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/91. elasticsearch ingest processor補充/">91. elasticsearch ingest processor補充</a></li>
-</ul>
-<h1 id="usage" tabindex="-1">Usage</h1>
-<ul>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/68.ECK , api筆記/">68.ECK , api筆記</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/61. kibana 查詢語法/">Kibana一般使用者查詢語法</a></li>
-<li><a class="internal-link is-unresolved" href="/404">86. efk apm圖表</a></li>
-</ul>
-<h1 id="troubleshooting" tabindex="-1">Troubleshooting</h1>
-<ul>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/53. apm error/">53. apm error</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/60. ECK的 kibana 警告， server.publicBaseUrl is missing/">60. ECK的 kibana 警告， server.publicBaseUrl is missing</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/67. ECK，filebeat LOG蒐集遺失/">67. ECK，filebeat LOG蒐集遺失</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/69. kibana錯誤解法 , parent Data too large.../">69. kibana錯誤解法 , parent Data too large...</a></li>
-<li><a class="internal-link" data-note-icon="" href="/🗒 EFK/111. filebeat error/">111. filebeat error</a></li>
-</ul>
+      <h1 id="why" tabindex="-1">WHY</h1>
+<p>被要求寫個SOP安裝服務的手冊，<br>
+從作業系統開始。</p>
+<h1 id="note" tabindex="-1">Note</h1>
+<ol>
+<li>*** is not in the sudoers file.  This incident will be reported.”<br>
+修改sudoers檔案</li>
+</ol>
+<pre><code>su root
+chmod 777 /etc/sudoers
+vi /etc/sudoers
+
+# 在 root    ALL=(ALL:ALL) ALL 下面加上
+ &lt;user&gt;    ALL=(ALL)ALL
+
+chmod 440 /etc/sudoers
+</code></pre>
+<ol start="2">
+<li>關閉休眠模式</li>
+</ol>
+<pre><code>sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+執行完後，需重開機
+</code></pre>
+<ol start="3">
+<li>
+<p>關閉安裝來源<br>
+最快的方法是直接從桌面模式關掉。<br>
+程式介面搜尋 update，找到software &amp; update ，<br>
+進去後切到Other software的頁籤，將選項拿掉。</p>
+</li>
+<li>
+<p>安裝deb</p>
+</li>
+</ol>
+<pre><code>apt install ./anydesk_6.3.2-1_amd64.deb
+</code></pre>
 
       
       
@@ -4043,19 +4046,10 @@
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#概念">概念</a>
+                    <li><a href="#why">WHY</a>
             		</li>
 
-                    <li><a href="#建置">建置</a>
-            		</li>
-
-                    <li><a href="#設定">設定</a>
-            		</li>
-
-                    <li><a href="#usage">Usage</a>
-            		</li>
-
-                    <li><a href="#troubleshooting">Troubleshooting</a>
+                    <li><a href="#note">Note</a>
             		</li>
                 </ol>
             </nav>

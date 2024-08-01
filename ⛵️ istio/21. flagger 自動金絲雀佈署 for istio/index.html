@@ -3322,6 +3322,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/225.  Debian安裝後設定/">225.  Debian安裝後設定 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3491,7 +3502,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-07-31T10:16:45.056Z';
+        const searchIndexDate = '2024-08-01T10:21:47.045Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3503,9 +3514,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-07-31T10:16:45.056Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-08-01T10:21:47.045Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-07-31T10:16:45.056Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-08-01T10:21:47.045Z', docs}));
             window.docs = docs
             window.index = index;
         }
