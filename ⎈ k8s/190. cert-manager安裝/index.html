@@ -3333,6 +3333,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/228. Cloudsql PITR還原/">228. Cloudsql PITR還原 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3502,7 +3513,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-08-14T10:21:33.331Z';
+        const searchIndexDate = '2024-08-15T10:23:40.351Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3514,9 +3525,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-08-14T10:21:33.331Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-08-15T10:23:40.351Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-08-14T10:21:33.331Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-08-15T10:23:40.351Z', docs}));
             window.docs = docs
             window.index = index;
         }
