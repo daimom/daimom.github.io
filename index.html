@@ -1070,7 +1070,7 @@
             
                 <div @click.stop class="notelink ">
                     
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/127. fuse device not found, try &#39;modprobe fuse&#39; first/">fuse device not found, try &#39;modprobe fuse&#39; first </a>
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/127. fuse device not found, try &#39;modprobe fuse&#39; first/">fuse device not found try modprobe fuse first </a>
                 </div>
             
         </div>
@@ -3343,6 +3343,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/231. GKE node cpu limit 計算/">231. GKE node cpu limit 計算 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3511,7 +3522,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-08-27T10:21:01.835Z';
+        const searchIndexDate = '2024-08-28T10:21:03.711Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3523,9 +3534,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-08-27T10:21:01.835Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-08-28T10:21:03.711Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-08-27T10:21:01.835Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-08-28T10:21:03.711Z', docs}));
             window.docs = docs
             window.index = index;
         }

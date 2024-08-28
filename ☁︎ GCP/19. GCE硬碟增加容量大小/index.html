@@ -1071,7 +1071,7 @@
             
                 <div @click.stop class="notelink ">
                     
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/127. fuse device not found, try &#39;modprobe fuse&#39; first/">fuse device not found, try &#39;modprobe fuse&#39; first </a>
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/127. fuse device not found, try &#39;modprobe fuse&#39; first/">fuse device not found try modprobe fuse first </a>
                 </div>
             
         </div>
@@ -3344,6 +3344,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/231. GKE node cpu limit 計算/">231. GKE node cpu limit 計算 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3513,7 +3524,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-08-27T10:21:01.835Z';
+        const searchIndexDate = '2024-08-28T10:21:03.711Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3525,9 +3536,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-08-27T10:21:01.835Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-08-28T10:21:03.711Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-08-27T10:21:01.835Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-08-28T10:21:03.711Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3844,18 +3855,20 @@ ref. <a href="https://man.linuxde.net/lsblk" target="_blank" class="external-lin
 <p>growpart 將全部多餘的空間給指定的分割區<br>
 extend  a partition	in a partition table to	fill available space<br>
 ubuntu 安裝方式：<br>
-<code>apt -y install cloud-guest-growpart</code><br>
-CentOS 安裝方式：<br>
-<code>yum -y install cloud-utils-growpart</code></p>
-<pre><code>  growpart /dev/sda 1
-</code></pre>
-<p>這邊的dev/sda 指的是disk,故sda與 1 中間有空格<br>
-ref. <a href="https://www.freebsd.org/cgi/man.cgi?query=growpart&amp;manpath=Debian+8.1.0" target="_blank" class="external-link">growpart</a></p>
-<p>p.s 如果出現 錯誤</p>
-<pre><code>FAILED: sfdisk not found
-</code></pre>
-<p>請使用sudo growpart /dev/sda 1 的方式執行</p>
+<code>apt -y install cloud-guest-growpart</code></p>
 </li>
+</ol>
+<p>2024/08/15更新<br>
+<code>apt -y install cloud-guest-utils</code></p>
+<p>CentOS 安裝方式：<br>
+<code>yum -y install cloud-utils-growpart</code></p>
+<p><code>       growpart /dev/sda 1     </code><br>
+這邊的dev/sda 指的是disk,故sda與 1 中間有空格<br>
+ref. <a href="https://www.freebsd.org/cgi/man.cgi?query=growpart&amp;manpath=Debian+8.1.0" target="_blank" class="external-link">growpart</a></p>
+<p>p.s 如果出現 錯誤<br>
+<code>     FAILED: sfdisk not found     </code><br>
+請使用sudo growpart /dev/sda 1 的方式執行</p>
+<ol start="3">
 <li>
 <p>resize2fs 調整系統大小</p>
 <pre><code>  resize2fs /dev/sda1
