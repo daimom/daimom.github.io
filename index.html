@@ -3654,7 +3654,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-10-24T03:58:35.980Z';
+        const searchIndexDate = '2024-10-24T10:23:36.890Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3666,9 +3666,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-10-24T03:58:35.980Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-10-24T10:23:36.890Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-10-24T03:58:35.980Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-10-24T10:23:36.890Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3925,18 +3925,17 @@
 <li><em><strong>你如果想要有更多的時間偷懶，就一定要有最高的效率。</strong></em></li>
 </ul>
 <hr>
+<h1 id="最新文章" tabindex="-1">最新文章</h1>
+<ul>
+<li><a class="internal-link" data-note-icon="" href="/241. MSSQL紀錄log，使用QUERY_STORE/">241. MSSQL紀錄log，使用QUERY_STORE</a></li>
+<li><a class="internal-link" data-note-icon="" href="/242.  .Net core 8 使用apt install 權限不足/">242.  .Net core 8 使用apt install 權限不足</a></li>
+<li><a class="internal-link" data-note-icon="" href="/243. GCP 全域負載平衡器進階路由設定/">243. GCP 全域負載平衡器進階路由設定</a></li>
+</ul>
+<hr>
 <h1 id="obsidian-github" tabindex="-1">用Obsidian發佈到Github</h1>
 <p><a class="internal-link" data-note-icon="" href="/193. Obsidian發佈到github.io個人網站/">193. Obsidian發佈到github.io個人網站</a></p>
 <h1 id="電影評分表" tabindex="-1">電影評分表</h1>
 <p>做好玩的 <a href="https://daimom.github.io/movieRating/" target="_blank" class="external-link">電影評分表</a></p>
-<hr>
-<h1 id="last-post" tabindex="-1">Last Post:</h1>
-<p>最近事情多，寫了也都沒分類，有點麻煩。<br>
-日後應該是先發佈，改天再歸類到各自的資料夾好了。<br>
-希望不會累積太多沒歸類到資料夾。</p>
-<p>真的都會沒歸類到資料夾wwww<br>
-連首頁的更新都會忘記寫，<br>
-這算自動化的缺點嗎XD</p>
 <hr>
 <h1 id="tag" tabindex="-1">Tag列表</h1>
 <p>💡：Map Of Content<br>
@@ -4212,13 +4211,13 @@
                     <li><a href="#度估記事本">度估記事本</a>
             		</li>
 
+                    <li><a href="#最新文章">最新文章</a>
+            		</li>
+
                     <li><a href="#obsidian-github">用Obsidian發佈到Github</a>
             		</li>
 
                     <li><a href="#電影評分表">電影評分表</a>
-            		</li>
-
-                    <li><a href="#last-post">Last Post:</a>
             		</li>
 
                     <li><a href="#tag">Tag列表</a>
