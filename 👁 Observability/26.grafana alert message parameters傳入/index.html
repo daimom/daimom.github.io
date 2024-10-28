@@ -3317,6 +3317,17 @@
             
                 <div @click.stop class="notelink ">
                     
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/223. 檢查TCP or UDP是否有通/">223. 檢查TCP or UDP是否有通 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/224. GKE的節點上限採坑記/">224. GKE的節點上限 </a>
                 </div>
             
@@ -3438,7 +3449,7 @@
             
                 <div @click.stop class="notelink ">
                     
-                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/239. Cloudflare白名單及擷取國別設定/">Cloudflare白名單及擷取國別設定 </a>
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/239. Cloudflare白名單及擷取國別設定/">239.Cloudflare白名單及擷取國別設定 </a>
                 </div>
             
         </div>
@@ -3483,6 +3494,17 @@
                 <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/243. GCP 全域負載平衡器進階路由設定/">243. GCP 全域負載平衡器進階路由設定 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/244. 在GCE使用filebeat傳到GKE的ECK/">244. 在GCE使用filebeat傳到GKE的ECK </a>
                 </div>
             
         </div>
@@ -3656,7 +3678,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-10-28T08:58:12.271Z';
+        const searchIndexDate = '2024-10-28T09:27:15.974Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3668,9 +3690,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-10-28T08:58:12.271Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-10-28T09:27:15.974Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-10-28T08:58:12.271Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-10-28T09:27:15.974Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4299,7 +4321,7 @@ ref. <a href="https://grafana.com/docs/grafana/latest/alerting/notifications/#no
       <script defer src="/_vercel/insights/script.js"></script>
 
     
-      <div id="disqus_thread"></div>
+      <div class="content"><div id="disqus_thread"></div></div>
 <script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
