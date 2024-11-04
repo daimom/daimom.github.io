@@ -2964,6 +2964,19 @@
             
                 <div @click.stop class="notelink ">
                     
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/58. 除錯用的ECK API/">除錯用的ECK API </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/60. ECK的 kibana 警告， server.publicBaseUrl is missing/">ECK的 kibana 警告， server.publicBaseUrl is missing </a>
                 </div>
             
@@ -3676,7 +3689,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-03T10:24:14.434Z';
+        const searchIndexDate = '2024-11-04T10:25:10.976Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3688,9 +3701,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-03T10:24:14.434Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-04T10:25:10.976Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-03T10:24:14.434Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-04T10:25:10.976Z', docs}));
             window.docs = docs
             window.index = index;
         }

@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>istio sidecar 注入規則</title>
+    <title>除錯用的ECK API</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -1595,7 +1595,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⛵️ istio/73. istio sidecar 注入規則/">istio sidecar 注入規則 </a>
                 </div>
@@ -2963,7 +2963,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/58. 除錯用的ECK API/">除錯用的ECK API </a>
                 </div>
@@ -3937,7 +3937,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">istio sidecar 注入規則</h1>
+          <h1 data-note-icon="">除錯用的ECK API</h1>
         
         <div class="header-meta">
           
@@ -3947,7 +3947,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #⛵️
+                    #🗒
                   </a>
                 
               
@@ -3959,91 +3959,86 @@
       
       
       <h1 id="前言" tabindex="-1">前言</h1>
-<p>因為drone 的 kubernetes Runner的關係，<br>
-導致我有一個ns要預設取消istio inject，<br>
-但某些特定的pod要注入就失敗了。</p>
+<p>很久之前要寫一直沒寫，<br>
+最近碰到問題，來還了。</p>
 <h1 id="正文" tabindex="-1">正文</h1>
-<p>先來看一張官方做的表(1)，<br>
-其實就很好解釋為什麼不會注入了。</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>namespaceSelector match</th>
-<th>default policy</th>
-<th>Pod override annotation <a href="http://sidecar.istio.io/inject" target="_blank" class="external-link">sidecar.istio.io/inject</a></th>
-<th>Sidecar injected?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>yes</td>
-<td>enabled</td>
-<td>true (default)</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>yes</td>
-<td>enabled</td>
-<td>false</td>
-<td>no</td>
-</tr>
-<tr>
-<td>yes</td>
-<td>disabled</td>
-<td>true</td>
-<td>yes</td>
-</tr>
-<tr>
-<td>yes</td>
-<td>disabled</td>
-<td>false (default)</td>
-<td>no</td>
-</tr>
-<tr>
-<td>no</td>
-<td>enabled</td>
-<td>true (default)</td>
-<td>no</td>
-</tr>
-<tr>
-<td>no</td>
-<td>enabled</td>
-<td>false</td>
-<td>no</td>
-</tr>
-<tr>
-<td>no</td>
-<td>disabled</td>
-<td>true</td>
-<td>no</td>
-</tr>
-<tr>
-<td>no</td>
-<td>disabled</td>
-<td>false (default)</td>
-<td>no</td>
-</tr>
-</tbody>
-</table></div>
-<p>各欄位解釋，</p>
+<h2 id="primary-shard" tabindex="-1">Primary Shard (提昇系統儲存容量)</h2>
 <ul>
-<li>namespaceSelector match：各namespace的 istio-inject是 enable或 disable</li>
-<li>default policy： 這個預設都是enable，要查看使用command或到configmap查看 istio-sidecar-injector</li>
+<li>
+<p>shard 是 Elasticsearch 分散式儲存的基礎，包含 primary shard &amp; replica shard</p>
+</li>
+<li>
+<p>每一個 shard 就是一個 Lucene instance</p>
+</li>
+<li>
+<p>primary shard 功能是將一份被索引後的資料，分散到多個 data node 上存放，實現儲存方面的水平擴展</p>
+</li>
+<li>
+<p>primary shard 的數量在建立 index 時就會指定，後續是無法修改的，若要修改就必須要進行 reindex</p>
+</li>
 </ul>
-<pre><code>kubectl -n istio-system get configmap istio-sidecar-injector -o jsonpath='{.data.config}' | grep policy:
+<h2 id="replica-shard" tabindex="-1">Replica Shard (提高資料可用性)</h2>
+<ul>
+<li>
+<p>replica shard 用來提供資料高可用性，當 primary shard 遺失時，replica shard 就可以被 promote 成 primary shard 來保持資料完整性</p>
+</li>
+<li>
+<p>replica shard 數量可以動態調整，讓每個 data node 上都有完整的資料</p>
+</li>
+<li>
+<p>replica shard 可以一定程度的提高讀取(查詢)的效能</p>
+</li>
+<li>
+<p>若不設定 replica shard，一旦有 data node 故障導致 primary shard 遺失，資料可能就無法恢復了</p>
+</li>
+<li>
+<p>ES 7.0 開始，primary shard 預設為 <code>1</code>，replica shard 預設為 <code>0</code></p>
+</li>
+</ul>
+<p>ref. <a href="https://godleon.github.io/blog/Elasticsearch/Elasticsearch-distributed-mechanism/" target="_blank" class="external-link"> [Elasticsearch] 分散式特性 &amp; 分散式搜尋的機制</a></p>
+<h2 id="shard-and-amp" tabindex="-1">Shard 的規劃 &amp; 設定</h2>
+<ul>
+<li>
+<p>primary shard 數量設定太小會遇到以下問題：</p>
+<ul>
+<li>若 index 資料增加很快時，cluster 無法通過增加 node 數量對 index 進行資料擴展</li>
+<li>單一 shard 資料太大，導致資料重新分配耗時</li>
+</ul>
+</li>
+<li>
+<p>primary shard 數量設定太大會遇到以下問題：</p>
+<ul>
+<li>導致每個 shard 容量很小，讓一個 data node 上有過多 shard 而影響效能</li>
+<li>影響搜尋時的相關性算分，會讓統計結果失準</li>
+</ul>
+</li>
+<li>
+<p>replica shard 若設定過多，會降低 cluster 整體的寫入效能</p>
+</li>
+</ul>
+<pre><code># 查node的狀態
+GET _cluster/health/
+
+# 取得目前所有的shard，加上?v 可顯示欄位名稱
+GET _cat/shards?v
+
+# 取得目前的shard設定數量（好幾次都是這個值暴了，導致log無法寫入)
+GET /_cluster/settings
+
+# 設定node的shard最大數量
+PUT /_cluster/settings
+{
+  &quot;persistent&quot;: {
+    &quot;cluster.max_shards_per_node&quot;: 1000
+  }
+}
+
 
 </code></pre>
+<p>ref.</p>
 <ul>
-<li>Pod override annotation ： 直接指定pod會不會注入的 annotation</li>
-<li>Sidecar injected ：結果</li>
+<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html" target="_blank" class="external-link">cat shards API欄位介紹</a></li>
 </ul>
-<p>結論，<br>
-namespace只要是 disabled的，通通不會inject sidecar</p>
-<p></p>
-<p>ref.<br>
-1. <a href="https://istio.io/latest/docs/ops/configuration/mesh/injection-concepts/" target="_blank" class="external-link">Automatic Sidecar Injection</a><br>
-2. <a href="https://istio.io/latest/zh/docs/ops/common-problems/injection/" target="_blank" class="external-link">Sidecar 自動注入問題</a><br>
-3. <a href="https://morpheushuang.medium.com/istio-automatic-sidecar-injection-543-4981ae7375f7" target="_blank" class="external-link">關於Istio Automatic Sidecar Injection那檔事</a></p>
 
       
       
@@ -4288,6 +4283,18 @@ namespace只要是 disabled的，通通不會inject sidecar</p>
             		</li>
 
                     <li><a href="#正文">正文</a>
+            
+                <ol>
+                    
+                    <li><a href="#primary-shard">Primary Shard (提昇系統儲存容量)</a>
+            		</li>
+
+                    <li><a href="#replica-shard">Replica Shard (提高資料可用性)</a>
+            		</li>
+
+                    <li><a href="#shard-and-amp">Shard 的規劃 & 設定</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>
