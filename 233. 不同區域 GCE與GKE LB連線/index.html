@@ -3522,6 +3522,39 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/245. gcloud storage取代gsutil/">245. gcloud storage取代gsutil </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/246. GCP網路費用粗估計算/">246. GCP網路費用粗估計算 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/247. MSSQL指令賦予權限/">247. MSSQL指令賦予權限 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3691,7 +3724,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-05T10:24:21.494Z';
+        const searchIndexDate = '2024-11-06T10:23:41.155Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3703,9 +3736,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-05T10:24:21.494Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-06T10:23:41.155Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-05T10:24:21.494Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-06T10:23:41.155Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3987,6 +4020,31 @@ LB要開啓 <code>Global access</code></p>
       width=""
       ></picture></p>
 <p>ref. <a href="https://cloud.google.com/load-balancing/docs/internal?hl=zh-cn#client-access" target="_blank" class="external-link">客戶端訪問</a></p>
+<h3 id="troubleshoot" tabindex="-1">Troubleshoot</h3>
+<p>這幾天發現個問題，<br>
+手動更改Global access後，會自動變成Disable。<br>
+通報給Google了，後續看狀況。<br>
+但有建議說直接在server上面加 annotations</p>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    # add globle access
+    networking.gke.io/internal-load-balancer-allow-global-access: &quot;true&quot;
+    networking.gke.io/load-balancer-type: &quot;Internal&quot;
+  name: srs-source-internal
+  namespace: srs-prod  
+spec:
+  type: LoadBalancer
+  selector:
+    app: srs-source
+  ports:
+    - protocol: TCP
+      port: 1935
+      targetPort: 1935
+      name: rtmp
+</code></pre>
+<p>ref. <a href="https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer-parameters#global_access_internal_lb" target="_blank" class="external-link">Global access</a></p>
 
       
       
@@ -4231,6 +4289,12 @@ LB要開啓 <code>Global access</code></p>
             		</li>
 
                     <li><a href="#solution">Solution</a>
+            
+                <ol>
+                    
+                    <li><a href="#troubleshoot">Troubleshoot</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>

@@ -3521,6 +3521,39 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/245. gcloud storage取代gsutil/">245. gcloud storage取代gsutil </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/246. GCP網路費用粗估計算/">246. GCP網路費用粗估計算 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/247. MSSQL指令賦予權限/">247. MSSQL指令賦予權限 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3689,7 +3722,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-05T10:24:21.494Z';
+        const searchIndexDate = '2024-11-06T10:23:41.155Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3701,9 +3734,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-05T10:24:21.494Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-06T10:23:41.155Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-05T10:24:21.494Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-06T10:23:41.155Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3962,9 +3995,9 @@
 <hr>
 <h1 id="最新文章" tabindex="-1">最新文章</h1>
 <ul>
-<li><a class="internal-link" data-note-icon="" href="/242.  .Net core 8 使用apt install 權限不足/">242.  .Net core 8 使用apt install 權限不足</a></li>
-<li><a class="internal-link" data-note-icon="" href="/243. GCP 全域負載平衡器進階路由設定/">243. GCP 全域負載平衡器進階路由設定</a></li>
-<li><a class="internal-link" data-note-icon="" href="/244. 在GCE使用filebeat傳到GKE的ECK/">244. 在GCE使用filebeat傳到GKE的ECK</a></li>
+<li><a class="internal-link" data-note-icon="" href="/245. gcloud storage取代gsutil/">245. gcloud storage取代gsutil</a></li>
+<li><a class="internal-link" data-note-icon="" href="/246. GCP網路費用粗估計算/">246. GCP網路費用粗估計算</a></li>
+<li><a class="internal-link" data-note-icon="" href="/247. MSSQL指令賦予權限/">247. MSSQL指令賦予權限</a></li>
 </ul>
 <hr>
 <h1 id="obsidian-github" tabindex="-1">用Obsidian發佈到Github</h1>

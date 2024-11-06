@@ -3522,6 +3522,39 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/245. gcloud storage取代gsutil/">245. gcloud storage取代gsutil </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/246. GCP網路費用粗估計算/">246. GCP網路費用粗估計算 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/247. MSSQL指令賦予權限/">247. MSSQL指令賦予權限 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3691,7 +3724,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-05T10:24:21.494Z';
+        const searchIndexDate = '2024-11-06T10:23:41.155Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3703,9 +3736,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-05T10:24:21.494Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-06T10:23:41.155Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-05T10:24:21.494Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-06T10:23:41.155Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3962,6 +3995,7 @@
 <blockquote>
 <p>MTR 在一開始會針對指定的主機，以 <code>traceroute</code> 找出中間的每一個網路節點（閘道器、路由器、橋接器等），然後使用 <code>ping</code> 去檢查每一個節點的網路連線狀況</p>
 </blockquote>
+<p>補充，<code>traceroute -P -t 1935 &lt;ip&gt;</code> 可透過指定port測試連線</p>
 <h3 id="安裝方式" tabindex="-1">安裝方式</h3>
 <pre><code># Debian/Ubuntu
 sudo apt install mtr
@@ -4019,6 +4053,11 @@ mtr -4 IPv4
 mtr -6 IPv6
 
 mtr -c 設定每秒傳送封包的數量
+
+mtr -T 使用TCP連線
+
+mtr -P 指定port
+
 </code></pre>
 <p>數據所代表的意思<br>
 以下是各個英文字母所代表的欄位：<br>
