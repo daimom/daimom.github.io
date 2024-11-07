@@ -3724,7 +3724,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-06T10:23:41.155Z';
+        const searchIndexDate = '2024-11-07T10:22:51.911Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3736,9 +3736,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-06T10:23:41.155Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-07T10:22:51.911Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-06T10:23:41.155Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-07T10:22:51.911Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4038,6 +4038,26 @@ gcloud storage sign-url  -d=30m --private-key-file=gcs-download.json gs://backup
 <pre><code>gcloud storage du gs://abc --summarize --readable-sizes
 </code></pre>
 <p>ref. <a href="https://cloud.google.com/sdk/gcloud/reference/storage/du" target="_blank" class="external-link">gcloud storage du</a></p>
+<p>或是在Metrics Explorer ，查詢 <code>Total bytes (v2)</code> 選擇 GCS Bucket。<br>
+這邊也有 <code>Total count (v2)</code> 可以查詢加總。<br>
+filter可指定bucket name</p>
+<p><picture src="/img/user/245-fig.1.png" alt="245-fig.1.png"><source       media="(max-width:480px)"
+      srcset="/img/optimized/Ydy_HKX2tl-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/Ydy_HKX2tl-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/Ydy_HKX2tl-700.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/Ydy_HKX2tl-700.jpeg"
+        ><img       class=""
+      src="/img/user/245-fig.1.png"
+      alt="245-fig.1.png"
+      width=""
+      ></picture></p>
 <ol start="4">
 <li>cors</li>
 </ol>
