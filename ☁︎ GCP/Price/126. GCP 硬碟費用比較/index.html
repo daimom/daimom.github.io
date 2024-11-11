@@ -3724,7 +3724,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-10T10:20:46.406Z';
+        const searchIndexDate = '2024-11-11T10:24:08.948Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3736,9 +3736,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-10T10:20:46.406Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-11T10:24:08.948Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-10T10:20:46.406Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-11T10:24:08.948Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3993,6 +3993,11 @@
       
       <h1 id="睡睡念" tabindex="-1">睡睡念</h1>
 <h1 id="正文" tabindex="-1">正文</h1>
+<p>GCE</p>
+<ul>
+<li>Standard : $0.04 per GiB</li>
+<li>SSD : $0.17 per GiB</li>
+</ul>
 <p>CloudStorage</p>
 <ul>
 <li>Standard ：適合短期儲存和經常存取的資料</li>

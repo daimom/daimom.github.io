@@ -3722,7 +3722,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-10T10:20:46.406Z';
+        const searchIndexDate = '2024-11-11T10:24:08.948Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3734,9 +3734,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-10T10:20:46.406Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-11T10:24:08.948Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-10T10:20:46.406Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-11T10:24:08.948Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3998,6 +3998,7 @@
 <li><a class="internal-link" data-note-icon="" href="/245. gcloud storage取代gsutil/">245. gcloud storage取代gsutil</a></li>
 <li><a class="internal-link" data-note-icon="" href="/246. GCP網路費用粗估計算/">246. GCP網路費用粗估計算</a></li>
 <li><a class="internal-link" data-note-icon="" href="/247. MSSQL指令賦予權限/">247. MSSQL指令賦予權限</a></li>
+<li><a class="internal-link is-unresolved" href="/404">248. EFK, index is empty or not defined</a></li>
 </ul>
 <hr>
 <h1 id="obsidian-github" tabindex="-1">用Obsidian發佈到Github</h1>
