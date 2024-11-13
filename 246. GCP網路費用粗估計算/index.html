@@ -3724,7 +3724,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-12T10:23:22.389Z';
+        const searchIndexDate = '2024-11-13T10:23:26.537Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3736,9 +3736,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-12T10:23:22.389Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-13T10:23:26.537Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-12T10:23:22.389Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-13T10:23:26.537Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -3994,28 +3994,74 @@
       <h1 id="why" tabindex="-1">WHY</h1>
 <p>昨天突然說要叫我算一下影音串流，如果每秒2MB的話，一個月多少。</p>
 <h1 id="solution" tabindex="-1">Solution</h1>
+<p>Q: 現在的題目，每秒有 2Mb的串流，每月會有多少費用。<br>
+先計算每月流量<br>
+<code>2*60*60*24*30=5184000(Mb)</code><br>
+再轉成MB<br>
+<code>51840000/8=648000</code><br>
+因Google的費用單位都是 GiB (1GB 約0.93GiB)，<br>
+所以 648 GB = 602GiB</p>
+<p>p.s GB是十進制，GiB是二進制</p>
+<h3 id="組成" tabindex="-1">組成</h3>
+<p>網路的費用分成兩塊，<br>
+Data transfer(資料傳輸) +  data processes(資料處理)</p>
+<p>入站不收 data transfer的費用，但會收  data processes的費用。<br>
+出站，兩邊的費用都會收。</p>
+<h3 id="inbound" tabindex="-1">Inbound</h3>
+<p>processes data的服務 有 Load Balancer 、Cloud NAT 、 Protocol forward</p>
+<p><picture src="/img/user/246-fig.1.png" alt="246-fig.1.png"><source       media="(max-width:480px)"
+      srcset="/img/optimized/Wv8G7ge2hS-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/Wv8G7ge2hS-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/Wv8G7ge2hS-700.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/Wv8G7ge2hS-700.jpeg"
+        ><img       class=""
+      src="/img/user/246-fig.1.png"
+      alt="246-fig.1.png"
+      width=""
+      ></picture></p>
+<p>從LB 進入的data processes費用為 <code>602*0.008=4.816</code></p>
+<p>LB的轉發規則前五條，每小時  0.025  ，於是 <code>0.025*24*30=18</code></p>
+<p>於是，inbound的 LB 資料處理費用為 22.816 USD</p>
+<h3 id="outbound" tabindex="-1">Outbound</h3>
+<p>這邊計算時，務必搞清楚 哪一邊是client 哪一邊是 server。</p>
 <p>GKE Private Cluster 的網路入跟出的IP不一樣，<br>
 所以計算方式也不一樣。</p>
-<p>計算時，務必搞清楚 哪一邊是client 哪一邊是 server。</p>
 <h3 id="第一種" tabindex="-1">第一種</h3>
-<p>客戶直接連線到server抓取串流，<br>
-所以GKE是server，是吃Load Balancer的流量。</p>
-<p>&gt; <code> (2*60*60*24/1000)*0.23 = 39.74</code><br>
+<p>客戶直接連線到server抓取串流<br>
+所以GKE是server，是從Load Balancer出。</p>
+<p>Data processes 費用<br>
+跟上面inbound的費用一樣，都是 每GiB 0.008 ，所以是 22.816</p>
+<p>Data Transfer 費用</p>
+<p>&gt; <code> 602*0.23 = 138.46</code><br>
  <br>
- 每秒2MB，一個月 172.8GB的流量，<br>
  0.23是台灣到中國的每GB費用，<br>
  到其他地方的價格不一樣。<br>
  <br>
  ref. <a href="https://cloud.google.com/vpc/network-pricing?hl=zh-tw#vpc-pricing" target="_blank" class="external-link">虛擬私人雲端</a> 網際網路資料移轉速率-&gt; 進階級計價模式</p>
+<p>所以總金額約為 138.46+22.816 = 161.276</p>
 <h3 id="第二種" tabindex="-1">第二種</h3>
 <p>服務直接將串流打到對方的伺服器上<br>
 所以GKE是client，是吃Cloud NAT的流量。</p>
+<p>Data processes 費用</p>
 <blockquote>
-<p><code>(0.044*720) + (0.005*1*720)+(172.8*0.045)=43.056</code></p>
+<p><code>(0.044*720) + (0.005*1*720)+(5184*0.045)=43.056</code></p>
 </blockquote>
 <p>(0.044＊720 ) :  超過32個VM ，NAT 閘道的每小時價格 0.044 ，一個月有720個小時<br>
 (0.005＊1＊720)：NAT閘道的IP，1個每小時0.005<br>
 (172.8＊0.045)： 每處理 GiB 資料、傳入與傳出資料移轉的價格 0.045 ，172.8G</p>
+<p>Data Transfer 費用</p>
+<p>&gt; <code> 602*0.23 = 138.46</code><br>
+ <br>
+ 0.23是台灣到中國的每GB費用，<br>
+ 到其他地方的價格不一樣。</p>
+<p>所以總金額約為 138.46+43.056 = 181.516</p>
 <p>ref. <a href="https://cloud.google.com/vpc/network-pricing?hl=zh-tw#nat-pricing" target="_blank" class="external-link">Cloud NAT</a></p>
 
       
@@ -4264,6 +4310,15 @@
             
                 <ol>
                     
+                    <li><a href="#組成">組成</a>
+            		</li>
+
+                    <li><a href="#inbound">Inbound</a>
+            		</li>
+
+                    <li><a href="#outbound">Outbound</a>
+            		</li>
+
                     <li><a href="#第一種">第一種</a>
             		</li>
 

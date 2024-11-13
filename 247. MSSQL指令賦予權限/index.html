@@ -3724,7 +3724,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-12T10:23:22.389Z';
+        const searchIndexDate = '2024-11-13T10:23:26.537Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3736,9 +3736,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-12T10:23:22.389Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-13T10:23:26.537Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-12T10:23:22.389Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-13T10:23:26.537Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4004,7 +4004,7 @@
 <pre><code>
 create USER bmsrd for login bmsrd
 EXEC sp_addrolemember 'db_datareader','bmsrd'
-EXEC sp_addrolemember 'db_datawriter,'bmsrd'
+EXEC sp_addrolemember 'db_datawriter','bmsrd'
 
 </code></pre>
 <p>以後直接到 Google的 Cloud SQL Studio 執行指令就好。<br>
