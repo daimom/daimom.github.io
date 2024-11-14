@@ -3555,6 +3555,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/250. find指令筆記/">250. find指令筆記 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3724,7 +3735,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-13T10:23:26.537Z';
+        const searchIndexDate = '2024-11-14T10:24:14.394Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3736,9 +3747,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-13T10:23:26.537Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-14T10:24:14.394Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-13T10:23:26.537Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-14T10:24:14.394Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4063,6 +4074,30 @@ Data transfer(資料傳輸) +  data processes(資料處理)</p>
  到其他地方的價格不一樣。</p>
 <p>所以總金額約為 138.46+43.056 = 181.516</p>
 <p>ref. <a href="https://cloud.google.com/vpc/network-pricing?hl=zh-tw#nat-pricing" target="_blank" class="external-link">Cloud NAT</a></p>
+<h3 id="補充" tabindex="-1">補充</h3>
+<p>Inter-region data transfer</p>
+<p>如果是跨region的話，也是要算錢的。</p>
+<p><picture src="/img/user/246-fig.2.png" alt="246-fig.2.png"><source       media="(max-width:480px)"
+      srcset="/img/optimized/H-wXsaXkwO-500.webp"
+      type="image/webp"
+      >
+      <source       media="(max-width:480px)"
+      srcset="/img/optimized/H-wXsaXkwO-500.jpeg"
+      >
+      <source         media="(max-width:1920px)"
+        srcset="/img/optimized/H-wXsaXkwO-700.webp"
+        type="image/webp"
+        ><source         media="(max-width:1920px)"
+        srcset="/img/optimized/H-wXsaXkwO-700.jpeg"
+        ><img       class=""
+      src="/img/user/246-fig.2.png"
+      alt="246-fig.2.png"
+      width=""
+      ></picture></p>
+<p>參考 <a href="https://cloud.google.com/vpc/network-pricing#vpc-pricing" target="_blank" class="external-link">Inter-region data transfer</a></p>
+<p>Inter-zone data transfer<br>
+如果是相同region，不同zone的話，每 GiB 0.01<br>
+相同region，相同zone的話則不算錢。</p>
 
       
       
@@ -4323,6 +4358,9 @@ Data transfer(資料傳輸) +  data processes(資料處理)</p>
             		</li>
 
                     <li><a href="#第二種">第二種</a>
+            		</li>
+
+                    <li><a href="#補充">補充</a>
             		</li>
                 </ol>
             		</li>

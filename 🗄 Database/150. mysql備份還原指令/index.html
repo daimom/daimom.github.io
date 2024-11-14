@@ -3555,6 +3555,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/250. find指令筆記/">250. find指令筆記 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3724,7 +3735,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-13T10:23:26.537Z';
+        const searchIndexDate = '2024-11-14T10:24:14.394Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3736,9 +3747,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-13T10:23:26.537Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-14T10:24:14.394Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-13T10:23:26.537Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-14T10:24:14.394Z', docs}));
             window.docs = docs
             window.index = index;
         }
