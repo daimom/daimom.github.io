@@ -3566,6 +3566,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/251.  GCE上的docker監控/">251.  GCE上的docker監控 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3735,7 +3746,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-18T10:26:00.395Z';
+        const searchIndexDate = '2024-11-19T10:25:49.876Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3747,9 +3758,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-18T10:26:00.395Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-19T10:25:49.876Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-18T10:26:00.395Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-19T10:25:49.876Z', docs}));
             window.docs = docs
             window.index = index;
         }

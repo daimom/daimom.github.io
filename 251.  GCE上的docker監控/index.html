@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>GCS使用方式</title>
+    <title>251.  GCE上的docker監控</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -1303,7 +1303,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/☁︎ GCP/8.GCS使用方式/">GCS使用方式 </a>
                 </div>
@@ -3570,7 +3570,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/251.  GCE上的docker監控/">251.  GCE上的docker監控 </a>
                 </div>
@@ -3992,7 +3992,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">GCS使用方式</h1>
+          <h1 data-note-icon="">251.  GCE上的docker監控</h1>
         
         <div class="header-meta">
           
@@ -4002,7 +4002,7 @@
               
                 
                   <a class="tag" onclick="toggleTagSearch(this)">
-                    #☁︎
+                    #☁️
                   </a>
                 
               
@@ -4013,168 +4013,64 @@
       </header>
       
       
-      <h1 id="前言" tabindex="-1">前言</h1>
-<p>某個案子，要整個翻掉重做，這次要讓VM的機器跟GKE的pod能夠同時存取一個儲存空間，<br>
-預計使用Google Cloud Storage，踩了一個早上的坑。</p>
-<h1 id="正文" tabindex="-1">正文</h1>
-<p>預計做兩個項目</p>
-<ol>
-<li>
-<p>在VM上面掛載gcs的資料夾</p>
-</li>
-<li>
-<p>在GKE 上面的pod同時掛載 gcs的資料夾</p>
-</li>
-<li>
-<p>在VM上面掛載gcs的資料夾<br>
-安裝方式，目前我的vm是 RedHat 所以用下面的方式，CentOS也是用同樣的方式</p>
-</li>
-<li>
-<p>Configure the gcsfuse repo:</p>
-</li>
-</ol>
-<pre><code>sudo tee /etc/yum.repos.d/gcsfuse.repo &gt; /dev/null &lt;&lt;EOF
-[gcsfuse]
-name=gcsfuse (packages.cloud.google.com)
-baseurl=https://packages.cloud.google.com/yum/repos/gcsfuse-el7-x86_64
-enabled=1
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
-       https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-EOF
+      <h1 id="why" tabindex="-1">WHY</h1>
+<p>之前因為架構關係，建了幾個在GCE上的docker服務。<br>
+外層主機可以透過GCP的metric監控，<br>
+但裡面的docker就不知道了。</p>
+<h1 id="solution" tabindex="-1">Solution</h1>
+<p>查了一下，<br>
+把<a href="https://github.com/google/cadvisor" target="_blank" class="external-link">cAdvisor</a>裝起來就好了。<br>
+這是一個專門用在監控VM主機上的docker。</p>
+<h3 id="c-advisor" tabindex="-1">cAdvisor</h3>
+<p>docker-compose.yaml</p>
+<pre><code>services:
+  cadvisor:
+    container_name: cadvisor
+    image: gcr.io/cadvisor/cadvisor:latest
+    pull_policy: if_not_present
+    restart: always
+    privileged: true
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    ports:
+      - 8888:8080
+    networks:
+      - zlm_network
+networks:
+  zlm_network:
+    name: zlm_network
+    driver: bridge
 </code></pre>
-<ol start="2">
-<li>Install gcsfuse:</li>
-</ol>
-<pre><code>  sudo yum install gcsfuse
+<p>記得改用 <code>gcr.io/cadvisor/cadvisor:latest</code><br>
+如果你查到的文章有人用 <code>google/cadvisor:latest</code><br>
+這種在建制時會發生錯誤</p>
+<blockquote>
+<p>Failed to create a Container Manager: mountpoint for cpu not found</p>
+</blockquote>
+<p>架好後，可使用下面方法測試</p>
+<pre><code>curl http://127.0.0.1:8888/metrics
 </code></pre>
-<p>完成，其他安裝方式，請參考<a href="https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/installing.md" target="_blank" class="external-link">GoogleCloudPlatform/gcsfuse/install.md</a></p>
-<p>登入使用，<br>
-這邊先使用 gcloud auth login 做測試<br>
-先建立資料夾  mkdir upload<br>
-掛載  gcsfuse my-bucket upload<br>
-卸除掛載 fusermount -u upload</p>
-<h3 id="debug" tabindex="-1">Debug用</h3>
-<pre><code>gcsfuse --foreground --debug_gcs --debug_http --debug_fuse --debug_invariants --key-file=/home/user/Downloads/my-key.json mybucket /upload
+<h3 id="prometheus" tabindex="-1">prometheus</h3>
+<p>要建一個新的或是拿舊的套用都可以。<br>
+重點是config，<br>
+因我的prometheus掛在GKE上面，<br>
+所以直接讓prometheus去取得GCE的metrics。</p>
+<pre><code>- job_name: 'game-result-stage'
+  scrape_interval: 15s
+  static_configs:
+    - targets:
+      - '&lt;ip&gt;:8888' 
 </code></pre>
-<h3 id="google-application-credentials" tabindex="-1">永久加入GOOGLE_APPLICATION_CREDENTIALS變數</h3>
-<pre><code>開啟 /etc/profiles
-新增 export GOOGLE_APPLICATION_CREDENTIALS=&quot;/home/user/Downloads/my-key.json&quot;
-修改檔案後要想馬上生效還要執行#
-source /etc/profile不然只能在下次重進此使用者時生效。
-</code></pre>
-<p>ref.<a href="https://www.itread01.com/content/1547223515.html" target="_blank" class="external-link">Linux系統環境變數和別名設定（永久生效和臨時生效）</a><br>
-附註，json檔案的取得在 IAM角色內的服務賬戶<br>
-ref.<a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank" class="external-link">創建和管理服務帳號密鑰</a>。<br>
-新增完GCS，記得把權限給服務賬戶。記得選擇完整權限（Fig. 1)</p>
-<h3 id="自動掛載" tabindex="-1">自動掛載</h3>
-<p>有權限了已後，再來就是自動掛載了。<br>
-到/etc/fstab上，輸入</p>
-<pre><code>my_bucket /home/ezio/upload gcsfuse key_file=key/key.json,rw,user,allow_other,uid=1008,gid=1009  0 0
-</code></pre>
-<p>重開機測試看看，收工。<br>
-ref.<br>
-<a href="https://stackoverflow.com/questions/42638048/how-to-use-mount-command-in-fstab-file/42638136#42638136" target="_blank" class="external-link">How to use mount command in fstab file</a><br>
-<a href="https://serverfault.com/questions/1021950/gcsfuse-automount-on-a-non-root-user" target="_blank" class="external-link">gcsfuse automount on a non root user</a></p>
-<pre><code>查詢目前登入使用者的uid 跟 gid
-id $(whoami)
-
-如果要看全部使用者的話，
-cat /etc/passwd
-</code></pre>
-<p>ref.<a href="http://linux.vbird.org/linux_basic/0410accountmanager/0410accountmanager-centos5.php#account_id" target="_blank" class="external-link">Linux 的帳號與群組</a></p>
-<ol start="2">
-<li>在GKE 上面的pod同時掛載 gcs的資料夾<br>
-基本的方式，<br>
-先自己產生一個 image</li>
-</ol>
-<pre><code>FROM golang:1.14-alpine AS build-env
-ENV GO111MODULE on
-
-# WORKDIR /工作名錄名稱 當前的工作目錄名稱，若是不存在則會新建該目錄，
-# 需要注意的是copy跟run的指令都是以WORKDIR為當前目錄下去跑的，
-# 運用的時候需要注意相對位置。
-WORKDIR $GOPATH/src
-
-RUN go get -u github.com/googlecloudplatform/gcsfuse
-
-COPY key.json .
-
-
-FROM alpine:3.6
-RUN apk add --no-cache ca-certificates fuse &amp;&amp; rm -rf /tmp/*
-COPY --from=build-env /go/bin/gcsfuse /usr/local/bin
-COPY --from=build-env /go/src/key.json /
-WORKDIR /
-</code></pre>
-<p>佈署 Deployment</p>
-<pre><code>apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: gcs-fuse
-    version: v1
-  namespace: debug
-  name: gcsfuse-test
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: gcs-fuse
-      version: v1
-  template:
-    metadata:
-      labels:
-        app: gcs-fuse
-        version: v1
-    spec:
-      containers:
-        - name: gcsfuse-test
-          image: gcr.io/your-project/gcsfuse:v1.2
-          # image: golang:1.14-alpine
-          # command: [ &quot;/bin/sh&quot;, &quot;-c&quot;, &quot;--&quot; ]
-          # args: [ &quot;while true; do sleep 600; done;&quot; ]
-          securityContext:
-            privileged: true
-          command:
-            - &quot;/bin/sh&quot;
-            - &quot;-c&quot;
-            - &quot;while true; do mkdir /upload ; gcsfuse --key-file=key.json your-bucket /folder; sleep 600; done; &quot;
-</code></pre>
-<p>如果跟現有的程式整合的話，<br>
-由於要執行多行指令，需使用shellScript的方式執行指令。<br>
-可能會遇到下列情況</p>
-<h3 id="and-quot-exec-and-quot-init-sh-and-quot-permission-denied" tabindex="-1">&quot;exec: &quot;/init.sh&quot;: permission denied</h3>
-<p>在Dockerfile上修改權限</p>
-<pre><code>RUN chmod +x /init.sh
-</code></pre>
-<p>ref.<br>
-<a href="https://stackoverflow.com/questions/44687685/getting-permission-denied-in-docker-run" target="_blank" class="external-link">getting permission denied in docker run</a></p>
-<h3 id="exec-user-process-caused-and-quot-exec-format-error-and-quot" tabindex="-1">exec user process caused &quot;exec format error&quot;</h3>
-<p>有人說在sh的頂端加上<br>
-#!/bin/bash<br>
-但我試了沒用，在猜想可能是alpine linux沒有bash導致<br>
-所以改用下面這個</p>
-<pre><code>ENTRYPOINT [&quot;sh&quot;,&quot;/run.sh&quot;]
-</code></pre>
-<p>ref. <a href="https://stackoverflow.com/questions/42494853/standard-init-linux-go178-exec-user-process-caused-exec-format-error" target="_blank" class="external-link">standard_init_linux.go:178: exec user process caused “exec format error”</a></p>
-<h3 id="sh-debug" tabindex="-1">執行sh時卡住，debug方式</h3>
-<p>用if else檢查</p>
-<pre><code>if mkdir /upload; then
-    echo &quot;mkdir directory! Success&quot; 1&gt;&amp;2
-    gcsfuse --key-file=key.json yellow-video /upload
-else
-    echo &quot;Could not mkdir directory!&quot; 1&gt;&amp;2
-    exit 1
-fi
-</code></pre>
-<p>另外，最後找出來原因是因為先執行go的程式，導致後續卡住，所以先建立資料夾後，再執行go</p>
-<p>ref.<br>
-<a href="https://www.opencli.com/linux/shell-script-exit-on-error" target="_blank" class="external-link">Shell Script 遇到錯誤時自動退出離開</a></p>
-<p>ref.<br>
-<a href="https://cloud.google.com/docs/authentication/getting-started" target="_blank" class="external-link">身份驗證入門</a><br>
-<a href="https://www.itread01.com/content/1547223515.html" target="_blank" class="external-link">Linux系統環境變數和別名設定（永久生效和臨時生效）</a></p>
+<h3 id="grafana" tabindex="-1">Grafana</h3>
+<p>可直接匯入 <a href="https://grafana.com/grafana/dashboards/11600-docker-container/" target="_blank" class="external-link">11600</a> 這個dashboard。</p>
+<p>ref.</p>
+<ul>
+<li><a href="https://medium.com/cypik/monitoring-servers-and-docker-containers-using-prometheus-with-grafana-2f8bce8b5d84" target="_blank" class="external-link">Monitoring Servers and Docker Containers using Prometheus with Grafana</a></li>
+</ul>
 
       
       
@@ -4415,29 +4311,20 @@ fi
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#前言">前言</a>
+                    <li><a href="#why">WHY</a>
             		</li>
 
-                    <li><a href="#正文">正文</a>
+                    <li><a href="#solution">Solution</a>
             
                 <ol>
                     
-                    <li><a href="#debug">Debug用</a>
+                    <li><a href="#c-advisor">cAdvisor</a>
             		</li>
 
-                    <li><a href="#google-application-credentials">永久加入GOOGLE_APPLICATION_CREDENTIALS變數</a>
+                    <li><a href="#prometheus">prometheus</a>
             		</li>
 
-                    <li><a href="#自動掛載">自動掛載</a>
-            		</li>
-
-                    <li><a href="#and-quot-exec-and-quot-init-sh-and-quot-permission-denied">"exec: "/init.sh": permission denied</a>
-            		</li>
-
-                    <li><a href="#exec-user-process-caused-and-quot-exec-format-error-and-quot">exec user process caused "exec format error"</a>
-            		</li>
-
-                    <li><a href="#sh-debug">執行sh時卡住，debug方式</a>
+                    <li><a href="#grafana">Grafana</a>
             		</li>
                 </ol>
             		</li>
