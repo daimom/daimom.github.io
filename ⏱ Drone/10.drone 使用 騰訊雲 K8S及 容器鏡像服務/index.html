@@ -3577,6 +3577,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/252. k8s中的pod呼叫/">252. k8s中的pod呼叫 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3746,7 +3757,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-11-20T10:24:50.929Z';
+        const searchIndexDate = '2024-11-21T10:24:50.674Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3758,9 +3769,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-11-20T10:24:50.929Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-11-21T10:24:50.674Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-20T10:24:50.929Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-11-21T10:24:50.674Z', docs}));
             window.docs = docs
             window.index = index;
         }
