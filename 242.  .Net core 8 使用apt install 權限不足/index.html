@@ -765,6 +765,19 @@
             
                 <div @click.stop class="notelink ">
                     
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/254. StatefulSet呼叫pod的方法/">254. StatefulSet呼叫pod的方法 </a>
+                </div>
+            
+        </div>
+        
+    
+                    
+                        
+    
+        <div x-show="isOpen" style="display:none" class="filelist">
+            
+                <div @click.stop class="notelink ">
+                    
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/⎈ k8s/27.K8s的節點選擇與污染/">k8s的節點選擇與污染 </a>
                 </div>
             
@@ -3599,6 +3612,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/256. httpbin取得request的header/">256. 取得request的header </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3768,7 +3792,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-12-05T10:26:02.235Z';
+        const searchIndexDate = '2024-12-06T10:25:38.610Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3780,9 +3804,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-12-05T10:26:02.235Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-12-06T10:25:38.610Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-12-05T10:26:02.235Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-12-06T10:25:38.610Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4065,6 +4089,18 @@ EXPOSE 8081
 <p>其實應該用workload Identity會比較好，但這程式預計要放的位置，<br>
 要改的話變動太大。</p>
 <p>ref. <a href="https://learn.microsoft.com/en-us/dotnet/core/compatibility/containers/8.0/app-user" target="_blank" class="external-link"># New non-root 'app' user in Linux images</a></p>
+<h3 id="2024-12-06" tabindex="-1">2024/12/06更新</h3>
+<p>還有另一個方法，<br>
+在deploy上面加上下面指令，<br>
+讓pod以root的身分執行。</p>
+<pre><code>containers:
+	....
+    securityContext:
+      allowPrivilegeEscalation: true
+
+securityContext:
+	runAsUser: 0
+</code></pre>
 
       
       
@@ -4309,6 +4345,12 @@ EXPOSE 8081
             		</li>
 
                     <li><a href="#solution">SOLUTION</a>
+            
+                <ol>
+                    
+                    <li><a href="#2024-12-06">2024/12/06更新</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>
