@@ -3644,6 +3644,28 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/259. Loki快速上手體驗/">259. Loki上手體驗 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/260. Grafana 變數連動/">260. Grafana Variables連動 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3812,7 +3834,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2024-12-18T10:25:03.874Z';
+        const searchIndexDate = '2024-12-19T10:24:42.818Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3824,9 +3846,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2024-12-18T10:25:03.874Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2024-12-19T10:24:42.818Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-12-18T10:25:03.874Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2024-12-19T10:24:42.818Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4077,6 +4099,7 @@
       
       
       <h1 id="度估記事本" tabindex="-1">度估記事本</h1>
+<h2 id="座右銘" tabindex="-1">座右銘</h2>
 <ul>
 <li><em><strong>懶人，始終相信科技始終來自於人類的惰性。</strong></em></li>
 <li><em><strong>懶是一種方式，卻不是一種態度。</strong></em></li>
@@ -4088,6 +4111,8 @@
 <li><a class="internal-link" data-note-icon="" href="/256. httpbin取得request的header/">256. httpbin取得request的header</a></li>
 <li><a class="internal-link" data-note-icon="" href="/257. istio-proxy Readiness probe failed/">257. istio-proxy Readiness probe failed</a></li>
 <li><a class="internal-link" data-note-icon="" href="/258. GCP費用試算/">258. GCP費用試算</a></li>
+<li><a class="internal-link" data-note-icon="" href="/259. Loki快速上手體驗/">259. Loki快速上手體驗</a></li>
+<li><a class="internal-link" data-note-icon="" href="/260. Grafana 變數連動/">260. Grafana 變數連動</a></li>
 </ul>
 <hr>
 <h1 id="obsidian-github" tabindex="-1">用Obsidian發佈到Github</h1>
@@ -4367,6 +4392,12 @@
                 <ol>
                     
                     <li><a href="#度估記事本">度估記事本</a>
+            
+                <ol>
+                    
+                    <li><a href="#座右銘">座右銘</a>
+            		</li>
+                </ol>
             		</li>
 
                     <li><a href="#最新文章">最新文章</a>
