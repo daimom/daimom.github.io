@@ -3673,6 +3673,17 @@
             
                 <div @click.stop class="notelink ">
                     
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/261. Loki筆記/">261. Loki筆記 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/262. PostgreSQL on k8s/">262. PostgreSQL on k8s </a>
                 </div>
             
@@ -3696,6 +3707,28 @@
                 <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/264. use golang debug on mac m3/">264. use golang debug on mac m3 </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/265. Golang簡略筆記（二）/">265. Golang簡略筆記（二） </a>
+                </div>
+            
+        </div>
+        
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/266. Promtail 擷取docker log/">266. Promtail 擷取docker log </a>
                 </div>
             
         </div>
@@ -3869,7 +3902,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2025-01-15T10:22:26.307Z';
+        const searchIndexDate = '2025-01-16T10:23:35.537Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3881,9 +3914,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2025-01-15T10:22:26.307Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2025-01-16T10:23:35.537Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-01-15T10:22:26.307Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-01-16T10:23:35.537Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4160,6 +4193,94 @@
 | 0 至 1 TB  | $0.12 美元          | $0.12 美元            | $0.23 美元       | $0.19 美元                          | 免費   |<br>
 | 1 至 10 TB | $0.11 美元          | $0.11 美元            | $0.22 美元       | $0.18 美元                          | 免費   |<br>
 | 10 TB 以上  | $0.08 美元          | $0.08 美元            | $0.20 美元       | $0.15 美元                          | 免費  |</p>
+<p>再補一下操作的費用，<br>
+單純看金額其實不高，但如果頻率高的話，<br>
+其實也不少。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>儲存空間級別1</th>
+<th>A 級作業  <br>(每 1,000 次操作)</th>
+<th>B 級作業  <br>(每 1,000 次操作)</th>
+<th>免費操作功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standard Storage</strong></td>
+<td>$0.0100 美元</td>
+<td>$0.0004 美元</td>
+<td>免費</td>
+</tr>
+<tr>
+<td><strong>Nearline Storage</strong> 和 <strong>Durable Reduced Availability (DRA) Storage</strong></td>
+<td>$0.0200 美元</td>
+<td>$0.0010 美元</td>
+<td>免費</td>
+</tr>
+<tr>
+<td><strong>Coldline Storage</strong></td>
+<td>$0.0400 美元</td>
+<td>$0.0100 美元</td>
+<td>免費</td>
+</tr>
+<tr>
+<td><strong>Archive Storage</strong></td>
+<td>$0.1000 美元</td>
+<td>$0.0500 美元</td>
+<td>免費</td>
+</tr>
+</tbody>
+</table></div>
+<p>如果是使用async，基本想像得到的就有list、insert。可能還有其他的操作。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>API 或功能</th>
+<th>A 級作業</th>
+<th>B 級作業</th>
+<th>免費作業項目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON API 或 gRPC</td>
+<td>storage.<em>.insert1  <br>storage.</em>.patch  <br>storage.<em>.update  <br>storage.</em>.setIamPolicy  <br>storage.buckets.list  <br>storage.buckets.lockRetentionPolicy  <br>storage.notifications.delete  <br>storage.objects.compose  <br>storage.objects.copy  <br>storage.objects.list  <br>storage.objects.restore  <br>storage.objects.rewrite1  <br>storage.objects.watchAll  <br>storage.projects.hmacKeys.create  <br>storage.projects.hmacKeys.list  <br>storage.*AccessControls.delete  <br>storage.folders.list  <br>storage.folders.rename</td>
+<td>storage.<em>.get  <br>storage.</em>.getIamPolicy  <br>storage.*.testIamPermissions  <br>storage.*AccessControls.list  <br>storage.notifications.list  <br>每則物件變更通知2  <br>storage.buckets.getStorageLayout</td>
+<td>storage.channels.stop  <br>storage.buckets.delete  <br>storage.objects.delete  <br>storage.projects.hmacKeys.delete  <br>storage.folders.delete</td>
+</tr>
+<tr>
+<td>XML API</td>
+<td>GET 服務  <br>GET 值區 (列出值區中的物件時)  <br>PUT  <br>POST</td>
+<td>GET 值區 (擷取值區設定或列出正在進行中的多部分上傳作業時)  <br>GET 物件  <br>HEAD</td>
+<td>Delete</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/storage/docs/lifecycle?hl=zh-tw" target="_blank" class="external-link">物件生命週期管理</a></td>
+<td>SetStorageClass</td>
+<td></td>
+<td>中止未完成的多部分上傳作業  <br>刪除</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/storage/docs/autoclass?hl=zh-tw" target="_blank" class="external-link">自動分類</a></td>
+<td>以下儲存空間級別轉換：<br><br>- 從 Coldline 改為 Standard<br>- 從封存改為標準<br>- Coldline 到 Nearline<br>- 將資料封存至 Nearline</td>
+<td></td>
+<td>以下儲存空間級別轉換：<br><br>- Nearline 到 Standard<br>- Standard 轉換為 Nearline<br>- Nearline 到 Coldline<br>- Coldline 到 Archive</td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/storage/docs/tags-and-labels?hl=zh-tw#tags" target="_blank" class="external-link">標記</a>3</td>
+<td>附加標記  <br>解除標記</td>
+<td>列出附加至值區的標記</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://cloud.google.com/storage/docs/soft-delete?hl=zh-tw" target="_blank" class="external-link">軟刪除</a></td>
+<td>在一次大量還原作業中處理 1,000 個物件  <br>還原虛刪除的物件</td>
+<td>列出虛刪除的物件</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
 <p>ref. <a href="https://cloud.google.com/storage/pricing?hl=zh-tw#asia" target="_blank" class="external-link">價目表</a></p>
 
       
