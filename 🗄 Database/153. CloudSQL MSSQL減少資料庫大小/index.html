@@ -3733,6 +3733,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/267. cloudflare  308-ERR_TOO_MANY_REDIRECTS/">267. cloudflare 308-ERR_TOO_MANY_REDIRECTS </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -3902,7 +3913,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2025-02-02T10:20:08.036Z';
+        const searchIndexDate = '2025-02-03T10:23:15.586Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -3914,9 +3925,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2025-02-02T10:20:08.036Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2025-02-03T10:23:15.586Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-02-02T10:20:08.036Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-02-03T10:23:15.586Z', docs}));
             window.docs = docs
             window.index = index;
         }
