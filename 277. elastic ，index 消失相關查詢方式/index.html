@@ -10,7 +10,7 @@
 
       gtag('config', 'G-CL21F57N33');
     </script>  
-    <title>elasticsearch ingest processor補充</title>
+    <title>277. elastic ，index 消失相關查詢方式</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://fastly.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
 <script>
@@ -3093,7 +3093,7 @@
     
         <div x-show="isOpen" style="display:none" class="filelist">
             
-                <div @click.stop class="notelink active-note">
+                <div @click.stop class="notelink ">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/🗒 EFK/91. elasticsearch ingest processor補充/">elasticsearch ingest processor補充 </a>
                 </div>
@@ -3847,7 +3847,7 @@
     
         <div x-show="isOpen" style="display:none" class="">
             
-                <div @click.stop class="notelink ">
+                <div @click.stop class="notelink active-note">
                     
                     <a data-note-icon="" style="text-decoration: none;" class="filename" href="/277. elastic ，index 消失相關查詢方式/">277. elastic ，index 消失相關查詢方式 </a>
                 </div>
@@ -4269,7 +4269,7 @@
     <main class="content cm-s-obsidian ">
       <header>
         
-          <h1 data-note-icon="">elasticsearch ingest processor補充</h1>
+          <h1 data-note-icon="">277. elastic ，index 消失相關查詢方式</h1>
         
         <div class="header-meta">
           
@@ -4290,131 +4290,113 @@
       </header>
       
       
-      <h1 id="前言" tabindex="-1">前言</h1>
-<p>補充ingest 的 processor</p>
-<h1 id="正文" tabindex="-1">正文</h1>
-<p>上篇提到，正常要等ILM跑完後，所設定的default_pipeline才會寫入。<br>
-但今天是可以提早讓他跑ILM，這樣就會把預設的default_pipeline寫進去了。</p>
-<p>而只要在default_pipeline 設定好，後續再改pipeline的設定時，都會直接影響當下的設定。</p>
-<ol>
-<li>在index template設定pipeline<br>
-<picture src="/img/user/%F0%9F%97%92%20EFK/90-fig.10.jpg" alt="90-fig.10.jpg"><source       media="(max-width:480px)"
-      srcset="/img/optimized/VEzDkqiFS0-500.webp"
-      type="image/webp"
-      >
-      <source       media="(max-width:480px)"
-      srcset="/img/optimized/VEzDkqiFS0-500.jpeg"
-      >
-      <source         media="(max-width:1920px)"
-        srcset="/img/optimized/VEzDkqiFS0-700.webp"
-        type="image/webp"
-        ><source         media="(max-width:1920px)"
-        srcset="/img/optimized/VEzDkqiFS0-700.jpeg"
-        ><img       class=""
-      src="/img/user/%F0%9F%97%92%20EFK/90-fig.10.jpg"
-      alt="90-fig.10.jpg"
-      width=""
-      ></picture></li>
-<li>到 Devtools 執行下面指令<br>
-強制datastream執行ILM</li>
-</ol>
-<pre><code>POST /filebeat-8.1.0/_rollover
+      <h1 id="why" tabindex="-1">WHY</h1>
+<p>同事問，為什麼我前五天的index消失了。<br>
+我震驚，不應該啊。<br>
+開始漫長的查詢之路</p>
+<h1 id="note" tabindex="-1">NOTE</h1>
+<h3 id="filebeat" tabindex="-1">filebeat 重新上傳</h3>
+<p>直接看indices的內容，<br>
+真的沒有前幾天的資料，但文件還在，<br>
+那不然先把文件重傳回來好了。</p>
+<p>filebeat靠registry底下的檔案(k8s內的路徑為<code>/usr/share/filebeat/data/registry/filebeat/data.json</code>，<br>
+來判斷這個文件有沒有讀取過，<br>
+所以將這個資料夾底下的檔案清空，重啟Pod，就會觸發強制重傳了。</p>
+<pre><code>rm -rvf /usr/share/filebeat/data/registry
 </code></pre>
-<p>ref.<br>
-- <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html" target="_blank" class="external-link">DataStream</a><br>
-- <a href="https://www.gushiciku.cn/pl/gtvK/zh-tw" target="_blank" class="external-link">Elasticsearch 7.X data stream 深入詳解</a></p>
-<h1 id="ingest" tabindex="-1">ingest 補充</h1>
-<p>processor分成好幾個類型</p>
-<p>上一篇是使用grok(這個是使用正則去篩選字串)，<br>
-有人建議使用Dissect，速度比grok快，但只適用於有固定分隔字串的message。</p>
-<p>下面簡單敘述用途，詳細就點連結過去看了。</p>
-<ul>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/append-processor.html" target="_blank" class="external-link">Append</a><br>
-在現有的字串內增加值</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/bytes-processor.html" target="_blank" class="external-link">Bytes</a><br>
-把空間計算方式(kb,mb,gb...)轉成byte</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/ingest-circle-processor.html" target="_blank" class="external-link">Circle</a><br>
-把圓形轉爲近似他們的規則多邊形（我也不知道這能做啥）</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/community-id-processor.html" target="_blank" class="external-link">Community ID</a><br>
-計算網路資料流的id，能透過此id關聯相關的網路事件</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/convert-processor.html" target="_blank" class="external-link">Convert</a><br>
-將欄位內容轉爲integer、long、float、double、string、boolean、ip</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/csv-processor.html" target="_blank" class="external-link">CSV</a><br>
-將欄位中的的資料當作csv去辨別</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/date-processor.html" target="_blank" class="external-link">Date</a><br>
-將欄位內容轉爲日期格式</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/date-index-name-processor.html" target="_blank" class="external-link">Date index name</a><br>
-將日期取出作爲index的名稱</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/dissect-processor.html" target="_blank" class="external-link">Dissect</a><br>
-與grok相似，但不使用正則作爲結構化欄位</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/dot-expand-processor.html" target="_blank" class="external-link">Dot expander</a><br>
-會將 . 視爲一個物件的名稱，</li>
-</ul>
-<pre><code>  foo.bar :value
-  foo : { 
-	bar: value
+<p>題外話，然後因為前面的文件太多沒刪除，<br>
+導致elk的硬碟直接塞滿。</p>
+<h3 id="index-ilm" tabindex="-1">檢查index的ILM 有沒有生效</h3>
+<p>先確認ilm的政策正確，下面會列出全部的ilm，看是不是跟你想像的一樣。</p>
+<pre><code>GET /_ilm/policy?pretty
+or
+GET _ilm/policy/delete-bms-indices-after-7days?pretty
+</code></pre>
+<p>結果如下，<br>
+建立index時，會馬上進入到hot 的phases（根據min_age=0ms)，<br>
+然後14天後，會到delete的phases（min_age=14d)。</p>
+<pre><code>  &quot;delete-bms-indices-after-7days&quot;: {
+    &quot;version&quot;: 4,
+    &quot;modified_date&quot;: &quot;2024-10-23T08:49:16.681Z&quot;,
+    &quot;policy&quot;: {
+      &quot;phases&quot;: {
+        &quot;hot&quot;: {
+          &quot;min_age&quot;: &quot;0ms&quot;,
+          &quot;actions&quot;: {
+            &quot;set_priority&quot;: {
+              &quot;priority&quot;: 100
+            }
+          }
+        },
+        &quot;delete&quot;: {
+          &quot;min_age&quot;: &quot;14d&quot;,
+          &quot;actions&quot;: {
+            &quot;delete&quot;: {
+              &quot;delete_searchable_snapshot&quot;: true
+            }
+          }
+        }
+      }
+    }
+</code></pre>
+<p>再來看index的 ilm</p>
+<pre><code>GET /qa-game-cold-back-gamecoldtransdata-2024.12/_ilm/explain
+</code></pre>
+<p>內容如下，目前建立了5.23d，要到14d可能還要一陣子，<br>
+先放著之後看結果。</p>
+<pre><code>{
+  &quot;indices&quot;: {
+    &quot;qa-game-cold-back-gamecoldtransdata-2024.12&quot;: {
+      &quot;index&quot;: &quot;qa-game-cold-back-gamecoldtransdata-2024.12&quot;,
+      &quot;managed&quot;: true,
+      &quot;policy&quot;: &quot;delete-bms-indices-after-7days&quot;,
+      &quot;index_creation_date_millis&quot;: 1743131249510,
+      &quot;time_since_index_creation&quot;: &quot;5.23d&quot;,
+      &quot;lifecycle_date_millis&quot;: 1743131249510,
+      &quot;age&quot;: &quot;5.23d&quot;,
+      &quot;phase&quot;: &quot;hot&quot;,
+      &quot;phase_time_millis&quot;: 1743131249629,
+      &quot;action&quot;: &quot;complete&quot;,
+      &quot;action_time_millis&quot;: 1743131249829,
+      &quot;step&quot;: &quot;complete&quot;,
+      &quot;step_time_millis&quot;: 1743131249829,
+      &quot;phase_execution&quot;: {
+        &quot;policy&quot;: &quot;delete-bms-indices-after-7days&quot;,
+        &quot;phase_definition&quot;: {
+          &quot;min_age&quot;: &quot;0ms&quot;,
+          &quot;actions&quot;: {
+            &quot;set_priority&quot;: {
+              &quot;priority&quot;: 100
+            }
+          }
+        },
+        &quot;version&quot;: 4,
+        &quot;modified_date_in_millis&quot;: 1729673356681
+      }
+    }
   }
+}
 </code></pre>
-<ul>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/drop-processor.html" target="_blank" class="external-link">Drop</a><br>
-根據條件刪除document</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/enrich-processor.html" target="_blank" class="external-link">Enrich</a><br>
-根據欄位規則，自動新增資料</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/fail-processor.html" target="_blank" class="external-link">Fail</a><br>
-當錯誤時，傳送訊息</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/fingerprint-processor.html" target="_blank" class="external-link">Fingerprint</a><br>
-計算document的hash值</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/foreach-processor.html" target="_blank" class="external-link">Foreach</a><br>
-當元素數量不確定時使用</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/geoip-processor.html" target="_blank" class="external-link">GeoIP</a><br>
-根據地理位置提供更多資訊</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/grok-processor.html" target="_blank" class="external-link">Grok</a><br>
-從document中截取結構化的字串出來(正則)</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/gsub-processor.html" target="_blank" class="external-link">Gsub</a><br>
-使用正則或取代來轉換字串</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/htmlstrip-processor.html" target="_blank" class="external-link">HTML strip</a><br>
-從欄位中移除html的tag</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/inference-processor.html" target="_blank" class="external-link">Inference</a><br>
-Uses a pre-trained data frame analytics model to infer against the data that is being ingested in the pipeline.</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/join-processor.html" target="_blank" class="external-link">Join</a><br>
-將欄位中的array值用分隔符串起來</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/json-processor.html" target="_blank" class="external-link">JSON</a><br>
-將json字串轉成json格式</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/kv-processor.html" target="_blank" class="external-link">KV</a><br>
-指定欄位自動解析訊息</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/lowercase-processor.html" target="_blank" class="external-link">Lowercase</a><br>
-將字串轉成小寫</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/network-direction-processor.html" target="_blank" class="external-link">Network direction</a><br>
-根據來源IP及目的IP計算是 inbound或 outbonud</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/pipeline-processor.html" target="_blank" class="external-link">Pipeline</a><br>
-在pipeline內執行其他的pipeline</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/registered-domain-processor.html" target="_blank" class="external-link">Registered domain</a><br>
-解析domain，區分出 sub-doamin、top-level domain</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/remove-processor.html" target="_blank" class="external-link">Remove</a><br>
-移除欄位</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/rename-processor.html" target="_blank" class="external-link">Rename</a><br>
-更改欄位名稱</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/script-processor.html" target="_blank" class="external-link">Script</a><br>
-執行script</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/set-processor.html" target="_blank" class="external-link">Set</a><br>
-指令欄位寫值</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/ingest-node-set-security-user-processor.html" target="_blank" class="external-link">Set security user</a><br>
-通過預處理程序，從目前驗證的使用者截取資料</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/sort-processor.html" target="_blank" class="external-link">Sort</a><br>
-對欄位內的array做排序</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/split-processor.html" target="_blank" class="external-link">Split</a><br>
-使用分隔符號，將字串切成array</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/trim-processor.html" target="_blank" class="external-link">Trim</a><br>
-移除欄位空白</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/uppercase-processor.html" target="_blank" class="external-link">Uppercase</a><br>
-將字串轉成大寫</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/urldecode-processor.html" target="_blank" class="external-link">URL decode</a><br>
-將URL網址解碼</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/uri-parts-processor.html" target="_blank" class="external-link">URI parts</a><br>
-將URL請求拆開成URI object</li>
-<li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/user-agent-processor.html" target="_blank" class="external-link">User agent</a><br>
-解析user_agent</li>
-</ul>
+<h3 id="結論" tabindex="-1">結論</h3>
+<p>突然靈光一閃，猜測有可能是因為index我是以月為單位留存的，<br>
+為什麼index不以天留存呢？因為以前曾經發生過shared數量太多，<br>
+導致機器卡住。<br>
+但刪除的天數是14天，<br>
+所以ilm執行時就直接將這個index刪掉。</p>
+<h3 id="未驗證" tabindex="-1">未驗證</h3>
+<p>如果ILM更改很大，但舊的index沒有進入到新的階段，<br>
+讓ILM重新評估。</p>
+<pre><code>POST _ilm/run
+</code></pre>
+<p>如果還是沒成功，<br>
+手動將index推到新的phase</p>
+<pre><code>POST /&lt;your-index&gt;/_ilm/move
+{
+  &quot;current_step&quot;: { &quot;phase&quot;: &quot;hot&quot;, &quot;action&quot;: &quot;complete&quot;, &quot;name&quot;: &quot;complete&quot; },
+  &quot;next_step&quot;: { &quot;phase&quot;: &quot;delete&quot;, &quot;action&quot;: &quot;delete&quot;, &quot;name&quot;: &quot;delete&quot; }
+}
+
+</code></pre>
 
       
       
@@ -4655,13 +4637,25 @@ Uses a pre-trained data frame analytics model to infer against the data that is 
                                           <nav class="toc">
                 <ol>
                     
-                    <li><a href="#前言">前言</a>
+                    <li><a href="#why">WHY</a>
             		</li>
 
-                    <li><a href="#正文">正文</a>
+                    <li><a href="#note">NOTE</a>
+            
+                <ol>
+                    
+                    <li><a href="#filebeat">filebeat 重新上傳</a>
             		</li>
 
-                    <li><a href="#ingest">ingest 補充</a>
+                    <li><a href="#index-ilm">檢查index的ILM 有沒有生效</a>
+            		</li>
+
+                    <li><a href="#結論">結論</a>
+            		</li>
+
+                    <li><a href="#未驗證">未驗證</a>
+            		</li>
+                </ol>
             		</li>
                 </ol>
             </nav>
