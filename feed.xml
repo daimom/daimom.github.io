@@ -3,14 +3,14 @@
     <title>度估筆記本</title>
     <link href="https://daimom.github.io/feed.xml" rel="self" />
     <link href="https://daimom.github.io" />
-    <updated>2025-04-16T10:27:26Z</updated>
+    <updated>2025-04-17T10:26:12Z</updated>
     <id>https://daimom.github.io</id>
         <entry>
             <title>
                 91. elasticsearch ingest processor補充
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/91. elasticsearch ingest processor補充/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -131,7 +131,7 @@ Uses a pre-trained data frame analytics model to infer against the data that is 
                 90. elasticsearch ingest pipeline
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/90. elasticsearch ingest pipeline/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -267,7 +267,7 @@ ingest pipeline就會停止。&lt;/p&gt;
                 84.Elasticsearch筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/84.Elasticsearch筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -325,7 +325,7 @@ cluster.name相同，就會自動發現集群並加入。&lt;/li&gt;
                 80. ECK 8.1 ,APM intergration安裝方式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/80. ECK 8.1 ,APM intergration安裝方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -359,7 +359,7 @@ Step 2.&lt;/p&gt;
                 69. kibana錯誤解法 , parent Data too large...
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/69. kibana錯誤解法 , parent Data too large.../</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -446,7 +446,7 @@ ref. &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/cu
                 68.ECK , api筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/68.ECK , api筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -488,7 +488,7 @@ sort=column name    排序
                 67. ECK，filebeat LOG蒐集遺失
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/67. ECK，filebeat LOG蒐集遺失/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -541,7 +541,7 @@ memory: 500Mi&lt;/p&gt;
                 61. kibana 查詢語法
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/61. kibana 查詢語法/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -644,7 +644,7 @@ kubernetes.namespace: istio-sigua and message: &amp;quot;img*&amp;quot;
                 60. ECK的 kibana 警告， server.publicBaseUrl is missing
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/60. ECK的 kibana 警告， server.publicBaseUrl is missing/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -692,7 +692,7 @@ spec:
                 58. 除錯用的ECK API
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/58. 除錯用的ECK API/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -785,7 +785,7 @@ PUT /_cluster/settings
                 57.filebeat 補充說明
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/57.filebeat 補充說明/</id>
             <content type="html">
                 &lt;h1 id=&quot;內容&quot; tabindex=&quot;-1&quot;&gt;內容&lt;/h1&gt;
@@ -1185,7 +1185,7 @@ spec:
                 55. es基本概念篇
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/55. es基本概念篇/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1369,7 +1369,7 @@ r  ：代表 replica shard&lt;br /&gt;
                 53. apm error
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/53. apm error/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1398,7 +1398,7 @@ r  ：代表 replica shard&lt;br /&gt;
                 52. ILM 設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/52. ILM 設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1514,7 +1514,7 @@ r  ：代表 replica shard&lt;br /&gt;
                 43.自建ECK on GKE
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/43.自建ECK on GKE/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1737,7 +1737,7 @@ func main() {
                 187. ECK的filebeat
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/187. ECK的filebeat/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -1930,7 +1930,7 @@ spec:
                 111. filebeat error
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/111. filebeat error/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -1990,7 +1990,7 @@ spec:
                 0.EFK MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗒 EFK/0.EFK MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;概念&quot; tabindex=&quot;-1&quot;&gt;概念&lt;/h1&gt;
@@ -2036,7 +2036,7 @@ spec:
                 188. CloudSQL server 查詢記憶體
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗄 Database/188. CloudSQL server 查詢記憶體/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2088,7 +2088,7 @@ spec:
                 166. MSSQL 2017版本差異
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗄 Database/166. MSSQL 2017版本差異/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2254,7 +2254,7 @@ spec:
                 153. CloudSQL MSSQL減少資料庫大小
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗄 Database/153. CloudSQL MSSQL減少資料庫大小/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -2338,7 +2338,7 @@ ALTER DATABASE table_name SET RECOVERY FULL
                 150. mysql備份還原指令
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗄 Database/150. mysql備份還原指令/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -2408,7 +2408,7 @@ ALTER DATABASE table_name SET RECOVERY FULL
                 0.Database MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🗄 Database/0.Database MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;my-sql&quot; tabindex=&quot;-1&quot;&gt;MySQL&lt;/h1&gt;
@@ -2430,7 +2430,7 @@ ALTER DATABASE table_name SET RECOVERY FULL
                 174. win10 下載Microsoft Store的檔案
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🖼 Window/174. win10 下載Microsoft Store的檔案/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -2462,7 +2462,7 @@ ALTER DATABASE table_name SET RECOVERY FULL
                 113. 微軟官方office 大量授權
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🖼 Window/113. 微軟官方office 大量授權/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -2527,7 +2527,7 @@ slmgr /ato
                 47. GO get 參數
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/Golang/47. GO get 參數/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2557,7 +2557,7 @@ slmgr /ato
                 40. golang 重新讀取設定檔的方法
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/Golang/40. golang 重新讀取設定檔的方法/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2617,10 +2617,156 @@ ENTRYPOINT [&amp;quot;sh&amp;quot;,&amp;quot;-x&amp;quot;,&amp;quot;/init.sh&amp
         </entry>
         <entry>
             <title>
+                156. Golang簡略筆記（一）
+                
+            </title>
+            <updated>2025-04-17T10:25:57Z</updated>
+            <id>https://daimom.github.io/💻 Code/Golang/156. Golang簡略筆記（一）/</id>
+            <content type="html">
+                &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
+&lt;p&gt;科技始終來自於人類的惰性，&lt;br /&gt;
+入坑暗黑後，前些日子終於打到了世界三，&lt;br /&gt;
+要打世界王，每次都要去網站看，好麻煩。&lt;br /&gt;
+所以，先爬蟲，然後再設個30分鐘倒數計時通知該打王了。&lt;br /&gt;
+scrapy+Golang&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.github.io/img/user/%F0%9F%92%BB%20Code/Golang/156-fig.0.jpg&quot; alt=&quot;156-fig.0.jpg&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;github-a-href-https-github-com-daimom-d4countdowntimer-target-blank-class-external-link-d4countdowntimer-a&quot; tabindex=&quot;-1&quot;&gt;Github: &lt;a href=&quot;https://github.com/daimom/d4countdowntimer&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;d4countdowntimer&lt;/a&gt;&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;私有函數，開頭是小寫，只能在同一個檔案裏面使用，&lt;br /&gt;
+公開函數，開頭要大寫，能給其他檔案使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ioutil 已在bo 1.16棄用，改用 io&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-go&quot;&gt;ioutil.ReadAll -&amp;gt; io.ReadAll
+ioutil.ReadFile -&amp;gt; os.ReadFile
+ioutil.ReadDir -&amp;gt; os.ReadDir
+// others
+ioutil.NopCloser -&amp;gt; io.NopCloser
+ioutil.TempDir -&amp;gt; os.MkdirTemp
+ioutil.TempFile -&amp;gt; os.CreateTemp
+ioutil.WriteFile -&amp;gt; os.WriteFile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ref. &lt;a href=&quot;https://stackoverflow.com/questions/75206234/for-go-ioutil-readall-ioutil-readfile-ioutil-readdir-deprecated&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;for-go-ioutil-readall-ioutil-readfile-ioutil-readdir-deprecated&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;轉換unix time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-go&quot;&gt;location, err := time.LoadLocation(&amp;quot;Asia/Taipei&amp;quot;)
+if err != nil {
+  panic(err)
+}
+
+unixtime, err := strconv.ParseInt(d4event[&amp;quot;unixtime&amp;quot;], 10, 64)
+if err != nil {
+  fmt.Println(&amp;quot;轉換失敗:&amp;quot;, err)
+  return
+}
+t := time.Unix(unixtime, 0)
+fmt.Println(t.In(location))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ref. &lt;a href=&quot;https://stackoverflow.com/questions/43915900/how-to-convert-unix-time-to-time-time-in-golang&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;how-to-convert-unix-time-to-time-time-in-golang&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;import 後面加上 _&lt;br /&gt;
+使用【import _&amp;quot;&lt;a href=&quot;http://github.com/gorilla/mux&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;github.com/gorilla/mux&lt;/a&gt;&amp;quot; 】只是引用該package，僅僅是為了呼叫init()函數，所以無法通過package名稱，來呼叫package裏面的其他函數&lt;br /&gt;
+re. &lt;a href=&quot;https://blog.csdn.net/972301/article/details/49127821&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Golang import 三種特殊形式：下劃線、點、別名&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/spf13/viper&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;github.com/spf13/viper&lt;/a&gt; 設定檔解決方案&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-golang&quot;&gt;token :=viper.GetStringSlice(&amp;quot;Line.Token&amp;quot;) # 有資料
+tokens :=viper.GetStringMapStringSlice(&amp;quot;Line&amp;quot;)
+token := tokens[&amp;quot;Token&amp;quot;]  # 無資料（因為轉成小寫了）
+token := tokens[&amp;quot;token&amp;quot;]  # 有資料
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&quot;https://daimom.github.io/img/user/%F0%9F%92%BB%20Code/Golang/156-fig.1.jpg&quot; alt=&quot;156-fig.1.jpg&quot; /&gt;&lt;br /&gt;
+看github 就有人有討論到這個&lt;a href=&quot;https://github.com/spf13/viper/issues/1014&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;問題&lt;/a&gt;，但到現在還是無解，&lt;br /&gt;
+有人建議改用go-yaml/yaml來做 config檔的讀取&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;時間處理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-golang&quot;&gt;//現在時間
+now := time.Now()
+//時間格式
+fmt.Println(&amp;quot;now :&amp;quot; + now.Format(&amp;quot;2006-01-02 15:04:05&amp;quot;)) 
+//日期相加
+t2 := now.Add(5 * time.Minute)  
+//日期相減
+subMin := t2.Sub(now)  
+//日期相減的時間，以分鐘顯示
+fmt.Println(subMin.Minutes()) 
+//日期相減的時間，四捨五入顯示到分
+fmt.Println(subMin.Round(time.Minute))
+//日期相減的時間，四捨五入顯示到分，再以分鐘顯示轉int
+fmt.Println(int(subMin.Round(time.Minute).Minutes()))
+
+
+//日期相加
+firstStopTime := t.Add(-35 * time.Minute)
+//判斷now 是否在 firstStopTime之後
+if now.After(firstStopTime) {}
+//判斷now 是否在 firstStopTime之前
+if now.Before(firstStopTime){}
+//判斷now是否跟firstStopTime一樣
+if now.Equal(firstStopTime){}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ref.&lt;br /&gt;
+-&lt;a href=&quot;https://matthung0807.blogspot.com/2022/01/go-compare-datetime.html&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Golang 日期時間比較 compare datetime&lt;/a&gt;&lt;br /&gt;
+-&lt;a href=&quot;https://www.zhangbj.com/p/652.html&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Go 時間加減、計算方法耗、毫秒轉 Time&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;switch用法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-golang&quot;&gt;subMin := 132
+//一般用法
+switch subMin {
+case 0, 2, 3, 1:
+    fmt.Println(&amp;quot;LineNotify&amp;quot;)
+default:
+    fmt.Println(&amp;quot;Error&amp;quot;)
+}
+
+//不指定變數
+switch {
+case subMin%10 == 0, subMin%10 == 2:
+    fmt.Println(&amp;quot;LineNotify&amp;quot;)
+default:
+    fmt.Println(subMin)
+}
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;cron 簡易用法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&quot;language-golang&quot;&gt;c := cron.New()
+
+//* 每分鐘執行一次
+c.AddFunc(&amp;quot;* * * * *&amp;quot;, func() {
+  if &amp;lt;condition&amp;gt; {
+  c.Stop()
+  }
+})
+c.Start()
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ref.&lt;br /&gt;
+- &lt;a href=&quot;https://eddycjy.gitbook.io/golang/di-3-ke-gin/cron&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;跟煎魚學GO-Cron定時任務&lt;/a&gt;&lt;br /&gt;
+- &lt;a href=&quot;https://www.readfog.com/a/1637371620314157056&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;golang cron v3 定時任務&lt;/a&gt;&lt;/p&gt;
+
+            </content>
+            <link href="https://daimom.github.io/💻 Code/Golang/156. Golang簡略筆記（一）/" />
+        </entry>
+        <entry>
+            <title>
                 155. scrapy爬暗黑編年史的世界王時間
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/Golang/155. scrapy爬暗黑編年史的世界王時間/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -2691,7 +2837,7 @@ ref. &lt;a href=&quot;https://stackoverflow.com/questions/53074642/scrapy-scrapi
                 59. git refs，branch 跟 tag是一樣的。
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/59. git refs，branch 跟 tag是一樣的。/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2735,7 +2881,7 @@ git show apm2
                 38.正則取代，留下特定字串
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/38.正則取代，留下特定字串/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2777,7 +2923,7 @@ git show apm2
                 22.telegram api使用
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/22.telegram api使用/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2842,7 +2988,7 @@ ezioflaggernotfiy就是我的chatid，&lt;br /&gt;
                 145. git submodule 下載失敗
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/145. git submodule 下載失敗/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -2899,7 +3045,7 @@ git config user.email
                 110.github action pipeline筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/110.github action pipeline筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -2974,7 +3120,7 @@ git config user.email
                 107. vscode 忽略設定同步
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/107. vscode 忽略設定同步/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -3014,7 +3160,7 @@ git config user.email
                 0.Code MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/💻 Code/0.Code MOC/</id>
             <content type="html">
                 &lt;h2 id=&quot;api&quot; tabindex=&quot;-1&quot;&gt;API串接&lt;/h2&gt;
@@ -3026,7 +3172,7 @@ git config user.email
 &lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/%F0%9F%92%BB%20Code/Golang/40.%20golang%20%E9%87%8D%E6%96%B0%E8%AE%80%E5%8F%96%E8%A8%AD%E5%AE%9A%E6%AA%94%E7%9A%84%E6%96%B9%E6%B3%95/&quot;&gt;40. golang 重新讀取設定檔的方法&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/%F0%9F%92%BB%20Code/Golang/47.%20GO%20get%20%E5%8F%83%E6%95%B8/&quot;&gt;47. GO get 參數&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/%F0%9F%92%BB%20Code/Golang/155.%20scrapy%E7%88%AC%E6%9A%97%E9%BB%91%E7%B7%A8%E5%B9%B4%E5%8F%B2%E7%9A%84%E4%B8%96%E7%95%8C%E7%8E%8B%E6%99%82%E9%96%93/&quot;&gt;155. scrapy爬暗黑編年史的世界王時間&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&quot;internal-link is-unresolved&quot; href=&quot;https://daimom.github.io/404&quot;&gt;156. Golang簡略筆記（一）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/%F0%9F%92%BB%20Code/Golang/156.%20Golang%E7%B0%A1%E7%95%A5%E7%AD%86%E8%A8%98%EF%BC%88%E4%B8%80%EF%BC%89/&quot;&gt;156. Golang簡略筆記（一）&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;正則表達式&quot; tabindex=&quot;-1&quot;&gt;正則表達式&lt;/h2&gt;
 &lt;ul&gt;
@@ -3051,7 +3197,7 @@ git config user.email
                 28.Prometheus的專用語言promQL
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/28.Prometheus的專用語言promQL/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3164,7 +3310,7 @@ rate(prometheus_http_requests_total[5m])  ： HTTP請求量的增長率&lt;/li&g
                 26.grafana alert message parameters傳入
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/26.grafana alert message parameters傳入/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3199,7 +3345,7 @@ ref. &lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/notificat
                 25.在GKE上的grafana上安裝grafana-image-renderer
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/25.在GKE上的grafana上安裝grafana-image-renderer/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3298,7 +3444,7 @@ selector:
                 24.grafana設計篇-第二個Y軸
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/24.grafana設計篇-第二個Y軸/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3329,7 +3475,7 @@ selector:
                 198. SRE好文連結
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/198. SRE好文連結/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3363,7 +3509,7 @@ selector:
                 197. Grafana 以及Prometheus 除錯方式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/197. Grafana 以及Prometheus 除錯方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3416,7 +3562,7 @@ selector:
                 195. SRE可觀測性三大支柱
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/195. SRE可觀測性三大支柱/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3440,7 +3586,7 @@ OpenTelemetry  推動可觀測性三大支柱W3C數據採集的標準化&lt;/p&g
                 184. grafana error  reverse proxy settings on istio
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/184. grafana error  reverse proxy settings on istio/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3492,7 +3638,7 @@ spec:
                 179.  install Bindplane
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/179.  install Bindplane/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3552,7 +3698,7 @@ helm repo update
                 178. Install Prometheus Operator
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/178. Install Prometheus Operator/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3619,7 +3765,7 @@ helm repo update
                 131. rabbitMQ on Prometheus
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/131. rabbitMQ on Prometheus/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3656,7 +3802,7 @@ helm repo update
                 124. grafana alert每四小時重發一次
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/124. grafana alert每四小時重發一次/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3679,7 +3825,7 @@ helm repo update
                 122. Grafana 8.X以後的alert 參數
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/122. Grafana 8.X以後的alert 參數/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -3732,7 +3878,7 @@ helm repo update
                 0.Observability MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/👁 Observability/0.Observability MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;概念&quot; tabindex=&quot;-1&quot;&gt;概念&lt;/h1&gt;
@@ -3768,7 +3914,7 @@ helm repo update
                 32. nuxtJS 的 Dockerfile
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/32. nuxtJS 的 Dockerfile/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3824,7 +3970,7 @@ CMD [ &amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot; ]
                 29.Dockerfile echo something
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/29.Dockerfile echo something/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -3854,7 +4000,7 @@ CMD [ &amp;quot;npm&amp;quot;, &amp;quot;start&amp;quot; ]
                 170. Docker啓用GPU
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/170. Docker啓用GPU/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -3935,7 +4081,7 @@ networks:
                 168. Docker build失敗跳出killed
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/168. Docker build失敗跳出killed/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -3969,7 +4115,7 @@ ref. &lt;a href=&quot;https://github.com/pytorch/pytorch/issues/6935&quot; targe
                 157. Docker NGINX-Certbot 自動跟Let&#39;sEncrytp取得憑證
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/157. Docker NGINX-Certbot 自動跟Let&#39;sEncrytp取得憑證/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -4096,7 +4242,7 @@ ref.&lt;br /&gt;
                 154. PaddlePaddle 打包image
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/154. PaddlePaddle 打包image/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -4148,7 +4294,7 @@ ENTRYPOINT [&amp;quot;gunicorn&amp;quot;,&amp;quot;-c&amp;quot; ,&amp;quot;gunic
                 152. 硬碟空間不足，無法進入容器
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/152. 硬碟空間不足，無法進入容器/</id>
             <content type="html">
                 &lt;p&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/%F0%9F%90%B3%20Container/152.%20%E7%A1%AC%E7%A2%9F%E7%A9%BA%E9%96%93%E4%B8%8D%E8%B6%B3%EF%BC%8C%E7%84%A1%E6%B3%95%E9%80%B2%E5%85%A5%E5%AE%B9%E5%99%A8/#2024-07-16-docker-compose&quot;&gt;&lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-content=&quot;#2024/07/16，docker&quot;&gt;#2024/07/16，docker&lt;/a&gt; compose設定方法&lt;/a&gt;&lt;/p&gt;
@@ -4229,7 +4375,7 @@ systemctl restart docker
                 138. gerapy+scrapyd+mongo爬蟲整套流程
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/138. gerapy+scrapyd+mongo爬蟲整套流程/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -4425,7 +4571,7 @@ networks:
                 115. .net core 打包dockerfile
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/115. .net core 打包dockerfile/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -4485,7 +4631,7 @@ RUN for file in $(ls *.csproj); do mkdir -p ./${file%.*}/ &amp;amp;&amp;amp; mv 
                 112. pyenchant &amp; opencc error fix
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/112. pyenchant &amp; opencc error fix/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -4577,7 +4723,7 @@ ENTRYPOINT [&amp;quot;python3&amp;quot;, &amp;quot;Speech.py&amp;quot;]
                 0.Container MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐳 Container/0.Container MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;docker-debug&quot; tabindex=&quot;-1&quot;&gt;Docker Debug&lt;/h1&gt;
@@ -4603,7 +4749,7 @@ ENTRYPOINT [&amp;quot;python3&amp;quot;, &amp;quot;Speech.py&amp;quot;]
                 php exec ssh 發生 Host key verification failed 錯誤
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/php exec ssh 發生 Host key verification failed 錯誤/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4675,7 +4821,7 @@ echo &amp;quot;return:&amp;quot;.$return_var;
                 93. shellscript解析
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/93. shellscript解析/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4751,7 +4897,7 @@ echo  -e &amp;quot;&amp;gt;&amp;gt;&amp;gt; How to using? Please visit : $manual
                 65. Linux command - grep
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/65. Linux command - grep/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4792,7 +4938,7 @@ echo  -e &amp;quot;&amp;gt;&amp;gt;&amp;gt; How to using? Please visit : $manual
                 63.alpine linux apk ERROR unable to select packages
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/63.alpine linux apk ERROR unable to select packages/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4830,7 +4976,7 @@ echo  -e &amp;quot;&amp;gt;&amp;gt;&amp;gt; How to using? Please visit : $manual
                 6. 編譯ffmpeg 硬體加速的坑
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/6. 編譯ffmpeg 硬體加速的坑/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -4918,7 +5064,7 @@ ref. &lt;a href=&quot;https://arnon.dk/matching-sm-architectures-arch-and-gencod
                 51.curl 筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/51.curl 筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5026,7 +5172,7 @@ curl 可以改成下面的指令&lt;/p&gt;
                 49.npm 與 yarn 比較
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/49.npm 與 yarn 比較/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5098,7 +5244,7 @@ curl 可以改成下面的指令&lt;/p&gt;
                 48.SSH無法連線，REMOTE HOST IDENTIFICATION HAS CHANGED
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/48.SSH無法連線，REMOTE HOST IDENTIFICATION HAS CHANGED/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5125,7 +5271,7 @@ curl 可以改成下面的指令&lt;/p&gt;
                 33. centos 7安裝redis 改port
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/33. centos 7安裝redis 改port/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5181,7 +5327,7 @@ sudo systemctl status redis
                 173. Linux殭屍程式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/173. Linux殭屍程式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5210,7 +5356,7 @@ sudo systemctl status redis
                 171. linux top指令詳解
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/171. linux top指令詳解/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -5463,7 +5609,7 @@ sudo systemctl status redis
                 165. Linux網路追蹤工具- MTR
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/165. Linux網路追蹤工具- MTR/</id>
             <content type="html">
                 &lt;h2 id=&quot;mtr&quot; tabindex=&quot;-1&quot;&gt;mtr&lt;/h2&gt;
@@ -5552,7 +5698,7 @@ RTT (Round Trip Time) 亦可稱為往返時間&lt;/p&gt;
                 163.Shell的區別及查詢
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/163.Shell的區別及查詢/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -5586,7 +5732,7 @@ zsh =&amp;gt;  ~/.zshrc
                 16.dustise sleep 測試工具簡介
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/16.dustise sleep 測試工具簡介/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -5686,7 +5832,7 @@ jq&lt;br /&gt;
                 134. 關閉ssh連線後，仍可執行程式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/134. 關閉ssh連線後，仍可執行程式/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -5742,7 +5888,7 @@ yum install screen
                 133. shell script字串處理
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/133. shell script字串處理/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -5794,7 +5940,7 @@ set -x 是屬於xtrace的應用，用來除錯的。&lt;br /&gt;
                 132. shell script 雙引號與單引號
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/132. shell script 雙引號與單引號/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -5859,7 +6005,7 @@ a=B  &lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-
                 116. 安裝linux server 基本設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/116. 安裝linux server 基本設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -5920,7 +6066,7 @@ a=B  &lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-
                 114. alpine linux 宣告變數,error bad variable name
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/114. alpine linux 宣告變數,error bad variable name/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -5956,7 +6102,7 @@ helloworlda
                 108. linux shell 進階指令
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/108. linux shell 進階指令/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -6129,7 +6275,7 @@ bindmount &amp;quot;/home/mike/upload&amp;quot; &amp;quot;/home/bms/mike&amp;quo
                 0.Linux MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🐧 Linux/0.Linux MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;basic&quot; tabindex=&quot;-1&quot;&gt;basic&lt;/h1&gt;
@@ -6172,7 +6318,7 @@ bindmount &amp;quot;/home/mike/upload&amp;quot; &amp;quot;/home/bms/mike&amp;quo
                 鼠鬚管輸入法
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🍎 Mac/鼠鬚管輸入法/</id>
             <content type="html">
                 &lt;ol&gt;
@@ -6201,7 +6347,7 @@ bindmount &amp;quot;/home/mike/upload&amp;quot; &amp;quot;/home/bms/mike&amp;quo
                 永久別名 alias
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🍎 Mac/永久別名 alias/</id>
             <content type="html">
                 &lt;p&gt;修改路徑 ~/.zshrc&lt;br /&gt;
@@ -6217,7 +6363,7 @@ bindmount &amp;quot;/home/mike/upload&amp;quot; &amp;quot;/home/bms/mike&amp;quo
                 iTerm2安裝
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🍎 Mac/iTerm2安裝/</id>
             <content type="html">
                 &lt;h1 id=&quot;2024-05-27&quot; tabindex=&quot;-1&quot;&gt;2024/05/27 更新&lt;/h1&gt;
@@ -6314,7 +6460,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
                 iTerm2-Powerlevel10k設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🍎 Mac/iTerm2-Powerlevel10k設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6367,7 +6513,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
                 0.ＭAC MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🍎 Mac/0.ＭAC MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;安裝事項&quot; tabindex=&quot;-1&quot;&gt;安裝事項&lt;/h1&gt;
@@ -6413,7 +6559,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
                 99. nginx的除錯筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🌐 Network/99. nginx的除錯筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6649,7 +6795,7 @@ http {
                 92. proxy 代理
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🌐 Network/92. proxy 代理/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6713,7 +6859,7 @@ Shadowsocks，基於SOCKS5代理方式的加密協定&lt;/p&gt;
                 182. Fortigate 設定 內部服務負載平衡
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🌐 Network/182. Fortigate 設定 內部服務負載平衡/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6759,7 +6905,7 @@ Shadowsocks，基於SOCKS5代理方式的加密協定&lt;/p&gt;
                 176. Nginx cheat sheet
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🌐 Network/176. Nginx cheat sheet/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -6835,7 +6981,7 @@ networks:
                 169. Nginx的負載平衡
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🌐 Network/169. Nginx的負載平衡/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -6928,7 +7074,7 @@ networks:
                 106. zyxel 與 fortigate 建立VPN 點對點通道
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🌐 Network/106. zyxel 與 fortigate 建立VPN 點對點通道/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7016,7 +7162,7 @@ diagnose sniffer packet any &amp;quot;host 192.168.103.221 and icmp&amp;quot; 4
                 102. OSI七層
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🌐 Network/102. OSI七層/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7056,7 +7202,7 @@ All People Seem To Need Domino&#39;s Pizza&lt;br /&gt;
                 0.Network MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🌐 Network/0.Network MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;基礎&quot; tabindex=&quot;-1&quot;&gt;基礎&lt;/h1&gt;
@@ -7083,7 +7229,7 @@ All People Seem To Need Domino&#39;s Pizza&lt;br /&gt;
                 160.Obsidian發佈網站
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🆒 SideProject/160.Obsidian發佈網站/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7201,7 +7347,7 @@ Mac：Cmd+P&lt;/p&gt;
                 125. Google sheet Query
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/🆒 SideProject/125. Google sheet Query/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -7262,7 +7408,7 @@ select A,B offset 3      跳過3行，開始取資料
                 89. istio 常見狀態碼
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/89. istio 常見狀態碼/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7367,7 +7513,7 @@ select A,B offset 3      跳過3行，開始取資料
                 75. istio virtual service 常用參數
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/75. istio virtual service 常用參數/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7558,7 +7704,7 @@ http:
                 73. istio sidecar 注入規則
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/73. istio sidecar 注入規則/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7656,7 +7802,7 @@ namespace只要是 disabled的，通通不會inject sidecar&lt;/p&gt;
                 7. Istio安裝及使用
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/7. Istio安裝及使用/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -7995,7 +8141,7 @@ istioctl manifest install -f newingeressway.yaml&lt;/p&gt;
                 62. isito 鏡像流量
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/62. isito 鏡像流量/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8071,7 +8217,7 @@ v2是鏡像流量，流量過去後就不會管是否回應。&lt;/p&gt;
                 54. istio 掛載ECK kibana
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/54. istio 掛載ECK kibana/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8135,7 +8281,7 @@ spec:
                 35. istio virtualService delegate使用
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/35. istio virtualService delegate使用/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8299,7 +8445,7 @@ spec:
                 34. istio operator 安裝新的 ingress deploy及service
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/34. istio operator 安裝新的 ingress deploy及service/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8407,7 +8553,7 @@ components:
                 31.istio 抓蟲記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/31.istio 抓蟲記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8458,7 +8604,7 @@ e.g.   curl -v 123.213.123.213 -H &amp;quot;Host:abc.com&amp;quot;&lt;br /&gt;
                 30. istio的virtualservice match比對
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/30. istio的virtualservice match比對/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8528,7 +8674,7 @@ e.g.   curl -v 123.213.123.213 -H &amp;quot;Host:abc.com&amp;quot;&lt;br /&gt;
                 23.istio的 prometheus截取GKE metrics
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/23.istio的 prometheus截取GKE metrics/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8583,7 +8729,7 @@ ref. &lt;a href=&quot;https://stackoverflow.com/questions/63741959/prometheus-no
                 21. flagger 自動金絲雀佈署 for istio
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/21. flagger 自動金絲雀佈署 for istio/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -8828,7 +8974,7 @@ telegram做機器人還挺快的，改天再寫一篇關於telegram的使用方�
                 20. 訪問istio 內部負載平衡ip
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/20. 訪問istio 內部負載平衡ip/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -8901,7 +9047,7 @@ spec:
                 186. istio的Authorization policy(白名單)
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/186. istio的Authorization policy(白名單)/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9110,7 +9256,7 @@ cloudflare可以指定走http還是走https&lt;br /&gt;
                 18.istio Virtual Service 跨namespace讀取 DestinationRule
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/18.istio Virtual Service 跨namespace讀取 DestinationRule/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -9181,7 +9327,7 @@ ref. &lt;a href=&quot;https://istio.io/latest/docs/reference/config/networking/v
                 15.istio服務無法訪問
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/15.istio服務無法訪問/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9299,7 +9445,7 @@ spec:
                 14.istio安裝時固定ip
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/14.istio安裝時固定ip/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9350,7 +9496,7 @@ spec:
                 11. istio 與 kiali
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/11. istio 與 kiali/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9443,7 +9589,7 @@ spec:
                 0.istio MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⛵️ istio/0.istio MOC/</id>
             <content type="html">
                 &lt;ul&gt;
@@ -9490,7 +9636,7 @@ spec:
                 GCP費用
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/Price/GCP費用/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9540,7 +9686,7 @@ ref. &lt;a href=&quot;https://blog.cloud-ace.tw/google-cloud-platform/pricing/gc
                 GCP CPU用途
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/Price/GCP CPU用途/</id>
             <content type="html">
                 &lt;p&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/%E2%98%81%EF%B8%8E%20GCP/Price/GCP%20CPU%E7%94%A8%E9%80%94/#2024-07-09&quot;&gt;&lt;a class=&quot;tag&quot; onclick=&quot;toggleTagSearch(this)&quot; data-content=&quot;#2024/07/09更新&quot;&gt;#2024/07/09更新&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
@@ -9685,7 +9831,7 @@ Memory 會來到  $3.271422 / GB month&lt;/p&gt;
                 180. GCP 監控費用
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/Price/180. GCP 監控費用/</id>
             <content type="html">
                 &lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
@@ -9786,7 +9932,7 @@ Memory 會來到  $3.271422 / GB month&lt;/p&gt;
                 126. GCP 硬碟費用比較
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/Price/126. GCP 硬碟費用比較/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -9911,7 +10057,7 @@ Memory 會來到  $3.271422 / GB month&lt;/p&gt;
                 97. Anthos 初體驗
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/97. Anthos 初體驗/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9959,7 +10105,7 @@ ref. &lt;a href=&quot;https://cloud.google.com/service-mesh/docs/ui-differences&
                 95.cloud build的問題
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/95.cloud build的問題/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -9988,7 +10134,7 @@ cloud build是使用google的浮動ip，&lt;br /&gt;
                 9.GCP網路對外的方式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/9.GCP網路對外的方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10037,7 +10183,7 @@ ref. &lt;a href=&quot;https://cloud.google.com/nat/docs/using-nat&quot; target=&
                 88.批次修改GCP的label
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/88.批次修改GCP的label/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10092,7 +10238,7 @@ done &amp;lt;lbfr.txt
                 8.GCS使用方式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/8.GCS使用方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10266,7 +10412,7 @@ fi
                 79. gcloud compute instance 筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/79. gcloud compute instance 筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10319,7 +10465,7 @@ product 為 key值&lt;/p&gt;
                 5. Google Cloud Function限制
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/5. Google Cloud Function限制/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -10350,7 +10496,7 @@ product 為 key值&lt;/p&gt;
                 46.列出GCE的所有VM
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/46.列出GCE的所有VM/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10381,7 +10527,7 @@ networkInterfaces[].subnetwork)&amp;quot; | sort -k 5 | grep -E &#39;gateway.*te
                 46.GCE機器列表內的CPU個數
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/46.GCE機器列表內的CPU個數/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10435,7 +10581,7 @@ done
                 19. GCE硬碟增加容量大小
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/19. GCE硬碟增加容量大小/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -10538,7 +10684,7 @@ Couldn&#39;t find valid filesystem superblock.&lt;/p&gt;
                 181. cloudstorage無法使用cloudflare轉址
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/181. cloudstorage無法使用cloudflare轉址/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10569,7 +10715,7 @@ client到origin server 都使用ssl連線後，就掛了，&lt;br /&gt;
                 17. Gcloud AttributeError module importlib has no attribute util
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/17. Gcloud AttributeError module importlib has no attribute util/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -10603,7 +10749,7 @@ gcloud components update          # 更新gcloud
                 164.gcloud install by bash
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/164.gcloud install by bash/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10656,7 +10802,7 @@ echo &amp;quot;30 1 * * 1 root /bin/bash ${SCRIPTPATH}/update-cert.sh&amp;quot; 
                 161. GKE利用pubsub通知訊息到discord
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/161. GKE利用pubsub通知訊息到discord/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -10738,7 +10884,7 @@ ref. &lt;a href=&quot;https://cloud.google.com/pubsub/docs/overview?hl=zh-cn&quo
                 142.gcs cors設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/142.gcs cors設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10792,7 +10938,7 @@ gcloud storage buckets describe gs://example_bucket --format=&amp;quot;default(c
                 141. gcs自動刪除檔案
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/141. gcs自動刪除檔案/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10836,7 +10982,7 @@ gcloud storage buckets describe gs://example_bucket --format=&amp;quot;default(c
                 140. gcs 掛載domain
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/140. gcs 掛載domain/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10926,7 +11072,7 @@ google管理，不用管，時間到會自己展延，前提是你必須要有�
                 135. gsutil整批複製
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/135. gsutil整批複製/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -10992,7 +11138,7 @@ done &amp;lt; keepfile-sort.csv
                 130. Google IAP ssh失敗
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/130. Google IAP ssh失敗/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -11060,7 +11206,7 @@ ref.&lt;br /&gt;
                 13.騰訊雲連接GOOGLE雲
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/13.騰訊雲連接GOOGLE雲/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11203,7 +11349,7 @@ GCP-&amp;gt;VPC網路-&amp;gt;路徑&lt;/li&gt;
                 129. nginx 掛載gcs
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/129. nginx 掛載gcs/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -11564,7 +11710,7 @@ spec:
                 128. 解決 the gcp auth plugin is deprecated in v1.22+
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/128. 解決 the gcp auth plugin is deprecated in v1.22+/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -11617,7 +11763,7 @@ To learn more, consult &lt;a href=&quot;https://cloud.google.com/blog/products/c
                 127. fuse device not found, try &#39;modprobe fuse&#39; first
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/127. fuse device not found, try &#39;modprobe fuse&#39; first/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -11655,7 +11801,7 @@ gcsfuse sms_backend_backup ./gcs-mount
                 121.cloudCDN設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/121.cloudCDN設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -11685,7 +11831,7 @@ gcsfuse sms_backend_backup ./gcs-mount
                 120. 指令備份cloudSQL及下載
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/120. 指令備份cloudSQL及下載/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -11740,7 +11886,7 @@ cloudStorage下載權限&lt;br /&gt;
                 109.GCS臨時下載權限
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/109.GCS臨時下載權限/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -11780,7 +11926,7 @@ gs 的網址，可以到詳細資料內取得 gsutil URI&lt;br /&gt;
                 0.GCP MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/☁︎ GCP/0.GCP MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;雲架構中心&quot; tabindex=&quot;-1&quot;&gt;雲架構中心&lt;/h1&gt;
@@ -11829,7 +11975,7 @@ gs 的網址，可以到詳細資料內取得 gsutil URI&lt;br /&gt;
                 78. drone k8s-runner 進階設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⏱ Drone/78. drone k8s-runner 進階設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12008,7 +12154,7 @@ spec:
                 77. drone build Open Source Edition
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⏱ Drone/77. drone build Open Source Edition/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12097,7 +12243,7 @@ ENTRYPOINT [&amp;quot;/bin/drone-server&amp;quot;]
                 72. drone on GKE 建立
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⏱ Drone/72. drone on GKE 建立/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12482,7 +12628,7 @@ spec:
                 3. 撰寫drone.yml 筆記篇(未)
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⏱ Drone/3. 撰寫drone.yml 筆記篇(未)/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12588,7 +12734,7 @@ ref.&lt;br /&gt;
                 119. Drone  plugin-Drone-docker 修改原始檔
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⏱ Drone/119. Drone  plugin-Drone-docker 修改原始檔/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -12732,7 +12878,7 @@ export GO111MODULE=on
                 109. drone jsonnet 各種怪招
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⏱ Drone/109. drone jsonnet 各種怪招/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -12795,7 +12941,7 @@ fi&#39;
                 10.drone 使用 騰訊雲 K8S及 容器鏡像服務
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⏱ Drone/10.drone 使用 騰訊雲 K8S及 容器鏡像服務/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -12905,7 +13051,7 @@ ref.&lt;a href=&quot;https://stackoverflow.com/questions/43441454/docker-login-a
                 0.Drone MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⏱ Drone/0.Drone MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;建置&quot; tabindex=&quot;-1&quot;&gt;建置&lt;/h1&gt;
@@ -12930,7 +13076,7 @@ ref.&lt;a href=&quot;https://stackoverflow.com/questions/43441454/docker-login-a
                 98. k8s中的command與dockerfile的 CMD
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Yaml/98. k8s中的command與dockerfile的 CMD/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13062,7 +13208,7 @@ args ： 外加的參數，可與command一起使用，&lt;/p&gt;
                 94. k8s 細節補充
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Yaml/94. k8s 細節補充/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13158,7 +13304,7 @@ ls -l /bin/sh
                 87.kustomize 共用label(optional）
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Yaml/87.kustomize 共用label(optional）/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -13211,7 +13357,7 @@ ls -l /bin/sh
                 85. gke-cronjob筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Yaml/85. gke-cronjob筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13261,7 +13407,7 @@ spec:
                 74. kubernetes 批次檢查yaml特定字元
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Yaml/74. kubernetes 批次檢查yaml特定字元/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13299,7 +13445,7 @@ spec:
                 2. k8s yaml撰寫 volume 踩坑篇
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Yaml/2. k8s yaml撰寫 volume 踩坑篇/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13359,7 +13505,7 @@ volumes: 的意思是定義磁碟區，emptyDir是伴隨著pod的生命，當pod
                 136. 一步步篩選k8s的deploy內容
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Yaml/136. 一步步篩選k8s的deploy內容/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -13395,7 +13541,7 @@ volumes: 的意思是定義磁碟區，emptyDir是伴隨著pod的生命，當pod
                 12. k8s YAML 小細節
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Yaml/12. k8s YAML 小細節/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13516,7 +13662,7 @@ ref.&lt;br /&gt;
                 82. Terraform vs Ansible
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Terraform/82. Terraform vs Ansible/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13560,7 +13706,7 @@ ref.&lt;br /&gt;
                 189. 導入Terraform
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Terraform/189. 導入Terraform/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -13711,7 +13857,7 @@ terraform.rc
                 183. Terrafrom 建立private cluster
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Terraform/183. Terrafrom 建立private cluster/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14083,7 +14229,7 @@ module &amp;quot;gke&amp;quot; {
                 149. terraform 部署VM，啓動docker安裝metadata_startup_script
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Terraform/149. terraform 部署VM，啓動docker安裝metadata_startup_script/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -14167,7 +14313,7 @@ module &amp;quot;gke&amp;quot; {
                 148. Terraform的基本概念
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Terraform/148. Terraform的基本概念/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -14453,7 +14599,7 @@ Count = 2&lt;br /&gt;
                 147. 用chatGPT學Terraform
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/Terraform/147. 用chatGPT學Terraform/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -14620,7 +14766,7 @@ A：&lt;br /&gt;
                 71.gitlab on GKE 災害還原筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/71.gitlab on GKE 災害還原筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14819,7 +14965,7 @@ spec:
                 70. GKE pvc還原
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/70. GKE pvc還原/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -14919,7 +15065,7 @@ statefulSet不會用到pvc。&lt;/p&gt;
                 56. GKE記錄 nginx log
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/56. GKE記錄 nginx log/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15025,7 +15171,7 @@ http {
                 50.GKE workload Identity 實地演練
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/50.GKE workload Identity 實地演練/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15073,7 +15219,7 @@ GKE 中繼資料伺服器 ： 已啟用&lt;br /&gt;
                 44.srs 影音串流 on GKE
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/44.srs 影音串流 on GKE/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15145,7 +15291,7 @@ webrtc，是直撥者跟觀看者直接連線，也就是點對點的連接方�
                 41.GKE節點無法自動縮小
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/41.GKE節點無法自動縮小/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15241,7 +15387,7 @@ istio在安裝時，ingressgateway會同時設定pdb，&lt;br /&gt;
                 4. GKE使用GPU
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/4. GKE使用GPU/</id>
             <content type="html">
                 &lt;h2 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h2&gt;
@@ -15325,7 +15471,7 @@ gcloud compute instances list --format=&amp;quot;table(guestAccelerators.acceler
                 39.solrCloud的初體驗
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/39.solrCloud的初體驗/</id>
             <content type="html">
                 &lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
@@ -15414,7 +15560,7 @@ yaml佈署時，&lt;a href=&quot;https://kubernetes.io/zh/docs/tasks/inject-data
                 37.SolrCloud on GKE
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/GKE/37.SolrCloud on GKE/</id>
             <content type="html">
                 &lt;h1 id=&quot;正文&quot; tabindex=&quot;-1&quot;&gt;正文&lt;/h1&gt;
@@ -15732,7 +15878,7 @@ spec:
                 76. k8s error,The node was low on resource..
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/76. k8s error,The node was low on resource../</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15810,7 +15956,7 @@ prometheus會這樣、gitlab最近在弄新版的CI/CD也跑這個出來。&lt;b
                 42.k8s PDB（pod中斷預算）
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/42.k8s PDB（pod中斷預算）/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15853,7 +15999,7 @@ prometheus會這樣、gitlab最近在弄新版的CI/CD也跑這個出來。&lt;b
                 27.K8s的節點選擇與污染
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/27.K8s的節點選擇與污染/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -15943,7 +16089,7 @@ spec:
                 254. StatefulSet呼叫pod的方法
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/254. StatefulSet呼叫pod的方法/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -16000,7 +16146,7 @@ spec:
                 196. http健康度偵測
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/196. http健康度偵測/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -16044,7 +16190,7 @@ spec:
                 194. pod debug方式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/194. pod debug方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -16099,7 +16245,7 @@ kubectl logs --since=1h nginx
                 192. 自建的k8s拉取private registry
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/192. 自建的k8s拉取private registry/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -16143,7 +16289,7 @@ stackoverflow的說明指出，該email是沒在用的，所以可以隨便打�
                 190. cert-manager安裝
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/190. cert-manager安裝/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -16237,7 +16383,7 @@ spec:
                 172. 自建k8s版本升級
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/172. 自建k8s版本升級/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡唸&quot; tabindex=&quot;-1&quot;&gt;睡睡唸&lt;/h1&gt;
@@ -16339,7 +16485,7 @@ kubectl uncordon $node
                 162.查詢已棄用的API
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/162.查詢已棄用的API/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -16381,7 +16527,7 @@ kubectl uncordon $node
                 151. kubeadm重新產生驗證
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/151. kubeadm重新產生驗證/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -16449,7 +16595,7 @@ ref. &lt;a href=&quot;https://juejin.cn/post/7068909995701567501&quot; target=&q
                 144. k8s 的sercret複製
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/144. k8s 的sercret複製/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -16480,7 +16626,7 @@ default太肥了，實在不想再往那邊塞，&lt;br /&gt;
                 143. k8s取得登入憑證
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/143. k8s取得登入憑證/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -16517,7 +16663,7 @@ admin-user-token-tm7g4&lt;br /&gt;
                 139. openlens add pod shell or logs button
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/139. openlens add pod shell or logs button/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -16557,7 +16703,7 @@ kubectl logs pod_name
                 137. kubecolor 直觀的kubectl
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/137. kubecolor 直觀的kubectl/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -16603,7 +16749,7 @@ mac 是在 個人目錄底下&lt;/p&gt;
                 123.Helm 使用方式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/123.Helm 使用方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;睡睡念&quot; tabindex=&quot;-1&quot;&gt;睡睡念&lt;/h1&gt;
@@ -16690,7 +16836,7 @@ ezio
                 118. kubernetes Dashboard
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/118. kubernetes Dashboard/</id>
             <content type="html">
                 &lt;h1 id=&quot;碎碎念&quot; tabindex=&quot;-1&quot;&gt;碎碎念&lt;/h1&gt;
@@ -16755,7 +16901,7 @@ EOF
                 105. linux系統時間與k8s
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/105. linux系統時間與k8s/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -16840,7 +16986,7 @@ spec:
                 104. rabbitmq operator安裝
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/104. rabbitmq operator安裝/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -16899,7 +17045,7 @@ ref. &lt;a href=&quot;https://www.rabbitmq.com/kubernetes/operator/using-operato
                 101. 批次修改hpa
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/101. 批次修改hpa/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -16950,7 +17096,7 @@ done &amp;lt;hpa.txt
                 0.K8s MOC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/⎈ k8s/0.K8s MOC/</id>
             <content type="html">
                 &lt;h1 id=&quot;基本概念&quot; tabindex=&quot;-1&quot;&gt;基本概念&lt;/h1&gt;
@@ -17027,7 +17173,7 @@ done &amp;lt;hpa.txt
                 README
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/</id>
             <content type="html">
                 &lt;h1 id=&quot;度估記事本&quot; tabindex=&quot;-1&quot;&gt;度估記事本&lt;/h1&gt;
@@ -17040,9 +17186,10 @@ done &amp;lt;hpa.txt
 &lt;hr /&gt;
 &lt;h1 id=&quot;最新文章&quot; tabindex=&quot;-1&quot;&gt;最新文章&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/274.%20github%20action%E5%BB%BA%E7%AB%8B%20self-host%20runner/&quot;&gt;274. github action建立 self-host runner&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/275.%20VPC%20network%20peering/&quot;&gt;275. VPC network peering&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/276.%20GKE%E7%A7%81%E6%9C%89%E5%8F%A2%E9%9B%86%E8%A8%AD%E5%AE%9A%20Authorized%20networks%EF%BC%8C%E5%87%BA%E7%8F%BE%E9%8C%AF%E8%AA%A4%20private_endpoint_enforcement_enabled%20cannot%20be%20disabled%20on%20VPC%20peering%20based%20clusters/&quot;&gt;276. GKE私有叢集設定 Authorized networks，出現錯誤 private_endpoint_enforcement_enabled cannot be disabled on VPC peering based clusters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/218.%20Go%20GUI%E5%A5%97%E4%BB%B6%20fyne%E7%AD%86%E8%A8%98/&quot;&gt;218. Go GUI套件 fyne筆記&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/277.%20elastic%20%EF%BC%8Cindex%20%E6%B6%88%E5%A4%B1%E7%9B%B8%E9%97%9C%E6%9F%A5%E8%A9%A2%E6%96%B9%E5%BC%8F/&quot;&gt;277. elastic ，index 消失相關查詢方式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/278.Golang%E7%B0%A1%E7%95%A5%E7%AD%86%E8%A8%98%EF%BC%88%E4%BA%8C%EF%BC%89/&quot;&gt;278.Golang簡略筆記（二）&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;h1 id=&quot;obsidian-github&quot; tabindex=&quot;-1&quot;&gt;用Obsidian發佈到Github&lt;/h1&gt;
@@ -17087,10 +17234,233 @@ done &amp;lt;hpa.txt
         </entry>
         <entry>
             <title>
+                278.Golang簡略筆記（二）
+                
+            </title>
+            <updated>2025-04-17T10:25:57Z</updated>
+            <id>https://daimom.github.io/278.Golang簡略筆記（二）/</id>
+            <content type="html">
+                &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
+&lt;p&gt;搞 &lt;a class=&quot;internal-link&quot; data-note-icon=&quot;&quot; href=&quot;https://daimom.github.io/218.%20Go%20GUI%E5%A5%97%E4%BB%B6%20fyne%E7%AD%86%E8%A8%98/&quot;&gt;218. Go GUI套件 fyne筆記&lt;/a&gt;，&lt;br /&gt;
+是用ChatGPT加上文件搞出來的，&lt;br /&gt;
+有些寫法真的是厲害啊，&lt;br /&gt;
+值得紀錄一下。&lt;/p&gt;
+&lt;h1 id=&quot;note&quot; tabindex=&quot;-1&quot;&gt;Note&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;function 回傳，兩個以上的話需要 &lt;code&gt;()&lt;/code&gt;，一個則不用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;var db *sql.DB
+func main() {
+	var err error
+	db, err = initDatabase(&amp;quot;./stickersInfo.db&amp;quot;)
+	if err != nil {
+		log.Fatalf(&amp;quot;初始化資料庫失敗: %v&amp;quot;, err)
+	}
+	// 當main 全部結束後，會關閉db 
+	defer db.Close()
+}
+
+func initDatabase(dbPath string) (*sql.DB, error) {
+	....
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;同一個專案底下，不同文件，不需要另外import，只需下面這行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;package main
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;變數or 函數，開頭大寫表示是公有。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;var BasePath = &amp;quot;&#92;user&#92;daimom&amp;quot;
+
+var BasePath string
+BasePath = &amp;quot;&#92;user&#92;daimom&amp;quot;
+
+BasePath := &amp;quot;&#92;user&#92;daimom&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;slice(動態array)的 &lt;code&gt;...&lt;/code&gt; ，意思是將slice拆開，當作多個參數傳到函式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;// LoadImages會回傳 []fyne.CanvasObject
+grid := container.NewGridWithColumns(3, LoadImages(*imageLists, w)...)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;字串處理&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;//分割
+p := strings.Split(imagePath, &amp;quot;/&amp;quot;)
+//結合
+alias = (strings.Join(*aliasList, &amp;quot;,&amp;quot;))
+//轉string
+a = string(number)
+//替換文字
+folderPath := strings.ReplaceAll(path, &amp;quot;productInfo.meta&amp;quot;, &amp;quot;&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;for range&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;// 迴圈加入,
+for i, id := range packageIDs {
+  query += &amp;quot;?&amp;quot;
+  if i &amp;lt; len(packageIDs)-1 {
+    query += &amp;quot;,&amp;quot;
+  }
+  args[i] = id
+}
+
+// 常用取得slice的值。products 型別為 *[]Product。
+for _, p := range *products {
+  if !existsMap[p.PackageID] {
+    filtered = append(filtered, p)
+  } else {
+    fmt.Printf(&amp;quot;刪除 PackageID: %d, StickerID: %d&#92;n&amp;quot;, p.PackageID, p.stickerId)
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;7&quot;&gt;
+&lt;li&gt;指標&lt;br /&gt;
+如果傳入實體的型別為 &lt;code&gt;products []Prouduct&lt;/code&gt;，&lt;br /&gt;
+那&lt;code&gt;*products 型別為 []Proudct&lt;/code&gt;，取實體&lt;br /&gt;
+而 &lt;code&gt;&amp;amp;products 型別為 *[]Product&lt;/code&gt;，指向這個 slice 的指標&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;func checkDuplicate(products *[]Product){
+	// 此處看到products 是個指向[]Product的指標。
+	// 要取值的話，變成 *products（型別 []Product)
+	// 如果要取指標 &amp;amp;products ，因本來已經是指標了，
+	// 會變成 (型別 **[]Product) ，就會出錯
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;8&quot;&gt;
+&lt;li&gt;map預設回傳&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;map 型別&lt;/th&gt;
+&lt;th&gt;不存在時回傳值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;map[int]bool&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;map[string]int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;map[string]string&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;quot;&amp;quot;&lt;/code&gt; (空字串)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;map[int]float64&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;0.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&quot;9&quot;&gt;
+&lt;li&gt;slice 取值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;寫法&lt;/th&gt;
+&lt;th&gt;意思&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;arr[2:]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;從 index 2 到結尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;arr[:3]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;從開頭到 index 3（不含3）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;arr[1:4]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;從 index 1 到 4（不含4）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;arr[:]&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全部（copy 一份 slice）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&quot;10&quot;&gt;
+&lt;li&gt;make用法&lt;br /&gt;
+用來建立 slice, map, chan 這三種。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;當用來建立slice時，差異在&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;用法情境&lt;/th&gt;
+&lt;th&gt;建議寫法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;要明確是空 slice&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a := []int{}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;要保留 nil 判斷語意&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;var a []int&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;要初始化有容量但無資料&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;make([]int, 0, 100)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;而三種型別的差異&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型別&lt;/th&gt;
+&lt;th&gt;是否要指定長度？&lt;/th&gt;
+&lt;th&gt;備註&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;slice&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;✅ 要指定長度（&lt;code&gt;len&lt;/code&gt;），可選容量（&lt;code&gt;cap&lt;/code&gt;）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;make([]T, len)&lt;/code&gt; 或 &lt;code&gt;make([]T, len, cap)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;map&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;❌ 可省略長度（但可選擇性指定初始容量）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;make(map[K]V)&lt;/code&gt; 或 &lt;code&gt;make(map[K]V, hint)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;chan&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;✅ 要指定 buffer 大小（0 表示無 buffer）&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;make(chan T, bufferSize)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以上都是寫&lt;a href=&quot;https://github.com/daimom/LineStickerMapping&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;LineStickerMapping&lt;/a&gt; ，然後延伸出來的筆記&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;ref.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://willh.gitbook.io/build-web-application-with-golang-zhtw&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;使用Golang打造Web應用程式&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+            </content>
+            <link href="https://daimom.github.io/278.Golang簡略筆記（二）/" />
+        </entry>
+        <entry>
+            <title>
                 277. elastic ，index 消失相關查詢方式
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/277. elastic ，index 消失相關查詢方式/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -17209,7 +17579,7 @@ GET _ilm/policy/delete-bms-indices-after-7days?pretty
                 276. GKE私有叢集設定 Authorized networks，出現錯誤 private_endpoint_enforcement_enabled cannot be disabled on VPC peering based clusters
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/276. GKE私有叢集設定 Authorized networks，出現錯誤 private_endpoint_enforcement_enabled cannot be disabled on VPC peering based clusters/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -17237,7 +17607,7 @@ GET _ilm/policy/delete-bms-indices-after-7days?pretty
                 275. VPC network peering
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/275. VPC network peering/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -17270,7 +17640,7 @@ GET _ilm/policy/delete-bms-indices-after-7days?pretty
                 274. github action建立 self-host runner
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/274. github action建立 self-host runner/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -17321,7 +17691,7 @@ GET _ilm/policy/delete-bms-indices-after-7days?pretty
                 273. GCP搞openTelemetry筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/273. GCP搞openTelemetry筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -17648,7 +18018,7 @@ ref.&lt;a href=&quot;https://opentelemetry.io/docs/collector/configuration/#serv
                 272. istio將401的錯誤，自動轉成503
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/272. istio將401的錯誤，自動轉成503/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -17716,7 +18086,7 @@ ref.&lt;a href=&quot;https://opentelemetry.io/docs/collector/configuration/#serv
                 271. IOT設備裝Prometheus搞Remote write
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/271. IOT設備裝Prometheus搞Remote write/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -17846,7 +18216,7 @@ ref. &lt;a href=&quot;https://tsunejui.github.io/posts/prometheus-remote-write-p
                 269. PVC backup and restore
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/269. PVC backup and restore/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -17950,7 +18320,7 @@ spec:
                 268. DNS檔廣告伺服器-AdguardHome
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/268. DNS檔廣告伺服器-AdguardHome/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18036,7 +18406,7 @@ networks:
                 267. cloudflare  308-ERR_TOO_MANY_REDIRECTS
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/267. cloudflare  308-ERR_TOO_MANY_REDIRECTS/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -18100,7 +18470,7 @@ kex=X25519MLKEM768
                 266. Promtail 擷取docker log
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/266. Promtail 擷取docker log/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18181,7 +18551,7 @@ scrape_configs:
                 265. Golang簡略筆記（二）
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/265. Golang簡略筆記（二）/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18330,7 +18700,7 @@ GPT跟我說能同時計算，跟我印象中的不一樣，&lt;br /&gt;
                 264. use golang debug on mac m3
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/264. use golang debug on mac m3/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18370,7 +18740,7 @@ GPT跟我說能同時計算，跟我印象中的不一樣，&lt;br /&gt;
                 263. Linux 查看文件內容
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/263. Linux 查看文件內容/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18410,7 +18780,7 @@ GPT跟我說能同時計算，跟我印象中的不一樣，&lt;br /&gt;
                 262. PostgreSQL on k8s
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/262. PostgreSQL on k8s/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18532,7 +18902,7 @@ SELECT current_database();
                 261. Loki筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/261. Loki筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18696,7 +19066,7 @@ retention_period：就看要保留多久了。&lt;/p&gt;
                 260. Grafana 變數連動
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/260. Grafana 變數連動/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18736,7 +19106,7 @@ retention_period：就看要保留多久了。&lt;/p&gt;
                 259. Loki快速上手體驗
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/259. Loki快速上手體驗/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18929,7 +19299,7 @@ roleRef:
                 258. GCP費用試算
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/258. GCP費用試算/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -18977,7 +19347,7 @@ roleRef:
                 257. istio-proxy Readiness probe failed
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/257. istio-proxy Readiness probe failed/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19046,7 +19416,7 @@ roleRef:
                 256. httpbin取得request的header
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/256. httpbin取得request的header/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19142,7 +19512,7 @@ spec:
                 253. docker內監控服務狀態
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/253. docker內監控服務狀態/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19171,7 +19541,7 @@ spec:
                 252. k8s中的pod呼叫
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/252. k8s中的pod呼叫/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19222,7 +19592,7 @@ kube-dns的ip &lt;code&gt;192.168.24.157&lt;/code&gt;&lt;/p&gt;
                 251.  GCE上的docker監控
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/251.  GCE上的docker監控/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19292,7 +19662,7 @@ networks:
                 250. find指令筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/250. find指令筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19392,7 +19762,7 @@ echo &amp;quot;total: $total&amp;quot;
                 247. MSSQL指令賦予權限
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/247. MSSQL指令賦予權限/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19422,7 +19792,7 @@ EXEC sp_addrolemember &#39;db_datawriter&#39;,&#39;bmsrd&#39;
                 246. GCP網路費用粗估計算
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/246. GCP網路費用粗估計算/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19498,7 +19868,7 @@ Data transfer(資料傳輸) +  data processes(資料處理)&lt;/p&gt;
                 245. gcloud storage取代gsutil
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/245. gcloud storage取代gsutil/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19583,7 +19953,7 @@ gcloud storage cp -n  gs://abc/57d51e14-6ea2-409a-9bee-07a832456cf6.jpg .
                 244. 在GCE使用filebeat傳到GKE的ECK
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/244. 在GCE使用filebeat傳到GKE的ECK/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19776,7 +20146,7 @@ kubectl get secret prod-es-http-certs-internal -n elastic-system  -o=jsonpath=&#
                 243. GCP 全域負載平衡器進階路由設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/243. GCP 全域負載平衡器進階路由設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19864,7 +20234,7 @@ gcloud compute backend-services list --uri
                 242.  .Net core 8 使用apt install 權限不足
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/242.  .Net core 8 使用apt install 權限不足/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19919,7 +20289,7 @@ securityContext:
                 241. MSSQL紀錄log，使用QUERY_STORE
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/241. MSSQL紀錄log，使用QUERY_STORE/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -19979,7 +20349,7 @@ from sys.database_query_store_options
                 240. git log 除錯指令
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/240. git log 除錯指令/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -20055,7 +20425,7 @@ feature-branch的commit值是&lt;code&gt;5d6e7f8&lt;/code&gt;&lt;/p&gt;
                 239. Cloudflare白名單及擷取國別設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/239. Cloudflare白名單及擷取國別設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -20086,7 +20456,7 @@ feature-branch的commit值是&lt;code&gt;5d6e7f8&lt;/code&gt;&lt;/p&gt;
                 238. Steam Deck安裝Cheat Engine
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/238. Steam Deck安裝Cheat Engine/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -20208,7 +20578,7 @@ ip -4 addr # 查詢ip位置
                 237. GCP IAM綁GKE的RBAC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/237. GCP IAM綁GKE的RBAC/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -20294,7 +20664,7 @@ roleRef:
                 236. Telegram傳送檔案
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/236. Telegram傳送檔案/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;Why&lt;/h1&gt;
@@ -20333,7 +20703,7 @@ curl -F chat_id=987654321 &#92;
                 235. Grafana Alert Template
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/235. Grafana Alert Template/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;Why&lt;/h1&gt;
@@ -20468,7 +20838,7 @@ ref. &lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/alerting-
                 234. Debian新增軟體源
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/234. Debian新增軟體源/</id>
             <content type="html">
                 &lt;h1 id=&quot;cause&quot; tabindex=&quot;-1&quot;&gt;Cause&lt;/h1&gt;
@@ -20493,7 +20863,7 @@ ref. &lt;a href=&quot;https://grafana.com/docs/grafana/latest/alerting/alerting-
                 233. 不同區域 GCE與GKE LB連線
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/233. 不同區域 GCE與GKE LB連線/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;Why&lt;/h1&gt;
@@ -20543,7 +20913,7 @@ spec:
                 232. GCE Observability 安裝agent失敗
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/232. GCE Observability 安裝agent失敗/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -20575,7 +20945,7 @@ sudo bash add-monitoring-agent-repo.sh --remove-repo
                 231. GKE node cpu limit 計算
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/231. GKE node cpu limit 計算/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -20610,7 +20980,7 @@ done
                 228. Cloudsql PITR還原
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/228. Cloudsql PITR還原/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;Why&lt;/h1&gt;
@@ -20644,7 +21014,7 @@ latestRecoveryTime: &#39;2024-08-15T06:48:48Z&#39;
                 225.  Debian安裝後設定
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/225.  Debian安裝後設定/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -20693,7 +21063,7 @@ chmod 440 /etc/sudoers
                 224. GKE的節點上限採坑記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/224. GKE的節點上限採坑記/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;WHY&lt;/h1&gt;
@@ -20768,7 +21138,7 @@ chmod 440 /etc/sudoers
                 223. 檢查TCP or UDP是否有通
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/223. 檢查TCP or UDP是否有通/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;Why&lt;/h1&gt;
@@ -20827,7 +21197,7 @@ chmod 440 /etc/sudoers
                 222. elastic 整批刪除indics
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/222. elastic 整批刪除indics/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;Why&lt;/h1&gt;
@@ -20887,7 +21257,7 @@ chmod 440 /etc/sudoers
                 221. L7mp stunner監控
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/221. L7mp stunner監控/</id>
             <content type="html">
                 &lt;h1 id=&quot;why&quot; tabindex=&quot;-1&quot;&gt;Why&lt;/h1&gt;
@@ -21449,7 +21819,7 @@ spec:
                 220. windows將程式變成服務的好東西-winSW
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/220. windows將程式變成服務的好東西-winSW/</id>
             <content type="html">
                 &lt;h1 id=&quot;緣由&quot; tabindex=&quot;-1&quot;&gt;緣由&lt;/h1&gt;
@@ -21508,7 +21878,7 @@ command執行 &lt;code&gt;nginx-server.exe install&lt;/code&gt;&lt;br /&gt;
                 219. Google Cloud Managed Service for Prometheus  費用
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/219. Google Cloud Managed Service for Prometheus  費用/</id>
             <content type="html">
                 &lt;h1 id=&quot;緣由&quot; tabindex=&quot;-1&quot;&gt;緣由&lt;/h1&gt;
@@ -21572,10 +21942,133 @@ SKUs -&amp;gt; Prometheus Samples Ingested &amp;amp;  Monitoring API Requests&lt
         </entry>
         <entry>
             <title>
+                218. Go GUI套件 fyne筆記
+                
+            </title>
+            <updated>2025-04-17T10:25:57Z</updated>
+            <id>https://daimom.github.io/218. Go GUI套件 fyne筆記/</id>
+            <content type="html">
+                &lt;h1 id=&quot;緣由&quot; tabindex=&quot;-1&quot;&gt;緣由&lt;/h1&gt;
+&lt;p&gt;因為Line的貼圖太多了，&lt;br /&gt;
+關鍵字跑出來的貼圖，常常又不是自己想要的。&lt;br /&gt;
+所以我就想要搞像MSN那樣的自訂關鍵字，&lt;br /&gt;
+至少能夠比較快找到我要的貼圖。&lt;/p&gt;
+&lt;h1 id=&quot;主題&quot; tabindex=&quot;-1&quot;&gt;主題&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Demo&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;go install fyne.io/fyne/v2/cmd/fyne_demo@latest
+fyne_demo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;基本觀念&lt;br /&gt;
+參考  &lt;a href=&quot;https://www.cnblogs.com/yjf512/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;軒脈刃de刀光劍影&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;主視窗&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;func main() {
+	myApp := app.New()
+	myWindow := myApp.NewWindow(&amp;quot;Line Sticker Alias&amp;quot;)
+	// 設定視窗的初始大小
+	myWindow.Resize(fyne.NewSize(800, 600))
+	// 設定視窗的內容
+	myWindow.SetContent(CreateUI(myWindow))
+	// 顯示視窗
+	myWindow.ShowAndRun()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;傳入型態&lt;br /&gt;
+傳入建議使用 &lt;code&gt;fyne.Window&lt;/code&gt;，因很多UI行為需要的都是window。&lt;br /&gt;
+如果要開新視窗的話，可以採用下面的程式&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;func ShowAliasWindow(filePath string, parent fyne.Window) {
+	w := fyne.CurrentApp().NewWindow(&amp;quot;新增別名&amp;quot;)
+	....
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;常用選項，按鈕(紅色)、文字方塊(紫色)、圖片(綠色)&lt;br /&gt;
+&lt;img src=&quot;https://daimom.github.io/img/user/218-fig.1.png&quot; alt=&quot;218-fig.1.png&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;// 延遲200ms，啟動按鈕（看起來比較流暢）
+aliasButton := widget.NewButton(alias, func() {
+  time.AfterFunc(200*time.Millisecond, func() {
+    ShowAliasWindow(fulPath, parent)
+  })
+})
+
+// 文字框
+textbox := widget.NewEntry()
+textbox.SetPlaceHolder(&amp;quot;Enter Keyword...&amp;quot;)
+
+// 圖片
+img := canvas.NewImageFromFile(fulPath)
+img.FillMode = canvas.ImageFillOriginal
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;5&quot;&gt;
+&lt;li&gt;物件合併&lt;br /&gt;
+V：vertical&lt;br /&gt;
+H：horizontal&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;// 上面 4. 的 aliasButton 跟 img 合併在一起
+images = append(images, container.NewVBox(img, aliasButton))
+// 將圖片按鈕物件，切成三個一行
+grid := container.NewGridWithColumns(3, images...)
+
+//塞入window，顯示。w 為 上面 3 的宣告
+w.SetContent(container.NewVScroll(grid))
+w.Resize(fyne.NewSize(400, 400))
+w.Show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&quot;6&quot;&gt;
+&lt;li&gt;dialog&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;
+// w 為 fyne.window
+
+// 錯誤對話方塊
+err := deleteAlias(stickerId)
+if err != nil {
+  dialog.NewError(err, w).Show()
+  return // 錯誤發生後，直接返回，停止繼續執行下面的程式碼
+}
+//訊息對話方塊
+dialog.NewInformation(&amp;quot;提示&amp;quot;, &amp;quot;新增完成！&amp;quot;, w).Show()
+
+//開啟資料夾對話方塊
+dialog.NewFolderOpen(func(folder fyne.ListableURI, err error) {
+  if err != nil {
+    dialog.ShowError(err, w)
+    return
+  }
+  if folder == nil {
+    return // 使用者按取消
+  }
+  inputFolder.SetText(folder.Path())
+}, w).Show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ref.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/yjf512/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;軒脈刃de刀光劍影&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://go-circle.cn/fyne-press/v1.0/1-getting-started/introduction.html&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Fyne開發文件(中)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.fyne.io/started/&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Fyne官網文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/fyne-io/fyne&quot; target=&quot;_blank&quot; class=&quot;external-link&quot;&gt;Fyne Github&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+            </content>
+            <link href="https://daimom.github.io/218. Go GUI套件 fyne筆記/" />
+        </entry>
+        <entry>
+            <title>
                 217. iptables 筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/217. iptables 筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;緣由&quot; tabindex=&quot;-1&quot;&gt;緣由&lt;/h1&gt;
@@ -21635,7 +22128,7 @@ rule 3是去嘉義。&lt;/p&gt;
                 216. GKE掛載ReadWrite Many的PVC
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/216. GKE掛載ReadWrite Many的PVC/</id>
             <content type="html">
                 &lt;h1 id=&quot;緣由&quot; tabindex=&quot;-1&quot;&gt;緣由&lt;/h1&gt;
@@ -21872,7 +22365,7 @@ spec:
                 214. Elastic API建立 Index_template
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/214. Elastic API建立 Index_template/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -22153,7 +22646,7 @@ GET _index_template/worker # index template
                 212. k8s的親和性與反親和性
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/212. k8s的親和性與反親和性/</id>
             <content type="html">
                 &lt;h1 id=&quot;緣由&quot; tabindex=&quot;-1&quot;&gt;緣由&lt;/h1&gt;
@@ -22268,7 +22761,7 @@ spec:
                 211. k8s service與 endpoint無法連結
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/211. k8s service與 endpoint無法連結/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -22376,7 +22869,7 @@ spec:
                 210. Arc Browser筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/210. Arc Browser筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -22430,7 +22923,7 @@ ARC 本身也是用chrome的核心去做的，&lt;br /&gt;
                 209. k8s中srs的各個pod  metrics取得
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/209. k8s中srs的各個pod  metrics取得/</id>
             <content type="html">
                 &lt;h1 id=&quot;事由&quot; tabindex=&quot;-1&quot;&gt;事由&lt;/h1&gt;
@@ -22552,7 +23045,7 @@ prometheus.io/scrape: &#39;true&#39;
                 208. 架設 sftp
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/208. 架設 sftp/</id>
             <content type="html">
                 &lt;h1 id=&quot;事由&quot; tabindex=&quot;-1&quot;&gt;事由&lt;/h1&gt;
@@ -22642,7 +23135,7 @@ aaron:aaron:1003:100
                 207. mapgenie整批unfound
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/207. mapgenie整批unfound/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -22695,7 +23188,7 @@ aaron:aaron:1003:100
                 206. steamDeck 的 Cheat Engine替代品
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/206. steamDeck 的 Cheat Engine替代品/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -22763,7 +23256,7 @@ Memory Deck ，直接在掌機模式下的Decky loader 商店搜尋，&lt;br /&g
                 205. Grafana 筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/205. Grafana 筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前文&quot; tabindex=&quot;-1&quot;&gt;前文&lt;/h1&gt;
@@ -22799,7 +23292,7 @@ byte(SI) ： 以十進位計算。 2MB= 2000kb&lt;/p&gt;
                 203. istio Authorization 拒絕指定檔案瀏覽
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/203. istio Authorization 拒絕指定檔案瀏覽/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -22917,7 +23410,7 @@ kubectl logs &amp;lt;pod name&amp;gt; -c istio-proxy
                 202. GCP多帳號切換
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/202. GCP多帳號切換/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -22984,7 +23477,7 @@ kubectl config current-context
                 201. kustomize patch
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/201. kustomize patch/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -23101,7 +23594,7 @@ patchesJson6902:
                 200. Net core SDK安裝至container
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/200. Net core SDK安裝至container/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -23154,7 +23647,7 @@ chmod +x ./dotnet-install.sh
                 193. Obsidian發佈到github.io個人網站
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/193. Obsidian發佈到github.io個人網站/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -23314,7 +23807,7 @@ runs:
                 191. Steam deck安裝除錯記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/191. Steam deck安裝除錯記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
@@ -23473,7 +23966,7 @@ runs:
                 159. RBAC筆記
                 
             </title>
-            <updated>2025-04-16T10:27:11Z</updated>
+            <updated>2025-04-17T10:25:57Z</updated>
             <id>https://daimom.github.io/159. RBAC筆記/</id>
             <content type="html">
                 &lt;h1 id=&quot;前言&quot; tabindex=&quot;-1&quot;&gt;前言&lt;/h1&gt;
