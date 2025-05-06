@@ -3889,6 +3889,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/280. Promtail 規則順序/">280. Promtail 規則順序 </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -4058,7 +4069,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2025-05-05T10:27:18.656Z';
+        const searchIndexDate = '2025-05-06T10:26:46.963Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -4070,9 +4081,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2025-05-05T10:27:18.656Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2025-05-06T10:26:46.963Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-05-05T10:27:18.656Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-05-06T10:26:46.963Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4375,7 +4386,7 @@ spec:
   rules:
   - from:
     - source:
-        ipBlocks:: 
+        ipBlocks:
           - &quot;10.0.0.0/8&quot;
           - &quot;172.16.0.0/12&quot;
           - &quot;192.168.0.0/16&quot;   
@@ -4436,6 +4447,7 @@ spec:
 假如沒有在入口的話，無法照上面a.的方式抓到資料，<br>
 所以只能強制指定判斷header。<br>
 ref. <a href="https://github.com/istio/istio/issues/30166" target="_blank" class="external-link">Incorrect RemoteIP when Authorization Policy is applied to Injected Istio Proxy</a></p>
+<p>過cdn時，只能判斷header。</p>
 <pre><code class="language-yaml">apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
@@ -4451,8 +4463,74 @@ spec:
           values:
             - &quot;10.*&quot;
 </code></pre>
+<p>不過CDN，則可使用下面的方法。</p>
+<pre><code>      apiVersion: security.istio.io/v1
+      kind: AuthorizationPolicy
+      metadata:
+        name: allowlist-frontend
+      spec:
+        selector:
+          matchLabels:
+            group: frontend
+        action: ALLOW
+        rules:
+          - from:
+            - source:
+                remoteIpBlocks: 
+                  - &quot;59.127.129.63&quot;
+                  - &quot;114.33.44.39&quot;
+</code></pre>
 <p>ref. <a href="https://istio.io/latest/docs/ops/configuration/traffic-management/network-topologies/" target="_blank" class="external-link">Configuring Gateway Network Topology</a></p>
 <h4 id="troubleshooting" tabindex="-1">Troubleshooting</h4>
+<h5 id="header" tabindex="-1">查看請求header的方法</h5>
+<p>將domain綁在vs上面直接呼叫即可。</p>
+<pre><code>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: header-debugger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: header-debugger
+  template:
+    metadata:
+      labels:
+        app: header-debugger
+    spec:
+      containers:
+      - name: flask-server
+        image: python:3.10-slim
+        command: [&quot;sh&quot;, &quot;-c&quot;]
+        args:
+        - |
+          pip install flask &amp;&amp; \
+          echo 'from flask import Flask, request
+          app = Flask(__name__)
+          @app.route(&quot;/&quot;)
+          def index():
+              return {k: v for k, v in request.headers.items()}
+          app.run(host=&quot;0.0.0.0&quot;, port=8080)' &gt; app.py &amp;&amp; \
+          python app.py
+        ports:
+        - containerPort: 8080
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: header-debugger
+spec:
+  selector:
+    app: header-debugger
+  ports:
+  - port: 80
+    targetPort: 8080
+
+</code></pre>
 <h6 id="istio-operator-log" tabindex="-1">istioOperator增加log 閱讀性</h6>
 <pre><code>spec:
   meshConfig:
@@ -4798,7 +4876,13 @@ cloudflare可以指定走http還是走https<br>
             
                 <ol>
                     
+                    <li><a href="#header">查看請求header的方法</a>
+            
+                <ol>
+                    
                     <li><a href="#istio-operator-log">istioOperator增加log 閱讀性</a>
+            		</li>
+                </ol>
             		</li>
 
                     <li><a href="#authorization-policy">Authorization Policy規則</a>
