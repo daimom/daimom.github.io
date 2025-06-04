@@ -3900,6 +3900,17 @@
             
         </div>
         
+    
+    
+        <div x-show="isOpen" style="display:none" class="">
+            
+                <div @click.stop class="notelink ">
+                    
+                    <a data-note-icon="" style="text-decoration: none;" class="filename" href="/282. Grafana的label_replace/">Grafana的label_replace </a>
+                </div>
+            
+        </div>
+        
     </div>
       </nav>
 
@@ -4069,7 +4080,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2025-06-03T10:28:38.029Z';
+        const searchIndexDate = '2025-06-04T10:27:52.637Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -4081,9 +4092,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2025-06-03T10:28:38.029Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2025-06-04T10:27:52.637Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-06-03T10:28:38.029Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-06-04T10:27:52.637Z', docs}));
             window.docs = docs
             window.index = index;
         }
@@ -4499,6 +4510,9 @@ args ： 外加的參數，可與command一起使用，</p>
       - -c
       - uname
 </code></pre>
+<p>command對應的是 Dockerfile內的 ENTRYPOINT<br>
+args對應的是 Dockerfile內的的CMD</p>
+<p>如果Dockerfile只有 cmd，k8s可以只用 command取代。</p>
 
       
       
