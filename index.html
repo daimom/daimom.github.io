@@ -4089,7 +4089,7 @@
     async function init() {
         //init offline search index
 
-        const searchIndexDate = '2025-09-22T10:27:14.843Z';
+        const searchIndexDate = '2025-09-23T10:25:34.317Z';
         let shouldFetch = true;
         if(localStorage.getItem("searchIndex")) {
             let {date, docs}= JSON.parse(localStorage.getItem('searchIndex'));
@@ -4101,9 +4101,9 @@
             }        
         }
         if(shouldFetch){
-            let docs = await(await fetch('/searchIndex.json?v=2025-09-22T10:27:14.843Z')).json();
+            let docs = await(await fetch('/searchIndex.json?v=2025-09-23T10:25:34.317Z')).json();
             let index = createIndex(docs);
-            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-09-22T10:27:14.843Z', docs}));
+            localStorage.setItem("searchIndex", JSON.stringify({date: '2025-09-23T10:25:34.317Z', docs}));
             window.docs = docs
             window.index = index;
         }
